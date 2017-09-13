@@ -1,0 +1,102 @@
+<?xml version="1.0" standalone="yes"?>
+<svg height="230" width="520" id="svg" xmlns="http://www.w3.org/2000/svg">
+  <text x="45" y="22" font-family="helvetica" font-size="16px" fill="#000000">c</text>
+  <text x="85" y="22" font-family="helvetica" font-size="16px" fill="#000000">a</text>
+  <text x="125" y="22" font-family="helvetica" font-size="16px" fill="#000000">t</text>
+
+  <text x="12" y="50" font-family="helvetica" font-size="16px" fill="#000000">1</text>
+  <text x="12" y="80" font-family="helvetica" font-size="16px" fill="#000000">2</text>
+  <text x="12" y="110" font-family="helvetica" font-size="16px" fill="#000000">3</text>
+  <text x="12" y="140" font-family="helvetica" font-size="16px" fill="#000000">4</text>
+  <text x="12" y="170" font-family="helvetica" font-size="16px" fill="#000000">5</text>
+  <text x="12" y="200" font-family="helvetica" font-size="16px" fill="#000000">6</text>
+
+
+  <rect x="30" y="30" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="70" y="30" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="110" y="30" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+
+  <rect x="30" y="60" width="40" height="30"  stroke="black" stroke-width="1" fill="#6fa8dc" />
+  <rect x="70" y="60" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="110" y="60" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+
+  <rect x="30" y="90" width="40" height="30"  stroke="black" stroke-width="1" fill="#6fa8dc" />
+  <rect x="70" y="90" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="110" y="90" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+
+  <rect x="30" y="120" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="70" y="120" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="110" y="120" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+
+  <rect x="30" y="150" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="70" y="150" width="40" height="30"  stroke="black" stroke-width="1" fill="#6fa8dc" />
+  <rect x="110" y="150" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+
+  <rect x="30" y="180" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="70" y="180" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="110" y="180" width="40" height="30"  stroke="black" stroke-width="1" fill="#6fa8dc" />
+
+  <text x="245" y="22" font-family="STIXGeneral-Italic" font-size="16px" fill="#000000">ϵ</text>
+  <text x="285" y="22" font-family="helvetica" font-size="16px" fill="#000000">c</text>
+  <text x="325" y="22" font-family="STIXGeneral-Italic" font-size="16px" fill="#000000">ϵ</text>
+  <text x="365" y="22" font-family="helvetica" font-size="16px" fill="#000000">a</text>
+  <text x="405" y="22" font-family="STIXGeneral-Italic" font-size="16px" fill="#000000">ϵ</text>
+  <text x="445" y="22" font-family="helvetica" font-size="16px" fill="#000000">t</text>
+  <text x="485" y="22" font-family="STIXGeneral-Italic" font-size="16px" fill="#000000">ϵ</text>
+
+  <text x="212" y="50" font-family="helvetica" font-size="16px" fill="#000000">1</text>
+  <text x="212" y="80" font-family="helvetica" font-size="16px" fill="#000000">2</text>
+  <text x="212" y="110" font-family="helvetica" font-size="16px" fill="#000000">3</text>
+  <text x="212" y="140" font-family="helvetica" font-size="16px" fill="#000000">4</text>
+  <text x="212" y="170" font-family="helvetica" font-size="16px" fill="#000000">5</text>
+  <text x="212" y="200" font-family="helvetica" font-size="16px" fill="#000000">6</text>
+
+  <rect x="230" y="30" width="40" height="30"  stroke="black" stroke-width="1" fill="#6fa8dc" />
+  <rect x="270" y="30" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="310" y="30" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="350" y="30" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="390" y="30" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="430" y="30" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="470" y="30" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+
+  <rect x="230" y="60" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="270" y="60" width="40" height="30"  stroke="black" stroke-width="1" fill="#6fa8dc" />
+  <rect x="310" y="60" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="350" y="60" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="390" y="60" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="430" y="60" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="470" y="60" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+
+  <rect x="230" y="90" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="270" y="90" width="40" height="30"  stroke="black" stroke-width="1" fill="#6fa8dc" />
+  <rect x="310" y="90" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="350" y="90" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="390" y="90" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="430" y="90" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="470" y="90" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+
+  <rect x="230" y="120" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="270" y="120" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="310" y="120" width="40" height="30"  stroke="black" stroke-width="1" fill="#6fa8dc" />
+  <rect x="350" y="120" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="390" y="120" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="430" y="120" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="470" y="120" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+
+  <rect x="230" y="150" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="270" y="150" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="310" y="150" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="350" y="150" width="40" height="30"  stroke="black" stroke-width="1" fill="#6fa8dc" />
+  <rect x="390" y="150" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="430" y="150" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="470" y="150" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+
+  <rect x="230" y="180" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="270" y="180" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="310" y="180" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="350" y="180" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="390" y="180" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+  <rect x="430" y="180" width="40" height="30"  stroke="black" stroke-width="1" fill="#6fa8dc" />
+  <rect x="470" y="180" width="40" height="30"  stroke="black" stroke-width="1" fill="#ffffff" />
+
+</svg>

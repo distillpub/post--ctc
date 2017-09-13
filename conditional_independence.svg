@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<svg height="200" width="300" id="svg" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="150" cy="50" r="15" stroke="black" stroke-width="1" fill="#d3d3d3" />
+  <text x="143" y="57" font-family="helvetica" font-size="20px" fill="#000000">X</text>
+  <circle cx="50" cy="120" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
+  <text x="43" y="123" font-family="helvetica" font-size="18px" fill="#000000">y</text>
+  <text x="50" y="129" font-family="helvetica" font-size="10px" fill="#000000">1</text>
+  <circle cx="90" cy="120" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
+  <text x="83" y="123" font-family="helvetica" font-size="18px" fill="#000000">y</text>
+  <text x="90" y="129" font-family="helvetica" font-size="10px" fill="#000000">2</text>
+
+  <circle cx="150" cy="120" r="2" stroke="black" stroke-width="1" fill="#000000" />
+  <circle cx="170" cy="120" r="2" stroke="black" stroke-width="1" fill="#000000" />
+  <circle cx="190" cy="120" r="2" stroke="black" stroke-width="1" fill="#000000" />
+
+  <circle cx="250" cy="120" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
+  <text x="243" y="123" font-family="helvetica" font-size="18px" fill="#000000">y</text>
+  <text x="250" y="129" font-family="helvetica" font-size="10px" fill="#000000">U</text>
+
+
+  <line x1="309" y1="338" x2="425" y2="391" stroke="#ffffff" stroke-width="1.5" />
+</svg>

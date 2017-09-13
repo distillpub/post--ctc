@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes"?>
+<svg height="80" width="400" id="svg" xmlns="http://www.w3.org/2000/svg">
+  <marker id="triangle" viewBox="0 0 10 10" refX="0" refY="5" markerUnits="strokeWidth" markerWidth="4" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" />
+  </marker>
+
+  <circle cx="50" cy="50" r="15" stroke="black" stroke-width="1" fill="#d3d3d3" />
+  <circle cx="120" cy="50" r="15" stroke="black" stroke-width="1" fill="#d3d3d3" />
+  <circle cx="190" cy="50" r="15" stroke="black" stroke-width="1" fill="#d3d3d3" />
+  <circle cx="260" cy="50" r="15" stroke="black" stroke-width="1" fill="#d3d3d3" />
+  <circle cx="330" cy="50" r="15" stroke="black" stroke-width="1" fill="#d3d3d3" />
+
+  <text x="46" y="55" font-family="STIXGeneral-Italic" font-size="20px" fill="#000000">ϵ</text>
+  <text x="116" y="55" font-family="helvetica" font-size="16px" fill="#000000">a</text>
+  <text x="186" y="55" font-family="STIXGeneral-Italic" font-size="20px" fill="#000000">ϵ</text>
+  <text x="256" y="55" font-family="helvetica" font-size="16px" fill="#000000">b</text>
+  <text x="326" y="55" font-family="STIXGeneral-Italic" font-size="20px" fill="#000000">ϵ</text>
+
+  <path d="M 40 39 C 30 10 70 14 60 34" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+  <path d="M 63 42 Q 85 30 103 41" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+
+  <path d="M 110 39 C 100 10 140 14 130 34" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+  <path d="M 133 42 Q 155 30 173 41" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+
+  <path d="M 180 39 C 170 10 210 14 200 34" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+
+  <path d="M 203 42 Q 225 30 243 41" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+  <path d="M 250 39 C 240 10 280 14 270 34" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+  <path d="M 273 42 Q 295 30 313 41" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+
+  <path d="M 320 39 C 310 10 350 14 340 34" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+
+
+  <path d="M 133 58 Q 190 90 243 59" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+</svg>

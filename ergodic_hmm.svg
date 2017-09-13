@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="yes"?>
+<svg height="140" width="150" id="svg" xmlns="http://www.w3.org/2000/svg">
+  <marker id="triangle" viewBox="0 0 10 10" refX="0" refY="5" markerUnits="strokeWidth" markerWidth="4" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" />
+  </marker>
+
+  <circle cx="50" cy="50" r="15" stroke="black" stroke-width="1" fill="#d3d3d3" />
+  <circle cx="120" cy="50" r="15" stroke="black" stroke-width="1" fill="#d3d3d3" />
+  <circle cx="85" cy="100" r="15" stroke="black" stroke-width="1" fill="#d3d3d3" />
+
+  <text x="46" y="55" font-family="helvetica" font-size="16px" fill="#000000">a</text>
+  <text x="116" y="55" font-family="helvetica" font-size="16px" fill="#000000">b</text>
+  <text x="81" y="105" font-family="helvetica" font-size="16px" fill="#000000">c</text>
+
+  <path d="M 40 39 C 30 10 70 14 60 34" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+  <path d="M 63 42 Q 85 30 103 41" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+  <path d="M 107 58 Q 85 70 67 59" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+  <path d="M 110 39 C 100 10 140 14 130 34" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+
+  <path d="M 75 111 C 65 140 105 136 95 116" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+
+  <path d="M 59 62 Q 75 70 78 82" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+  <path d="M 72 92 Q 55 80 52 69" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+
+  <path d="M 111 62 Q 95 70 92 82" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+  <path d="M 98 92 Q 115 80 118 69" stroke="black" fill="transparent" marker-end="url(#triangle)" />
+
+</svg>

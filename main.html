@@ -1,0 +1,791 @@
+<!doctype html>
+<meta charset="utf-8">
+<script src="https://distill.pub/template.v1.js"></script>
+
+<script type="text/front-matter">
+  title: "An In-depth Guide to Connectionist Temporal Classification"
+  description: "In this tutorial you will learn about the Connectionist Temporal Classification (CTC) algorithm – a popular model for sequence to sequence mapping with neural networks."
+  authors:
+  - Awni Hannun : http://stanford.edu/~awni/
+  affiliations:
+  - Stanford University : http://cs.stanford.edu/ 
+</script>
+
+<dt-article>
+  <h1>An In-depth Guide to Connectionist Temporal Classification</h1>
+  <h2>In this tutorial you will learn about the Connectionist Temporal Classification (CTC) algorithm – a popular model for sequence to sequence
+      mapping with neural networks.</h2>
+  <dt-byline></dt-byline>
+
+<h2 id="the-problem">The Problem</h2>
+
+<p>We’ve seen an explosion in the use of neural networks for mapping sequences to
+sequences. One work-horse algorithm for neural sequence transduction is CTC.
+Certain assumptions made by the CTC algorithm make it especially well suited
+for problems such as automatic speech recognition and hand-writing recognition,
+where it’s used in many state-of-the-art models.</p>
+
+  <figure class="l-body">
+        <img src="problems.svg" />
+        <figcaption>
+          Two problems commonly solved with CTC. <strong>Left:</strong> Hand-writing recognition. The
+          input can be <script type="math/tex">(x,y)</script> co-ordinates of a pen stroke or pixels in an image.
+          <strong>Right:</strong> Speech recognition. The input is audio usually after applying a
+          spectrogram or some other frequency based feature extractor. Other problems
+          where CTC has been used successfully include lip reading from video, action
+          labelling from video and keyword detection in audio.
+        </figcaption>
+  </figure>
+<p>Let’s start with the problem which will allow us to setup some notation for
+later. Let <script type="math/tex">X = [x_1, x_2, \ldots, x_T]</script> be an input sequence of length
+<script type="math/tex">T</script>. Let <script type="math/tex">Y = [y_1, y_2, \ldots, y_U]</script> denote the length <script type="math/tex">U</script> output
+sequence. Let <script type="math/tex">\mathcal{X}</script> and <script type="math/tex">\mathcal{Y}</script> be the set of all sequences
+<script type="math/tex">X</script> and <script type="math/tex">Y</script> respectively. The problem is to learn a “good” mapping of
+elements of <script type="math/tex">\mathcal{X}</script> to elements of <script type="math/tex">\mathcal{Y}</script>. For example, in
+speech recognition a “good” mapping is one which takes an audio input to an
+accurate transcription.</p>
+
+<p>The sequence transduction problem has three properties which make it difficult
+to use traditional supervised learning algorithms.</p>
+<ul>
+  <li>Not all <script type="math/tex">Y \in \mathcal{Y}</script> have the same length. The same is usually true
+for <script type="math/tex">X \in \mathcal{X}</script>. In other words, the lengths <script type="math/tex">T</script> and <script type="math/tex">U</script> can
+vary.</li>
+  <li>The ratio of the lengths <script type="math/tex">T</script> and <script type="math/tex">U</script> can vary.</li>
+  <li>We don’t have an accurate alignment (a correspondence of the elements) of
+<script type="math/tex">X</script> and <script type="math/tex">Y</script>.</li>
+</ul>
+
+<p>In these circumstances, CTC can learn a function to map elements of
+<script type="math/tex">\mathcal{X}</script> to a distribution over members of <script type="math/tex">\mathcal{Y}</script>. We can then
+infer a likely <script type="math/tex">Y</script> from this distribution. For such an algorithm to be useful
+it needs to solve two problems: the objective function should be computable and
+inference should be tractable.</p>
+
+<p><strong>Objective Function:</strong> We should be able to efficiently compute a score for
+how likely any <script type="math/tex">Y</script> is given an <script type="math/tex">X</script>. In our case the score will be a
+conditional probality <script type="math/tex">p(Y \mid X)</script>, though this isn’t a strict requirement.
+The function <script type="math/tex">p(Y \mid X)</script> should be differentiable. This makes optimizing
+the function parameters easier. We need to compute the score <script type="math/tex">p(Y \mid X)</script>
+for <script type="math/tex">X</script>’s and <script type="math/tex">Y</script>’s of variable and differing lengths. We also want to
+avoid algorithms which require an alignment between <script type="math/tex">X</script> and <script type="math/tex">Y</script>.</p>
+
+<p><strong>Inference:</strong> Given a model for <script type="math/tex">p(Y \mid X)</script>, for any <script type="math/tex">X</script> we
+need to tractably infer a likely <script type="math/tex">Y</script>. This means solving 
+\begin{align}
+Y^* = \text{argmax}_{Y \in \mathcal{Y}} p(Y \mid X).
+\end{align}
+Ideally an optimal <script type="math/tex">Y</script> can be efficiently found. With CTC we’ll settle for a
+close to optimal solution which is usually not too expensive to find.</p>
+
+<h2 id="the-algorithm">The Algorithm</h2>
+
+<p>The first thing we need to do is compute a score of how likely a <script type="math/tex">Y</script> is given
+an <script type="math/tex">X</script>. To do this, the CTC model allows a set of alignments between <script type="math/tex">X</script>
+and <script type="math/tex">Y</script>. To get around the fact that <script type="math/tex">X</script> and <script type="math/tex">Y</script> have variable lengths
+and the alignment is unknown, CTC <em>marginalizes</em> over all possible allowed
+alignments between the two sequences. In this section we’ll cover what these
+allowed alignments are, how to compute the CTC loss function and how to perform
+inference with a learned model.</p>
+
+<h3 id="alignment">Alignment</h3>
+<p>The CTC algorithm assumes that alignments between the input <script type="math/tex">X</script> and the
+output <script type="math/tex">Y</script> have a specific form. To motivate the CTC alignments, first
+consider a naive approach.</p>
+
+<p>Let’s use an example. Let the input length <script type="math/tex">T = 6</script> and <script type="math/tex">Y =</script> [c, a, t]. In
+this case, one way to align <script type="math/tex">Y</script> and <script type="math/tex">X</script> would be to let the elements of
+<script type="math/tex">Y</script> align to multiple elements of <script type="math/tex">X</script>. So the alignment could be [c, c, a,
+a, a, t]. This approach has two problems.</p>
+<ul>
+  <li>Some elments of <script type="math/tex">X</script> may not correspond to any element of <script type="math/tex">Y</script>. In this case, we
+may not want to force every element of <script type="math/tex">X</script> to match with an element of
+<script type="math/tex">Y</script>.</li>
+  <li>The sequence <script type="math/tex">Y</script> can have consecutive repeat characters. This means the
+alignments for a given <script type="math/tex">Y</script> are not unique. We have no way to determine if
+the alignment [c, c, a, a, a, t] refers to [c, a, t] or [c, a, a, t] among
+others. Later we’ll need to distinguish between these cases to perform
+inference with the model.</li>
+</ul>
+
+<p>To get around these problems, CTC introduces a new token to the of allowed
+output characters. This new token is sometimes called the “blank” token. We’ll
+refer to it here as <script type="math/tex">\epsilon</script>. When an input element aligns to <script type="math/tex">\epsilon</script>
+then no output element corresponds to it.</p>
+
+<p>The aligments allowed by CTC are of length <script type="math/tex">T</script>, the length of the input. Let
+<script type="math/tex">\mathcal{A}</script> be the set of alignments. We can compute <script type="math/tex">\mathcal{A}</script> from
+<script type="math/tex">Y</script> in two steps.</p>
+<ol>
+  <li>Optionally insert an <script type="math/tex">\epsilon</script> at the beginning, end, and between every
+character of <script type="math/tex">Y</script>.</li>
+  <li>Arbitrarily repeat any character present in the <script type="math/tex">\epsilon</script>-expanded <script type="math/tex">Y</script>
+(including <script type="math/tex">\epsilon</script>) until the new sequence has length <script type="math/tex">T</script>.</li>
+</ol>
+
+<p>This produces one possible alignment. The set <script type="math/tex">\mathcal{A}</script> contains all possible
+alignments we can generate this way. If there are consecutive repeat characters
+in <script type="math/tex">Y</script> then the <script type="math/tex">\epsilon</script> between them is required. This allows us to
+differentiate between alignments of [c, a, t] and [c, a, a, t].</p>
+
+<p>Let’s go back to the example. A few allowed alignments of <script type="math/tex">Y</script> are
+[<script type="math/tex">\epsilon</script>, c, c, <script type="math/tex">\epsilon</script>, a, t], [c, c, a, a, t, t] and [c,
+<script type="math/tex">\epsilon</script>, <script type="math/tex">\epsilon</script>, <script type="math/tex">\epsilon</script>, a, t]. A few unallowed alignments are
+[c, <script type="math/tex">\epsilon</script>, c, <script type="math/tex">\epsilon</script>, a, t], [c, c, a, t, t] and [c, <script type="math/tex">\epsilon</script>,
+<script type="math/tex">\epsilon</script>, <script type="math/tex">\epsilon</script>, t, t]. These are not allowed for the following
+reasons: the first corresponds to <script type="math/tex">Y =</script> [c, c, a, t], the second has length
+<script type="math/tex">5</script>, and the third is missing the ‘a’.</p>
+
+<p>A convenient way to visualize the alignment between <script type="math/tex">X</script> and <script type="math/tex">Y</script> is with a
+2D alignment matrix. Here’s one for the [<script type="math/tex">\epsilon</script>, c, c,
+<script type="math/tex">\epsilon</script>, a, t] alignment. Sometimes it’s useful to include the
+<script type="math/tex">\epsilon</script>’s in the alignment matrix. Both are shown below. Note that some of
+the <script type="math/tex">\epsilon</script> tokens are left unaligned. They are optional since they don’t
+fall between consecutive repeat characters in <script type="math/tex">Y</script>.</p>
+
+<figure class="l-body">
+<img src="alignment.svg" />
+<figcaption>
+Alignment matrices of the output <script type="math/tex">Y =</script> [c, a, t] to an input with length <script type="math/tex">T
+= 6</script>.  The alignment is given by <script type="math/tex">A =</script> [<script type="math/tex">\epsilon</script>, c, c, <script type="math/tex">\epsilon</script>, a,
+t]. <strong>Left:</strong> The alignment without the <script type="math/tex">\epsilon</script> token. <strong>Right:</strong> The
+alignment including the <script type="math/tex">\epsilon</script> token.
+</figcaption>
+</figure>
+
+<p>We can observe several properties about CTC right away. First, the allowed
+alignments between <script type="math/tex">Y</script> and <script type="math/tex">X</script> are strictly monotonic. If the ‘c’ in our
+example aligns to the first input element then the ‘a’ must align to input
+element two or greater. This implies a second property: the length of <script type="math/tex">Y</script> can
+be no longer than the length of <script type="math/tex">X</script>. A third property is that the alignment
+of <script type="math/tex">X</script> to <script type="math/tex">Y</script> is many-to-one. Many input elements can align to a single
+output element but not vice-versa.</p>
+
+<h3 id="loss-function">Loss Function</h3>
+<p>With the alignment setup, we can write down the CTC objective function for a
+single <script type="math/tex">(X, Y)</script> pair
+\begin{align}
+p(Y \mid X) = \sum_{A \in \mathcal{A}} \prod_{t=1}^T p_t(a_t \mid X).
+\end{align}
+Recall <script type="math/tex">\mathcal{A}</script> is the set of alignments of <script type="math/tex">Y</script> to <script type="math/tex">X</script> allowed by
+CTC. The element <script type="math/tex">A = [a_1, \ldots, a_T]</script> is a member of <script type="math/tex">\mathcal{A}</script>. The
+function <script type="math/tex">p_t(a_t \mid X)</script> can be any function which produces a distribution
+for each input time-step <script type="math/tex">t</script> over the output alphabet given the full
+input <script type="math/tex">X</script>.</p>
+
+<p>The inner product of the loss function computes the probability of a given
+alignment <script type="math/tex">A</script> frame-by-frame. The outer sum marginalizes over all possible
+alignments to give the conditional output probability <script type="math/tex">p(Y \mid X)</script>.</p>
+
+<p>The hard part of the CTC loss is not understanding what it is, but computing
+it efficiently. The set <script type="math/tex">\mathcal{A}</script> can be
+<em>very</em> large.<dt-fn>For a <script type="math/tex">Y</script> of length
+<script type="math/tex">U</script> without any repeat characters and an
+<script type="math/tex">X</script> of length <script
+type="math/tex">T</script> the size of the set is <script type="math/tex">{T +
+U \choose T - U}</script>. For <script type="math/tex">T=100</script> and
+<script type="math/tex">U=50</script> this number is almost <script
+type="math/tex">10^{40}</script>.</dt-fn> For most practical problems, we can’t
+delineate the elements of <script type="math/tex">\mathcal{A}</script> to
+compute the sum above.</p>
+
+<p>Instead, we can compute the CTC loss both exactly and efficiently with a
+dynamic programming algorithm. Like any dynamic programming algorithm, the key
+is recognizing the subproblems.</p>
+
+<p>To simplify the problem let the sequence <script type="math/tex">Z = [z_{1}, \ldots, z_{2U+1}]</script>
+consist of the elements of <script type="math/tex">Y</script> with an <script type="math/tex">\epsilon</script> at the beginning, end,
+and between every character. Let <script type="math/tex">\alpha_{i,j}</script> be the CTC score for the
+subsequences <script type="math/tex">X_{1:i}</script> and <script type="math/tex">Z_{1:j}</script>. We can compute <script type="math/tex">\alpha_{i, j}</script> if
+we know the values <script type="math/tex">\alpha_{\lt i, \lt j}</script>. There are two cases.</p>
+
+<p><strong>Case 1:</strong> Either <script type="math/tex">z_{j} = \epsilon</script> or <script type="math/tex">z_{j} =
+z_{j-2}</script> (a consecutive repeat character in <script type="math/tex">Y</script>). In this case
+\begin{align}
+\alpha_{i, j} = (\alpha_{i-1, j-1} + \alpha_{i-1, j}) p_i(z_{j} \mid X).
+\end{align}
+In this case, only alignments which have matched <script type="math/tex">z_{j-1}</script> to some previous
+input element are allowed. The first condition is because we can’t leave any
+characters in <script type="math/tex">Y</script> unaligned. The second condition is because we <em>must</em> have
+an <script type="math/tex">\epsilon</script> between repeat characters.</p>
+
+<p><strong>Case 2:</strong> If we aren’t in the first case, then we’re in the second case and
+\begin{align}
+\alpha_{i, j} = (\alpha_{i-1, j-2} + \alpha_{i-1, j-1} + \alpha_{i-1, j}) p_i(z_j \mid X).
+\end{align}
+We have this case because <script type="math/tex">\epsilon</script> between unique characters is optional.
+Alignments which align <script type="math/tex">z_{j-2}</script> but not <script type="math/tex">z_{j-1}</script> to a previous input are
+allowed. Below is an animation of the steps taken by the dynamic programming
+algorithm.</p>
+
+<figure class="l-body">
+<img src="ctc_cost.svg" style="width: 80%;"/>
+<figcaption>
+An animation of the dynamic programming algorithm used to compute the CTC
+score. The input <script type="math/tex">X</script> with <script type="math/tex">T=6</script> is on the vertical axis. The
+<script type="math/tex">\epsilon</script>-expanded output <script type="math/tex">Y =</script> [c, a, t] is on the horizontal axis. Node
+<script type="math/tex">(i, j)</script> in the diagram represents <script type="math/tex">\alpha_{i,j}</script> – the CTC score between
+the subsequences <script type="math/tex">X_{1:i}</script> and <script type="math/tex">Z_{1:j}</script>. The two states used to
+compute the final score are marked with concentric circles.
+</figcaption>
+</figure>
+
+<p>The final score is the sum of the two final states, marked in the example
+figure with concentric circles,
+\begin{align}
+p(Y \mid X) = \alpha_{T,S} + \alpha_{T, S-1}
+\end{align}
+where <script type="math/tex">S = 2U + 1</script>.</p>
+
+<p>As long as the individual output model <script type="math/tex">p_i(z \mid X)</script> is differentiable then
+the entire loss function is differentiable. This is true since computing <script type="math/tex">p(Y
+\mid X)</script> consists only of sums and products of the <script type="math/tex">p_i(z \mid X)</script>.</p>
+
+<p>The time complexity of this dynamic programming algorithm is <script type="math/tex">O(TU)</script> with a
+fairly small constant. Conveniently, the time to compute the loss function does
+not depend at all on the size of the output alphabet.</p>
+
+<p>For a training set <script type="math/tex">\mathcal{D}</script>, the parameters of a model are tuned to
+minimize the negative log-likelihood
+\begin{align}
+\sum_{(X, Y) \in \mathcal{D}} -\log p(Y \mid X)
+\end{align}
+as opposed to maximizing the likelihood directly.</p>
+
+<h3 id="inference">Inference</h3>
+
+<p>To infer the most likely output sequence for a given input we solve
+\begin{align}
+Y^* = \text{argmax}_{Y \in \mathcal{Y}} p(Y \mid X).
+\end{align}</p>
+
+<p>The simplest method to compute a likely <script type="math/tex">Y</script> is to take the most likely output
+at each time-step. Since there are no conditional dependencies in the output,
+this computes exactly
+\begin{align}
+A^* = \text{argmax}_{A \in \mathcal{A}} p_t(a_t \mid X).
+\end{align}
+We can then collapse repeat characters and remove <script type="math/tex">\epsilon</script> tokens to
+produce <script type="math/tex">Y</script>.</p>
+
+<p>In most applications this simple algorithm works well because CTC tends to
+allocate most of the probability to a single alignment <script type="math/tex">A</script>. However, this
+method is not guaranteed to find the most likely <script type="math/tex">Y</script>. This is because
+multiple alignments can map to the same <script type="math/tex">Y</script>. The sequences [a, a,
+<script type="math/tex">\epsilon</script>] and [a, a, a] could individually have lower probability than [b,
+b, b], though the sum of their probabilities could be larger. In this case, the
+beam search algorithm would propose [b, b, b] as the most likely hypothesis,
+corresponding to <script type="math/tex">Y =</script> [b]. To account for this, the algorithm should
+consider the fact that [a, a, a] and [a, a, <script type="math/tex">\epsilon</script>] map to the same
+output, namely <script type="math/tex">Y =</script> [a].</p>
+
+<p>We can solve this problem with a modified beam search. The modified beam search
+is also not guaranteed to find the most likely <script type="math/tex">Y</script>, but it has the nice
+property that we can trade-off more computation (namely a larger beam-size) for
+an asymptotically better solution.</p>
+
+<p>A regular beam search would compute a new set of hypotheses at each input
+time-step. The new set of hypotheses is generated from the previous set by
+extending each hypothesis with all possible output characters.</p>
+
+
+<figure class="l-body">
+<img src="beam_search.svg" style="width: 60%;"/>
+<figcaption>
+Steps two and three of a standard beam search algorithm with an output
+alphabet <script type="math/tex">\{\epsilon, a, b\}</script> and a beam size of three. The current
+hypotheses in the beam are given by the blue nodes. The proposed extensions are
+grey and the selected extensions are red.
+</figcaption>
+</figure>
+
+<p>We can modify the vanilla beam search to handle multiple alignments mapping to
+the same output. In this case instead of keeping a list of alignments in the
+beam, we store the output prefixes after collapsing repeats and removing
+<script type="math/tex">\epsilon</script> characters. At each step of the search we accumulate scores for a
+given prefix based on all the alignments which map to it. The image below
+displays steps two, three and four of the algorithm. The dashed lines indicate
+the output prefix that the proposed extension maps to.</p>
+
+<figure class="l-body">
+<img src="prefix_beam_search.svg" style="width: 80%"/>
+<figcaption>
+Steps two, three and part of step four of a CTC beam search with an output
+alphabet <script type="math/tex">\{\epsilon, a, b\}</script> and a beam size of three. The <script type="math/tex">\lambda</script> token
+indicates the empty string. The blue nodes indicate the current hypothesis in
+the beam and the red and grey nodes indicate possible extensions. The red nodes
+are the outputs included in the selected hypotheses for the next time-step. The
+dashed lines indicate the hypotheses they contribute to.
+</figcaption>
+</figure>
+
+<p>A proposed extension can map to two output prefixes if the character is a
+repeat. This is shown at <script type="math/tex">T=3</script> in the figure above where ‘a’ is proposed as
+an extension to the prefix [a]. Both [a] and [a, a] are valid outputs with this
+proposed extension. For the [a,a] case we should only include the part of the
+score of the previous prefix for alignments which end in <script type="math/tex">\epsilon</script>. This is
+because <script type="math/tex">\epsilon</script> must be between consecutive repeat characters. For the [a]
+case, where we don’t extend the prefix, we should only consider the part of the
+score of the previous prefix for alignments which don’t end in <script type="math/tex">\epsilon</script>.</p>
+
+<p>Given this, it’s necessary to keep track of two probabilities for each prefix
+in the beam. The probability of all alignments which end in <script type="math/tex">\epsilon</script> and
+the probability of all alignments which don’t end in <script type="math/tex">\epsilon</script>. Note that
+when we rank the hypotheses at each step before pruning the beam, we should
+rank by the combined score.</p>
+
+<p>The implementation of this algorithm does not require much code. The code is,
+however, dense and tricky to get right. Refer to this <a href="https://gist.github.com/awni/56369a90d03953e370f3964c826ed4b0">gist</a> for
+an example implementation in Python.</p>
+
+<p>In some problems, such as speech recognition, incorporating a language model
+over the outputs significantly improves accuracy. In this case we can
+repose the inference problem as 
+\begin{align}
+Y^* = \text{argmax}_{Y \in \mathcal{Y}} p(Y \mid X) p(Y)^\alpha L(Y)^\beta.
+\end{align}
+The function <script type="math/tex">L(\cdot)</script> computes the length of <script type="math/tex">Y</script> in terms of the language
+model tokens and serves as a word insertion bonus. The language model scores
+are only included when a prefix is extended by a character (or word) and not at
+every step of the algorithm. This causes the search to favor shorter prefixes,
+as measured by <script type="math/tex">L(\cdot)</script>, since they do not have many language model
+updates. The insertion bonus helps with this. The parameters <script type="math/tex">\alpha</script> and
+<script type="math/tex">\beta</script> are usually set by cross-validation.</p>
+
+<h2 id="properties-of-ctc">Properties of CTC</h2>
+
+<p>We briefly mentioned a few important properties of CTC so far. Here we’ll go
+into more depth on what these properties are and what trade-offs they offer.</p>
+
+<h3 id="conditional-independence">Conditional Independence</h3>
+
+<p>One of the most commonly cited shortcomings of CTC is the conditional
+independence assumption it makes. The cost function we wrote down above models
+the conditional output distribution as
+\begin{align}
+p(Y \mid X) = \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
+\end{align}
+The model assumes that a given output element is conditionally independent of
+the other output elements given the input. For many sequence transduction
+problems this is not a valid assumption. Say we had an audio clip of someone
+saying “triple A”.<dt-cite key="Chan2016las"></dt-cite> Another valid transcription could be “AAA”. If the first
+letter of the predicted transcription is ‘A’, then with high probability the
+next letter should be ‘A’ and with low probability the next letter should be
+‘r’. The conditional independence assumption does not allow for this.</p>
+
+<p>In fact speech recognizers using CTC are not able to learn an implicit language
+model nearly as well as other models which do not make this conditional
+independence assumption.<dt-cite key="Battenberg2017"></dt-cite> However, this isn’t always a bad trait. In some
+cases, having the model implicitly learn a strong language model over the ouput
+can make it less adaptable to new or altered domains. For example we might want
+to adapt a model trained to transcribe on phone conversations between friends
+to customer support calls.</p>
+
+<h3 id="alignment-properties">Alignment Properties</h3>
+
+<p>While the CTC algorithm does make strong assumptions about the form of
+alignments between <script type="math/tex">X</script> and <script type="math/tex">Y</script>, technically the algorithm is
+<em>alignment-free</em>. The objective function marginalizes over the allowed
+alignments thus model is agnostic as to how probability is distributed amongst
+them. In some problems CTC ends up alotting most of the probability towards a
+single alignment, though this is not guaranteed. To force the model to upweight
+a single alignment, we can replace the <code class="highlighter-rouge">sum</code> over the
+alignments with a <code>max</code>,
+\begin{align}
+p(Y \mid X) = \max_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
+\end{align}</p>
+
+<p>As mentioned before, CTC allows only <em>strictly monotonic</em> alignments. In some
+problems such as speech recogntion this may be a valid assumption. For other
+problems such as machine translation where a future word in a target sentence
+can align to an earlier part of the source sentence, this assumption might be a
+deal-breaker. The <em>strictly monotonic</em> property also implies that the length of
+the output must be no greater than the length of the input.<dt-fn>Note that if there are <script type="math/tex">r</script> consecutive repeats in <script type="math/tex">Y</script>, the length <script type="math/tex">U</script> must be less than <script type="math/tex">T</script> by <script type="math/tex">2r - 1</script>.</dt-fn> For problems
+where this is often not the case, CTC will not work.</p>
+
+<p>A final important property of CTC alignments is that they are <em>many-to-one</em>. In
+other words, multiple input element can align to at most one output element. In
+some cases this may not be desirable. We may want to enforce a strict
+one-to-one correspondence between elements of <script type="math/tex">X</script> and <script type="math/tex">Y</script>. Alternatively,
+we may want to allow multiple output elements to align to a single input
+element. For example the sound made by “th” might align to a single input frame
+of audio, but a character based CTC model would not allow for this.</p>
+
+<h3 id="input-synchronous-inference">Input Synchronous Inference</h3>
+
+<p>Inference with CTC is done in an <em>input synchronous</em> manner as opposed to an
+<em>output synchronous</em> manner. This means the beam search is pruned after
+processing each input element and the algorithm terminates when all of the
+input has been seen. This is opposed to output synchronous decoding which
+prunes the beam after each output time-step and typically terminates on an
+end-of-sequence marker. Input synchronous inference makes streaming the
+decoding process easier. For some applications streaming the inference
+computation is critical to achieve low latency response times.</p>
+
+<h2 id="ctc-in-context">CTC in Context</h2>
+
+<p>In this section we’ll discuss how CTC relates to other commonly used
+algorithms for sequence transduction.</p>
+
+<h3 id="hmms">HMMs</h3>
+<p><em>This section requires some familiarity with the HMM and is not critical to
+understanding the CTC algorithm. Feel free to skip it on a first read.</em></p>
+
+<p>At a first glance a Hidden Markov Model (HMM) based sequence transducer does
+not closely resemble a CTC model. However, the two algorithms have many
+similarities. Understanding the relationship between the two models helps to
+understand what exactly CTC does that couldn’t be done before. Putting CTC in
+this context will also allow us to understand how it can be changed and
+potentially improved for various use cases.</p>
+
+<p>We’ll use the same notation from before, <script type="math/tex">X</script> is the input sequence and <script type="math/tex">Y</script>
+is the output sequence with lengths <script type="math/tex">T</script> and <script type="math/tex">U</script> respectively. Like before
+we’re interested in finding a “good” model for <script type="math/tex">p(Y \mid X)</script>. One way to
+simplify the modeling problem is to transform this probability with Bayes’ Rule
+and compute
+\begin{align}
+p(Y \mid X) \propto p(X \mid Y) p(Y).
+\end{align}
+The <script type="math/tex">p(Y)</script> term is straight-forward model to with a language model, so let’s focus
+on <script type="math/tex">p(X \mid Y)</script>. Like before we’ll let <script type="math/tex">\mathcal{A}</script> be a set of allowed
+of alignments of <script type="math/tex">Y</script> to <script type="math/tex">X</script>. In this case members of <script type="math/tex">\mathcal{A}</script> have length <script type="math/tex">T</script>.
+Let’s otherwise leave <script type="math/tex">\mathcal{A}</script> unspecified for now. We’ll come back to
+it later. We can marginalize over <script type="math/tex">\mathcal{A}</script> to get
+\begin{align}
+p(X \mid Y) = \sum_{A \in \mathcal{A}} p(X, A \mid Y).
+\end{align}
+To simplify notation, let’s remove the conditioning on <script type="math/tex">Y</script>, it will be
+unchanging in every <script type="math/tex">p(\cdot)</script>. Using the HMM assumptions we can
+write
+\begin{align}
+p(X) = \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(x_t \mid a_t) p(a_t \mid a_{t-1}).
+\end{align}
+Two assumptions have been made here. The first is the usual Markov property.
+The state <script type="math/tex">a_t</script> is conditionally independent of all historical states given
+the previous state <script type="math/tex">a_{t-1}</script>. The second is that the observation <script type="math/tex">x_t</script> is
+conditionally independent of everything else given the current state <script type="math/tex">a_t</script>.</p>
+
+<p>Let’s assume that the transition probabilities <script type="math/tex">p(a_t \mid a_{t-1})</script> are
+uniform. This gives
+\begin{align}
+p(X) \propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(x_t \mid a_t).
+\end{align}
+This equation is starting to resemble the CTC loss function from above. In fact
+there are only two differences. The first is that we are learning a model of
+<script type="math/tex">X</script> given <script type="math/tex">Y</script> as opposed to <script type="math/tex">Y</script> given <script type="math/tex">X</script>. The second is how the set
+<script type="math/tex">\mathcal{A}</script> is produced. Let’s deal with each in turn.</p>
+
+<p>The HMM can be used with discriminative models which estimate <script type="math/tex">p(a \mid x)</script>.
+To do this, we apply Bayes’ rule and rewrite the model as 
+\begin{align}
+p(X) &amp;\propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T \frac{p(a_t \mid x_t)p(x_t)}{p(a_t)} \\
+&amp;\propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T \frac{p(a_t \mid x_t)}{p(a_t)}. 
+\end{align}</p>
+
+<p>If we assume a uniform prior over the states <script type="math/tex">a</script> and condition on all of
+<script type="math/tex">X</script> instead of a single element at a time, we arrive at 
+\begin{align}
+\sum_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X). 
+\end{align}</p>
+
+<p>The above equation is essentially the CTC loss function, assuming the set
+<script type="math/tex">\mathcal{A}</script> is the same. In fact, the HMM framework does not specify what
+<script type="math/tex">\mathcal{A}</script> should consist of. This part of the model can be designed on a
+per-problem basis. In many cases the model doesn’t condition on <script type="math/tex">Y</script> and the
+set <script type="math/tex">\mathcal{A}</script> consists of all possible length <script type="math/tex">T</script> sequences from the
+output alphabet. In this case, the HMM can be drawn as an  <em>ergodic</em> state
+transition diagram in which every state connects to every other state.  The
+figure below shows this model with the alphabet or set of unique hidden states
+as <script type="math/tex">\{a, b, c\}</script>.</p>
+
+<p>In our case the hidden states of the model (the elements of <script type="math/tex">A</script>) are strongly
+related to <script type="math/tex">Y</script>. We want the HMM to reflect this. One possible model could be
+a simple linear state transition diagram. The figure below shows this with the
+same alphabet as before and <script type="math/tex">Y =</script> [a, b]. Another commonly used model is the
+<em>Bakis</em> or left-right HMM. In this model any transition which proceeds from the
+left to the right is allowed.</p>
+
+<figure class="l-body">
+<img src="ergodic_hmm.svg" style="width:20%;"/>
+<img style="width:20%;margin-bottom:30px;" src="linear_hmm.svg" />
+<img style="width:50%;margin-bottom:30px;" src="ctc_hmm.svg" />
+<figcaption>
+Three different HMM state transition diagrams. <strong>Left:</strong> The ergodic HMM. Any
+node can be either a starting or final state.  <strong>Middle:</strong> The linear HMM. The
+first node is the starting state and the second node is the final state.
+<strong>Right:</strong> The CTC HMM. The first two nodes are the starting states and the
+last two nodes are the final states. 
+</figcaption>
+</figure>
+
+<p>In CTC we augment the alphabet with <script type="math/tex">\epsilon</script> and the HMM model allows a
+subset of the left-right transitions. In this model there are two start
+states and two accepting states.</p>
+
+<p>One possible source of confusion is that the HMM model differs for any unique
+<script type="math/tex">Y</script>. This is in fact standard in applications such as speech recognition. The
+state diagram changes based on the output <script type="math/tex">Y</script>. However, the functions which
+estimate the observation and transition probabilities are shared.</p>
+
+<p>Let’s discuss how CTC improves on the original HMM model. First, we can think
+of the CTC state diagram as a special case HMM which works well for many
+problems of interest. Incorporating the blank as a hidden state in the HMM
+allows us to use the alphabet of <script type="math/tex">Y</script> as the other hidden states. This model
+also gives a set of allowed alignments which may be a good prior for some
+problems. Perhaps most importantly, CTC casts the problem discriminatively in
+terms of <script type="math/tex">p(Y \mid X)</script>. This allows us to train the model “end-to-end” and
+unleashes the capacity of powerful models like the RNN.</p>
+
+<h3 id="encoder-decoder-models">Encoder-Decoder Models</h3>
+
+<p>The neural encoder-decoder is perhaps the most commonly used framework for
+sequence transduction. This class of models consists of an encoder and a
+decoder. The encoder maps the input sequence <script type="math/tex">X</script> into a hidden
+representation. The decoder consumes the hidden representation and produces a
+distribution over the output space <script type="math/tex">\mathcal{Y}</script>. We can write this as
+\begin{align}
+h &amp;= \texttt{encode}(X) \\
+p(Y \mid X) &amp;= \texttt{decode}(h).
+\end{align}
+The <script type="math/tex">\texttt{encode}(\cdot)</script> and <script type="math/tex">\texttt{decode}(\cdot)</script> functions are
+typically RNNs. The decoder can optionally be equipped with an attention
+mechanism. The hidden state <script type="math/tex">h</script> usually has dimensions <script type="math/tex">T \times d</script> where
+<script type="math/tex">d</script> is a hyperparameter.  Sometimes the encoder subsamples the input in
+which case the inner dimension of <script type="math/tex">h</script> can be <script type="math/tex">\frac{T}{s}</script> where <script type="math/tex">s</script> is
+the subsampling factor.</p>
+
+<p>We can interpret CTC in the encoder-decoder framework. This is helpful to
+understand the developments in encoder-decoder models that are applicable to
+CTC. Also, it’s useful to develop a common language for the properties of these
+models.</p>
+
+<p><strong>Encoder:</strong> The encoder of a CTC model can be just about any encoder we find
+in commonly used encoder-decoder models. For example the encoder could be a
+multi-layer bidirectional RNN or a convolutional network. There is a constraint
+on the CTC encoder that doesn’t apply to the others. The input length cannot be
+subsampled at such a rate that <script type="math/tex">T</script> is less than <script type="math/tex">U</script>.</p>
+
+<p><strong>Decoder:</strong> We can view the decoder of a CTC model as a simple linear
+transformation followed by a softmax normalization. This layer should project
+all <script type="math/tex">T</script> components of the encoder output <script type="math/tex">h</script> into the dimensionality of the
+output alphabet.</p>
+
+<h2 id="practitioners-guide">Practitioner’s Guide</h2>
+
+<p>So far we’ve mostly developed a conceptual understanding of CTC. Here we’ll go
+through a few implementation tips for practitioners.</p>
+
+<p><strong>Software:</strong> Even with a solid conceptual understanding of CTC, the
+implementation is difficult. The algorithm has several edge cases and a fast
+implementation needs to be written in a lower-level programming language.
+Open-source software tools can make getting started with CTC much easier:</p>
+
+<ul>
+  <li>Baidu Research has open-sourced <a href="https://github.com/baidu-research/warp-ctc">warp-ctc</a>. The package is written in C++ and
+CUDA. The CTC loss function runs on either the CPU or the GPU. Bindings are
+available for Torch, TensorFlow and <a href="https://github.com/awni/warp-ctc">PyTorch</a>.</li>
+  <li>TensorFlow has built in <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_loss">CTC loss</a> and <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_beam_search_decoder">CTC beam search</a> funtions. The
+TensorFlow version doesn’t support the GPU yet.</li>
+</ul>
+
+<p><strong>Numerical Stability:</strong> Computing the CTC loss naively is numerically
+instable.  One method to avoid this is to normalize the <script type="math/tex">\alpha</script>’s at each
+time-step.  The <a href="ftp://ftp.idsia.ch/pub/juergen/icml2006.pdf">original publication</a> has more detail on this
+including the adjustments to the gradient. In practice this works well enough
+for medium length sequences but can still underflow for long sequences.
+Another solution is to compute the loss function in log-space with the
+<a href="https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations">log-sum-exp trick</a>. Inference should also be done in log-space
+using the log-sum-exp trick.</p>
+
+<p><strong>Beam Search:</strong> There are a couple of good tips to know about when
+implementing  and using the CTC beam search.</p>
+
+<p>The correctness of the beam search can be tested as follows.</p>
+<ol>
+  <li>Run the beam search algorithm on an arbitrary input.</li>
+  <li>Save the inferred output <script type="math/tex">\bar{Y}</script> and the corresponding score <script type="math/tex">\bar{c}</script>.</li>
+  <li>Compute the actual CTC score <script type="math/tex">c</script> for <script type="math/tex">\bar{Y}</script> using the same input.</li>
+  <li>Check that <script type="math/tex">\bar{c} \approx c</script> with the former being no greater than the later.
+As the beam size increases the inferred output <script type="math/tex">\bar{Y}</script> may change, but the two
+numbers should grow closer.</li>
+</ol>
+
+<p>A common question when using a beam search decoder is the size of the beam to
+use.  There is a trade-off between accuracy and runtime. We can check if the
+beam size is in a good range. To do this first compute the CTC score for the
+inferred output <script type="math/tex">c_i</script>. Then compute the CTC score for the ground truth output
+<script type="math/tex">c_g</script>. If the two outputs are not the same, we should have <script type="math/tex">c_g \lt c_i</script>.
+If <script type="math/tex">% <![CDATA[
+c_i << c_g %]]></script> then the beam search is performing poorly and a large
+increase in the beam size may be warranted.</p>
+
+<h3 class="no_toc" id="bibliographic-notes">Bibliographic Notes</h3>
+
+<p>The CTC algorithm was first published by Graves et al. in 2006.<dt-cite key="Graves2006"></dt-cite> The
+first experiments were on TIMIT, a popular phoneme recognition benchmark.<dt-cite key="Lopes2011"></dt-cite>
+Chapter 7 of Graves’ thesis<dt-cite key="Graves2012"></dt-cite> gives a more detailed treatment of CTC.</p>
+
+<p>One of the first applications of CTC to large vocabulary speech recognition was
+by Graves et al. in 2014 where they used a hybrid HMM and CTC
+trained model to achieve state-of-the-art results.<dt-cite key="Graves2014"></dt-cite> Hannun et al.
+subsequently demonstrated state-of-the-art CTC based speech recognition on
+larger benchmarks.<dt-cite key="Hannun2014deepspeech"></dt-cite> State-of-the-art results on
+an online handwriting recognition task using the CTC algorithm with an RNN were achieved in 2007.<dt-cite key="Liwicki2007"></dt-cite></p>
+
+<p>The Hidden Markov Model was developed in the 1960’s with the first application
+to speech recognition in the 1970’s. For an introduction to the HMM and
+applications to speech recognition see Rabiner’s canonical tutorial.<dt-cite key="Rabiner1989"></dt-cite></p>
+
+<p>Encoder-decoder models were simultaneously developed in 2014.<dt-cite key="Cho2014,Sutskever2014"></dt-cite>.  The online publication <em>Distill</em> gives an in-depth guide to
+attention in encoder-decoder models.<dt-cite key="Olah2016"></dt-cite></p>
+
+</div>
+
+  
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</dt-article>
+
+<script type="text/bibliography">
+@article{Battenberg2017,
+archivePrefix = {arXiv},
+arxivId = {1707.07413},
+author = {Battenberg, Eric and Chen, Jitong and Child, Rewon and Coates, Adam and Gaur, Yashesh and Li, Yi and Liu, Hairong and Satheesh, Sanjeev and Seetapun, David and Sriram, Anuroop and Zhu, Zhenyao},
+eprint = {1707.07413},
+file = {:Users/awni/Library/Application Support/Mendeley Desktop/Downloaded/Battenberg et al. - 2017 - Exploring Neural Transducers for End-to-End Speech Recognition.pdf:pdf},
+month = {jul},
+title = {Exploring Neural Transducers for End-to-End Speech Recognition},
+url = {http://arxiv.org/abs/1707.07413},
+year = {2017}
+}
+@article{Olah2016,
+author = {Olah, C and Carter, S},
+journal = {Distill},
+title = {Attention and augmented recurrent neural networks},
+url = {http://distill.pub/2016/augmented-rnns/},
+year = {2016}
+}
+@article{Sutskever2014,
+archivePrefix = {arXiv},
+arxivId = {1409.3215},
+author = {Sutskever, Ilya and Vinyals, Oriol and Le, Quoc V.},
+eprint = {1409.3215},
+journal = {Advances in neural information processing systems},
+month = {sep},
+title = {Sequence to Sequence Learning with Neural Networks},
+url = {http://arxiv.org/abs/1409.3215},
+year = {2014}
+}
+@article{Cho2014,
+archivePrefix = {arXiv},
+arxivId = {1406.1078},
+author = {Cho, Kyunghyun and van Merrienboer, Bart and Gulcehre, Caglar and Bahdanau, Dzmitry and Bougares, Fethi and Schwenk, Holger and Bengio, Yoshua},
+doi = {10.3115/v1/D14-1179},
+eprint = {1406.1078},
+isbn = {9781937284961},
+issn = {09205691},
+journal = {EMNLP},
+pmid = {2079951},
+title = {Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation},
+url = {https://arxiv.org/abs/1406.1078},
+year = {2014}
+}
+@article{Rabiner1989,
+author = {Rabiner, L.R. R.},
+doi = {10.1109/5.18626},
+isbn = {0018-9219},
+issn = {00189219},
+journal = {Proceedings of the IEEE},
+number = {2},
+pages = {p257--286},
+title = {Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition},
+url = {http://ieeexplore.ieee.org/abstract/document/18626/ http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=18626},
+volume = {77},
+year = {1989}
+}
+@inproceedings{Liwicki2007,
+author = {Liwicki, Marcus and Graves, Alex and Bunke, Horst and Schmidhuber, J{\"{u}}rgen},
+booktitle = {Proceedings - 9th Int. Conf. on Document Analysis and Recognition},
+doi = {10.1.1.139.5852},
+file = {:Users/awni/Library/Application Support/Mendeley Desktop/Downloaded/Liwicki et al. - Unknown - A Novel Approach to On-Line Handwriting Recognition Based on Bidirectional Long Short-Term Memory Networks.pdf:pdf},
+pages = {367--371},
+title = {A novel approach to on-line handwriting recognition based on bidirectional long short-term memory networks},
+url = {https://www.cs.toronto.edu/{~}graves/icdar{\_}2007.pdf http://www.dfki.de/{~}liwicki/pdf/LiGrBuSch07-01.pdf},
+volume = {1},
+year = {2007}
+}
+@book{Graves2012,
+archivePrefix = {arXiv},
+arxivId = {arXiv:1308.0850v1},
+author = {Graves, Alex},
+booktitle = {Springer},
+doi = {10.1007/978-3-642-24797-2},
+eprint = {arXiv:1308.0850v1},
+isbn = {978-3-642-24796-5},
+issn = {01406736},
+pmid = {7491034},
+title = {Supervised Sequence Labelling with Recurrent Neural Networks},
+url = {http://link.springer.com/content/pdf/10.1007/978-3-642-24797-2.pdf http://link.springer.com/10.1007/978-3-642-24797-2},
+volume = {385},
+year = {2012}
+}
+@article{Lopes2011,
+author = {Lopes, Carla and Perdig{\~{a}}o, Fernando},
+doi = {10.5772/17600},
+isbn = {978-953-307-996-7},
+issn = {9789533070865},
+journal = {Speech Technologies},
+pages = {285--302},
+title = {Phone recognition on the TIMIT database},
+url = {https://www.intechopen.com/books/speech-technologies/phoneme-recognition-on-the-timit-database/},
+volume = {1},
+year = {2011}
+}
+@article{Graves2014,
+archivePrefix = {arXiv},
+arxivId = {1512.02595},
+author = {Graves, Alex and Jaitly, Navdeep},
+doi = {10.1145/1143844.1143891},
+eprint = {1512.02595},
+file = {:Users/awni/Library/Application Support/Mendeley Desktop/Downloaded/Graves, Jaitly - 2014 - Towards End-To-End Speech Recognition with Recurrent Neural Networks.pdf:pdf},
+isbn = {1595933832},
+issn = {10987576},
+journal = {Proceedings of the 31st International Conference on Machine Learning (ICML-14)},
+month = {jan},
+number = {1},
+pages = {1764--1772},
+pmid = {1000285842},
+title = {Towards End-To-End Speech Recognition with Recurrent Neural Networks},
+url = {http://proceedings.mlr.press/v32/graves14.html http://jmlr.org/proceedings/papers/v32/graves14.pdf{\%}5Cnhttp://www.jmlr.org/proceedings/papers/v32/graves14.html},
+volume = {32},
+year = {2014}
+}
+@article{Graves2006,
+archivePrefix = {arXiv},
+arxivId = {1512.02595},
+author = {Graves, Alex and Fernandez, Santiago and Gomez, Faustino and Schmidhuber, Jurgen},
+doi = {10.1145/1143844.1143891},
+eprint = {1512.02595},
+isbn = {1595933832},
+issn = {10987576},
+journal = {Proceedings of the 23rd international conference on Machine Learning},
+pages = {369--376},
+pmid = {1000285842},
+title = {Connectionist Temporal Classification : Labelling Unsegmented Sequence Data with Recurrent Neural Networks},
+url = {http://dl.acm.org/citation.cfm?id=1143891 ftp://ftp.idsia.ch/pub/juergen/icml2006.pdf},
+year = {2006}
+}
+@inproceedings{Chan2016las,
+author = {Chan, William and Jaitly, Navdeep and Le, Quoc V and Vinyals, Oriol},
+booktitle = {ICASSP},
+title = {Listen, Attend and Spell: A Neural Network for Large Vocabulary Conversational Speech Recognition},
+url = {https://arxiv.org/abs/1508.01211},
+year = {2016}
+}
+@article{Hannun2014deepspeech,
+author = {Hannun, Awni Y and Case, Carl and Casper, Jared and Catanzaro, Bryan and Diamos, Greg and Elsen, Erich and Prenger, Ryan and Satheesh, Sanjeev and Sengupta, Shubho and Coates, Adam and Ng, Andrew Y},
+title = {Deep Speech: Scaling up end-to-end speech recognition},
+url = {http://arxiv.org/abs/1412.5567},
+volume = {abs/1412.5},
+year = {2014}
+}
+</script>

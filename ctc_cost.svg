@@ -1,0 +1,425 @@
+<?xml version="1.0" standalone="yes"?>
+<svg height="430" width="570" id="svg" xmlns="http://www.w3.org/2000/svg">
+  <marker id="triangle" viewBox="0 0 10 10" refX="0" refY="5" markerUnits="strokeWidth" markerWidth="4" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" />
+  </marker>
+  <marker id="trianglegray" viewBox="0 0 10 10" refX="0" refY="5" markerUnits="strokeWidth" markerWidth="4" markerHeight="6" orient="auto" fill="#d0d0d0">
+    <path d="M 0 0 L 10 5 L 0 10 z" />
+  </marker>
+
+  <text x="44" y="24" font-family="STIXGeneral-Italic" font-size="20px" fill="#000000">ϵ</text>
+  <text x="124" y="24" font-family="helvetica" font-size="20px" fill="#000000">c</text>
+  <text x="204" y="24" font-family="STIXGeneral-Italic" font-size="20px" fill="#000000">ϵ</text>
+  <text x="284" y="24" font-family="helvetica" font-size="20px" fill="#000000">a</text>
+  <text x="364" y="24" font-family="STIXGeneral-Italic" font-size="20px" fill="#000000">ϵ</text>
+  <text x="444" y="24" font-family="helvetica" font-size="20px" fill="#000000">t</text>
+  <text x="524" y="24" font-family="STIXGeneral-Italic" font-size="20px" fill="#000000">ϵ</text>
+
+  <text x="13" y="57" font-family="helvetica" font-size="20px" fill="#000000">1</text>
+  <text x="13" y="127" font-family="helvetica" font-size="20px" fill="#000000">2</text>
+  <text x="13" y="197" font-family="helvetica" font-size="20px" fill="#000000">3</text>
+  <text x="13" y="267" font-family="helvetica" font-size="20px" fill="#000000">4</text>
+  <text x="13" y="337" font-family="helvetica" font-size="20px" fill="#000000">5</text>
+  <text x="13" y="407" font-family="helvetica" font-size="20px" fill="#000000">6</text>
+
+  <rect><animate id="ss" begin="0;ss.end" dur="26s" attributeName="visibility" from="hide" to="hide"/></rect>
+
+  <circle cx="50" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 1" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 2" to="#6fa8dc" dur="24s" />
+  </circle>
+  <circle cx="130" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 3" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 4" to="#6fa8dc" dur="22s" />
+  </circle>
+  <circle cx="210" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="290" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="370" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="450" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="530" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+
+  <circle cx="50" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 2" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 3" to="#6fa8dc" dur="23s" />
+  </circle>
+  <circle cx="130" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 4" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 5" to="#6fa8dc" dur="21s" />
+  </circle>
+  <circle cx="210" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 7" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 8" to="#6fa8dc" dur="18s" />
+  </circle>
+  <circle cx="290" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 10" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 11" to="#6fa8dc" dur="15s" />
+  </circle>
+  <circle cx="370" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="450" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="530" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+
+  <circle cx="50" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 5" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 6" to="#6fa8dc" dur="20s" />
+  </circle>
+  <circle cx="130" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 6" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 7" to="#6fa8dc" dur="19s" />
+  </circle>
+  <circle cx="210" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 9" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 10" to="#6fa8dc" dur="16s" />
+  </circle>
+  <circle cx="290" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 12" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 13" to="#6fa8dc" dur="13s" />
+  </circle>
+  <circle cx="370" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 15" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 16" to="#6fa8dc" dur="10s" />
+  </circle>
+  <circle cx="450" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 18" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 19" to="#6fa8dc" dur="7s" />
+  </circle>
+  <circle cx="530" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+
+  <circle cx="50" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="130" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 8" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 9" to="#6fa8dc" dur="17s" />
+  </circle>
+  <circle cx="210" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 11" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 12" to="#6fa8dc" dur="14s" />
+  </circle>
+  <circle cx="290" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 13" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 14" to="#6fa8dc" dur="12s" />
+  </circle>
+  <circle cx="370" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 16" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 17" to="#6fa8dc" dur="9s" />
+  </circle>
+  <circle cx="450" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 19" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 20" to="#6fa8dc" dur="6s" />
+  </circle>
+  <circle cx="530" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 21" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 22" to="#6fa8dc" dur="4s" />
+  </circle>
+
+  <circle cx="50" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="130" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="210" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="290" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 14" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 15" to="#6fa8dc" dur="11s" />
+  </circle>
+  <circle cx="370" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 17" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 18" to="#6fa8dc" dur="8s" />
+  </circle>
+  <circle cx="450" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 20" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 21" to="#6fa8dc" dur="5s" />
+  </circle>
+  <circle cx="530" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 22" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 23" to="#6fa8dc" dur="3s" />
+  </circle>
+
+  <circle cx="50" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="130" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="210" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="290" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="370" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
+  <circle cx="450" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 23" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 24" to="#6fa8dc" dur="2s" />
+  </circle>
+  <circle cx="450" cy="400" r="12" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 23" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 24" to="#6fa8dc" dur="2s" />
+  </circle>
+  <circle cx="530" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 24" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 25" to="#6fa8dc" dur="1s" />
+  </circle>
+  <circle cx="530" cy="400" r="12" stroke="black" stroke-width="1" fill="#ffffff">
+    <set attributeName="fill" begin="ss.begin + 24" to="#E77471" dur="1s" />
+    <set attributeName="fill" begin="ss.begin + 25" to="#6fa8dc" dur="1s" />
+  </circle>
+
+  <line x1="50" y1="71" x2="50" y2="94" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 2" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 3" to="#D0D0D0" dur="23s" />
+    <set attributeName="marker-end" begin="ss.begin + 2" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 3" to="url(#trianglegray)" dur="23s" />
+  </line>
+  <line x1="50" y1="141" x2="50" y2="164" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 5" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 6" to="#D0D0D0" dur="20s" />
+    <set attributeName="marker-end" begin="ss.begin + 5" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 6" to="url(#trianglegray)" dur="20s" />
+  </line>
+  <line x1="130" y1="71" x2="130" y2="94" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 4" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 5" to="#D0D0D0" dur="21s" />
+    <set attributeName="marker-end" begin="ss.begin + 4" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 5" to="url(#trianglegray)" dur="21s" />
+  </line>
+  <line x1="130" y1="141" x2="130" y2="164" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 6" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 7" to="#D0D0D0" dur="19s" />
+    <set attributeName="marker-end" begin="ss.begin + 6" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 7" to="url(#trianglegray)" dur="19s" />
+  </line>
+  <line x1="130" y1="211" x2="130" y2="234" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 8" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 9" to="#D0D0D0" dur="17s" />
+    <set attributeName="marker-end" begin="ss.begin + 8" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 9" to="url(#trianglegray)" dur="17s" />
+  </line>
+  <line x1="210" y1="141" x2="210" y2="164" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 9" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 10" to="#D0D0D0" dur="16s" />
+    <set attributeName="marker-end" begin="ss.begin + 9" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 10" to="url(#trianglegray)" dur="16s" />
+  </line>
+  <line x1="210" y1="211" x2="210" y2="234" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 11" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 12" to="#D0D0D0" dur="14s" />
+    <set attributeName="marker-end" begin="ss.begin + 11" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 12" to="url(#trianglegray)" dur="14s" />
+  </line>
+  <line x1="290" y1="141" x2="290" y2="164" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 12" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 13" to="#D0D0D0" dur="13s" />
+    <set attributeName="marker-end" begin="ss.begin + 12" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 13" to="url(#trianglegray)" dur="13s" />
+  </line>
+  <line x1="290" y1="211" x2="290" y2="234" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 13" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 14" to="#D0D0D0" dur="12s" />
+    <set attributeName="marker-end" begin="ss.begin + 13" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 14" to="url(#trianglegray)" dur="12s" />
+  </line>
+  <line x1="290" y1="281" x2="290" y2="304" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 14" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 15" to="#D0D0D0" dur="11s" />
+    <set attributeName="marker-end" begin="ss.begin + 14" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 15" to="url(#trianglegray)" dur="11s" />
+  </line>
+  <line x1="370" y1="211" x2="370" y2="234" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 16" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 17" to="#D0D0D0" dur="9s" />
+    <set attributeName="marker-end" begin="ss.begin + 16" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 17" to="url(#trianglegray)" dur="9s" />
+  </line>
+  <line x1="370" y1="281" x2="370" y2="304" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 17" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 18" to="#D0D0D0" dur="8s" />
+    <set attributeName="marker-end" begin="ss.begin + 17" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 18" to="url(#trianglegray)" dur="8s" />
+  </line>
+  <line x1="450" y1="211" x2="450" y2="234" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 19" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 20" to="#D0D0D0" dur="6s" />
+    <set attributeName="marker-end" begin="ss.begin + 19" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 20" to="url(#trianglegray)" dur="6s" />
+  </line>
+  <line x1="450" y1="281" x2="450" y2="304" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 20" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 21" to="#D0D0D0" dur="5s" />
+    <set attributeName="marker-end" begin="ss.begin + 20" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 21" to="url(#trianglegray)" dur="5s" />
+  </line>
+  <line x1="450" y1="351" x2="450" y2="374" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 23" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 24" to="#D0D0D0" dur="2s" />
+    <set attributeName="marker-end" begin="ss.begin + 23" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 24" to="url(#trianglegray)" dur="2s" />
+  </line>
+  <line x1="530" y1="281" x2="530" y2="304" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 22" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 23" to="#D0D0D0" dur="3s" />
+    <set attributeName="marker-end" begin="ss.begin + 22" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 23" to="url(#trianglegray)" dur="3s" />
+  </line>
+  <line x1="530" y1="351" x2="530" y2="374" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 24" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 25" to="#D0D0D0" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 24" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 25" to="url(#trianglegray)" dur="1s" />
+  </line>
+
+  <line x1="65" y1="65" x2="111" y2="101" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 4" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 5" to="#D0D0D0" dur="21s" />
+    <set attributeName="marker-end" begin="ss.begin + 4" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 5" to="url(#trianglegray)" dur="21s" />
+  </line>
+  <line x1="65" y1="135" x2="111" y2="171" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 6" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 7" to="#D0D0D0" dur="19s" />
+    <set attributeName="marker-end" begin="ss.begin + 6" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 7" to="url(#trianglegray)" dur="19s" />
+  </line>
+  <line x1="65" y1="205" x2="111" y2="241" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 8" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 9" to="#D0D0D0" dur="17s" />
+    <set attributeName="marker-end" begin="ss.begin + 8" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 9" to="url(#trianglegray)" dur="17s" />
+  </line>
+
+  <line x1="145" y1="65" x2="191" y2="101" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 7" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 8" to="#D0D0D0" dur="18s" />
+    <set attributeName="marker-end" begin="ss.begin + 7" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 8" to="url(#trianglegray)" dur="18s" />
+  </line>
+  <line x1="145" y1="135" x2="191" y2="171" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 9" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 10" to="#D0D0D0" dur="16s" />
+    <set attributeName="marker-end" begin="ss.begin + 9" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 10" to="url(#trianglegray)" dur="16s" />
+  </line>
+  <line x1="145" y1="205" x2="191" y2="241" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 11" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 12" to="#D0D0D0" dur="14s" />
+    <set attributeName="marker-end" begin="ss.begin + 11" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 12" to="url(#trianglegray)" dur="14s" />
+  </line>
+
+  <line x1="225" y1="135" x2="271" y2="171" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 12" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 13" to="#D0D0D0" dur="13s" />
+    <set attributeName="marker-end" begin="ss.begin + 12" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 13" to="url(#trianglegray)" dur="13s" />
+  </line>
+  <line x1="225" y1="205" x2="271" y2="241" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 13" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 14" to="#D0D0D0" dur="12s" />
+    <set attributeName="marker-end" begin="ss.begin + 13" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 14" to="url(#trianglegray)" dur="12s" />
+  </line>
+  <line x1="225" y1="275" x2="271" y2="311" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 14" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 15" to="#D0D0D0" dur="11s" />
+    <set attributeName="marker-end" begin="ss.begin + 14" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 15" to="url(#trianglegray)" dur="11s" />
+  </line>
+
+  <line x1="305" y1="135" x2="351" y2="171" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 15" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 16" to="#D0D0D0" dur="10s" />
+    <set attributeName="marker-end" begin="ss.begin + 15" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 16" to="url(#trianglegray)" dur="10s" />
+  </line>
+  <line x1="305" y1="205" x2="351" y2="241" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 16" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 17" to="#D0D0D0" dur="9s" />
+    <set attributeName="marker-end" begin="ss.begin + 16" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 17" to="url(#trianglegray)" dur="9s" />
+  </line>
+  <line x1="305" y1="275" x2="351" y2="311" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 17" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 18" to="#D0D0D0" dur="8s" />
+    <set attributeName="marker-end" begin="ss.begin + 17" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 18" to="url(#trianglegray)" dur="8s" />
+  </line>
+
+  <line x1="385" y1="205" x2="431" y2="241" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 19" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 20" to="#D0D0D0" dur="6s" />
+    <set attributeName="marker-end" begin="ss.begin + 19" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 20" to="url(#trianglegray)" dur="6s" />
+  </line>
+  <line x1="385" y1="275" x2="431" y2="311" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 20" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 21" to="#D0D0D0" dur="5s" />
+    <set attributeName="marker-end" begin="ss.begin + 20" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 21" to="url(#trianglegray)" dur="5s" />
+  </line>
+  <line x1="385" y1="345" x2="431" y2="381" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 23" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 24" to="#D0D0D0" dur="2s" />
+    <set attributeName="marker-end" begin="ss.begin + 23" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 24" to="url(#trianglegray)" dur="2s" />
+  </line>
+
+  <line x1="465" y1="205" x2="511" y2="241" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 21" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 22" to="#D0D0D0" dur="4s" />
+    <set attributeName="marker-end" begin="ss.begin + 21" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 22" to="url(#trianglegray)" dur="4s" />
+  </line>
+  <line x1="465" y1="275" x2="511" y2="311" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 22" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 23" to="#D0D0D0" dur="3s" />
+    <set attributeName="marker-end" begin="ss.begin + 22" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 23" to="url(#trianglegray)" dur="3s" />
+  </line>
+  <line x1="465" y1="345" x2="511" y2="381" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 24" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 25" to="#D0D0D0" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 24" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 25" to="url(#trianglegray)" dur="1s" />
+  </line>
+
+  <line x1="149" y1="58" x2="265" y2="111" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 10" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 11" to="#D0D0D0" dur="15s" />
+    <set attributeName="marker-end" begin="ss.begin + 10" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 11" to="url(#trianglegray)" dur="15s" />
+  </line>
+  <line x1="149" y1="128" x2="265" y2="181" stroke="#ffffff" stroke-width="1.5" visibility="hidden">
+    <set attributeName="visibility" begin="ss.begin + 12" to="visible" dur="14s" />
+    <set attributeName="stroke" begin="ss.begin + 12" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 13" to="#D0D0D0" dur="13s" />
+    <set attributeName="marker-end" begin="ss.begin + 12" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 13" to="url(#trianglegray)" dur="13s" />
+  </line>
+  <line x1="149" y1="198" x2="265" y2="251" stroke="#ffffff" stroke-width="1.5" visibility="hidden">
+    <set attributeName="visibility" begin="ss.begin + 13" to="visible" dur="13s" />
+    <set attributeName="stroke" begin="ss.begin + 13" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 14" to="#D0D0D0" dur="12s" />
+    <set attributeName="marker-end" begin="ss.begin + 13" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 14" to="url(#trianglegray)" dur="12s" />
+  </line>
+  <line x1="149" y1="268" x2="265" y2="321" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 14" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 15" to="#D0D0D0" dur="11s" />
+    <set attributeName="marker-end" begin="ss.begin + 14" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 15" to="url(#trianglegray)" dur="11s" />
+  </line>
+
+  <line x1="309" y1="128" x2="425" y2="181" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 18" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 19" to="#D0D0D0" dur="7s" />
+    <set attributeName="marker-end" begin="ss.begin + 18" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 19" to="url(#trianglegray)" dur="7s" />
+  </line>
+  <line x1="309" y1="198" x2="425" y2="251" stroke="#ffffff" stroke-width="1.5" visibility="hidden">
+    <set attributeName="visibility" begin="ss.begin + 19" to="visible" dur="7s" />
+    <set attributeName="stroke" begin="ss.begin + 19" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 20" to="#D0D0D0" dur="6s" />
+    <set attributeName="marker-end" begin="ss.begin + 19" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 20" to="url(#trianglegray)" dur="6s" />
+  </line>
+  <line x1="309" y1="268" x2="425" y2="321" stroke="#ffffff" stroke-width="1.5" visibility="hidden">
+    <set attributeName="visibility" begin="ss.begin + 20" to="visible" dur="6s" />
+    <set attributeName="stroke" begin="ss.begin + 20" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 21" to="#D0D0D0" dur="5s" />
+    <set attributeName="marker-end" begin="ss.begin + 20" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 21" to="url(#trianglegray)" dur="5s" />
+  </line>
+  <line x1="309" y1="338" x2="425" y2="391" stroke="#ffffff" stroke-width="1.5">
+    <set attributeName="stroke" begin="ss.begin + 23" to="#000000" dur="1s" />
+    <set attributeName="stroke" begin="ss.begin + 24" to="#D0D0D0" dur="2s" />
+    <set attributeName="marker-end" begin="ss.begin + 23" to="url(#triangle)" dur="1s" />
+    <set attributeName="marker-end" begin="ss.begin + 24" to="url(#trianglegray)" dur="2s" />
+  </line>
+</svg>

@@ -14,7 +14,7 @@
    viewBox="0 0 501.74999 162.74999"
    width="501.75pt"
    id="svg19"
-   sodipodi:docname="ars.svg"
+   sodipodi:docname="problems.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06">
   <metadata
      id="metadata23">
@@ -24,7 +24,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -46,7 +46,7 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="1"
-     inkscape:cx="382.56045"
+     inkscape:cx="258.56045"
      inkscape:cy="193.86526"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -65,16 +65,6 @@
      id="figure_1"
      style="stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:100000"
      transform="matrix(0.74955758,0,0,0.70803985,245.48181,11.6231)">
-    <g
-       id="patch_1"
-       style="stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:100000"
-       transform="translate(14.150483,1.4980232)">
-      <path
-         d="M 0,288 H 432 V 0 H 0 Z"
-         style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:100000"
-         id="path6"
-         inkscape:connector-curvature="0" />
-    </g>
     <g
        id="axes_1"
        style="stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:100000"
@@ -170,6 +160,18 @@
      height="161.25"
      x="0.75"
      y="0.75" />
-  <text x="70" y="25" font-family="helvetica" font-size="16px" fill="#000000">the quick brown fox</text>
-  <text x="300" y="25" font-family="helvetica" font-size="16px" fill="#000000">jumped over the lazy dog</text>
+  <text
+     x="70"
+     y="25"
+     font-family="helvetica"
+     font-size="16px"
+     fill="#000000"
+     id="text27">the quick brown fox</text>
+  <text
+     x="300"
+     y="25"
+     font-family="helvetica"
+     font-size="16px"
+     fill="#000000"
+     id="text29">jumped over the lazy dog</text>
 </svg>

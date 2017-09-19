@@ -19,56 +19,67 @@
 
 <h2 id="the-problem">The Problem</h2>
 
-<p>We’ve seen an explosion in the use of neural networks for mapping sequences to
-sequences. One work-horse algorithm for neural sequence transduction is CTC.
+<p>We’ve seen an explosion in the use of neural networks for mapping sequences
+to sequences. One work-horse algorithm for neural sequence transduction is CTC.
 Certain assumptions made by the CTC algorithm make it especially well suited
 for problems such as automatic speech recognition and hand-writing recognition,
-where it’s used in many state-of-the-art models.</p>
+where it’s used in many state-of-the-art models. Other problems where CTC has
+been used successfully include lip reading from video, action labelling from
+video and keyword detection in audio.</p>
 
-  <figure class="l-body">
-        <img src="problems.svg" />
-        <figcaption>
-          Two problems commonly solved with CTC. <strong>Left:</strong> Hand-writing recognition. The
-          input can be <script type="math/tex">(x,y)</script> co-ordinates of a pen stroke or pixels in an image.
-          <strong>Right:</strong> Speech recognition. The input is audio usually after applying a
-          spectrogram or some other frequency based feature extractor. Other problems
-          where CTC has been used successfully include lip reading from video, action
-          labelling from video and keyword detection in audio.
-        </figcaption>
-  </figure>
-<p>Let’s start with the problem which will allow us to setup some notation for
-later. Let <script type="math/tex">X = [x_1, x_2, \ldots, x_T]</script> be an input sequence of length
-<script type="math/tex">T</script>. Let <script type="math/tex">Y = [y_1, y_2, \ldots, y_U]</script> denote the length <script type="math/tex">U</script> output
-sequence. Let <script type="math/tex">\mathcal{X}</script> and <script type="math/tex">\mathcal{Y}</script> be the set of all sequences
-<script type="math/tex">X</script> and <script type="math/tex">Y</script> respectively. The problem is to learn a “good” mapping of
-elements of <script type="math/tex">\mathcal{X}</script> to elements of <script type="math/tex">\mathcal{Y}</script>. For example, in
-speech recognition a “good” mapping is one which takes an audio input to an
-accurate transcription.</p>
+<figure class="l-body" style="width:750px;height:250px;">
+  <div style="width:330px; position:absolute;">
+  <img src="handwriting_recognition.svg" />
+  <figcaption>
+  <strong>Handwriting recognition:</strong> The input can be
+  <script type="math/tex">(x,y)</script> coordinates of a pen stroke or 
+  pixels in an image.
+  </figcaption>
+  </div>
+  <div style="width:280px; position:absolute; left:350px;">
+  <img src="speech_recognition.svg" />
+  <figcaption>
+  <strong>Speech recognition:</strong> The input features are audio usually
+  after applying a spectrogram or some other frequency based feature extractor.
+  </figcaption>
+  </div>
+</figure>
 
-<p>The sequence transduction problem has three properties which make it difficult
+<p>To be a bit more formal, let's consider the problem of mapping input
+sequences <script type="math/tex">X = [x_1, x_2, \ldots, x_T] \in
+\mathcal{X}</script> to corresponding output sequences <script
+type="math/tex">Y = [y_1, y_2, \ldots, y_U] \in \mathcal{Y}</script>. We want
+to learn a “good” mapping of <script type="math/tex">X</script>s to <script
+type="math/tex">Y</script>s. For example, in speech recognition a “good”
+mapping is one which takes an audio input to an accurate transcription.</p>
+
+<p>The "sequence transduction" problem has three properties which make it difficult
 to use traditional supervised learning algorithms.</p>
 <ul>
-  <li>Not all <script type="math/tex">Y \in \mathcal{Y}</script> have the same length. The same is usually true
-for <script type="math/tex">X \in \mathcal{X}</script>. In other words, the lengths <script type="math/tex">T</script> and <script type="math/tex">U</script> can
-vary.</li>
-  <li>The ratio of the lengths <script type="math/tex">T</script> and <script type="math/tex">U</script> can vary.</li>
-  <li>We don’t have an accurate alignment (a correspondence of the elements) of
-<script type="math/tex">X</script> and <script type="math/tex">Y</script>.</li>
+  <li>Both <script type="math/tex">X</script> and <script type="math/tex">Y</script>
+    can vary in length.</li>
+  <li>The ratio of the lengths <script type="math/tex">X</script> and <script type="math/tex">Y</script> can vary.</li>
+  <li>We don’t have an accurate alignment (correspondence of the elements) of
+  <script type="math/tex">X</script> and <script type="math/tex">Y</script>.</li>
 </ul>
 
-<p>In these circumstances, CTC can learn a function to map elements of
-<script type="math/tex">\mathcal{X}</script> to a distribution over members of <script type="math/tex">\mathcal{Y}</script>. We can then
-infer a likely <script type="math/tex">Y</script> from this distribution. For such an algorithm to be useful
-it needs to solve two problems: the objective function should be computable and
-inference should be tractable.</p>
+<p>In these circumstances, CTC can learn a function to map elements of <script
+type="math/tex">\mathcal{X}</script> to a distribution over members of <script type="math/tex">\mathcal{Y}</script>. We can then infer a likely <script type="math/tex">Y</script>
+from this distribution. For such an algorithm to be useful it needs to solve
+two problems: the objective function should be computable and inference
+should be tractable.</p>
 
-<p><strong>Objective Function:</strong> We should be able to efficiently compute a score for
-how likely any <script type="math/tex">Y</script> is given an <script type="math/tex">X</script>. In our case the score will be a
-conditional probality <script type="math/tex">p(Y \mid X)</script>, though this isn’t a strict requirement.
-The function <script type="math/tex">p(Y \mid X)</script> should be differentiable. This makes optimizing
-the function parameters easier. We need to compute the score <script type="math/tex">p(Y \mid X)</script>
-for <script type="math/tex">X</script>’s and <script type="math/tex">Y</script>’s of variable and differing lengths. We also want to
-avoid algorithms which require an alignment between <script type="math/tex">X</script> and <script type="math/tex">Y</script>.</p>
+<p><strong>Objective Function:</strong> We should be able to efficiently
+compute a score for how likely any <script type="math/tex">Y</script> is given
+an <script type="math/tex">X</script>. In our case the score will be a
+conditional probality <script type="math/tex">p(Y \mid X)</script>, though this
+isn’t a strict requirement.  The function <script type="math/tex">p(Y \mid
+X)</script> should be differentiable. This makes optimizing the function
+parameters easier. We need to compute the score <script type="math/tex">p(Y
+\mid X)</script> for <script type="math/tex">X</script>’s and <script
+type="math/tex">Y</script>’s of variable and differing lengths. We also want to
+avoid algorithms which require an alignment between <script type="math/tex">X</script>
+and <script type="math/tex">Y</script>.</p>
 
 <p><strong>Inference:</strong> Given a model for <script type="math/tex">p(Y \mid X)</script>, for any <script type="math/tex">X</script> we
 need to tractably infer a likely <script type="math/tex">Y</script>. This means solving 
@@ -123,10 +134,11 @@ character of <script type="math/tex">Y</script>.</li>
 (including <script type="math/tex">\epsilon</script>) until the new sequence has length <script type="math/tex">T</script>.</li>
 </ol>
 
-<p>This produces one possible alignment. The set <script type="math/tex">\mathcal{A}</script> contains all possible
-alignments we can generate this way. If there are consecutive repeat characters
-in <script type="math/tex">Y</script> then the <script type="math/tex">\epsilon</script> between them is required. This allows us to
-differentiate between alignments of [c, a, t] and [c, a, a, t].</p>
+<p>This produces one possible alignment. The set <script type="math/tex">\mathcal{A}</script> contains all possible alignments we can
+generate this way. If there are consecutive repeat characters in <script
+type="math/tex">Y</script> then the <script type="math/tex">\epsilon</script>
+between them is required. This allows us to differentiate between alignments of
+[c, a, t] and [c, a, a, t].</p>
 
 <p>Let’s go back to the example. A few allowed alignments of <script type="math/tex">Y</script> are
 [<script type="math/tex">\epsilon</script>, c, c, <script type="math/tex">\epsilon</script>, a, t], [c, c, a, a, t, t] and [c,
@@ -143,14 +155,20 @@ reasons: the first corresponds to <script type="math/tex">Y =</script> [c, c, a,
 the <script type="math/tex">\epsilon</script> tokens are left unaligned. They are optional since they don’t
 fall between consecutive repeat characters in <script type="math/tex">Y</script>.</p>
 
-<figure class="l-body">
-<img src="alignment.svg" />
-<figcaption>
-Alignment matrices of the output <script type="math/tex">Y =</script> [c, a, t] to an input with length <script type="math/tex">T
-= 6</script>.  The alignment is given by <script type="math/tex">A =</script> [<script type="math/tex">\epsilon</script>, c, c, <script type="math/tex">\epsilon</script>, a,
-t]. <strong>Left:</strong> The alignment without the <script type="math/tex">\epsilon</script> token. <strong>Right:</strong> The
-alignment including the <script type="math/tex">\epsilon</script> token.
-</figcaption>
+<figure class="l-body" style="width:750px;height:300px;">
+  <div style="width: 180px; position: absolute;">
+  <img src="alignment_no_epsilon.svg" />
+  <figcaption>
+  <strong>Left:</strong> The alignment without the <script type="math/tex">\epsilon</script>
+  token. <strong>
+  </figcaption>
+  </div>
+  <div style="width: 335px; position: absolute; left: 240px;">
+  <img src="alignment_epsilon.svg" />
+  <figcaption>
+  Right:</strong> The alignment including the <script type="math/tex">\epsilon</script> token.
+  </figcaption>
+  </div>
 </figure>
 
 <p>We can observe several properties about CTC right away. First, the allowed
@@ -290,13 +308,13 @@ extending each hypothesis with all possible output characters.</p>
 
 
 <figure class="l-body">
-<img src="beam_search.svg" style="width: 60%;"/>
-<figcaption>
-Steps two and three of a standard beam search algorithm with an output
-alphabet <script type="math/tex">\{\epsilon, a, b\}</script> and a beam size of three. The current
-hypotheses in the beam are given by the blue nodes. The proposed extensions are
-grey and the selected extensions are red.
-</figcaption>
+  <img src="beam_search.svg" style="width: 60%;"/>
+  <figcaption>
+  Steps two and three of a standard beam search algorithm with an output
+  alphabet <script type="math/tex">\{\epsilon, a, b\}</script> and a beam size
+  of three. The current hypotheses in the beam are given by the blue nodes. The
+  proposed extensions are grey and the selected extensions are red.
+  </figcaption>
 </figure>
 
 <p>We can modify the vanilla beam search to handle multiple alignments mapping to
@@ -308,15 +326,16 @@ displays steps two, three and four of the algorithm. The dashed lines indicate
 the output prefix that the proposed extension maps to.</p>
 
 <figure class="l-body">
-<img src="prefix_beam_search.svg" style="width: 80%"/>
-<figcaption>
-Steps two, three and part of step four of a CTC beam search with an output
-alphabet <script type="math/tex">\{\epsilon, a, b\}</script> and a beam size of three. The <script type="math/tex">\lambda</script> token
-indicates the empty string. The blue nodes indicate the current hypothesis in
-the beam and the red and grey nodes indicate possible extensions. The red nodes
-are the outputs included in the selected hypotheses for the next time-step. The
-dashed lines indicate the hypotheses they contribute to.
-</figcaption>
+  <img src="prefix_beam_search.svg" style="width: 80%"/>
+  <figcaption>
+  Steps two, three and part of step four of a CTC beam search with an output
+  alphabet <script type="math/tex">\{\epsilon, a, b\}</script> and a beam size of
+  three. The <script type="math/tex">\lambda</script> token indicates the empty
+  string. The blue nodes indicate the current hypothesis in the beam and the red
+  and grey nodes indicate possible extensions. The red nodes are the outputs
+  included in the selected hypotheses for the next time-step. The dashed lines
+  indicate the hypotheses they contribute to.
+  </figcaption>
 </figure>
 
 <p>A proposed extension can map to two output prefixes if the character is a
@@ -505,17 +524,28 @@ same alphabet as before and <script type="math/tex">Y =</script> [a, b]. Another
 <em>Bakis</em> or left-right HMM. In this model any transition which proceeds from the
 left to the right is allowed.</p>
 
-<figure class="l-body">
-<img src="ergodic_hmm.svg" style="width:20%;"/>
-<img style="width:20%;margin-bottom:30px;" src="linear_hmm.svg" />
-<img style="width:50%;margin-bottom:30px;" src="ctc_hmm.svg" />
-<figcaption>
-Three different HMM state transition diagrams. <strong>Left:</strong> The ergodic HMM. Any
-node can be either a starting or final state.  <strong>Middle:</strong> The linear HMM. The
-first node is the starting state and the second node is the final state.
-<strong>Right:</strong> The CTC HMM. The first two nodes are the starting states and the
-last two nodes are the final states. 
-</figcaption>
+<figure class="l-body" style="width:750px;height:220px;">
+  <div style="width: 150px; position: absolute;">
+  <img src="ergodic_hmm.svg" />
+  <figcaption>
+  <strong>Left:</strong> The ergodic HMM. Any node can be either a starting or
+  final state.
+  </figcaption>
+  </div>
+  <div style="width: 150px; position: absolute; left: 180px;">
+  <img style="margin-bottom:30px; margin-top: 30px;" src="linear_hmm.svg" />
+  <figcaption>
+  <strong>Middle:</strong> The linear HMM. The first node is the starting state
+  and the second node is the final state.
+  </figcaption>
+  </div>
+  <div style="width: 350px; position: absolute; left: 360px;">
+  <img style="margin-bottom:30px; margin-top: 30px;" src="ctc_hmm.svg" />
+  <figcaption>
+  <strong>Right:</strong> The CTC HMM. The first two nodes are the starting
+  states and the last two nodes are the final states.
+  </figcaption>
+  </div>
 </figure>
 
 <p>In CTC we augment the alphabet with <script type="math/tex">\epsilon</script> and the HMM model allows a

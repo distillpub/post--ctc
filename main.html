@@ -27,7 +27,7 @@ where it’s used in many state-of-the-art models. Other problems where CTC has
 been used successfully include lip reading from video, action labelling from
 video and keyword detection in audio.</p>
 
-<figure class="l-body" style="width:750px;height:250px;">
+<figure class="l-body" style="height:250px;">
   <div style="width:330px; position:absolute;">
   <img src="handwriting_recognition.svg" />
   <figcaption>
@@ -36,7 +36,7 @@ video and keyword detection in audio.</p>
   pixels in an image.
   </figcaption>
   </div>
-  <div style="width:280px; position:absolute; left:350px;">
+  <div style="width:280px; position:absolute; left:380px;">
   <img src="speech_recognition.svg" />
   <figcaption>
   <strong>Speech recognition:</strong> The input features are audio usually
@@ -63,16 +63,17 @@ to use traditional supervised learning algorithms.</p>
   <script type="math/tex">X</script> and <script type="math/tex">Y</script>.</li>
 </ul>
 
-<p>In these circumstances, CTC can learn a function to map elements of <script
-type="math/tex">\mathcal{X}</script> to a distribution over members of <script type="math/tex">\mathcal{Y}</script>. We can then infer a likely <script type="math/tex">Y</script>
-from this distribution. For such an algorithm to be useful it needs to solve
-two problems: the objective function should be computable and inference
-should be tractable.</p>
+<p>In these circumstances, CTC can learn a function to map elements of <script type="math/tex">\mathcal{X}</script>
+to a distribution over members of <script type="math/tex">\mathcal{Y}</script>.
+We can then infer a likely <script type="math/tex">Y</script> from this
+distribution. For such an algorithm to be useful it needs to solve two
+problems: the objective function should be computable and inference should be
+tractable.</p>
 
 <p><strong>Objective Function:</strong> We should be able to efficiently
 compute a score for how likely any <script type="math/tex">Y</script> is given
 an <script type="math/tex">X</script>. In our case the score will be a
-conditional probality <script type="math/tex">p(Y \mid X)</script>, though this
+conditional probability <script type="math/tex">p(Y \mid X)</script>, though this
 isn’t a strict requirement.  The function <script type="math/tex">p(Y \mid
 X)</script> should be differentiable. This makes optimizing the function
 parameters easier. We need to compute the score <script type="math/tex">p(Y
@@ -81,23 +82,30 @@ type="math/tex">Y</script>’s of variable and differing lengths. We also want t
 avoid algorithms which require an alignment between <script type="math/tex">X</script>
 and <script type="math/tex">Y</script>.</p>
 
-<p><strong>Inference:</strong> Given a model for <script type="math/tex">p(Y \mid X)</script>, for any <script type="math/tex">X</script> we
-need to tractably infer a likely <script type="math/tex">Y</script>. This means solving 
+<p><strong>Inference:</strong> Given a model for <script type="math/tex">p(Y
+\mid X)</script>, for any <script type="math/tex">X</script> we need to
+tractably infer a likely <script type="math/tex">Y</script>. This means solving 
+
 \begin{align}
 Y^* = \text{argmax}_{Y \in \mathcal{Y}} p(Y \mid X).
 \end{align}
-Ideally an optimal <script type="math/tex">Y</script> can be efficiently found. With CTC we’ll settle for a
-close to optimal solution which is usually not too expensive to find.</p>
+
+Ideally an optimal <script type="math/tex">Y</script> can be efficiently found.
+With CTC we’ll settle for a close to optimal solution which is usually not too
+expensive to find.</p>
 
 <h2 id="the-algorithm">The Algorithm</h2>
 
-<p>The first thing we need to do is compute a score of how likely a <script type="math/tex">Y</script> is given
-an <script type="math/tex">X</script>. To do this, the CTC model allows a set of alignments between <script type="math/tex">X</script>
-and <script type="math/tex">Y</script>. To get around the fact that <script type="math/tex">X</script> and <script type="math/tex">Y</script> have variable lengths
-and the alignment is unknown, CTC <em>marginalizes</em> over all possible allowed
-alignments between the two sequences. In this section we’ll cover what these
-allowed alignments are, how to compute the CTC loss function and how to perform
-inference with a learned model.</p>
+<p>The first thing we need to do is compute a score of how likely a <script type="math/tex">Y</script>
+is given an <script type="math/tex">X</script>. To
+do this, the CTC model allows a set of alignments between <script type="math/tex">X</script>
+and <script type="math/tex">Y</script>. To get
+around the fact that <script type="math/tex">X</script> and <script type="math/tex">Y</script>
+have variable lengths and the alignment is unknown,
+CTC <em>marginalizes</em> over all possible allowed alignments between the two
+sequences. In this section we’ll cover what these allowed alignments are, how
+to compute the CTC loss function and how to perform inference with a learned
+model.</p>
 
 <h3 id="alignment">Alignment</h3>
 <p>The CTC algorithm assumes that alignments between the input <script type="math/tex">X</script> and the
@@ -109,7 +117,7 @@ this case, one way to align <script type="math/tex">Y</script> and <script type=
 <script type="math/tex">Y</script> align to multiple elements of <script type="math/tex">X</script>. So the alignment could be [c, c, a,
 a, a, t]. This approach has two problems.</p>
 <ul>
-  <li>Some elments of <script type="math/tex">X</script> may not correspond to any element of <script type="math/tex">Y</script>. In this case, we
+  <li>Some elements of <script type="math/tex">X</script> may not correspond to any element of <script type="math/tex">Y</script>. In this case, we
 may not want to force every element of <script type="math/tex">X</script> to match with an element of
 <script type="math/tex">Y</script>.</li>
   <li>The sequence <script type="math/tex">Y</script> can have consecutive repeat characters. This means the
@@ -119,12 +127,12 @@ others. Later we’ll need to distinguish between these cases to perform
 inference with the model.</li>
 </ul>
 
-<p>To get around these problems, CTC introduces a new token to the of allowed
+<p>To get around these problems, CTC introduces a new token to the set of allowed
 output characters. This new token is sometimes called the “blank” token. We’ll
 refer to it here as <script type="math/tex">\epsilon</script>. When an input element aligns to <script type="math/tex">\epsilon</script>
 then no output element corresponds to it.</p>
 
-<p>The aligments allowed by CTC are of length <script type="math/tex">T</script>, the length of the input. Let
+<p>The alignments allowed by CTC are of length <script type="math/tex">T</script>, the length of the input. Let
 <script type="math/tex">\mathcal{A}</script> be the set of alignments. We can compute <script type="math/tex">\mathcal{A}</script> from
 <script type="math/tex">Y</script> in two steps.</p>
 <ol>
@@ -142,7 +150,7 @@ between them is required. This allows us to differentiate between alignments of
 
 <p>Let’s go back to the example. A few allowed alignments of <script type="math/tex">Y</script> are
 [<script type="math/tex">\epsilon</script>, c, c, <script type="math/tex">\epsilon</script>, a, t], [c, c, a, a, t, t] and [c,
-<script type="math/tex">\epsilon</script>, <script type="math/tex">\epsilon</script>, <script type="math/tex">\epsilon</script>, a, t]. A few unallowed alignments are
+<script type="math/tex">\epsilon</script>, <script type="math/tex">\epsilon</script>, <script type="math/tex">\epsilon</script>, a, t]. A few disallowed alignments are
 [c, <script type="math/tex">\epsilon</script>, c, <script type="math/tex">\epsilon</script>, a, t], [c, c, a, t, t] and [c, <script type="math/tex">\epsilon</script>,
 <script type="math/tex">\epsilon</script>, <script type="math/tex">\epsilon</script>, t, t]. These are not allowed for the following
 reasons: the first corresponds to <script type="math/tex">Y =</script> [c, c, a, t], the second has length
@@ -395,7 +403,7 @@ next letter should be ‘A’ and with low probability the next letter should be
 <p>In fact speech recognizers using CTC are not able to learn an implicit language
 model nearly as well as other models which do not make this conditional
 independence assumption.<dt-cite key="Battenberg2017"></dt-cite> However, this isn’t always a bad trait. In some
-cases, having the model implicitly learn a strong language model over the ouput
+cases, having the model implicitly learn a strong language model over the output
 can make it less adaptable to new or altered domains. For example we might want
 to adapt a model trained to transcribe on phone conversations between friends
 to customer support calls.</p>
@@ -406,7 +414,7 @@ to customer support calls.</p>
 alignments between <script type="math/tex">X</script> and <script type="math/tex">Y</script>, technically the algorithm is
 <em>alignment-free</em>. The objective function marginalizes over the allowed
 alignments thus model is agnostic as to how probability is distributed amongst
-them. In some problems CTC ends up alotting most of the probability towards a
+them. In some problems CTC ends up allotting most of the probability towards a
 single alignment, though this is not guaranteed. To force the model to upweight
 a single alignment, we can replace the <code class="highlighter-rouge">sum</code> over the
 alignments with a <code>max</code>,
@@ -415,7 +423,7 @@ p(Y \mid X) = \max_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
 \end{align}</p>
 
 <p>As mentioned before, CTC allows only <em>strictly monotonic</em> alignments. In some
-problems such as speech recogntion this may be a valid assumption. For other
+problems such as speech recognition this may be a valid assumption. For other
 problems such as machine translation where a future word in a target sentence
 can align to an earlier part of the source sentence, this assumption might be a
 deal-breaker. The <em>strictly monotonic</em> property also implies that the length of
@@ -465,7 +473,7 @@ and compute
 \begin{align}
 p(Y \mid X) \propto p(X \mid Y) p(Y).
 \end{align}
-The <script type="math/tex">p(Y)</script> term is straight-forward model to with a language model, so let’s focus
+The <script type="math/tex">p(Y)</script> term is straight-forward to model with a language model, so let’s focus
 on <script type="math/tex">p(X \mid Y)</script>. Like before we’ll let <script type="math/tex">\mathcal{A}</script> be a set of allowed
 of alignments of <script type="math/tex">Y</script> to <script type="math/tex">X</script>. In this case members of <script type="math/tex">\mathcal{A}</script> have length <script type="math/tex">T</script>.
 Let’s otherwise leave <script type="math/tex">\mathcal{A}</script> unspecified for now. We’ll come back to
@@ -562,8 +570,7 @@ of the CTC state diagram as a special case HMM which works well for many
 problems of interest. Incorporating the blank as a hidden state in the HMM
 allows us to use the alphabet of <script type="math/tex">Y</script> as the other hidden states. This model
 also gives a set of allowed alignments which may be a good prior for some
-problems. Perhaps most importantly, CTC casts the problem discriminatively in
-terms of <script type="math/tex">p(Y \mid X)</script>. This allows us to train the model “end-to-end” and
+problems. Perhaps most importantly, CTC is discriminative as it models <script type="math/tex">p(Y \mid X)</script> directly. This allows us to train the model “end-to-end” and
 unleashes the capacity of powerful models like the RNN.</p>
 
 <h3 id="encoder-decoder-models">Encoder-Decoder Models</h3>
@@ -573,16 +580,19 @@ sequence transduction. This class of models consists of an encoder and a
 decoder. The encoder maps the input sequence <script type="math/tex">X</script> into a hidden
 representation. The decoder consumes the hidden representation and produces a
 distribution over the output space <script type="math/tex">\mathcal{Y}</script>. We can write this as
+
 \begin{align}
 h &amp;= \texttt{encode}(X) \\
 p(Y \mid X) &amp;= \texttt{decode}(h).
 \end{align}
-The <script type="math/tex">\texttt{encode}(\cdot)</script> and <script type="math/tex">\texttt{decode}(\cdot)</script> functions are
-typically RNNs. The decoder can optionally be equipped with an attention
-mechanism. The hidden state <script type="math/tex">h</script> usually has dimensions <script type="math/tex">T \times d</script> where
-<script type="math/tex">d</script> is a hyperparameter.  Sometimes the encoder subsamples the input in
-which case the inner dimension of <script type="math/tex">h</script> can be <script type="math/tex">\frac{T}{s}</script> where <script type="math/tex">s</script> is
-the subsampling factor.</p>
+
+The <script type="math/tex">\texttt{encode}(\cdot)</script> and <script type="math/tex">\texttt{decode}(\cdot)</script> functions are typically RNNs.
+The decoder can optionally be equipped with an attention mechanism. The hidden
+state <script type="math/tex">h</script> usually has dimensions <script
+type="math/tex">T \times d</script> where <script type="math/tex">d</script> is
+a hyperparameter. Sometimes the encoder subsamples the input. If the encoder
+subsamples the input by a factor <script type="math/tex">s</script> then the
+inner dimension of <script type="math/tex">h</script> will be <script type="math/tex">\frac{T}{s}</script>.</p>
 
 <p>We can interpret CTC in the encoder-decoder framework. This is helpful to
 understand the developments in encoder-decoder models that are applicable to
@@ -593,7 +603,7 @@ models.</p>
 in commonly used encoder-decoder models. For example the encoder could be a
 multi-layer bidirectional RNN or a convolutional network. There is a constraint
 on the CTC encoder that doesn’t apply to the others. The input length cannot be
-subsampled at such a rate that <script type="math/tex">T</script> is less than <script type="math/tex">U</script>.</p>
+subsampled so much that <script type="math/tex">\frac{T}{s}</script> is less than <script type="math/tex">U</script>.</p>
 
 <p><strong>Decoder:</strong> We can view the decoder of a CTC model as a simple linear
 transformation followed by a softmax normalization. This layer should project
@@ -614,7 +624,7 @@ Open-source software tools can make getting started with CTC much easier:</p>
   <li>Baidu Research has open-sourced <a href="https://github.com/baidu-research/warp-ctc">warp-ctc</a>. The package is written in C++ and
 CUDA. The CTC loss function runs on either the CPU or the GPU. Bindings are
 available for Torch, TensorFlow and <a href="https://github.com/awni/warp-ctc">PyTorch</a>.</li>
-  <li>TensorFlow has built in <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_loss">CTC loss</a> and <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_beam_search_decoder">CTC beam search</a> funtions. The
+  <li>TensorFlow has built in <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_loss">CTC loss</a> and <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_beam_search_decoder">CTC beam search</a> functions. The
 TensorFlow version doesn’t support the GPU yet.</li>
 </ul>
 

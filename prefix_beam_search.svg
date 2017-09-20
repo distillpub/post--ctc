@@ -57,13 +57,13 @@
      fit-margin-top="10"
      fit-margin-bottom="10"
      fit-margin-right="10"
-     inkscape:zoom="0.83310035"
-     inkscape:cx="479.75529"
-     inkscape:cy="261.6561"
+     inkscape:zoom="3.3324014"
+     inkscape:cx="393.33113"
+     inkscape:cy="81.605761"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g1018">
+     inkscape:current-layer="g1283">
     <sodipodi:guide
        position="238.35387,369.38968"
        orientation="0,1"
@@ -93,96 +93,209 @@
        d="M -143,57.842773 H 12 v 0"
        id="path1291"
        inkscape:connector-curvature="0">
-        <set attributeName="stroke-width" to="3.0"
-            begin="g970.mouseover" end="g970.mouseout"/>
-        <set attributeName="stroke-dasharray" to="0"
-            begin="g970.mouseover" end="g970.mouseout"/>
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g970.mouseover;g973.mouseover;g991.mouseover"
+         end="g970.mouseout;g973.mouseout;g991.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g970.mouseover;g973.mouseover;g991.mouseover"
+         end="g970.mouseout;g973.mouseout;g991.mouseout" />
     </path>
     <path
        style="fill:none;stroke:#a3a3a3;stroke-width:1.52611816;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.6305903, 7.6305903;stroke-dashoffset:0;stroke-opacity:1"
        d="M -142.99387,92.350575 10.205425,173.43136 v 0"
        id="path1293"
        inkscape:connector-curvature="0">
-        <set attributeName="stroke-width" to="3.0"
-            begin="g970.mouseover" end="g970.mouseout"/>
-        <set attributeName="stroke-dasharray" to="0"
-            begin="g970.mouseover" end="g970.mouseout"/>
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g970.mouseover;g977.mouseover;g973.mouseover;g980.mouseover;g995.mouseover"
+         end="g970.mouseout;g977.mouseout;g973.mouseout;g980.mouseout;g995.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g970.mouseover;g977.mouseover;g973.mouseover;g980.mouseover;g995.mouseover"
+         end="g970.mouseout;g977.mouseout;g973.mouseout;g980.mouseout;g995.mouseout" />
     </path>
     <path
        style="fill:none;stroke:#a3a3a3;stroke-width:1.53485644;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.67428091, 7.67428091;stroke-dashoffset:0;stroke-opacity:1"
        d="M -142.98322,127.04463 14.490927,291.9349 v 0"
        id="path1295"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g999.mouseover;g987.mouseover;g984.mouseover;"
+         end="g999.mouseout;g987.mouseout;g984.mouseout;" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g999.mouseover;g987.mouseover;g984.mouseover;"
+         end="g999.mouseout;g987.mouseout;g984.mouseout;" />
+    </path>
     <path
        style="fill:none;stroke:#a3a3a3;stroke-width:1.50386596;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.51932993, 7.51932993;stroke-dashoffset:0;stroke-opacity:1"
        d="m 114.3,57.842773 h 155.8 v 0"
        id="path1297"
        inkscape:connector-curvature="0">
-        <set attributeName="stroke-width" to="3.0"
-            begin="g970.mouseover" end="g970.mouseout"/>
-        <set attributeName="stroke-dasharray" to="0"
-            begin="g970.mouseover" end="g970.mouseout"/>
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g970.mouseover;g973.mouseover;"
+         end="g970.mouseout;g973.mouseout;" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g970.mouseover;g973.mouseover;"
+         end="g970.mouseout;g973.mouseout;" />
     </path>
     <path
        style="fill:none;stroke:#a3a3a3;stroke-width:1.52323353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.6161675, 7.6161675;stroke-dashoffset:0;stroke-opacity:1"
        d="M 114.40527,138.23244 272.3042,57.249455 v 0"
        id="path1299"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g977.mouseover;g973.mouseover"
+         end="g977.mouseout;g973.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g977.mouseover;g973.mouseover"
+         end="g977.mouseout;g973.mouseout" />
+    </path>
     <path
        style="fill:none;stroke:#a3a3a3;stroke-width:1.54252923;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.71264584, 7.71264584;stroke-dashoffset:0;stroke-opacity:1"
        d="M 114.71061,173.92415 274.90379,56.252795 v 0"
        id="path1301"
        inkscape:connector-curvature="0">
-        <set attributeName="stroke-width" to="3.0"
-            begin="g970.mouseover" end="g970.mouseout"/>
-        <set attributeName="stroke-dasharray" to="0"
-            begin="g970.mouseover" end="g970.mouseout"/>
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g970.mouseover;g973.mouseover"
+         end="g970.mouseout;g973.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g970.mouseover;g973.mouseover"
+         end="g970.mouseout;g973.mouseout" />
     </path>
     <path
        style="fill:none;stroke:#a3a3a3;stroke-width:1.51203179;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.56015857, 7.56015857;stroke-dashoffset:0;stroke-opacity:1"
        d="m 114.90148,207.83684 157.10108,-35.08813 v 0"
        id="path1303"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g980.mouseover"
+         end="g980.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g980.mouseover"
+         end="g980.mouseout" />
+    </path>
     <path
-       style="fill:none;stroke:#a3a3a3;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.5, 7.5;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 117,287.84277 h 155 v 0"
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.51301169;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.56505867, 7.56505867;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 114.29924,287.84277 H 272 v 0"
        id="path1305"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g987.mouseover;g984.mouseover;"
+         end="g987.mouseout;g984.mouseout;" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g987.mouseover;g984.mouseover;"
+         end="g987.mouseout;g984.mouseout;" />
+    </path>
     <path
        style="fill:none;stroke:#a3a3a3;stroke-width:1.51744342;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.58721638, 7.58721638;stroke-dashoffset:0;stroke-opacity:1"
        d="M 424.30205,21.651863 583.0052,56.634839 v 0"
        id="path1307"
        inkscape:connector-curvature="0">
-        <set attributeName="stroke-width" to="3.0"
-            begin="g970.mouseover" end="g970.mouseout"/>
-        <set attributeName="stroke-dasharray" to="0"
-            begin="g970.mouseover" end="g970.mouseout"/>
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g970.mouseover"
+         end="g970.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g970.mouseover"
+         end="g970.mouseout" />
     </path>
     <path
        style="fill:none;stroke:#a3a3a3;stroke-width:1.58322561;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.91612976, 7.91612976;stroke-dashoffset:0;stroke-opacity:1"
        d="m 422.00826,251.9835 168.98465,36.91854 v 0"
        id="path1311"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g984.mouseover;"
+         end="g984.mouseout;" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g984.mouseover;"
+         end="g984.mouseout;" />
+    </path>
     <path
        style="fill:none;stroke:#a3a3a3;stroke-width:1.50934589;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.54672942, 7.54672942;stroke-dashoffset:0;stroke-opacity:1"
        d="m 422,287.84277 h 162 v 0"
        id="path1313"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g984.mouseover;"
+         end="g984.mouseout;" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g984.mouseover;"
+         end="g984.mouseout;" />
+    </path>
     <path
        style="fill:none;stroke:#a3a3a3;stroke-width:1.50138021;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.5069009, 7.5069009;stroke-dashoffset:0;stroke-opacity:1"
        d="m 424.39046,57.453908 155.54311,-0.298704 v 0"
        id="path1315"
        inkscape:connector-curvature="0">
-        <set attributeName="stroke-width" to="3.0"
-            begin="g970.mouseover" end="g970.mouseout"/>
-        <set attributeName="stroke-dasharray" to="0"
-            begin="g970.mouseover" end="g970.mouseout"/>
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g970.mouseover"
+         end="g970.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g970.mouseover"
+         end="g970.mouseout" />
     </path>
     <path
        style="fill:none;stroke:#a3a3a3;stroke-width:1.55220485;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.76102421, 7.76102421;stroke-dashoffset:0;stroke-opacity:1"
        d="M 424.10487,58.473579 585.12038,175.56484 v 0"
        id="path1317"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g977.mouseover"
+         end="g977.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g977.mouseover"
+         end="g977.mouseout" />
+    </path>
     <g
        transform="translate(132.40124,-7.7438272)"
        id="g1018">
@@ -193,7 +306,18 @@
            r="12"
            cy="65"
            cx="460"
-           style="fill:#6fa8dc;stroke:#000000;stroke-width:1" />
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g970.mouseover"
+             end="g970.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g970.mouseover"
+             end="g970.mouseout" />
+        </circle>
         <text
            style="font-size:18px"
            id="text108"
@@ -208,7 +332,18 @@
            r="12"
            cy="180"
            cx="460"
-           style="fill:#6fa8dc;stroke:#000000;stroke-width:1" />
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g977.mouseover"
+             end="g977.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g977.mouseover"
+             end="g977.mouseout" />
+        </circle>
         <text
            style="font-size:18px"
            id="text112"
@@ -220,7 +355,18 @@
            r="12"
            cy="180"
            cx="510"
-           style="fill:#6fa8dc;stroke:#000000;stroke-width:1" />
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g977.mouseover"
+             end="g977.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g977.mouseover"
+             end="g977.mouseout" />
+        </circle>
         <text
            style="font-size:18px"
            id="text116"
@@ -233,7 +379,18 @@
            x2="498"
            y2="180"
            id="line172"
-           style="stroke:#000000;stroke-width:1.5" />
+           style="stroke:#000000;stroke-width:1.5">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g977.mouseover"
+             end="g977.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g977.mouseover"
+             end="g977.mouseout" />
+        </line>
       </g>
       <g
          id="g984">
@@ -242,7 +399,18 @@
            r="12"
            cy="295"
            cx="460"
-           style="fill:#6fa8dc;stroke:#000000;stroke-width:1" />
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g984.mouseover;"
+             end="g984.mouseout;" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g984.mouseover;"
+             end="g984.mouseout;" />
+        </circle>
         <text
            style="font-size:18px"
            id="text120"
@@ -254,7 +422,18 @@
            r="12"
            cy="295"
            cx="510"
-           style="fill:#6fa8dc;stroke:#000000;stroke-width:1" />
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g984.mouseover;"
+             end="g984.mouseout;" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g984.mouseover;"
+             end="g984.mouseout;" />
+        </circle>
         <text
            style="font-size:18px"
            id="text124"
@@ -267,78 +446,200 @@
            x2="498"
            y2="295"
            id="line174"
-           style="stroke:#000000;stroke-width:1.5" />
+           style="stroke:#000000;stroke-width:1.5">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g984.mouseover;"
+             end="g984.mouseout;" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g984.mouseover;"
+             end="g984.mouseout;" />
+        </line>
       </g>
     </g>
     <g
        transform="translate(52.197531,-7.5)"
        id="g1048">
-      <circle
-         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
-         cx="230"
-         cy="65"
-         r="12"
-         id="circle50" />
-      <text
-         x="225"
-         y="70"
-         font-size="18px"
-         id="text52"
-         style="font-size:18px">a</text>
-      <circle
-         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
-         cx="230"
-         cy="180"
-         r="12"
-         id="circle54" />
-      <text
-         x="225"
-         y="185"
-         font-size="18px"
-         id="text56"
-         style="font-size:18px">a</text>
-      <circle
-         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
-         cx="280"
-         cy="180"
-         r="12"
-         id="circle58" />
-      <text
-         x="275"
-         y="187"
-         font-size="18px"
-         id="text60"
-         style="font-size:18px">b</text>
-      <circle
-         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
-         cx="230"
-         cy="295"
-         r="12"
-         id="circle62" />
-      <text
-         x="225"
-         y="302"
-         font-size="18px"
-         id="text64"
-         style="font-size:18px">b</text>
-      <circle
-         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
-         cx="280"
-         cy="295"
-         r="12"
-         id="circle66" />
-      <text
-         x="275"
-         y="300"
-         font-size="18px"
-         id="text68"
-         style="font-size:18px">a</text>
+      <g
+         id="g973">
+        <circle
+           id="circle50"
+           r="12"
+           cy="65"
+           cx="230"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g970.mouseover;g977.mouseover;g973.mouseover"
+             end="g970.mouseout;g977.mouseout;g973.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g970.mouseover;g977.mouseover;g973.mouseover"
+             end="g970.mouseout;g977.mouseout;g973.mouseout" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text52"
+           font-size="18px"
+           y="70"
+           x="225">a</text>
+      </g>
+      <g
+         id="g980">
+        <circle
+           id="circle54"
+           r="12"
+           cy="180"
+           cx="230"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g980.mouseover"
+             end="g980.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g980.mouseover"
+             end="g980.mouseout" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text56"
+           font-size="18px"
+           y="185"
+           x="225">a</text>
+        <circle
+           id="circle58"
+           r="12"
+           cy="180"
+           cx="280"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g980.mouseover"
+             end="g980.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g980.mouseover"
+             end="g980.mouseout" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text60"
+           font-size="18px"
+           y="187"
+           x="275">b</text>
+        <line
+           x1="242"
+           y1="180"
+           x2="268"
+           y2="180"
+           id="line150"
+           style="stroke:#000000;stroke-width:1.5">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g980.mouseover"
+             end="g980.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g980.mouseover"
+             end="g980.mouseout" />
+        </line>
+      </g>
+      <g
+         id="g987">
+        <circle
+           id="circle62"
+           r="12"
+           cy="295"
+           cx="230"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g987.mouseover;g984.mouseover;"
+             end="g987.mouseout;g984.mouseout;" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g987.mouseover;g984.mouseover;"
+             end="g987.mouseout;g984.mouseout;" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text64"
+           font-size="18px"
+           y="302"
+           x="225">b</text>
+        <circle
+           id="circle66"
+           r="12"
+           cy="295"
+           cx="280"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g987.mouseover;g984.mouseover;"
+             end="g987.mouseout;g984.mouseout;" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g987.mouseover;g984.mouseover;"
+             end="g987.mouseout;g984.mouseout;" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text68"
+           font-size="18px"
+           y="300"
+           x="275">a</text>
+        <line
+           x1="242"
+           y1="295"
+           x2="268"
+           y2="295"
+           id="line158"
+           style="stroke:#000000;stroke-width:1.5">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g987.mouseover;g984.mouseover;"
+             end="g987.mouseout;g984.mouseout;" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g987.mouseover;g984.mouseover;"
+             end="g987.mouseout;g984.mouseout;" />
+        </line>
+      </g>
       <circle
          style="fill:#e77471;stroke:#000000;stroke-width:1"
          cx="360"
          cy="30"
          r="12"
-         id="circle70" />
+         id="circle70">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover"
+           end="g970.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover"
+           end="g970.mouseout" />
+      </circle>
       <text
          style="font-size:18px;font-family:STIXGeneral-Italic"
          x="355"
@@ -350,7 +651,18 @@
          cx="360"
          cy="65"
          r="12"
-         id="circle74" />
+         id="circle74">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g977.mouseover"
+           end="g970.mouseout;g977.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g977.mouseover"
+           end="g970.mouseout;g977.mouseout" />
+      </circle>
       <text
          x="355"
          y="70"
@@ -410,7 +722,18 @@
          cx="360"
          cy="260"
          r="12"
-         id="circle94" />
+         id="circle94">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g984.mouseover;"
+           end="g984.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g984.mouseover;"
+           end="g984.mouseout;" />
+      </circle>
       <text
          style="font-size:18px;font-family:STIXGeneral-Italic"
          x="355"
@@ -422,7 +745,18 @@
          cx="360"
          cy="295"
          r="12"
-         id="circle98" />
+         id="circle98">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g984.mouseover;"
+           end="g984.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g984.mouseover;"
+           end="g984.mouseout;" />
+      </circle>
       <text
          x="355"
          y="300"
@@ -454,14 +788,36 @@
          y2="295"
          x2="348"
          y1="295"
-         x1="292" />
+         x1="292">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g984.mouseover;"
+           end="g984.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g984.mouseover;"
+           end="g984.mouseout;" />
+      </line>
       <line
          style="stroke:#000000;stroke-width:1.5"
          id="line166"
          y2="260"
          x2="348"
          y1="287"
-         x1="289" />
+         x1="289">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g984.mouseover;"
+           end="g984.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g984.mouseover;"
+           end="g984.mouseout;" />
+      </line>
       <line
          style="stroke:#000000;stroke-width:1.5"
          id="line164"
@@ -485,13 +841,6 @@
          x1="289" />
       <line
          style="stroke:#000000;stroke-width:1.5"
-         id="line158"
-         y2="295"
-         x2="268"
-         y1="295"
-         x1="242" />
-      <line
-         style="stroke:#000000;stroke-width:1.5"
          id="line156"
          y2="100"
          x2="348"
@@ -504,10 +853,16 @@
          x2="348"
          y1="65"
          x1="242">
-        <set attributeName="stroke-width" to="3.0"
-            begin="g970.mouseover" end="g970.mouseout"/>
-        <set attributeName="stroke" to="#a3a3a3"
-            begin="g970.mouseover" end="g970.mouseout"/>
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g977.mouseover"
+           end="g970.mouseout;g977.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g977.mouseover"
+           end="g970.mouseout;g977.mouseout" />
       </line>
       <line
          style="stroke:#000000;stroke-width:1.5"
@@ -516,58 +871,99 @@
          x2="348"
          y1="57"
          x1="239">
-        <set attributeName="stroke-width" to="3.0"
-            begin="g970.mouseover" end="g970.mouseout"/>
-        <set attributeName="stroke" to="#a3a3a3"
-            begin="g970.mouseover" end="g970.mouseout"/>
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover"
+           end="g970.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover"
+           end="g970.mouseout" />
       </line>
-      <line
-         style="stroke:#000000;stroke-width:1.5"
-         id="line150"
-         y2="180"
-         x2="268"
-         y1="180"
-         x1="242" />
     </g>
     <g
        transform="translate(-27.5,-7.5)"
        id="g1074">
-      <circle
-         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
-         cx="50"
-         cy="65"
-         r="12"
-         id="circle2" />
-      <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
-         x="45"
-         y="70"
-         font-size="18px"
-         id="text4">λ</text>
-      <circle
-         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
-         cx="50"
-         cy="180"
-         r="12"
-         id="circle6" />
-      <text
-         x="45"
-         y="185"
-         font-size="18px"
-         id="text8"
-         style="font-size:18px">a</text>
-      <circle
-         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
-         cx="50"
-         cy="295"
-         r="12"
-         id="circle10" />
-      <text
-         x="45"
-         y="302"
-         font-size="18px"
-         id="text12"
-         style="font-size:18px">b</text>
+      <g
+         id="g991">
+        <circle
+           id="circle2"
+           r="12"
+           cy="65"
+           cx="50"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g970.mouseover;g973.mouseover;g991.mouseover"
+             end="g970.mouseout;g973.mouseout;g991.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g970.mouseover;g973.mouseover;g991.mouseover"
+             end="g970.mouseout;g973.mouseout;g991.mouseout" />
+        </circle>
+        <text
+           id="text4"
+           font-size="18px"
+           y="70"
+           x="45"
+           style="font-size:18px;font-family:STIXGeneral-Italic">λ</text>
+      </g>
+      <g
+         id="g995">
+        <circle
+           id="circle6"
+           r="12"
+           cy="180"
+           cx="50"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g970.mouseover;g977.mouseover;g973.mouseover;g995.mouseover;g980.mouseover"
+             end="g970.mouseout;g977.mouseout;g973.mouseout;g995.mouseout;g980.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g970.mouseover;g977.mouseover;g973.mouseover;g995.mouseover;g980.mouseover"
+             end="g970.mouseout;g977.mouseout;g973.mouseout;g995.mouseout;g980.mouseout" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text8"
+           font-size="18px"
+           y="185"
+           x="45">a</text>
+      </g>
+      <g
+         id="g999">
+        <circle
+           id="circle10"
+           r="12"
+           cy="295"
+           cx="50"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g999.mouseover;g987.mouseover;g984.mouseover;"
+             end="g999.mouseout;g987.mouseout;g984.mouseout;" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g999.mouseover;g987.mouseover;g984.mouseover;"
+             end="g999.mouseout;g987.mouseout;g984.mouseout;" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text12"
+           font-size="18px"
+           y="302"
+           x="45">b</text>
+      </g>
       <circle
          style="fill:#d3d3d3;stroke:#000000;stroke-width:1"
          cx="130"
@@ -585,7 +981,18 @@
          cx="130"
          cy="65"
          r="12"
-         id="circle18" />
+         id="circle18">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g973.mouseover;"
+           end="g970.mouseout;g973.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g973.mouseover;"
+           end="g970.mouseout;g973.mouseout;" />
+      </circle>
       <text
          x="125"
          y="70"
@@ -609,7 +1016,18 @@
          cx="130"
          cy="145"
          r="12"
-         id="circle26" />
+         id="circle26">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g977.mouseover;g973.mouseover"
+           end="g977.mouseout;g973.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g977.mouseover;g973.mouseover"
+           end="g977.mouseout;g973.mouseout" />
+      </circle>
       <text
          style="font-size:18px;font-family:STIXGeneral-Italic"
          x="125"
@@ -621,7 +1039,18 @@
          cx="130"
          cy="180"
          r="12"
-         id="circle30" />
+         id="circle30">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g973.mouseover"
+           end="g970.mouseout;g973.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g973.mouseover"
+           end="g970.mouseout;g973.mouseout" />
+      </circle>
       <text
          x="125"
          y="185"
@@ -633,7 +1062,18 @@
          cx="130"
          cy="215"
          r="12"
-         id="circle34" />
+         id="circle34">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g980.mouseover"
+           end="g980.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g980.mouseover"
+           end="g980.mouseout" />
+      </circle>
       <text
          x="125"
          y="222"
@@ -657,7 +1097,18 @@
          cx="130"
          cy="295"
          r="12"
-         id="circle42" />
+         id="circle42">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g987.mouseover;g984.mouseover;"
+           end="g987.mouseout;g984.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g987.mouseover;g984.mouseover;"
+           end="g987.mouseout;g984.mouseout;" />
+      </circle>
       <text
          x="125"
          y="300"
@@ -689,7 +1140,18 @@
          y2="295"
          x2="118"
          y1="295"
-         x1="62" />
+         x1="62">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g987.mouseover;g984.mouseover;"
+           end="g987.mouseout;g984.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g987.mouseover;g984.mouseover;"
+           end="g987.mouseout;g984.mouseout;" />
+      </line>
       <line
          style="stroke:#000000;stroke-width:1.5"
          id="line144"
@@ -703,7 +1165,18 @@
          y2="215"
          x2="118"
          y1="188"
-         x1="59" />
+         x1="59">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g980.mouseover"
+           end="g980.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g980.mouseover"
+           end="g980.mouseout" />
+      </line>
       <line
          style="stroke:#000000;stroke-width:1.5"
          id="line140"
@@ -711,10 +1184,16 @@
          x2="118"
          y1="180"
          x1="62">
-        <set attributeName="stroke-width" to="3.0"
-            begin="g970.mouseover" end="g970.mouseout"/>
-        <set attributeName="stroke" to="#a3a3a3"
-            begin="g970.mouseover" end="g970.mouseout"/>
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g973.mouseover"
+           end="g970.mouseout;g973.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g973.mouseover"
+           end="g970.mouseout;g973.mouseout" />
       </line>
       <line
          style="stroke:#000000;stroke-width:1.5"
@@ -722,7 +1201,18 @@
          y2="145"
          x2="118"
          y1="172"
-         x1="59" />
+         x1="59">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g977.mouseover;g973.mouseover"
+           end="g977.mouseout;g973.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g977.mouseover;g973.mouseover"
+           end="g977.mouseout;g973.mouseout" />
+      </line>
       <line
          style="stroke:#000000;stroke-width:1.5"
          id="line136"
@@ -737,10 +1227,16 @@
          x2="118"
          y1="65"
          x1="62">
-        <set attributeName="stroke-width" to="3.0"
-            begin="g970.mouseover" end="g970.mouseout"/>
-        <set attributeName="stroke" to="#a3a3a3"
-            begin="g970.mouseover" end="g970.mouseout"/>
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g973.mouseover;"
+           end="g970.mouseout;g973.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g973.mouseover;"
+           end="g970.mouseout;g973.mouseout;" />
       </line>
       <line
          style="stroke:#000000;stroke-width:1.5"
@@ -758,7 +1254,18 @@
          r="12"
          cy="65"
          cx="50"
-         style="fill:#6fa8dc;stroke:#000000;stroke-width:1" />
+         style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="circle1111.mouseover;g970.mouseover;g977.mouseover;g984.mouseover;g973.mouseover;g980.mouseover;g987.mouseover;g995.mouseover;g991.mouseover;g999.mouseover"
+           end="circle1111.mouseout;g970.mouseout;g977.mouseout;g984.mouseout;g973.mouseout;g980.mouseout;g987.mouseout;g995.mouseout;g991.mouseout;g999.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="circle1111.mouseover;g970.mouseover;g977.mouseover;g984.mouseover;g973.mouseover;g980.mouseover;g987.mouseover;g995.mouseover;g991.mouseover;g999.mouseover"
+           end="circle1111.mouseout;g970.mouseout;g977.mouseout;g984.mouseout;g973.mouseout;g980.mouseout;g987.mouseout;g995.mouseout;g991.mouseout;g999.mouseout" />
+      </circle>
       <text
          id="text1113"
          font-size="18px"
@@ -770,7 +1277,18 @@
          r="12"
          cy="30"
          cx="130"
-         style="fill:#e77471;fill-opacity:1;stroke:#000000;stroke-width:1" />
+         style="fill:#e77471;fill-opacity:1;stroke:#000000;stroke-width:1">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g973.mouseover;g991.mouseover"
+           end="g970.mouseout;g973.mouseout;g991.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g973.mouseover;g991.mouseover"
+           end="g970.mouseout;g973.mouseout;g991.mouseout" />
+      </circle>
       <text
          id="text1125"
          font-size="18px"
@@ -782,7 +1300,18 @@
          r="12"
          cy="65"
          cx="130"
-         style="fill:#e77471;stroke:#000000;stroke-width:1" />
+         style="fill:#e77471;stroke:#000000;stroke-width:1">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g977.mouseover;g973.mouseover;g980.mouseover;g995.mouseover"
+           end="g970.mouseout;g977.mouseout;g973.mouseout;g980.mouseout;g995.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g977.mouseover;g973.mouseover;g980.mouseover;g995.mouseover"
+           end="g970.mouseout;g977.mouseout;g973.mouseout;g980.mouseout;g995.mouseout" />
+      </circle>
       <text
          id="text1129"
          font-size="18px"
@@ -794,7 +1323,18 @@
          r="12"
          cy="100"
          cx="130"
-         style="fill:#e77471;fill-opacity:1;stroke:#000000;stroke-width:1" />
+         style="fill:#e77471;fill-opacity:1;stroke:#000000;stroke-width:1">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g999.mouseover;g987.mouseover;g984.mouseover;"
+           end="g999.mouseout;g987.mouseout;g984.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g999.mouseover;g987.mouseover;g984.mouseover;"
+           end="g999.mouseout;g987.mouseout;g984.mouseout;" />
+      </circle>
       <text
          id="text1133"
          font-size="18px"
@@ -807,7 +1347,18 @@
          x2="118"
          y2="100"
          id="line1171"
-         style="stroke:#000000;stroke-width:1.5" />
+         style="stroke:#000000;stroke-width:1.5">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g999.mouseover;g987.mouseover;g984.mouseover;"
+           end="g999.mouseout;g987.mouseout;g984.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g999.mouseover;g987.mouseover;g984.mouseover;"
+           end="g999.mouseout;g987.mouseout;g984.mouseout;" />
+      </line>
       <line
          x1="62"
          y1="65"
@@ -815,10 +1366,16 @@
          y2="65"
          id="line1173"
          style="stroke:#000000;stroke-width:1.5">
-        <set attributeName="stroke-width" to="3.0"
-            begin="g970.mouseover" end="g970.mouseout"/>
-        <set attributeName="stroke" to="#a3a3a3"
-            begin="g970.mouseover" end="g970.mouseout"/>
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g977.mouseover;g973.mouseover;g980.mouseover;g995.mouseover"
+           end="g970.mouseout;g977.mouseout;g973.mouseout;g980.mouseout;g995.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g977.mouseover;g973.mouseover;g980.mouseover;g995.mouseover"
+           end="g970.mouseout;g977.mouseout;g973.mouseout;g980.mouseout;g995.mouseout" />
       </line>
       <line
          x1="59"
@@ -827,10 +1384,16 @@
          y2="30"
          id="line1175"
          style="stroke:#000000;stroke-width:1.5">
-        <set attributeName="stroke-width" to="3.0"
-            begin="g970.mouseover" end="g970.mouseout"/>
-        <set attributeName="stroke" to="#a3a3a3"
-            begin="g970.mouseover" end="g970.mouseout"/>
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g973.mouseover;g991.mouseover"
+           end="g970.mouseout;g973.mouseout;g991.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g973.mouseover;g991.mouseover"
+           end="g970.mouseout;g973.mouseout;g991.mouseout" />
       </line>
     </g>
     <text

@@ -7,8 +7,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   height="229.50618"
-   width="170.12346"
+   height="229.20312"
+   width="168.11719"
    id="svg"
    version="1.1"
    sodipodi:docname="alignment_no_epsilon.svg"
@@ -21,12 +21,18 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs169" />
+     id="defs169">
+  <style type="text/css">
+  svg {
+    font: 400 16px/1.55em -apple-system, BlinkMacSystemFont, "Roboto", Helvetica, sans-serif;
+  }
+  </style>
+  </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -40,202 +46,190 @@
      inkscape:window-height="754"
      id="namedview167"
      showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
+     fit-margin-top="10"
+     fit-margin-left="10"
+     fit-margin-right="20"
+     fit-margin-bottom="20"
      inkscape:zoom="1.2461538"
-     inkscape:cx="186.17283"
-     inkscape:cy="115.00001"
+     inkscape:cx="29.715938"
+     inkscape:cy="115.50003"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg" />
-  <text
-     x="45"
-     y="21.506172"
-     font-size="16px"
-     id="text2"
-     style="font-size:16px;font-family:helvetica;fill:#000000">c</text>
-  <text
-     x="85"
-     y="21.506172"
-     font-size="16px"
-     id="text4"
-     style="font-size:16px;font-family:helvetica;fill:#000000">a</text>
-  <text
-     x="125"
-     y="21.506172"
-     font-size="16px"
-     id="text6"
-     style="font-size:16px;font-family:helvetica;fill:#000000">t</text>
-  <text
-     x="12"
-     y="49.506172"
-     font-size="16px"
-     id="text8"
-     style="font-size:16px;font-family:helvetica;fill:#000000">1</text>
-  <text
-     x="12"
-     y="79.506172"
-     font-size="16px"
-     id="text10"
-     style="font-size:16px;font-family:helvetica;fill:#000000">2</text>
-  <text
-     x="12"
-     y="109.50617"
-     font-size="16px"
-     id="text12"
-     style="font-size:16px;font-family:helvetica;fill:#000000">3</text>
-  <text
-     x="12"
-     y="139.50618"
-     font-size="16px"
-     id="text14"
-     style="font-size:16px;font-family:helvetica;fill:#000000">4</text>
-  <text
-     x="12"
-     y="169.50618"
-     font-size="16px"
-     id="text16"
-     style="font-size:16px;font-family:helvetica;fill:#000000">5</text>
-  <text
-     x="12"
-     y="199.50618"
-     font-size="16px"
-     id="text18"
-     style="font-size:16px;font-family:helvetica;fill:#000000">6</text>
-  <rect
-     x="30"
-     y="29.506172"
-     width="40"
-     height="30"
-     id="rect20"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="70"
-     y="29.506172"
-     width="40"
-     height="30"
-     id="rect22"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="110"
-     y="29.506172"
-     width="40"
-     height="30"
-     id="rect24"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="30"
-     y="59.506172"
-     width="40"
-     height="30"
-     id="rect26"
-     style="fill:#6fa8dc;stroke:#000000;stroke-width:1" />
-  <rect
-     x="70"
-     y="59.506172"
-     width="40"
-     height="30"
-     id="rect28"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="110"
-     y="59.506172"
-     width="40"
-     height="30"
-     id="rect30"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="30"
-     y="89.506172"
-     width="40"
-     height="30"
-     id="rect32"
-     style="fill:#6fa8dc;stroke:#000000;stroke-width:1" />
-  <rect
-     x="70"
-     y="89.506172"
-     width="40"
-     height="30"
-     id="rect34"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="110"
-     y="89.506172"
-     width="40"
-     height="30"
-     id="rect36"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="30"
-     y="119.50617"
-     width="40"
-     height="30"
-     id="rect38"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="70"
-     y="119.50617"
-     width="40"
-     height="30"
-     id="rect40"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="110"
-     y="119.50617"
-     width="40"
-     height="30"
-     id="rect42"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="30"
-     y="149.50618"
-     width="40"
-     height="30"
-     id="rect44"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="70"
-     y="149.50618"
-     width="40"
-     height="30"
-     id="rect46"
-     style="fill:#6fa8dc;stroke:#000000;stroke-width:1" />
-  <rect
-     x="110"
-     y="149.50618"
-     width="40"
-     height="30"
-     id="rect48"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="30"
-     y="179.50618"
-     width="40"
-     height="30"
-     id="rect50"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="70"
-     y="179.50618"
-     width="40"
-     height="30"
-     id="rect52"
-     style="fill:#ffffff;stroke:#000000;stroke-width:1" />
-  <rect
-     x="110"
-     y="179.50618"
-     width="40"
-     height="30"
-     id="rect54"
-     style="fill:#6fa8dc;stroke:#000000;stroke-width:1" />
-  <rect
-     style="fill:none"
-     id="rect3862"
-     width="170.12346"
-     height="229.50618"
-     x="0"
-     y="0" />
+  <g
+     id="g866"
+     transform="translate(-2.3828125,-0.80304718)">
+    <text
+       id="text2"
+       font-size="16px"
+       y="21.506172"
+       x="45">c</text>
+    <text
+       id="text4"
+       font-size="16px"
+       y="21.506172"
+       x="85">a</text>
+    <text
+       id="text6"
+       font-size="16px"
+       y="21.506172"
+       x="125">t</text>
+    <text
+       id="text8"
+       font-size="16px"
+       y="49.506172"
+       x="12">1</text>
+    <text
+       id="text10"
+       font-size="16px"
+       y="79.506172"
+       x="12">2</text>
+    <text
+       id="text12"
+       font-size="16px"
+       y="109.50617"
+       x="12">3</text>
+    <text
+       id="text14"
+       font-size="16px"
+       y="139.50618"
+       x="12">4</text>
+    <text
+       id="text16"
+       font-size="16px"
+       y="169.50618"
+       x="12">5</text>
+    <text
+       id="text18"
+       font-size="16px"
+       y="199.50618"
+       x="12">6</text>
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect20"
+       height="30"
+       width="40"
+       y="29.506172"
+       x="30" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect22"
+       height="30"
+       width="40"
+       y="29.506172"
+       x="70" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect24"
+       height="30"
+       width="40"
+       y="29.506172"
+       x="110" />
+    <rect
+       style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
+       id="rect26"
+       height="30"
+       width="40"
+       y="59.506172"
+       x="30" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect28"
+       height="30"
+       width="40"
+       y="59.506172"
+       x="70" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect30"
+       height="30"
+       width="40"
+       y="59.506172"
+       x="110" />
+    <rect
+       style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
+       id="rect32"
+       height="30"
+       width="40"
+       y="89.506172"
+       x="30" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect34"
+       height="30"
+       width="40"
+       y="89.506172"
+       x="70" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect36"
+       height="30"
+       width="40"
+       y="89.506172"
+       x="110" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect38"
+       height="30"
+       width="40"
+       y="119.50617"
+       x="30" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect40"
+       height="30"
+       width="40"
+       y="119.50617"
+       x="70" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect42"
+       height="30"
+       width="40"
+       y="119.50617"
+       x="110" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect44"
+       height="30"
+       width="40"
+       y="149.50618"
+       x="30" />
+    <rect
+       style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
+       id="rect46"
+       height="30"
+       width="40"
+       y="149.50618"
+       x="70" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect48"
+       height="30"
+       width="40"
+       y="149.50618"
+       x="110" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect50"
+       height="30"
+       width="40"
+       y="179.50618"
+       x="30" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1"
+       id="rect52"
+       height="30"
+       width="40"
+       y="179.50618"
+       x="70" />
+    <rect
+       style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
+       id="rect54"
+       height="30"
+       width="40"
+       y="179.50618"
+       x="110" />
+  </g>
 </svg>

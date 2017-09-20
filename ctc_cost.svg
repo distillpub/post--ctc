@@ -1,5 +1,12 @@
 <?xml version="1.0" standalone="yes"?>
 <svg height="430" width="570" id="svg" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+  <style type="text/css">
+  svg {
+    font: 18px -apple-system, BlinkMacSystemFont, "Roboto", Helvetica, sans-serif;
+  }
+  </style>
+  </defs>
   <marker id="triangle" viewBox="0 0 10 10" refX="0" refY="5" markerUnits="strokeWidth" markerWidth="4" markerHeight="6" orient="auto">
     <path d="M 0 0 L 10 5 L 0 10 z" />
   </marker>
@@ -7,20 +14,20 @@
     <path d="M 0 0 L 10 5 L 0 10 z" />
   </marker>
 
-  <text x="44" y="24" font-family="STIXGeneral-Italic" font-size="20px" fill="#000000">ϵ</text>
-  <text x="124" y="24" font-family="helvetica" font-size="20px" fill="#000000">c</text>
-  <text x="204" y="24" font-family="STIXGeneral-Italic" font-size="20px" fill="#000000">ϵ</text>
-  <text x="284" y="24" font-family="helvetica" font-size="20px" fill="#000000">a</text>
-  <text x="364" y="24" font-family="STIXGeneral-Italic" font-size="20px" fill="#000000">ϵ</text>
-  <text x="444" y="24" font-family="helvetica" font-size="20px" fill="#000000">t</text>
-  <text x="524" y="24" font-family="STIXGeneral-Italic" font-size="20px" fill="#000000">ϵ</text>
+  <text x="44" y="24" font-family="STIXGeneral-Italic">ϵ</text>
+  <text x="124" y="24">c</text>
+  <text x="204" y="24" font-family="STIXGeneral-Italic">ϵ</text>
+  <text x="284" y="24">a</text>
+  <text x="364" y="24" font-family="STIXGeneral-Italic">ϵ</text>
+  <text x="444" y="24">t</text>
+  <text x="524" y="24" font-family="STIXGeneral-Italic">ϵ</text>
 
-  <text x="13" y="57" font-family="helvetica" font-size="20px" fill="#000000">1</text>
-  <text x="13" y="127" font-family="helvetica" font-size="20px" fill="#000000">2</text>
-  <text x="13" y="197" font-family="helvetica" font-size="20px" fill="#000000">3</text>
-  <text x="13" y="267" font-family="helvetica" font-size="20px" fill="#000000">4</text>
-  <text x="13" y="337" font-family="helvetica" font-size="20px" fill="#000000">5</text>
-  <text x="13" y="407" font-family="helvetica" font-size="20px" fill="#000000">6</text>
+  <text x="13" y="57">1</text>
+  <text x="13" y="127">2</text>
+  <text x="13" y="197">3</text>
+  <text x="13" y="267">4</text>
+  <text x="13" y="337">5</text>
+  <text x="13" y="407">6</text>
 
   <rect><animate id="ss" begin="0;ss.end" dur="26s" attributeName="visibility" from="hide" to="hide"/></rect>
 

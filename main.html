@@ -77,9 +77,10 @@ an <script type="math/tex">X</script>. In our case the score will be a
 conditional probability <script type="math/tex">p(Y \mid X)</script>, though this
 isn’t a strict requirement.  The function <script type="math/tex">p(Y \mid
 X)</script> should be differentiable. This makes optimizing the function
-parameters easier. We need to compute the score <script type="math/tex">p(Y
-\mid X)</script> for <script type="math/tex">X</script>’s and <script
-type="math/tex">Y</script>’s of variable and differing lengths. We also want to
+parameters easier.</p>
+
+<p>We need to compute the score for <script type="math/tex">X</script>s and <script
+type="math/tex">Y</script>s of variable and differing lengths. We also want to
 avoid algorithms which require an alignment between <script type="math/tex">X</script>
 and <script type="math/tex">Y</script>.</p>
 
@@ -91,25 +92,23 @@ tractably infer a likely <script type="math/tex">Y</script>. This means solving
 Y^* = \text{argmax}_{Y \in \mathcal{Y}} p(Y \mid X).
 \end{align}
 
-Ideally an optimal <script type="math/tex">Y</script> can be efficiently found.
-With CTC we’ll settle for a close to optimal solution which is usually not too
-expensive to find.</p>
+Ideally an optimal <script type="math/tex">Y^*</script> can be found
+efficiently.  With CTC we’ll settle for a close to optimal solution that's not
+too expensive to find.</p>
 
 <h2 id="the-algorithm">The Algorithm</h2>
 
 <p>The first thing we need to do is compute a score of how likely a <script type="math/tex">Y</script>
 is given an <script type="math/tex">X</script>. To
 do this, the CTC model allows a set of alignments between <script type="math/tex">X</script>
-and <script type="math/tex">Y</script>. To get
-around the fact that <script type="math/tex">X</script> and <script type="math/tex">Y</script>
-have variable lengths and the alignment is unknown,
+and <script type="math/tex">Y</script>. To get around the fact that the alignment is unknown,
 CTC <em>marginalizes</em> over all possible allowed alignments between the two
 sequences. In this section we’ll cover what these allowed alignments are, how
 to compute the CTC loss function and how to perform inference with a learned
 model.</p>
 
 <h3 id="alignment">Alignment</h3>
-<p>The CTC algorithm assumes that alignments between the input <script type="math/tex">X</script> and the
+<p>The CTC algorithm assumes the alignments between the input <script type="math/tex">X</script> and the
 output <script type="math/tex">Y</script> have a specific form. To motivate the CTC alignments, first
 consider a naive approach.</p>
 

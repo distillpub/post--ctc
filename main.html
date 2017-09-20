@@ -13,8 +13,11 @@
 
 <dt-article>
   <h1>An In-depth Guide to Connectionist Temporal Classification</h1>
-  <h2>In this tutorial you will learn about the Connectionist Temporal Classification (CTC) algorithm – a popular model for sequence to sequence
-      mapping with neural networks.</h2>
+  <h2>
+  In this tutorial you will learn about the Connectionist Temporal
+  Classification (CTC) algorithm – a popular model for sequence to sequence
+  mapping with neural networks.
+  </h2>
   <dt-byline></dt-byline>
 
 <h2 id="the-problem">The Problem</h2>
@@ -23,9 +26,7 @@
 to sequences. One work-horse algorithm for neural sequence transduction is CTC.
 Certain assumptions made by the CTC algorithm make it especially well suited
 for problems such as automatic speech recognition and hand-writing recognition,
-where it’s used in many state-of-the-art models. Other problems where CTC has
-been used successfully include lip reading from video, action labelling from
-video and keyword detection in audio.</p>
+where it’s used in many state-of-the-art models.</p>
 
 <figure class="l-body" style="height:250px;">
   <div style="width:330px; position:absolute;">
@@ -621,6 +622,7 @@ CUDA. The CTC loss function runs on either the CPU or the GPU. Bindings are
 available for Torch, TensorFlow and <a href="https://github.com/awni/warp-ctc">PyTorch</a>.</li>
   <li>TensorFlow has built in <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_loss">CTC loss</a> and <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_beam_search_decoder">CTC beam search</a> functions. The
 TensorFlow version doesn’t support the GPU yet.</li>
+  <li>Nvidia also provides a GPU implementation of CTC in <a href="https://developer.nvidia.com/cudnn">cuDNN</a> versions 7 and up.</li>
 </ul>
 
 <p><strong>Numerical Stability:</strong> Computing the CTC loss naively is numerically
@@ -662,16 +664,23 @@ Chapter 7 of Graves’ thesis<dt-cite key="Graves2012"></dt-cite> gives a more d
 
 <p>One of the first applications of CTC to large vocabulary speech recognition was
 by Graves et al. in 2014 where they used a hybrid HMM and CTC
-trained model to achieve state-of-the-art results.<dt-cite key="Graves2014"></dt-cite> Hannun et al.
-subsequently demonstrated state-of-the-art CTC based speech recognition on
-larger benchmarks.<dt-cite key="Hannun2014deepspeech"></dt-cite> State-of-the-art results on
-an online handwriting recognition task using the CTC algorithm with an RNN were achieved in 2007.<dt-cite key="Liwicki2007"></dt-cite></p>
+trained model to achieve state-of-the-art results.<dt-cite key="Graves2014"></dt-cite>
+Hannun et al. subsequently demonstrated state-of-the-art CTC based speech
+recognition on larger benchmarks.<dt-cite key="Hannun2014deepspeech"></dt-cite>
+State-of-the-art results on an online handwriting recognition task using the CTC algorithm
+with an RNN were achieved in 2007.<dt-cite key="Liwicki2007"></dt-cite></p>
+
+<p>The CTC algorithm has been used successfully in other problems including lip
+reading from video<dt-cite key="Assael2016"></dt-cite>, action labelling from
+video<dt-cite key="Huang2016"></dt-cite> and keyword detection in audio.
+<dt-cite key="Fernandez2007,Lengerich2016"></dt-cite></p>
 
 <p>The Hidden Markov Model was developed in the 1960’s with the first application
 to speech recognition in the 1970’s. For an introduction to the HMM and
 applications to speech recognition see Rabiner’s canonical tutorial.<dt-cite key="Rabiner1989"></dt-cite></p>
 
-<p>Encoder-decoder models were simultaneously developed in 2014.<dt-cite key="Cho2014,Sutskever2014"></dt-cite>.  The online publication <em>Distill</em> gives an in-depth guide to
+<p>Encoder-decoder models were simultaneously developed in 2014.<dt-cite key="Cho2014,Sutskever2014"></dt-cite>
+The online publication <em>Distill</em> gives an in-depth guide to
 attention in encoder-decoder models.<dt-cite key="Olah2016"></dt-cite></p>
 
 </div>
@@ -738,7 +747,7 @@ volume = {77},
 year = {1989}
 }
 @inproceedings{Liwicki2007,
-author = {Liwicki, Marcus and Graves, Alex and Bunke, Horst and Schmidhuber, J{\"{u}}rgen},
+author = {Liwicki, Marcus and Graves, Alex and Bunke, Horst and Schmidhuber, Jürgen},
 booktitle = {Proceedings - 9th Int. Conf. on Document Analysis and Recognition},
 doi = {10.1.1.139.5852},
 file = {:Users/awni/Library/Application Support/Mendeley Desktop/Downloaded/Liwicki et al. - Unknown - A Novel Approach to On-Line Handwriting Recognition Based on Bidirectional Long Short-Term Memory Networks.pdf:pdf},
@@ -764,7 +773,7 @@ volume = {385},
 year = {2012}
 }
 @article{Lopes2011,
-author = {Lopes, Carla and Perdig{\~{a}}o, Fernando},
+author = {Lopes, Carla and Perdigão, Fernando},
 doi = {10.5772/17600},
 isbn = {978-953-307-996-7},
 issn = {9789533070865},
@@ -797,7 +806,7 @@ year = {2014}
 @article{Graves2006,
 archivePrefix = {arXiv},
 arxivId = {1512.02595},
-author = {Graves, Alex and Fernandez, Santiago and Gomez, Faustino and Schmidhuber, Jurgen},
+author = {Graves, Alex and Fernandez, Santiago and Gomez, Faustino and Schmidhuber, Jürgen},
 doi = {10.1145/1143844.1143891},
 eprint = {1512.02595},
 isbn = {1595933832},
@@ -822,5 +831,54 @@ title = {Deep Speech: Scaling up end-to-end speech recognition},
 url = {http://arxiv.org/abs/1412.5567},
 volume = {abs/1412.5},
 year = {2014}
+}
+@article{Huang2016,
+archivePrefix = {arXiv},
+arxivId = {1607.08584},
+author = {Huang, De-An and Fei-Fei, Li and Niebles, Juan Carlos},
+doi = {10.1007/978-3-319-46493-0},
+eprint = {1607.08584},
+isbn = {9783319464930},
+issn = {0302-9743},
+journal = {European Conference on Computer Vision},
+month = {jul},
+pages = {137----153},
+pmid = {10463930},
+title = {Connectionist Temporal Modeling for Weakly Supervised Action Labeling},
+url = {http://arxiv.org/abs/1607.08584},
+year = {2016}
+}
+@article{Assael2016,
+archivePrefix = {arXiv},
+arxivId = {1611.01599},
+author = {Assael, Yannis M. and Shillingford, Brendan and Whiteson, Shimon and de Freitas, Nando},
+eprint = {1611.01599},
+month = {nov},
+title = {LipNet: End-to-End Sentence-level Lipreading},
+url = {http://arxiv.org/abs/1611.01599},
+year = {2016}
+}
+@article{Lengerich2016,
+archivePrefix = {arXiv},
+arxivId = {1611.09405},
+author = {Lengerich, Chris and Hannun, Awni},
+eprint = {1611.09405},
+journal = {NIPS 2016 End-to-End Learning for Speech and Audio Processing Workshop},
+month = {nov},
+title = {An End-to-End Architecture for Keyword Spotting and Voice Activity Detection},
+url = {http://arxiv.org/abs/1611.09405},
+year = {2016}
+}
+@article{Fernandez2007,
+author = {Fernández, Santiago and Graves, Alex and Schmidhuber, Jürgen},
+doi = {10.1007/978-3-540-74695-9_23},
+isbn = {9783540746935},
+issn = {03029743},
+journal = {The 17th international conference on Artificial neural networks},
+keywords = {5,84,achieves a word accuracy,an hmm-based speech recogniser,keyword spotting accuracy of,large database of unconstrained,of only 65,speech where,spotting task in a,the system achieved a},
+pages = {220--229},
+title = {An application of recurrent neural networks to discriminative keyword spotting},
+url = {http://link.springer.com/10.1007/978-3-540-74695-9{\_}23},
+year = {2007}
 }
 </script>

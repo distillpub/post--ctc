@@ -1,102 +1,662 @@
-<?xml version="1.0" standalone="yes"?>
-<svg height="390" width="400" id="svg" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="65" r="12" stroke="black" stroke-width="1" fill="#6fa8dc" />
-  <text x="45" y="70" font-family="STIXGeneral-Italic" font-size="18px" fill="#000000">ϵ</text>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="436.86411"
+   width="690.44586"
+   id="svg"
+   version="1.1"
+   sodipodi:docname="beam_search.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata161">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs159" />
+  <style>
+    svg {
+      font: 400 16px/1.55em -apple-system, BlinkMacSystemFont, "Roboto", Helvetica, sans-serif;
+    }
+  </style>
 
-  <circle cx="50" cy="180" r="12" stroke="black" stroke-width="1" fill="#6fa8dc" />
-  <text x="45" y="185" font-family="helvetica" font-size="18px" fill="#000000">a</text>
-
-  <circle cx="50" cy="295" r="12" stroke="black" stroke-width="1" fill="#6fa8dc" />
-  <text x="45" y="302" font-family="helvetica" font-size="18px" fill="#000000">b</text>
-
-
-  <circle cx="130" cy="30" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
-  <text x="125" y="35" font-family="STIXGeneral-Italic" font-size="18px" fill="#000000">ϵ</text>
-  <circle cx="130" cy="65" r="12" stroke="black" stroke-width="1" fill="#E77471" />
-  <text x="125" y="70" font-family="helvetica" font-size="18px" fill="#000000">a</text>
-  <circle cx="130" cy="100" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
-  <text x="125" y="107" font-family="helvetica" font-size="18px" fill="#000000">b</text>
-
-  <circle cx="130" cy="145" r="12" stroke="black" stroke-width="1" fill="#E77471" />
-  <text x="125" y="150" font-family="STIXGeneral-Italic" font-size="18px" fill="#000000">ϵ</text>
-  <circle cx="130" cy="180" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
-  <text x="125" y="185" font-family="helvetica" font-size="18px" fill="#000000">a</text>
-  <circle cx="130" cy="215" r="12" stroke="black" stroke-width="1" fill="#E77471" />
-  <text x="125" y="222" font-family="helvetica" font-size="18px" fill="#000000">b</text>
-
-  <circle cx="130" cy="260" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
-  <text x="125" y="265" font-family="STIXGeneral-Italic" font-size="18px" fill="#000000">ϵ</text>
-  <circle cx="130" cy="295" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
-  <text x="125" y="300" font-family="helvetica" font-size="18px" fill="#000000">a</text>
-  <circle cx="130" cy="330" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
-  <text x="125" y="337" font-family="helvetica" font-size="18px" fill="#000000">b</text>
-
-  <circle cx="230" cy="65" r="12" stroke="black" stroke-width="1" fill="#6fa8dc" />
-  <text x="225" y="70" font-family="STIXGeneral-Italic" font-size="18px" fill="#000000">ϵ</text>
-  <circle cx="280" cy="65" r="12" stroke="black" stroke-width="1" fill="#6fa8dc" />
-  <text x="275" y="70" font-family="helvetica" font-size="18px" fill="#000000">a</text>
-
-  <circle cx="230" cy="180" r="12" stroke="black" stroke-width="1" fill="#6fa8dc" />
-  <text x="225" y="185" font-family="helvetica" font-size="18px" fill="#000000">a</text>
-  <circle cx="280" cy="180" r="12" stroke="black" stroke-width="1" fill="#6fa8dc" />
-  <text x="275" y="185" font-family="STIXGeneral-Italic" font-size="18px" fill="#000000">ϵ</text>
-
-  <circle cx="230" cy="295" r="12" stroke="black" stroke-width="1" fill="#6fa8dc" />
-  <text x="225" y="300" font-family="helvetica" font-size="18px" fill="#000000">a</text>
-  <circle cx="280" cy="295" r="12" stroke="black" stroke-width="1" fill="#6fa8dc" />
-  <text x="275" y="302" font-family="helvetica" font-size="18px" fill="#000000">b</text>
-
-  <circle cx="360" cy="30" r="12" stroke="black" stroke-width="1" fill="#E77471" />
-  <text x="355" y="35" font-family="STIXGeneral-Italic" font-size="18px" fill="#000000">ϵ</text>
-  <circle cx="360" cy="65" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
-  <text x="355" y="70" font-family="helvetica" font-size="18px" fill="#000000">a</text>
-  <circle cx="360" cy="100" r="12" stroke="black" stroke-width="1" fill="#E77471" />
-  <text x="355" y="107" font-family="helvetica" font-size="18px" fill="#000000">b</text>
-
-  <circle cx="360" cy="145" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
-  <text x="355" y="150" font-family="STIXGeneral-Italic" font-size="18px" fill="#000000">ϵ</text>
-  <circle cx="360" cy="180" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
-  <text x="355" y="185" font-family="helvetica" font-size="18px" fill="#000000">a</text>
-  <circle cx="360" cy="215" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
-  <text x="355" y="222" font-family="helvetica" font-size="18px" fill="#000000">b</text>
-
-  <circle cx="360" cy="260" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
-  <text x="355" y="265" font-family="STIXGeneral-Italic" font-size="18px" fill="#000000">ϵ</text>
-  <circle cx="360" cy="295" r="12" stroke="black" stroke-width="1" fill="#d3d3d3" />
-  <text x="355" y="300" font-family="helvetica" font-size="18px" fill="#000000">a</text>
-  <circle cx="360" cy="330" r="12" stroke="black" stroke-width="1" fill="#E77471" />
-  <text x="355" y="337" font-family="helvetica" font-size="18px" fill="#000000">b</text>
-
-  <text x="70" y="370" font-family="helvetica" font-size="18px" fill="#000000">T = 2</text>
-  <text x="270" y="370" font-family="helvetica" font-size="18px" fill="#000000">T = 3</text>
-
-  <line x1="59" y1="57" x2="118" y2="30" stroke="#000000" stroke-width="1.5" />
-  <line x1="62" y1="65" x2="118" y2="65" stroke="#000000" stroke-width="1.5" />
-  <line x1="59" y1="73" x2="118" y2="100" stroke="#000000" stroke-width="1.5" />
-
-  <line x1="59" y1="172" x2="118" y2="145" stroke="#000000" stroke-width="1.5" />
-  <line x1="62" y1="180" x2="118" y2="180" stroke="#000000" stroke-width="1.5" />
-  <line x1="59" y1="188" x2="118" y2="215" stroke="#000000" stroke-width="1.5" />
-
-  <line x1="59" y1="287" x2="118" y2="260" stroke="#000000" stroke-width="1.5" />
-  <line x1="62" y1="295" x2="118" y2="295" stroke="#000000" stroke-width="1.5" />
-  <line x1="59" y1="303" x2="118" y2="330" stroke="#000000" stroke-width="1.5" />
-
-  <line x1="242" y1="65" x2="268" y2="65" stroke="#000000" stroke-width="1.5" />
-  <line x1="242" y1="180" x2="268" y2="180" stroke="#000000" stroke-width="1.5" />
-  <line x1="242" y1="295" x2="268" y2="295" stroke="#000000" stroke-width="1.5" />
-
-  <line x1="289" y1="57" x2="348" y2="30" stroke="#000000" stroke-width="1.5" />
-  <line x1="292" y1="65" x2="348" y2="65" stroke="#000000" stroke-width="1.5" />
-  <line x1="289" y1="73" x2="348" y2="100" stroke="#000000" stroke-width="1.5" />
-
-  <line x1="289" y1="172" x2="348" y2="145" stroke="#000000" stroke-width="1.5" />
-  <line x1="292" y1="180" x2="348" y2="180" stroke="#000000" stroke-width="1.5" />
-  <line x1="289" y1="188" x2="348" y2="215" stroke="#000000" stroke-width="1.5" />
-
-  <line x1="289" y1="287" x2="348" y2="260" stroke="#000000" stroke-width="1.5" />
-  <line x1="292" y1="295" x2="348" y2="295" stroke="#000000" stroke-width="1.5" />
-  <line x1="289" y1="303" x2="348" y2="330" stroke="#000000" stroke-width="1.5" />
-
-
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1421"
+     inkscape:window-height="767"
+     id="namedview157"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     fit-margin-top="10"
+     fit-margin-left="10"
+     fit-margin-right="10"
+     fit-margin-bottom="10"
+     inkscape:zoom="0.85578051"
+     inkscape:cx="103.46713"
+     inkscape:cy="223.63205"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g5051">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3923"
+       originx="224.94585"
+       originy="-47.5" />
+    <sodipodi:guide
+       position="-95.623121,413.38605"
+       orientation="0,1"
+       id="guide3925"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="524.90655,341.50045"
+       orientation="1,0"
+       id="guide954"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <g
+     id="g5051"
+     transform="translate(224.94585,94.364098)">
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.5288254;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.6441278, 7.6441278;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 144.30428,205.20279 158.46083,81.28931 v 0"
+       id="path935"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.53530264;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.67651291, 7.67651291;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 144.00406,135.01623 302.90373,170.7832"
+       id="path933"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#b3b3b3;stroke-width:1.50675893;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.53379483, 7.53379483;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 144.30049,55 h 156.4 v 0"
+       id="path931"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.51394892;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.56974359, 7.56974359;stroke-dashoffset:0;stroke-opacity:1"
+       d="M -109.99494,124.59974 41.298718,286.19568 v 0"
+       id="path941"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.5, 7.5;stroke-dashoffset:0;stroke-opacity:1"
+       d="m -110,90 150,80 v 0"
+       id="path939"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.57607079;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.88035527, 7.88035527;stroke-dashoffset:0;stroke-opacity:1"
+       d="M -110,55 H 55.6 v 0"
+       id="path937"
+       inkscape:connector-curvature="0" />
+    <g
+       transform="translate(83,-9.9999996)"
+       id="g3974">
+      <circle
+         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
+         cx="230"
+         cy="65"
+         r="12"
+         id="circle50" />
+      <text
+         style="font-family:STIXGeneral-Italic;"
+         x="225"
+         y="70"
+         font-size="18px"
+         id="text52">ϵ</text>
+      <circle
+         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
+         cx="280"
+         cy="65"
+         r="12"
+         id="circle54" />
+      <text
+         x="275"
+         y="70"
+         font-size="18px"
+         id="text56">a</text>
+      <circle
+         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
+         cx="230"
+         cy="180"
+         r="12"
+         id="circle58" />
+      <text
+         x="225"
+         y="185"
+         font-size="18px"
+         id="text60">a</text>
+      <circle
+         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
+         cx="280"
+         cy="180"
+         r="12"
+         id="circle62" />
+      <text
+         style="font-family:STIXGeneral-Italic;"
+         x="275"
+         y="185"
+         font-size="18px"
+         id="text64">ϵ</text>
+      <circle
+         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
+         cx="230"
+         cy="295"
+         r="12"
+         id="circle66" />
+      <text
+         x="225"
+         y="300"
+         font-size="18px"
+         id="text68">a</text>
+      <circle
+         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
+         cx="280"
+         cy="295"
+         r="12"
+         id="circle70" />
+      <text
+         x="275"
+         y="302"
+         font-size="18px"
+         id="text72">b</text>
+      <circle
+         style="fill:#e77471;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="30"
+         r="12"
+         id="circle74" />
+      <text
+         style="font-family:STIXGeneral-Italic;"
+         x="355"
+         y="35"
+         font-size="18px"
+         id="text76">ϵ</text>
+      <circle
+         style="fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="65"
+         r="12"
+         id="circle78" />
+      <text
+         x="355"
+         y="70"
+         font-size="18px"
+         id="text80">a</text>
+      <circle
+         style="fill:#e77471;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="100"
+         r="12"
+         id="circle82" />
+      <text
+         x="355"
+         y="107"
+         font-size="18px"
+         id="text84">b</text>
+      <circle
+         style="fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="145"
+         r="12"
+         id="circle86" />
+      <text
+         style="font-family:STIXGeneral-Italic;"
+         x="355"
+         y="150"
+         font-size="18px"
+         id="text88">ϵ</text>
+      <circle
+         style="fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="180"
+         r="12"
+         id="circle90" />
+      <text
+         x="355"
+         y="185"
+         font-size="18px"
+         id="text92">a</text>
+      <circle
+         style="fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="215"
+         r="12"
+         id="circle94" />
+      <text
+         x="355"
+         y="222"
+         font-size="18px"
+         id="text96">b</text>
+      <circle
+         style="fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="260"
+         r="12"
+         id="circle98" />
+      <text
+         style="font-family:STIXGeneral-Italic;"
+         x="355"
+         y="265"
+         font-size="18px"
+         id="text100">ϵ</text>
+      <circle
+         style="fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="295"
+         r="12"
+         id="circle102" />
+      <text
+         x="355"
+         y="300"
+         font-size="18px"
+         id="text104">a</text>
+      <circle
+         style="fill:#e77471;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="330"
+         r="12"
+         id="circle106" />
+      <text
+         x="355"
+         y="337"
+         font-size="18px"
+         id="text108">b</text>
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="242"
+         y1="65"
+         x2="268"
+         y2="65"
+         id="line132" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="242"
+         y1="180"
+         x2="268"
+         y2="180"
+         id="line134" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="242"
+         y1="295"
+         x2="268"
+         y2="295"
+         id="line136" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="289"
+         y1="57"
+         x2="348"
+         y2="30"
+         id="line138" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="292"
+         y1="65"
+         x2="348"
+         y2="65"
+         id="line140" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="289"
+         y1="73"
+         x2="348"
+         y2="100"
+         id="line142" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="289"
+         y1="172"
+         x2="348"
+         y2="145"
+         id="line144" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="292"
+         y1="180"
+         x2="348"
+         y2="180"
+         id="line146" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="289"
+         y1="188"
+         x2="348"
+         y2="215"
+         id="line148" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="289"
+         y1="287"
+         x2="348"
+         y2="260"
+         id="line150" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="292"
+         y1="295"
+         x2="348"
+         y2="295"
+         id="line152" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="289"
+         y1="303"
+         x2="348"
+         y2="330"
+         id="line154" />
+    </g>
+    <g
+       transform="translate(2,-9.9999996)"
+       id="g3921">
+      <circle
+         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
+         cx="50"
+         cy="65"
+         r="12"
+         id="circle2" />
+      <text
+         style="font-family:STIXGeneral-Italic;"
+         x="45"
+         y="70"
+         font-size="18px"
+         id="text4">ϵ</text>
+      <circle
+         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
+         cx="50"
+         cy="180"
+         r="12"
+         id="circle6" />
+      <text
+         x="45"
+         y="185"
+         font-size="18px"
+         id="text8">a</text>
+      <circle
+         style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
+         cx="50"
+         cy="295"
+         r="12"
+         id="circle10" />
+      <text
+         x="45"
+         y="302"
+         font-size="18px"
+         id="text12">b</text>
+      <circle
+         style="fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="30"
+         r="12"
+         id="circle14" />
+      <text
+         style="font-family:STIXGeneral-Italic;"
+         x="125"
+         y="35"
+         font-size="18px"
+         id="text16">ϵ</text>
+      <circle
+         style="fill:#e77471;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="65"
+         r="12"
+         id="circle18" />
+      <text
+         x="125"
+         y="70"
+         font-size="18px"
+         id="text20">a</text>
+      <circle
+         style="fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="100"
+         r="12"
+         id="circle22" />
+      <text
+         x="125"
+         y="107"
+         font-size="18px"
+         id="text24">b</text>
+      <circle
+         style="fill:#e77471;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="145"
+         r="12"
+         id="circle26" />
+      <text
+         style="font-family:STIXGeneral-Italic;"
+         x="125"
+         y="150"
+         font-size="18px"
+         id="text28">ϵ</text>
+      <circle
+         style="fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="180"
+         r="12"
+         id="circle30" />
+      <text
+         x="125"
+         y="185"
+         font-size="18px"
+         id="text32">a</text>
+      <circle
+         style="fill:#e77471;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="215"
+         r="12"
+         id="circle34" />
+      <text
+         x="125"
+         y="222"
+         font-size="18px"
+         id="text36">b</text>
+      <circle
+         style="fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="260"
+         r="12"
+         id="circle38" />
+      <text
+         style="font-family:STIXGeneral-Italic;"
+         x="125"
+         y="265"
+         font-size="18px"
+         id="text40">ϵ</text>
+      <circle
+         style="fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="295"
+         r="12"
+         id="circle42" />
+      <text
+         x="125"
+         y="300"
+         font-size="18px"
+         id="text44">a</text>
+      <circle
+         style="fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="330"
+         r="12"
+         id="circle46" />
+      <text
+         x="125"
+         y="337"
+         font-size="18px"
+         id="text48">b</text>
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="59"
+         y1="57"
+         x2="118"
+         y2="30"
+         id="line114" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="62"
+         y1="65"
+         x2="118"
+         y2="65"
+         id="line116" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="59"
+         y1="73"
+         x2="118"
+         y2="100"
+         id="line118" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="59"
+         y1="172"
+         x2="118"
+         y2="145"
+         id="line120" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="62"
+         y1="180"
+         x2="118"
+         y2="180"
+         id="line122" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="59"
+         y1="188"
+         x2="118"
+         y2="215"
+         id="line124" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="59"
+         y1="287"
+         x2="118"
+         y2="260"
+         id="line126" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="62"
+         y1="295"
+         x2="118"
+         y2="295"
+         id="line128" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         x1="59"
+         y1="303"
+         x2="118"
+         y2="330"
+         id="line130" />
+    </g>
+    <g
+       transform="translate(-88.33568,-59.527859)"
+       id="g3885">
+      <circle
+         inkscape:label="circle3852"
+         id="circle3852"
+         r="12"
+         cy="149.61838"
+         cx="-113.88583"
+         style="fill:#6fa8dc;stroke:#000000;stroke-width:1" />
+      <text
+         inkscape:label="text3854"
+         id="text3854"
+         font-size="18px"
+         y="154.61838"
+         x="-118.88583"
+         style="font-family:STIXGeneral-Italic;">λ</text>
+      <circle
+         id="circle3856"
+         r="12"
+         cy="114.61838"
+         cx="-33.885822"
+         style="fill:#e77471;stroke:#000000;stroke-width:1" />
+      <text
+         id="text3858"
+         font-size="18px"
+         y="119.61838"
+         x="-38.885822"
+         style="font-family:STIXGeneral-Italic;">ϵ</text>
+      <circle
+         inkscape:label="circle3860"
+         id="circle3860"
+         r="12"
+         cy="149.61838"
+         cx="-33.885822"
+         style="fill:#e77471;fill-opacity:1;stroke:#000000;stroke-width:1" />
+      <text
+         id="text3862"
+         font-size="18px"
+         y="154.61838"
+         x="-38.885822">a</text>
+      <circle
+         id="circle3864"
+         r="12"
+         cy="184.61838"
+         cx="-33.885822"
+         style="fill:#e77471;stroke:#000000;stroke-width:1" />
+      <text
+         id="text3866"
+         font-size="18px"
+         y="191.61838"
+         x="-38.885822">b</text>
+      <line
+         id="line3868"
+         y2="114.61838"
+         x2="-45.885822"
+         y1="141.61838"
+         x1="-104.88583"
+         style="stroke:#000000;stroke-width:1.5" />
+      <line
+         id="line3870"
+         y2="149.61838"
+         x2="-45.885822"
+         y1="149.61838"
+         x1="-101.88583"
+         style="stroke:#000000;stroke-width:1.5" />
+      <line
+         id="line3872"
+         y2="184.61838"
+         x2="-45.885822"
+         y1="157.61838"
+         x1="-104.88583"
+         style="stroke:#000000;stroke-width:1.5" />
+    </g>
+    <text
+       x="299.74576"
+       y="-70.402542"
+       font-size="18px"
+       id="text112">T = 3</text>
+    <text
+       x="39.427967"
+       y="-71.228813"
+       font-size="18px"
+       id="text110">T = 2</text>
+    <text
+       id="text943"
+       font-size="18px"
+       y="-71.452965"
+       x="-215.23589">T = 1</text>
+  </g>
 </svg>

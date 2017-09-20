@@ -163,18 +163,18 @@ reasons: the first corresponds to <script type="math/tex">Y =</script> [c, c, a,
 the <script type="math/tex">\epsilon</script> tokens are left unaligned. They are optional since they don’t
 fall between consecutive repeat characters in <script type="math/tex">Y</script>.</p>
 
-<figure class="l-body" style="width:750px;height:300px;">
+<figure class="l-body" style="width:750px;height:270px;">
   <div style="width: 180px; position: absolute;">
   <img src="alignment_no_epsilon.svg" />
-  <figcaption>
-  <strong>Left:</strong> The alignment without the <script type="math/tex">\epsilon</script>
-  token. <strong>
+  <figcaption style="width:130px;margin-left:25px;">
+  The alignment matrix without the <script type="math/tex">\epsilon</script>
+  token.
   </figcaption>
   </div>
-  <div style="width: 335px; position: absolute; left: 240px;">
+  <div style="width: 350px; position: absolute; left: 240px;">
   <img src="alignment_epsilon.svg" />
-  <figcaption>
-  Right:</strong> The alignment including the <script type="math/tex">\epsilon</script> token.
+  <figcaption style="width:200px;margin-left:25px;">
+  The alignment matrix including the <script type="math/tex">\epsilon</script> token.
   </figcaption>
   </div>
 </figure>
@@ -315,13 +315,12 @@ time-step. The new set of hypotheses is generated from the previous set by
 extending each hypothesis with all possible output characters.</p>
 
 
-<figure class="l-body">
-  <img src="beam_search.svg" style="width: 60%;"/>
-  <figcaption>
-  Steps two and three of a standard beam search algorithm with an output
-  alphabet <script type="math/tex">\{\epsilon, a, b\}</script> and a beam size
-  of three. The current hypotheses in the beam are given by the blue nodes. The
-  proposed extensions are grey and the selected extensions are red.
+<figure class="l-body" style="width:700px;">
+  <img src="beam_search.svg" />
+  <figcaption style="width:300px;">
+  A standard beam search algorithm with an alphabet of
+  <script type="math/tex">\{\epsilon, a, b\}</script> and a beam size
+  of three.
   </figcaption>
 </figure>
 
@@ -333,16 +332,12 @@ given prefix based on all the alignments which map to it. The image below
 displays steps two, three and four of the algorithm. The dashed lines indicate
 the output prefix that the proposed extension maps to.</p>
 
-<figure class="l-body">
-  <img src="prefix_beam_search.svg" style="width: 80%"/>
-  <figcaption>
-  Steps two, three and part of step four of a CTC beam search with an output
-  alphabet <script type="math/tex">\{\epsilon, a, b\}</script> and a beam size of
-  three. The <script type="math/tex">\lambda</script> token indicates the empty
-  string. The blue nodes indicate the current hypothesis in the beam and the red
-  and grey nodes indicate possible extensions. The red nodes are the outputs
-  included in the selected hypotheses for the next time-step. The dashed lines
-  indicate the hypotheses they contribute to.
+<figure class="l-body" style="width:900px;">
+  <img src="prefix_beam_search.svg"/>
+  <figcaption style="width:300px;">
+  The CTC beam search algorithm with an output alphabet
+  <script type="math/tex">\{\epsilon, a, b\}</script>
+  and a beam size of three.
   </figcaption>
 </figure>
 

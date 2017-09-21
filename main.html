@@ -50,8 +50,8 @@ where it’s used in many state-of-the-art models.</p>
 sequences <script type="math/tex">X = [x_1, x_2, \ldots, x_T] \in
 \mathcal{X}</script> to corresponding output sequences <script
 type="math/tex">Y = [y_1, y_2, \ldots, y_U] \in \mathcal{Y}</script>. We want
-to learn a “good” mapping of <script type="math/tex">X</script>s to <script
-type="math/tex">Y</script>s. For example, in speech recognition a “good”
+to learn a "good" mapping of <script type="math/tex">X</script>s to <script
+type="math/tex">Y</script>s. For example, in speech recognition a "good"
 mapping is one which takes an audio input to an accurate transcription.</p>
 
 <p>The "sequence transduction" problem has three properties which make it difficult
@@ -188,20 +188,38 @@ of <script type="math/tex">X</script> to <script type="math/tex">Y</script> is m
 output element but not vice-versa.</p>
 
 <h3 id="loss-function">Loss Function</h3>
-<p>With the alignment setup, we can write down the CTC objective function for a
-single <script type="math/tex">(X, Y)</script> pair
-\begin{align}
-p(Y \mid X) = \sum_{A \in \mathcal{A}} \prod_{t=1}^T p_t(a_t \mid X).
-\end{align}
-Recall <script type="math/tex">\mathcal{A}</script> is the set of alignments of <script type="math/tex">Y</script> to <script type="math/tex">X</script> allowed by
+<p>With the alignment setup, we can write down the CTC objective
+function for a single <script type="math/tex">(X, Y)</script> pair.</p>
+
+<figure style="width:600px;height:100px;">
+  <span style="position:absolute; left:30px; top:0px">
+    <script type="math/tex">p(Y \mid X)</script>
+  </span>
+  <figcaption style="position:absolute; left:30px; top:50px; width:150px;">
+  The CTC conditional probability
+  </figcaption>
+  <span style="position:absolute; left:170px; top:0px">
+    <script type="math/tex">=</script>
+  </span>
+  <span style="position:absolute; left:220px; top:0px">
+    <script type="math/tex">\sum_{A \in \mathcal{A}}</script>
+  </span>
+  <figcaption style="position:absolute; left:220px; top:50px; width:150px;">
+  <strong>marginalizes</strong> over the set of valid alignments 
+  </figcaption>
+  <span style="position:absolute; left:420px; top:0px">
+    <script type="math/tex">\prod_{t=1}^T p_t(a_t \mid X)</script>
+  </span>
+  <figcaption style="position:absolute; left:420px; top:50px; width:180px;">
+  computing the probability for a single alignment frame-by-frame.
+  </figcaption>
+</figure>
+
+<p>Recall <script type="math/tex">\mathcal{A}</script> is the set of alignments of <script type="math/tex">Y</script> to <script type="math/tex">X</script> allowed by
 CTC. The element <script type="math/tex">A = [a_1, \ldots, a_T]</script> is a member of <script type="math/tex">\mathcal{A}</script>. The
 function <script type="math/tex">p_t(a_t \mid X)</script> can be any function which produces a distribution
 for each input time-step <script type="math/tex">t</script> over the output alphabet given the full
 input <script type="math/tex">X</script>.</p>
-
-<p>The inner product of the loss function computes the probability of a given
-alignment <script type="math/tex">A</script> frame-by-frame. The outer sum marginalizes over all possible
-alignments to give the conditional output probability <script type="math/tex">p(Y \mid X)</script>.</p>
 
 <p>The hard part of the CTC loss is not understanding what it is, but computing
 it efficiently. The set <script type="math/tex">\mathcal{A}</script> can be
@@ -219,7 +237,10 @@ compute the sum above.</p>
 dynamic programming algorithm. Like any dynamic programming algorithm, the key
 is recognizing the subproblems.</p>
 
-<p>To simplify the problem let the sequence <script type="math/tex">Z = [z_{1}, \ldots, z_{2U+1}]</script>
+<p>To simplify the problem let the sequence
+\begin{align}
+Z = [z_{1}, \ldots, z_{2U+1}] = [\epsilon, y_1, \epsilon, y_2, \ldots, \epsilon, y_U, \epsilon]
+\end{align}
 consist of the elements of <script type="math/tex">Y</script> with an <script type="math/tex">\epsilon</script> at the beginning, end,
 and between every character. Let <script type="math/tex">\alpha_{i,j}</script> be the CTC score for the
 subsequences <script type="math/tex">X_{1:i}</script> and <script type="math/tex">Z_{1:j}</script>. We can compute <script type="math/tex">\alpha_{i, j}</script> if
@@ -230,10 +251,37 @@ z_{j-2}</script> (a consecutive repeat character in <script type="math/tex">Y</s
 \begin{align}
 \alpha_{i, j} = (\alpha_{i-1, j-1} + \alpha_{i-1, j}) p_i(z_{j} \mid X).
 \end{align}
-In this case, only alignments which have matched <script type="math/tex">z_{j-1}</script> to some previous
-input element are allowed. The first condition is because we can’t leave any
-characters in <script type="math/tex">Y</script> unaligned. The second condition is because we <em>must</em> have
+We have this case because only alignments which have matched <script type="math/tex">z_{j-1}</script> to some previous
+input element are allowed. The first condition says we can’t leave any
+characters in <script type="math/tex">Y</script> unaligned. The second condition says we <em>must</em> have
 an <script type="math/tex">\epsilon</script> between repeat characters.</p>
+
+<figure class="l-body" style="width:700px;height:180px;">
+  <div style="width: 200px; position: absolute;">
+  <img src="cost_no_skip.svg" />
+  <figcaption style="margin-left:20px;">
+    <strong>Case 1 (<script type="math/tex">\epsilon</script>):</strong>
+    All elements of <script type="math/tex">Y</script> must be aligned.
+  </figcaption>
+  </div>
+  <div style="width: 200px; position: absolute; left: 250px;">
+  <img src="cost_epsilon.svg" />
+  <figcaption style="margin-left:20px;">
+    <strong>Case 1 (repeat):</strong>
+    An <script type="math/tex">\epsilon</script> has to be
+    between repeat elements of <script type="math/tex">Y</script>.
+  </figcaption>
+  </div>
+  <div style="width: 200px; position: absolute; left: 500px;">
+  <img src="cost_regular.svg" />
+  <figcaption style="margin-left:20px;">
+  <strong>Case 2:</strong>
+    When aligning distinct elements of <script type="math/tex">Y</script>
+    the <script type="math/tex">\epsilon</script> is optional.
+  </figcaption>
+  </div>
+</figure>
+
 
 <p><strong>Case 2:</strong> If we aren’t in the first case, then we’re in the second case and
 \begin{align}
@@ -265,7 +313,7 @@ where <script type="math/tex">S = 2U + 1</script>.</p>
 
 <p>As long as the individual output model <script type="math/tex">p_i(z \mid X)</script> is differentiable then
 the entire loss function is differentiable. This is true since computing <script type="math/tex">p(Y
-\mid X)</script> consists only of sums and products of the <script type="math/tex">p_i(z \mid X)</script>.</p>
+\mid X)</script> simply consists of sums and products of the <script type="math/tex">p_i(z \mid X)</script>.</p>
 
 <p>The time complexity of this dynamic programming algorithm is <script type="math/tex">O(TU)</script> with a
 fairly small constant. Conveniently, the time to compute the loss function does
@@ -361,12 +409,43 @@ however, dense and tricky to get right. Refer to this <a href="https://gist.gith
 an example implementation in Python.</p>
 
 <p>In some problems, such as speech recognition, incorporating a language model
-over the outputs significantly improves accuracy. In this case we can
-repose the inference problem as 
-\begin{align}
-Y^* = \text{argmax}_{Y \in \mathcal{Y}} p(Y \mid X) p(Y)^\alpha L(Y)^\beta.
-\end{align}
-The function <script type="math/tex">L(\cdot)</script> computes the length of <script type="math/tex">Y</script> in terms of the language
+over the outputs significantly improves accuracy. To do this, we can
+repose the inference problem.</p>
+
+<figure style="width:500px;height:120px">
+  <span style="position:absolute; left:30px; top:0px">
+    <script type="math/tex">Y^*</script>
+  </span>
+  <figcaption style="position:absolute; left:30px; top:50px; width:120px">
+  The most likely output based on a product of
+  </figcaption>
+  <span style="position:absolute; left:70px; top:0px">
+    <script type="math/tex">=</script>
+  </span>
+  <span style="position:absolute; left:100px; top:0px">
+    <script type="math/tex">\text{argmax}_{Y \in \mathcal{Y}}</script>
+  </span>
+  <span style="position:absolute; left:230px; top:0px">
+    <script type="math/tex">p(Y \mid X)</script>
+  </span>
+  <figcaption style="position:absolute; left:230px; top:50px; width:100px">
+  the CTC conditional probability
+  </figcaption>
+  <span style="position:absolute; left:350px; top:0px">
+    <script type="math/tex">p(Y)^\alpha</script>
+  </span>
+  <figcaption style="position:absolute; left:350px; top:50px; width:100px">
+  the language model probability 
+  </figcaption>
+  <span style="position:absolute; left:480px; top:0px">
+    <script type="math/tex">L(Y)^\beta</script>
+  </span>
+  <figcaption style="position:absolute; left:480px; top:50px; width:100px">
+  and a "word" insertion bonus.
+  </figcaption>
+</figure>
+
+<p>The function <script type="math/tex">L(\cdot)</script> computes the length of <script type="math/tex">Y</script> in terms of the language
 model tokens and serves as a word insertion bonus. The language model scores
 are only included when a prefix is extended by a character (or word) and not at
 every step of the algorithm. This causes the search to favor shorter prefixes,

@@ -167,13 +167,20 @@ If there are consecutive repeat characters in <script type="math/tex">Y</script>
 between them is required. This allows us to differentiate between alignments of
 [c, a, t] and [c, a, a, t].</p>
 
-<p>Let’s go back to the example. A few allowed alignments of <script type="math/tex">Y</script> are
-[<script type="math/tex">\epsilon</script>, c, c, <script type="math/tex">\epsilon</script>, a, t], [c, c, a, a, t, t] and [c,
-<script type="math/tex">\epsilon</script>, <script type="math/tex">\epsilon</script>, <script type="math/tex">\epsilon</script>, a, t]. A few disallowed alignments are
-[c, <script type="math/tex">\epsilon</script>, c, <script type="math/tex">\epsilon</script>, a, t], [c, c, a, t, t] and [c, <script type="math/tex">\epsilon</script>,
-<script type="math/tex">\epsilon</script>, <script type="math/tex">\epsilon</script>, t, t]. These are not allowed for the following
-reasons: the first corresponds to <script type="math/tex">Y =</script> [c, c, a, t], the second has length
-<script type="math/tex">5</script>, and the third is missing the ‘a’.</p>
+<p>Let’s go back to the [c, a, t] example with <script type="math/tex">T = 6</script>.</p>
+
+<figure style="width:500px; height:150px;">
+  <figcaption>
+  <div style="position:absolute; left: 13px; top:0px; width: 150px;"><strong>Valid Alignments</strong></div>
+  <div style="position:absolute; left: 233px; top:0px; width: 150px;"><strong>Invalid Alignments</strong></div>
+  <div style="position:absolute; left: 420px; top:30px; width: 100px;">corresponds to <script type="math/tex">Y =</script> [c, c, a, t]</div>
+  <div style="position:absolute; left: 420px; top:90px; width: 100px;">has length 5</div>
+  <div style="position:absolute; left: 420px; top:140px; width: 100px;">missing the 'a'</div>
+  </figcaption>
+  <div style="width:400px; position:absolute; left: 0px; top: 25px;">
+  <img src="valid_invalid_alignments.svg" />
+  </div>
+</figure>
 
 <p>A convenient way to visualize the alignment between <script type="math/tex">X</script> and <script type="math/tex">Y</script> is with a
 2D alignment matrix. Here’s one for the [<script type="math/tex">\epsilon</script>, c, c,

@@ -4,7 +4,7 @@
 
 <script type="text/front-matter">
   title: "An In-depth Guide to Connectionist Temporal Classification"
-  description: "In this tutorial you will learn about the Connectionist Temporal Classification (CTC) algorithm – a popular model for sequence to sequence mapping with neural networks."
+  description: "In this tutorial you will learn about the Connectionist Temporal Classification (CTC) – a popular algorithm for sequence to sequence mapping with neural networks."
   authors:
   - Awni Hannun : http://stanford.edu/~awni/
   affiliations:
@@ -15,7 +15,7 @@
   <h1>An In-depth Guide to Connectionist Temporal Classification</h1>
   <h2>
   In this tutorial you will learn about the Connectionist Temporal
-  Classification (CTC) algorithm – a popular model for sequence to sequence
+  Classification (CTC) – a popular algorithm for sequence to sequence
   mapping with neural networks.
   </h2>
   <dt-byline></dt-byline>
@@ -114,8 +114,20 @@ consider a naive approach.</p>
 
 <p>Let’s use an example. Let the input length <script type="math/tex">T = 6</script> and <script type="math/tex">Y =</script> [c, a, t]. In
 this case, one way to align <script type="math/tex">Y</script> and <script type="math/tex">X</script> would be to let the elements of
-<script type="math/tex">Y</script> align to multiple elements of <script type="math/tex">X</script>. So the alignment could be [c, c, a,
-a, a, t]. This approach has two problems.</p>
+<script type="math/tex">Y</script> align to multiple elements of <script type="math/tex">X</script>. So the alignment could be</p>
+
+<figure style="width:300px; height:150px;">
+  <figcaption>
+  <span style="position:absolute; left: 120px; top:15px;">output (<script type="math/tex">Y</script>)</span>
+  <span style="position:absolute; left: 120px; top:65px;">alignment</span>
+  <span style="position:absolute; left: 125px; top:110px;">input (<script type="math/tex">X</script>)</span>
+  </figcaption>
+  <div style="width:200px; position:absolute; left: 200px;">
+  <img src="naive_alignment.svg" />
+  </div>
+</figure>
+
+<p>This approach has two problems.</p>
 <ul>
   <li>Some elements of <script type="math/tex">X</script> may not correspond to any element of <script type="math/tex">Y</script>. In this case, we
 may not want to force every element of <script type="math/tex">X</script> to match with an element of
@@ -132,19 +144,26 @@ output characters. This new token is sometimes called the “blank” token. We�
 refer to it here as <script type="math/tex">\epsilon</script>. When an input element aligns to <script type="math/tex">\epsilon</script>
 then no output element corresponds to it.</p>
 
-<p>The alignments allowed by CTC are of length <script type="math/tex">T</script>, the length of the input. Let
-<script type="math/tex">\mathcal{A}</script> be the set of alignments. We can compute <script type="math/tex">\mathcal{A}</script> from
-<script type="math/tex">Y</script> in two steps.</p>
-<ol>
-  <li>Optionally insert an <script type="math/tex">\epsilon</script> at the beginning, end, and between every
-character of <script type="math/tex">Y</script>.</li>
-  <li>Arbitrarily repeat any character present in the <script type="math/tex">\epsilon</script>-expanded <script type="math/tex">Y</script>
-(including <script type="math/tex">\epsilon</script>) until the new sequence has length <script type="math/tex">T</script>.</li>
-</ol>
+<p>The alignments allowed by CTC are of length <script type="math/tex">T</script>,
+the length of the input. Let <script type="math/tex">\mathcal{A}</script>
+be the set of such alignments for a given
+<script type="math/tex">Y</script>. We can produce <script type="math/tex">Y</script>
+from an alignment in the set <script type="math/tex">\mathcal{A}</script>
+as follows:</p>
 
-<p>This produces one possible alignment. The set <script type="math/tex">\mathcal{A}</script> contains all possible alignments we can
-generate this way. If there are consecutive repeat characters in <script
-type="math/tex">Y</script> then the <script type="math/tex">\epsilon</script>
+<figure style="width:500px; height:240px;">
+  <figcaption>
+  <div style="position:absolute; left: 80px; top:30px; width: 150px;">First, merge repeat characters.</div>
+  <div style="position:absolute; left: 80px; top:100px; width: 150px;">Then, remove any <script type="math/tex">\epsilon</script> tokens.</div>
+  <div style="position:absolute; left: 80px; top:190px; width: 150px;">The remaining characters are the output.</div>
+  </figcaption>
+  <div style="width:400px; position:absolute; left: 200px;">
+  <img src="ctc_alignment_steps.svg" />
+  </div>
+</figure>
+
+<p>The set <script type="math/tex">\mathcal{A}</script> contains all possible alignments which map to <script type="math/tex">Y</script>.
+If there are consecutive repeat characters in <script type="math/tex">Y</script> then the <script type="math/tex">\epsilon</script>
 between them is required. This allows us to differentiate between alignments of
 [c, a, t] and [c, a, a, t].</p>
 

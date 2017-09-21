@@ -145,11 +145,11 @@ refer to it here as <script type="math/tex">\epsilon</script>. When an input ele
 then no output element corresponds to it.</p>
 
 <p>The alignments allowed by CTC are of length <script type="math/tex">T</script>,
-the length of the input. Let <script type="math/tex">\mathcal{A}</script>
-be the set of such alignments for a given
-<script type="math/tex">Y</script>. We can produce <script type="math/tex">Y</script>
-from an alignment in the set <script type="math/tex">\mathcal{A}</script>
-as follows:</p>
+the length of the input. For a given <script type="math/tex">Y</script>,
+let <script type="math/tex">\mathcal{A}</script>
+be the set of such alignments. An alignment is in the set
+<script type="math/tex">\mathcal{A}</script> if it maps to
+<script type="math/tex">Y</script> as follows:</p>
 
 <figure style="width:500px; height:240px;">
   <figcaption>
@@ -167,7 +167,8 @@ If there are consecutive repeat characters in <script type="math/tex">Y</script>
 between them is required. This allows us to differentiate between alignments of
 [c, a, t] and [c, a, a, t].</p>
 
-<p>Let’s go back to the [c, a, t] example with <script type="math/tex">T = 6</script>.</p>
+<p>Let’s go back to the [c, a, t] example with <script type="math/tex">T =
+6</script>. Here are a few more examples of valid and invalid alignments.</p>
 
 <figure style="width:500px; height:150px;">
   <figcaption>
@@ -183,9 +184,9 @@ between them is required. This allows us to differentiate between alignments of
 </figure>
 
 <p>A convenient way to visualize the alignment between <script type="math/tex">X</script> and <script type="math/tex">Y</script> is with a
-2D alignment matrix. Here’s one for the [<script type="math/tex">\epsilon</script>, c, c,
+2D alignment matrix. Below is an example for the [<script type="math/tex">\epsilon</script>, c, c,
 <script type="math/tex">\epsilon</script>, a, t] alignment. Sometimes it’s useful to include the
-<script type="math/tex">\epsilon</script>’s in the alignment matrix. Both are shown below. Note that some of
+<script type="math/tex">\epsilon</script>’s in the alignment matrix. Both are shown here. Note that some of
 the <script type="math/tex">\epsilon</script> tokens are left unaligned. They are optional since they don’t
 fall between consecutive repeat characters in <script type="math/tex">Y</script>.</p>
 
@@ -583,11 +584,42 @@ p(X \mid Y) = \sum_{A \in \mathcal{A}} p(X, A \mid Y).
 \end{align}
 To simplify notation, let’s remove the conditioning on <script type="math/tex">Y</script>, it will be
 unchanging in every <script type="math/tex">p(\cdot)</script>. Using the HMM assumptions we can
-write
-\begin{align}
-p(X) = \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(x_t \mid a_t) p(a_t \mid a_{t-1}).
-\end{align}
-Two assumptions have been made here. The first is the usual Markov property.
+write</p>
+
+<figure style="width:700px;height:100px;">
+  <figcaption>
+    <div style="position:absolute; left:10px; top:50px; width:120px;">
+      The probability of the observation (given <script type="math/tex">Y</script>)
+    </div>
+    <div style="position:absolute; left:150px; top:50px; width:170px;">
+      sums over each alignment the frame-by-frame product of
+    </div>
+    <div style="position:absolute; left:350px; top:50px; width:120px;">
+      the emission probability 
+    </div>
+    <div style="position:absolute; left:500px; top:50px; width:150px;">
+      and the transition probability. 
+    </div>
+  </figcaption>
+<span style="position:absolute; left:10px;">
+  <script type="math/tex">p(X)</script>
+</span>
+<span style="position:absolute; left:100px;">
+  <script type="math/tex">=</script>
+</span>
+<span style="position:absolute; left:150px;">
+  <script type="math/tex">\sum_{A \in \mathcal{A}} \prod_{t=1}^T</script>
+</span>
+<span style="position:absolute; left:350px;">
+  <script type="math/tex">p(x_t \mid a_t)</script>
+</span>
+<span style="position:absolute; left:500px;">
+  <script type="math/tex">p(a_t \mid a_{t-1})</script>
+</span>
+
+</figure>
+
+<p>Two assumptions have been made here. The first is the usual Markov property.
 The state <script type="math/tex">a_t</script> is conditionally independent of all historical states given
 the previous state <script type="math/tex">a_{t-1}</script>. The second is that the observation <script type="math/tex">x_t</script> is
 conditionally independent of everything else given the current state <script type="math/tex">a_t</script>.</p>
@@ -612,7 +644,7 @@ p(X) &amp;\propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T \frac{p(a_t \mid x_t)p(
 <p>If we assume a uniform prior over the states <script type="math/tex">a</script> and condition on all of
 <script type="math/tex">X</script> instead of a single element at a time, we arrive at 
 \begin{align}
-\sum_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X). 
+p(X) \propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X). 
 \end{align}</p>
 
 <p>The above equation is essentially the CTC loss function, assuming the set
@@ -657,7 +689,7 @@ left to the right is allowed.</p>
 </figure>
 
 <p>In CTC we augment the alphabet with <script type="math/tex">\epsilon</script> and the HMM model allows a
-subset of the left-right transitions. In this model there are two start
+subset of the left-right transitions. The CTC HMM has two start
 states and two accepting states.</p>
 
 <p>One possible source of confusion is that the HMM model differs for any unique
@@ -724,8 +756,7 @@ Open-source software tools can make getting started with CTC much easier:</p>
   <li>Baidu Research has open-sourced <a href="https://github.com/baidu-research/warp-ctc">warp-ctc</a>. The package is written in C++ and
 CUDA. The CTC loss function runs on either the CPU or the GPU. Bindings are
 available for Torch, TensorFlow and <a href="https://github.com/awni/warp-ctc">PyTorch</a>.</li>
-  <li>TensorFlow has built in <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_loss">CTC loss</a> and <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_beam_search_decoder">CTC beam search</a> functions. The
-TensorFlow version doesn’t support the GPU yet.</li>
+  <li>TensorFlow has built in <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_loss">CTC loss</a> and <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_beam_search_decoder">CTC beam search</a> functions. The TensorFlow CTC implementation doesn't support the GPU yet.</li>
   <li>Nvidia also provides a GPU implementation of CTC in <a href="https://developer.nvidia.com/cudnn">cuDNN</a> versions 7 and up.</li>
 </ul>
 
@@ -734,7 +765,7 @@ instable.  One method to avoid this is to normalize the <script type="math/tex">
 time-step.  The <a href="ftp://ftp.idsia.ch/pub/juergen/icml2006.pdf">original publication</a> has more detail on this
 including the adjustments to the gradient. In practice this works well enough
 for medium length sequences but can still underflow for long sequences.
-Another solution is to compute the loss function in log-space with the
+A better solution is to compute the loss function in log-space with the
 <a href="https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations">log-sum-exp trick</a>. Inference should also be done in log-space
 using the log-sum-exp trick.</p>
 
@@ -783,7 +814,7 @@ video<dt-cite key="Huang2016"></dt-cite> and keyword detection in audio.
 to speech recognition in the 1970’s. For an introduction to the HMM and
 applications to speech recognition see Rabiner’s canonical tutorial.<dt-cite key="Rabiner1989"></dt-cite></p>
 
-<p>Encoder-decoder models were simultaneously developed in 2014.<dt-cite key="Cho2014,Sutskever2014"></dt-cite>
+<p>Encoder-decoder models were developed in 2014.<dt-cite key="Cho2014,Sutskever2014"></dt-cite>
 The online publication <em>Distill</em> gives an in-depth guide to
 attention in encoder-decoder models.<dt-cite key="Olah2016"></dt-cite></p>
 

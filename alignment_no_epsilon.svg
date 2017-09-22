@@ -7,8 +7,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   height="229.20312"
-   width="168.11719"
+   height="127.2991"
+   width="327.93298"
    id="svg"
    version="1.1"
    sodipodi:docname="alignment_no_epsilon.svg"
@@ -27,9 +27,11 @@
   </metadata>
   <defs
      id="defs169">
-  <style type="text/css">
+    <style
+       type="text/css"
+       id="style3">
   svg {
-    font: 400 16px/1.55em -apple-system, BlinkMacSystemFont, "Roboto", Helvetica, sans-serif;
+    font: 400 16px/1.55em -apple-system, BlinkMacSystemFont, &quot;Roboto&quot;, Helvetica, sans-serif;
   }
   </style>
   </defs>
@@ -42,194 +44,252 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1387"
-     inkscape:window-height="754"
+     inkscape:window-width="1440"
+     inkscape:window-height="770"
      id="namedview167"
      showgrid="false"
+     inkscape:zoom="1.7623277"
+     inkscape:cx="95.986921"
+     inkscape:cy="10.314529"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g922"
      fit-margin-top="10"
      fit-margin-left="10"
      fit-margin-right="20"
      fit-margin-bottom="20"
-     inkscape:zoom="1.2461538"
-     inkscape:cx="29.715938"
-     inkscape:cy="115.50003"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg" />
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="237.38208,126.89396"
+       orientation="1,0"
+       id="guide881"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-1.5065208,104.76413"
+       orientation="0,1"
+       id="guide883"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
   <g
-     id="g866"
-     transform="translate(-2.3828125,-0.80304718)">
+     id="g922"
+     transform="translate(3.7905512,2.1748676)">
     <text
-       id="text2"
+       id="text58"
        font-size="16px"
-       y="21.506172"
-       x="45">c</text>
+       y="47.176231"
+       x="5.8237643"
+       style="font-size:16px">c</text>
     <text
-       id="text4"
+       id="text62"
        font-size="16px"
-       y="21.506172"
-       x="85">a</text>
+       y="72.376099"
+       x="5.2485113"
+       style="font-size:16px">a</text>
     <text
-       id="text6"
+       id="text66"
        font-size="16px"
-       y="21.506172"
-       x="125">t</text>
+       y="97.575974"
+       x="6.0778322"
+       style="font-size:16px">t</text>
     <text
-       id="text8"
-       font-size="16px"
-       y="49.506172"
-       x="12">1</text>
+       style="font-family:STIXGeneral-Italic"
+       inkscape:transform-center-y="0.41947012"
+       inkscape:transform-center-x="-3.7752311"
+       x="42.535988"
+       y="14.955064"
+       id="text868">x<tspan
+   style="font-size:10px;baseline-shift:-50%"
+   id="tspan866"
+   baseline-shift="-50%"
+   font-size="10px">1</tspan>
+</text>
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect96"
+       height="24.734093"
+       width="46.434505"
+       y="30.532951"
+       x="25.146429" />
+    <rect
+       style="fill:#6fa8dc;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect98"
+       height="24.734093"
+       width="46.434505"
+       y="30.532951"
+       x="71.580933" />
+    <rect
+       style="fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect100"
+       height="24.734093"
+       width="46.434505"
+       y="30.532951"
+       x="118.01543" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect102"
+       height="24.734093"
+       width="46.434505"
+       y="30.532951"
+       x="164.44994" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect104"
+       height="24.734093"
+       width="46.434505"
+       y="30.532951"
+       x="210.88443" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect106"
+       height="24.734093"
+       width="46.434505"
+       y="30.532951"
+       x="257.31894" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect124"
+       height="24.734093"
+       width="46.434505"
+       y="55.267044"
+       x="25.146429" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect126"
+       height="24.734093"
+       width="46.434505"
+       y="55.267044"
+       x="71.580933" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect128"
+       height="24.734093"
+       width="46.434505"
+       y="55.267044"
+       x="118.01543" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect130"
+       height="24.734093"
+       width="46.434505"
+       y="55.267044"
+       x="164.44994" />
+    <rect
+       style="fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect132"
+       height="24.734093"
+       width="46.434505"
+       y="55.267044"
+       x="210.88443" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect134"
+       height="24.734093"
+       width="46.434505"
+       y="55.267044"
+       x="257.31894" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect152"
+       height="24.734093"
+       width="46.434505"
+       y="80.001137"
+       x="25.146414" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect154"
+       height="24.734093"
+       width="46.434505"
+       y="80.001137"
+       x="71.580917" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect156"
+       height="24.734093"
+       width="46.434505"
+       y="80.001137"
+       x="118.01541" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect158"
+       height="24.734093"
+       width="46.434505"
+       y="80.001137"
+       x="164.44992" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect160"
+       height="24.734093"
+       width="46.434505"
+       y="80.001137"
+       x="210.88441" />
+    <rect
+       style="fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.778;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect162"
+       height="24.734093"
+       width="46.434505"
+       y="80.001137"
+       x="257.31891" />
     <text
-       id="text10"
-       font-size="16px"
-       y="79.506172"
-       x="12">2</text>
+       id="text869"
+       y="14.387632"
+       x="88.497932"
+       inkscape:transform-center-x="-3.7752311"
+       inkscape:transform-center-y="0.41947012"
+       style="font-family:STIXGeneral-Italic">x<tspan
+   font-size="10px"
+   baseline-shift="-50%"
+   id="tspan867"
+   style="font-size:10px;baseline-shift:-50%">2</tspan>
+</text>
     <text
-       id="text12"
-       font-size="16px"
-       y="109.50617"
-       x="12">3</text>
+       id="text873"
+       y="14.955064"
+       x="133.10341"
+       inkscape:transform-center-x="-3.7752311"
+       inkscape:transform-center-y="0.41947012"
+       style="font-family:STIXGeneral-Italic">x<tspan
+   font-size="10px"
+   baseline-shift="-50%"
+   id="tspan871"
+   style="font-size:10px;baseline-shift:-50%">3</tspan>
+</text>
     <text
-       id="text14"
-       font-size="16px"
-       y="139.50618"
-       x="12">4</text>
+       style="font-family:STIXGeneral-Italic"
+       inkscape:transform-center-y="0.41947012"
+       inkscape:transform-center-x="-3.7752311"
+       x="179.06535"
+       y="14.387632"
+       id="text877">x<tspan
+   style="font-size:10px;baseline-shift:-50%"
+   id="tspan875"
+   baseline-shift="-50%"
+   font-size="10px">4</tspan>
+</text>
     <text
-       id="text16"
-       font-size="16px"
-       y="169.50618"
-       x="12">5</text>
+       style="font-family:STIXGeneral-Italic"
+       inkscape:transform-center-y="0.41947012"
+       inkscape:transform-center-x="-3.7752311"
+       x="226.80571"
+       y="14.955064"
+       id="text881">x<tspan
+   style="font-size:10px;baseline-shift:-50%"
+   id="tspan879"
+   baseline-shift="-50%"
+   font-size="10px">5</tspan>
+</text>
     <text
-       id="text18"
-       font-size="16px"
-       y="199.50618"
-       x="12">6</text>
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect20"
-       height="30"
-       width="40"
-       y="29.506172"
-       x="30" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect22"
-       height="30"
-       width="40"
-       y="29.506172"
-       x="70" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect24"
-       height="30"
-       width="40"
-       y="29.506172"
-       x="110" />
-    <rect
-       style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
-       id="rect26"
-       height="30"
-       width="40"
-       y="59.506172"
-       x="30" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect28"
-       height="30"
-       width="40"
-       y="59.506172"
-       x="70" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect30"
-       height="30"
-       width="40"
-       y="59.506172"
-       x="110" />
-    <rect
-       style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
-       id="rect32"
-       height="30"
-       width="40"
-       y="89.506172"
-       x="30" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect34"
-       height="30"
-       width="40"
-       y="89.506172"
-       x="70" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect36"
-       height="30"
-       width="40"
-       y="89.506172"
-       x="110" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect38"
-       height="30"
-       width="40"
-       y="119.50617"
-       x="30" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect40"
-       height="30"
-       width="40"
-       y="119.50617"
-       x="70" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect42"
-       height="30"
-       width="40"
-       y="119.50617"
-       x="110" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect44"
-       height="30"
-       width="40"
-       y="149.50618"
-       x="30" />
-    <rect
-       style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
-       id="rect46"
-       height="30"
-       width="40"
-       y="149.50618"
-       x="70" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect48"
-       height="30"
-       width="40"
-       y="149.50618"
-       x="110" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect50"
-       height="30"
-       width="40"
-       y="179.50618"
-       x="30" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:1"
-       id="rect52"
-       height="30"
-       width="40"
-       y="179.50618"
-       x="70" />
-    <rect
-       style="fill:#6fa8dc;stroke:#000000;stroke-width:1"
-       id="rect54"
-       height="30"
-       width="40"
-       y="179.50618"
-       x="110" />
+       id="text885"
+       y="14.387632"
+       x="272.76764"
+       inkscape:transform-center-x="-3.7752311"
+       inkscape:transform-center-y="0.41947012"
+       style="font-family:STIXGeneral-Italic">x<tspan
+   font-size="10px"
+   baseline-shift="-50%"
+   id="tspan883"
+   style="font-size:10px;baseline-shift:-50%">6</tspan>
+</text>
   </g>
 </svg>

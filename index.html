@@ -96,6 +96,7 @@ Ideally an optimal <script type="math/tex">Y^*</script> can be found
 efficiently.  With CTC we’ll settle for a close to optimal solution that's not
 too expensive to find.</p>
 
+<hr />
 <h2 id="the-algorithm">The Algorithm</h2>
 
 <p>The first thing we need to do is compute a score of how likely a <script type="math/tex">Y</script>
@@ -302,40 +303,44 @@ is recognizing the subproblems.</p>
 \begin{align}
 Z = [z_{1}, \ldots, z_{2U+1}] = [\epsilon, y_1, \epsilon, y_2, \ldots, \epsilon, y_U, \epsilon]
 \end{align}
-consist of the elements of <script type="math/tex">Y</script> with an <script type="math/tex">\epsilon</script> at the beginning, end,
-and between every character. Let <script type="math/tex">\alpha_{i,j}</script> be the CTC score 
-of the subsequence <script type="math/tex">Z_{1:j}</script>
-after <script type="math/tex">i</script> input steps. We can compute <script type="math/tex">\alpha_{i, j}</script> if
-we know the values <script type="math/tex">\alpha_{\lt i, \lt j}</script>. There are three cases.</p>
+consist of the elements of <script type="math/tex">Y</script> with an
+<script type="math/tex">\epsilon</script> at the beginning, end, and between
+every character. Let <script type="math/tex">\alpha_{s, t}</script> be the
+CTC score of the subsequence <script type="math/tex">Z_{1:s}</script>
+after <script type="math/tex">t</script> input steps. We can compute
+<script type="math/tex">\alpha_{s, t}</script> if we know the values
+<script type="math/tex">\alpha_{\lt s, \lt t}</script>. There are three cases.</p>
 
 <div style="height:320px">
 <figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
   <img src="cost_no_skip.svg" />
 </figure>
-<p><strong>Case 1 (<script type="math/tex"> z_{j} = \epsilon </script>):</strong></p>
+<p><strong>Case 1 (<script type="math/tex"> z_{s} = \epsilon </script>):</strong></p>
 
 <p>This case says that we can't skip elements of <script type="math/tex">Y</script>
-for any alignment. If we want to align the current input to <script type="math/tex">\epsilon</script>, the previous output must be aligned to some previous input.
+for any alignment. If we want to align the current input to
+<script type="math/tex">\epsilon</script>, the previous output must be aligned to
+some previous input.
 
 <figure style="margin-top:0px;">
   <span style="position:absolute; left:40px">
-    <script type="math/tex">\alpha_{i, j} = </script>
+    <script type="math/tex">\alpha_{s, t} = </script>
   </span>
   <span style="position:absolute; left:120px">
-    <script type="math/tex">(\alpha_{i-1, j-1} + \alpha_{i-1, j})</script>
+    <script type="math/tex">(\alpha_{s-1, t-1} + \alpha_{s, t-1})</script>
   </span>
   <figcaption style="position:absolute; left:120px; top:50px; width:240px;">
   The CTC probability of the two valid subsequences after
-  <script type="math/tex">i-1</script> input steps.
+  <script type="math/tex">t-1</script> input steps.
   </figcaption>
   <span style="position:absolute; left:335px">
     <script type="math/tex">\cdot</script>
   </span>
   <span style="position:absolute; left:400px">
-    <script type="math/tex">p_i(z_{j} \mid X)</script>
+    <script type="math/tex">p_t(z_{s} \mid X)</script>
   </span>
   <figcaption style="position:absolute; left:400px; top:50px; width:200px;">
-  The probability of the current character at input step <script type="math/tex">i</script>.
+  The probability of the current character at input step <script type="math/tex">t</script>.
   </figcaption>
 </figure>
 </p>
@@ -345,7 +350,7 @@ for any alignment. If we want to align the current input to <script type="math/t
 <figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
   <img src="cost_repeat.svg" />
 </figure>
-<p><strong>Case 2 (<script type="math/tex">z_{j} = z_{j-2}</script>):</strong></p>
+<p><strong>Case 2 (<script type="math/tex">z_{s} = z_{s-2}</script>):</strong></p>
 
 <p>This case handles consecutive repeats in <script type="math/tex">Y</script>.
 Any alignment <em>must</em> have an <script type="math/tex">\epsilon</script>
@@ -362,23 +367,23 @@ this case because an <script type="math/tex">\epsilon</script> between unique
 characters of <script type="math/tex">Y</script> is optional.</p>
 <figure style="margin-top:0px;">
   <span style="position:absolute; left:40px">
-    <script type="math/tex">\alpha_{i, j} = </script>
+    <script type="math/tex">\alpha_{s, t} = </script>
   </span>
   <span style="position:absolute; left:120px">
-    <script type="math/tex">(\alpha_{i-1, j-2} + \alpha_{i-1, j-1} + \alpha_{i-1, j})</script>
+    <script type="math/tex">(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</script>
   </span>
   <figcaption style="position:absolute; left:120px; top:50px; width:240px;">
   The CTC probability of the three valid subsequences after
-  <script type="math/tex">i-1</script> input steps.
+  <script type="math/tex">t-1</script> input steps.
   </figcaption>
   <span style="position:absolute; left:395px">
     <script type="math/tex">\cdot</script>
   </span>
   <span style="position:absolute; left:420px">
-    <script type="math/tex">p_i(z_{j} \mid X)</script>
+    <script type="math/tex">p_t(z_{s} \mid X)</script>
   </span>
   <figcaption style="position:absolute; left:420px; top:50px; width:200px;">
-  The probability of the current character at input step <script type="math/tex">i</script>.
+  The probability of the current character at input step <script type="math/tex">t</script>.
   </figcaption>
 </figure>
 </p>
@@ -388,28 +393,37 @@ characters of <script type="math/tex">Y</script> is optional.</p>
 <p>Below is an animation of the steps taken by the dynamic programming
 algorithm.</p>
 
-<figure class="l-body">
-<img src="ctc_cost.svg" style="width: 80%;"/>
-<figcaption>
-An animation of the dynamic programming algorithm used to compute the CTC
-score. The input <script type="math/tex">X</script> with <script type="math/tex">T=6</script> is on the vertical axis. The
-<script type="math/tex">\epsilon</script>-expanded output <script type="math/tex">Y =</script> [c, a, t] is on the horizontal axis. Node
-<script type="math/tex">(i, j)</script> in the diagram represents <script type="math/tex">\alpha_{i,j}</script> – the CTC score between
-the subsequences <script type="math/tex">X_{1:i}</script> and <script type="math/tex">Z_{1:j}</script>. The two states used to
-compute the final score are marked with concentric circles.
+<figure class="l-body" style="width:700px;height:400px">
+<div style="width:500px; position:absolute; left:100px; top:50px;">
+<img src="ctc_cost.svg"/>
+<figcaption style="width:400px;">
+The dynamic programming algorithm used to compute the CTC score. Node
+<script type="math/tex">(s, t)</script> in the diagram represents
+<script type="math/tex">\alpha_{s, t}</script> – the CTC score of 
+the subsequence <script type="math/tex">Z_{1:s}</script> after
+<script type="math/tex">t</script> input steps.
 </figcaption>
+</div>
+<div style="position:absolute; left:0px; top: 50px;">
+  <p>Output (<script type="math/tex">Y</script>)</p>
+</div>
+<div style="position:absolute; left:200px; top: 0px;">
+  <p>Input (<script type="math/tex">X</script>)</p>
+</div>
 </figure>
 
 <p>The final score is the sum of the two final states, marked in the example
 figure with concentric circles,
 \begin{align}
-p(Y \mid X) = \alpha_{T,S} + \alpha_{T, S-1}
+p(Y \mid X) = \alpha_{S, T} + \alpha_{S-1, T}
 \end{align}
 where <script type="math/tex">S = 2U + 1</script>.</p>
 
-<p>As long as the individual output model <script type="math/tex">p_i(z \mid X)</script> is differentiable then
-the entire loss function is differentiable. This is true since computing <script type="math/tex">p(Y
-\mid X)</script> simply consists of sums and products of the <script type="math/tex">p_i(z \mid X)</script>.</p>
+<p>As long as the individual output model
+<script type="math/tex">p_t(z \mid X)</script> is differentiable then
+the entire loss function is differentiable. This is true since computing
+<script type="math/tex">p(Y \mid X)</script> simply consists of sums and
+products of the <script type="math/tex">p_t(z \mid X)</script>.</p>
 
 <p>The time complexity of this dynamic programming algorithm is <script type="math/tex">O(TU)</script> with a
 fairly small constant. Conveniently, the time to compute the loss function does
@@ -439,23 +453,26 @@ We can then collapse repeat characters and remove <script type="math/tex">\epsil
 produce <script type="math/tex">Y</script>.</p>
 
 <p>In most applications this simple algorithm works well because CTC tends to
-allocate most of the probability to a single alignment <script type="math/tex">A</script>. However, this
-method is not guaranteed to find the most likely <script type="math/tex">Y</script>. This is because
-multiple alignments can map to the same <script type="math/tex">Y</script>. The sequences [a, a,
-<script type="math/tex">\epsilon</script>] and [a, a, a] could individually have lower probability than [b,
-b, b], though the sum of their probabilities could be larger. In this case, the
-beam search algorithm would propose [b, b, b] as the most likely hypothesis,
-corresponding to <script type="math/tex">Y =</script> [b]. To account for this, the algorithm should
-consider the fact that [a, a, a] and [a, a, <script type="math/tex">\epsilon</script>] map to the same
+allocate most of the probability to a single alignment. However, this
+method is not guaranteed to find the most likely <script type="math/tex">Y</script>.
+This is because multiple alignments can map to the same <script type="math/tex">Y</script>.</p>
+
+<p>The alignments [a, a, <script type="math/tex">\epsilon</script>] and [a, a, a]
+could individually have lower probability than [b, b, b]. But, the sum of their
+probabilities could be larger. The beam search will incorrectly propose
+<script type="math/tex">Y =</script> [b] as the most likely hypothesis.
+The algorithm needs to account for the fact that [a, a, a] and
+[a, a, <script type="math/tex">\epsilon</script>] map to the same
 output, namely <script type="math/tex">Y =</script> [a].</p>
 
-<p>We can solve this problem with a modified beam search. The modified beam search
-is also not guaranteed to find the most likely <script type="math/tex">Y</script>, but it has the nice
-property that we can trade-off more computation (namely a larger beam-size) for
-an asymptotically better solution.</p>
+<p>We can solve this problem with a modified beam search. Given limited 
+computation, the modified beam search is not guaranteed to find the
+most likely <script type="math/tex">Y</script>. It does, at least, have
+the desirable property that we can trade-off more computation
+(a larger beam-size) for an asymptotically better solution.</p>
 
-<p>A regular beam search would compute a new set of hypotheses at each input
-time-step. The new set of hypotheses is generated from the previous set by
+<p>A regular beam search computes a new set of hypotheses at each input
+step. The new set of hypotheses is generated from the previous set by
 extending each hypothesis with all possible output characters.</p>
 
 
@@ -546,6 +563,7 @@ as measured by <script type="math/tex">L(\cdot)</script>, since they do not have
 updates. The insertion bonus helps with this. The parameters <script type="math/tex">\alpha</script> and
 <script type="math/tex">\beta</script> are usually set by cross-validation.</p>
 
+<hr />
 <h2 id="properties-of-ctc">Properties of CTC</h2>
 
 <p>We briefly mentioned a few important properties of CTC so far. Here we’ll go
@@ -616,6 +634,7 @@ end-of-sequence marker. Input synchronous inference makes streaming the
 decoding process easier. For some applications streaming the inference
 computation is critical to achieve low latency response times.</p>
 
+<hr />
 <h2 id="ctc-in-context">CTC in Context</h2>
 
 <p>In this section we’ll discuss how CTC relates to other commonly used
@@ -808,6 +827,7 @@ transformation followed by a softmax normalization. This layer should project
 all <script type="math/tex">T</script> components of the encoder output <script type="math/tex">h</script> into the dimensionality of the
 output alphabet.</p>
 
+<hr />
 <h2 id="practitioners-guide">Practitioner’s Guide</h2>
 
 <p>So far we’ve mostly developed a conceptual understanding of CTC. Here we’ll go
@@ -857,7 +877,8 @@ If <script type="math/tex">% <![CDATA[
 c_i << c_g %]]></script> then the beam search is performing poorly and a large
 increase in the beam size may be warranted.</p>
 
-<h3 class="no_toc" id="bibliographic-notes">Bibliographic Notes</h3>
+<hr />
+<h2 class="no_toc" id="bibliographic-notes">Bibliographic Notes</h2>
 
 <p>The CTC algorithm was first published by Graves et al. in 2006.<dt-cite key="Graves2006"></dt-cite> The
 first experiments were on TIMIT, a popular phoneme recognition benchmark.<dt-cite key="Lopes2011"></dt-cite>

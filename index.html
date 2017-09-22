@@ -390,30 +390,29 @@ characters of <script type="math/tex">Y</script> is optional.</p>
 </div>
 
 
-<p>Below is an animation of the steps taken by the dynamic programming
+<p>Below is an example of the computation performed by the dynamic programming
 algorithm.</p>
 
-<figure class="l-body" style="width:700px;height:400px">
-<div style="width:500px; position:absolute; left:100px; top:50px;">
+<figure class="l-body" style="width:700px;height:350px;margin-top:0px;">
+<div style="width:650px; position:absolute; left:80px; top:30px;">
 <img src="ctc_cost.svg"/>
-<figcaption style="width:400px;">
-The dynamic programming algorithm used to compute the CTC score. Node
-<script type="math/tex">(s, t)</script> in the diagram represents
+<figcaption style="width:350px;">
+Node <script type="math/tex">(s, t)</script> in the diagram represents
 <script type="math/tex">\alpha_{s, t}</script> – the CTC score of 
 the subsequence <script type="math/tex">Z_{1:s}</script> after
 <script type="math/tex">t</script> input steps.
 </figcaption>
 </div>
-<div style="position:absolute; left:0px; top: 50px;">
-  <p>Output (<script type="math/tex">Y</script>)</p>
-</div>
-<div style="position:absolute; left:200px; top: 0px;">
-  <p>Input (<script type="math/tex">X</script>)</p>
-</div>
+<figcaption style="position:absolute; top: 100px; width: 100px;">
+<span style="position:absolute; left:15px;">output,</span>
+<span style="position:absolute; top:25px;"><script type="math/tex">Y =</script> [a, b]</span>
+</figcaption>
+<figcaption style="position:absolute; left:170px; top: 0px;">
+  input, <script type="math/tex">X</script>
+</figcaption>
 </figure>
 
-<p>The final score is the sum of the two final states, marked in the example
-figure with concentric circles,
+<p>The final probability is the sum of the two output nodes
 \begin{align}
 p(Y \mid X) = \alpha_{S, T} + \alpha_{S-1, T}
 \end{align}

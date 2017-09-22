@@ -1,432 +1,966 @@
-<?xml version="1.0" standalone="yes"?>
-<svg height="430" width="570" id="svg" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-  <style type="text/css">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="297.95673"
+   width="656.58966"
+   id="svg"
+   version="1.1"
+   sodipodi:docname="ctc_cost.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata123">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1391"
+     inkscape:window-height="779"
+     id="namedview121"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="0.77617301"
+     inkscape:cx="222.97722"
+     inkscape:cy="-0.78456022"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg"
+     fit-margin-left="10"
+     fit-margin-top="10"
+     fit-margin-right="10"
+     fit-margin-bottom="10">
+    <sodipodi:guide
+       position="33.070205,-147.30203"
+       orientation="0,1"
+       id="guide932"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="607.75286,-95.179822"
+       orientation="0,1"
+       id="guide934"
+       inkscape:locked="false" />
+    <inkscape:grid
+       type="xygrid"
+       id="grid4639"
+       originx="-33.603073"
+       originy="-127.97644" />
+    <sodipodi:guide
+       position="433.16822,111.44421"
+       orientation="1,0"
+       id="guide1175"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="583.26362,111.44421"
+       orientation="0,1"
+       id="guide1666"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="439.61008,10.951153"
+       orientation="0,1"
+       id="guide2208"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs4">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker2110"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path2108"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker2016"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path2014"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1928"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path1926"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1846"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1844"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1746"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1744"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1676"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path1674"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1562"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1560"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1504"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path1502"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1422"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path1420"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1376"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1374"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1336"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:collect="always">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path1334"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1235"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:collect="always">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path1233"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1187"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:collect="always">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path1185"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path902"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect873"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <style
+       type="text/css"
+       id="style2">
   svg {
-    font: 18px -apple-system, BlinkMacSystemFont, "Roboto", Helvetica, sans-serif;
+    font: 18px -apple-system, BlinkMacSystemFont, &quot;Roboto&quot;, Helvetica, sans-serif;
   }
+  .caption {
+      font-size: 12px;
+      fill: rgba(0,0,0,0.6);
+  }
+
   </style>
   </defs>
-  <marker id="triangle" viewBox="0 0 10 10" refX="0" refY="5" markerUnits="strokeWidth" markerWidth="4" markerHeight="6" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" />
-  </marker>
-  <marker id="trianglegray" viewBox="0 0 10 10" refX="0" refY="5" markerUnits="strokeWidth" markerWidth="4" markerHeight="6" orient="auto" fill="#d0d0d0">
-    <path d="M 0 0 L 10 5 L 0 10 z" />
-  </marker>
-
-  <text x="44" y="24" font-family="STIXGeneral-Italic">ϵ</text>
-  <text x="124" y="24">c</text>
-  <text x="204" y="24" font-family="STIXGeneral-Italic">ϵ</text>
-  <text x="284" y="24">a</text>
-  <text x="364" y="24" font-family="STIXGeneral-Italic">ϵ</text>
-  <text x="444" y="24">t</text>
-  <text x="524" y="24" font-family="STIXGeneral-Italic">ϵ</text>
-
-  <text x="13" y="57">1</text>
-  <text x="13" y="127">2</text>
-  <text x="13" y="197">3</text>
-  <text x="13" y="267">4</text>
-  <text x="13" y="337">5</text>
-  <text x="13" y="407">6</text>
-
-  <rect><animate id="ss" begin="0;ss.end" dur="26s" attributeName="visibility" from="hide" to="hide"/></rect>
-
-  <circle cx="50" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 1" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 2" to="#6fa8dc" dur="24s" />
-  </circle>
-  <circle cx="130" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 3" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 4" to="#6fa8dc" dur="22s" />
-  </circle>
-  <circle cx="210" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="290" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="370" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="450" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="530" cy="50" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-
-  <circle cx="50" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 2" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 3" to="#6fa8dc" dur="23s" />
-  </circle>
-  <circle cx="130" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 4" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 5" to="#6fa8dc" dur="21s" />
-  </circle>
-  <circle cx="210" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 7" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 8" to="#6fa8dc" dur="18s" />
-  </circle>
-  <circle cx="290" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 10" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 11" to="#6fa8dc" dur="15s" />
-  </circle>
-  <circle cx="370" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="450" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="530" cy="120" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-
-  <circle cx="50" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 5" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 6" to="#6fa8dc" dur="20s" />
-  </circle>
-  <circle cx="130" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 6" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 7" to="#6fa8dc" dur="19s" />
-  </circle>
-  <circle cx="210" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 9" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 10" to="#6fa8dc" dur="16s" />
-  </circle>
-  <circle cx="290" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 12" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 13" to="#6fa8dc" dur="13s" />
-  </circle>
-  <circle cx="370" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 15" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 16" to="#6fa8dc" dur="10s" />
-  </circle>
-  <circle cx="450" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 18" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 19" to="#6fa8dc" dur="7s" />
-  </circle>
-  <circle cx="530" cy="190" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-
-  <circle cx="50" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="130" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 8" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 9" to="#6fa8dc" dur="17s" />
-  </circle>
-  <circle cx="210" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 11" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 12" to="#6fa8dc" dur="14s" />
-  </circle>
-  <circle cx="290" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 13" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 14" to="#6fa8dc" dur="12s" />
-  </circle>
-  <circle cx="370" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 16" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 17" to="#6fa8dc" dur="9s" />
-  </circle>
-  <circle cx="450" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 19" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 20" to="#6fa8dc" dur="6s" />
-  </circle>
-  <circle cx="530" cy="260" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 21" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 22" to="#6fa8dc" dur="4s" />
-  </circle>
-
-  <circle cx="50" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="130" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="210" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="290" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 14" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 15" to="#6fa8dc" dur="11s" />
-  </circle>
-  <circle cx="370" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 17" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 18" to="#6fa8dc" dur="8s" />
-  </circle>
-  <circle cx="450" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 20" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 21" to="#6fa8dc" dur="5s" />
-  </circle>
-  <circle cx="530" cy="330" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 22" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 23" to="#6fa8dc" dur="3s" />
-  </circle>
-
-  <circle cx="50" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="130" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="210" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="290" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="370" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff" />
-  <circle cx="450" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 23" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 24" to="#6fa8dc" dur="2s" />
-  </circle>
-  <circle cx="450" cy="400" r="12" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 23" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 24" to="#6fa8dc" dur="2s" />
-  </circle>
-  <circle cx="530" cy="400" r="20" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 24" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 25" to="#6fa8dc" dur="1s" />
-  </circle>
-  <circle cx="530" cy="400" r="12" stroke="black" stroke-width="1" fill="#ffffff">
-    <set attributeName="fill" begin="ss.begin + 24" to="#E77471" dur="1s" />
-    <set attributeName="fill" begin="ss.begin + 25" to="#6fa8dc" dur="1s" />
-  </circle>
-
-  <line x1="50" y1="71" x2="50" y2="94" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 2" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 3" to="#D0D0D0" dur="23s" />
-    <set attributeName="marker-end" begin="ss.begin + 2" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 3" to="url(#trianglegray)" dur="23s" />
-  </line>
-  <line x1="50" y1="141" x2="50" y2="164" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 5" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 6" to="#D0D0D0" dur="20s" />
-    <set attributeName="marker-end" begin="ss.begin + 5" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 6" to="url(#trianglegray)" dur="20s" />
-  </line>
-  <line x1="130" y1="71" x2="130" y2="94" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 4" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 5" to="#D0D0D0" dur="21s" />
-    <set attributeName="marker-end" begin="ss.begin + 4" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 5" to="url(#trianglegray)" dur="21s" />
-  </line>
-  <line x1="130" y1="141" x2="130" y2="164" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 6" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 7" to="#D0D0D0" dur="19s" />
-    <set attributeName="marker-end" begin="ss.begin + 6" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 7" to="url(#trianglegray)" dur="19s" />
-  </line>
-  <line x1="130" y1="211" x2="130" y2="234" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 8" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 9" to="#D0D0D0" dur="17s" />
-    <set attributeName="marker-end" begin="ss.begin + 8" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 9" to="url(#trianglegray)" dur="17s" />
-  </line>
-  <line x1="210" y1="141" x2="210" y2="164" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 9" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 10" to="#D0D0D0" dur="16s" />
-    <set attributeName="marker-end" begin="ss.begin + 9" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 10" to="url(#trianglegray)" dur="16s" />
-  </line>
-  <line x1="210" y1="211" x2="210" y2="234" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 11" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 12" to="#D0D0D0" dur="14s" />
-    <set attributeName="marker-end" begin="ss.begin + 11" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 12" to="url(#trianglegray)" dur="14s" />
-  </line>
-  <line x1="290" y1="141" x2="290" y2="164" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 12" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 13" to="#D0D0D0" dur="13s" />
-    <set attributeName="marker-end" begin="ss.begin + 12" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 13" to="url(#trianglegray)" dur="13s" />
-  </line>
-  <line x1="290" y1="211" x2="290" y2="234" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 13" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 14" to="#D0D0D0" dur="12s" />
-    <set attributeName="marker-end" begin="ss.begin + 13" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 14" to="url(#trianglegray)" dur="12s" />
-  </line>
-  <line x1="290" y1="281" x2="290" y2="304" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 14" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 15" to="#D0D0D0" dur="11s" />
-    <set attributeName="marker-end" begin="ss.begin + 14" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 15" to="url(#trianglegray)" dur="11s" />
-  </line>
-  <line x1="370" y1="211" x2="370" y2="234" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 16" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 17" to="#D0D0D0" dur="9s" />
-    <set attributeName="marker-end" begin="ss.begin + 16" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 17" to="url(#trianglegray)" dur="9s" />
-  </line>
-  <line x1="370" y1="281" x2="370" y2="304" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 17" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 18" to="#D0D0D0" dur="8s" />
-    <set attributeName="marker-end" begin="ss.begin + 17" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 18" to="url(#trianglegray)" dur="8s" />
-  </line>
-  <line x1="450" y1="211" x2="450" y2="234" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 19" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 20" to="#D0D0D0" dur="6s" />
-    <set attributeName="marker-end" begin="ss.begin + 19" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 20" to="url(#trianglegray)" dur="6s" />
-  </line>
-  <line x1="450" y1="281" x2="450" y2="304" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 20" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 21" to="#D0D0D0" dur="5s" />
-    <set attributeName="marker-end" begin="ss.begin + 20" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 21" to="url(#trianglegray)" dur="5s" />
-  </line>
-  <line x1="450" y1="351" x2="450" y2="374" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 23" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 24" to="#D0D0D0" dur="2s" />
-    <set attributeName="marker-end" begin="ss.begin + 23" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 24" to="url(#trianglegray)" dur="2s" />
-  </line>
-  <line x1="530" y1="281" x2="530" y2="304" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 22" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 23" to="#D0D0D0" dur="3s" />
-    <set attributeName="marker-end" begin="ss.begin + 22" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 23" to="url(#trianglegray)" dur="3s" />
-  </line>
-  <line x1="530" y1="351" x2="530" y2="374" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 24" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 25" to="#D0D0D0" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 24" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 25" to="url(#trianglegray)" dur="1s" />
-  </line>
-
-  <line x1="65" y1="65" x2="111" y2="101" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 4" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 5" to="#D0D0D0" dur="21s" />
-    <set attributeName="marker-end" begin="ss.begin + 4" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 5" to="url(#trianglegray)" dur="21s" />
-  </line>
-  <line x1="65" y1="135" x2="111" y2="171" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 6" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 7" to="#D0D0D0" dur="19s" />
-    <set attributeName="marker-end" begin="ss.begin + 6" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 7" to="url(#trianglegray)" dur="19s" />
-  </line>
-  <line x1="65" y1="205" x2="111" y2="241" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 8" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 9" to="#D0D0D0" dur="17s" />
-    <set attributeName="marker-end" begin="ss.begin + 8" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 9" to="url(#trianglegray)" dur="17s" />
-  </line>
-
-  <line x1="145" y1="65" x2="191" y2="101" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 7" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 8" to="#D0D0D0" dur="18s" />
-    <set attributeName="marker-end" begin="ss.begin + 7" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 8" to="url(#trianglegray)" dur="18s" />
-  </line>
-  <line x1="145" y1="135" x2="191" y2="171" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 9" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 10" to="#D0D0D0" dur="16s" />
-    <set attributeName="marker-end" begin="ss.begin + 9" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 10" to="url(#trianglegray)" dur="16s" />
-  </line>
-  <line x1="145" y1="205" x2="191" y2="241" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 11" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 12" to="#D0D0D0" dur="14s" />
-    <set attributeName="marker-end" begin="ss.begin + 11" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 12" to="url(#trianglegray)" dur="14s" />
-  </line>
-
-  <line x1="225" y1="135" x2="271" y2="171" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 12" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 13" to="#D0D0D0" dur="13s" />
-    <set attributeName="marker-end" begin="ss.begin + 12" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 13" to="url(#trianglegray)" dur="13s" />
-  </line>
-  <line x1="225" y1="205" x2="271" y2="241" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 13" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 14" to="#D0D0D0" dur="12s" />
-    <set attributeName="marker-end" begin="ss.begin + 13" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 14" to="url(#trianglegray)" dur="12s" />
-  </line>
-  <line x1="225" y1="275" x2="271" y2="311" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 14" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 15" to="#D0D0D0" dur="11s" />
-    <set attributeName="marker-end" begin="ss.begin + 14" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 15" to="url(#trianglegray)" dur="11s" />
-  </line>
-
-  <line x1="305" y1="135" x2="351" y2="171" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 15" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 16" to="#D0D0D0" dur="10s" />
-    <set attributeName="marker-end" begin="ss.begin + 15" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 16" to="url(#trianglegray)" dur="10s" />
-  </line>
-  <line x1="305" y1="205" x2="351" y2="241" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 16" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 17" to="#D0D0D0" dur="9s" />
-    <set attributeName="marker-end" begin="ss.begin + 16" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 17" to="url(#trianglegray)" dur="9s" />
-  </line>
-  <line x1="305" y1="275" x2="351" y2="311" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 17" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 18" to="#D0D0D0" dur="8s" />
-    <set attributeName="marker-end" begin="ss.begin + 17" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 18" to="url(#trianglegray)" dur="8s" />
-  </line>
-
-  <line x1="385" y1="205" x2="431" y2="241" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 19" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 20" to="#D0D0D0" dur="6s" />
-    <set attributeName="marker-end" begin="ss.begin + 19" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 20" to="url(#trianglegray)" dur="6s" />
-  </line>
-  <line x1="385" y1="275" x2="431" y2="311" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 20" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 21" to="#D0D0D0" dur="5s" />
-    <set attributeName="marker-end" begin="ss.begin + 20" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 21" to="url(#trianglegray)" dur="5s" />
-  </line>
-  <line x1="385" y1="345" x2="431" y2="381" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 23" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 24" to="#D0D0D0" dur="2s" />
-    <set attributeName="marker-end" begin="ss.begin + 23" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 24" to="url(#trianglegray)" dur="2s" />
-  </line>
-
-  <line x1="465" y1="205" x2="511" y2="241" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 21" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 22" to="#D0D0D0" dur="4s" />
-    <set attributeName="marker-end" begin="ss.begin + 21" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 22" to="url(#trianglegray)" dur="4s" />
-  </line>
-  <line x1="465" y1="275" x2="511" y2="311" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 22" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 23" to="#D0D0D0" dur="3s" />
-    <set attributeName="marker-end" begin="ss.begin + 22" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 23" to="url(#trianglegray)" dur="3s" />
-  </line>
-  <line x1="465" y1="345" x2="511" y2="381" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 24" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 25" to="#D0D0D0" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 24" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 25" to="url(#trianglegray)" dur="1s" />
-  </line>
-
-  <line x1="149" y1="58" x2="265" y2="111" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 10" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 11" to="#D0D0D0" dur="15s" />
-    <set attributeName="marker-end" begin="ss.begin + 10" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 11" to="url(#trianglegray)" dur="15s" />
-  </line>
-  <line x1="149" y1="128" x2="265" y2="181" stroke="#ffffff" stroke-width="1.5" visibility="hidden">
-    <set attributeName="visibility" begin="ss.begin + 12" to="visible" dur="14s" />
-    <set attributeName="stroke" begin="ss.begin + 12" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 13" to="#D0D0D0" dur="13s" />
-    <set attributeName="marker-end" begin="ss.begin + 12" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 13" to="url(#trianglegray)" dur="13s" />
-  </line>
-  <line x1="149" y1="198" x2="265" y2="251" stroke="#ffffff" stroke-width="1.5" visibility="hidden">
-    <set attributeName="visibility" begin="ss.begin + 13" to="visible" dur="13s" />
-    <set attributeName="stroke" begin="ss.begin + 13" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 14" to="#D0D0D0" dur="12s" />
-    <set attributeName="marker-end" begin="ss.begin + 13" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 14" to="url(#trianglegray)" dur="12s" />
-  </line>
-  <line x1="149" y1="268" x2="265" y2="321" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 14" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 15" to="#D0D0D0" dur="11s" />
-    <set attributeName="marker-end" begin="ss.begin + 14" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 15" to="url(#trianglegray)" dur="11s" />
-  </line>
-
-  <line x1="309" y1="128" x2="425" y2="181" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 18" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 19" to="#D0D0D0" dur="7s" />
-    <set attributeName="marker-end" begin="ss.begin + 18" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 19" to="url(#trianglegray)" dur="7s" />
-  </line>
-  <line x1="309" y1="198" x2="425" y2="251" stroke="#ffffff" stroke-width="1.5" visibility="hidden">
-    <set attributeName="visibility" begin="ss.begin + 19" to="visible" dur="7s" />
-    <set attributeName="stroke" begin="ss.begin + 19" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 20" to="#D0D0D0" dur="6s" />
-    <set attributeName="marker-end" begin="ss.begin + 19" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 20" to="url(#trianglegray)" dur="6s" />
-  </line>
-  <line x1="309" y1="268" x2="425" y2="321" stroke="#ffffff" stroke-width="1.5" visibility="hidden">
-    <set attributeName="visibility" begin="ss.begin + 20" to="visible" dur="6s" />
-    <set attributeName="stroke" begin="ss.begin + 20" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 21" to="#D0D0D0" dur="5s" />
-    <set attributeName="marker-end" begin="ss.begin + 20" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 21" to="url(#trianglegray)" dur="5s" />
-  </line>
-  <line x1="309" y1="338" x2="425" y2="391" stroke="#ffffff" stroke-width="1.5">
-    <set attributeName="stroke" begin="ss.begin + 23" to="#000000" dur="1s" />
-    <set attributeName="stroke" begin="ss.begin + 24" to="#D0D0D0" dur="2s" />
-    <set attributeName="marker-end" begin="ss.begin + 23" to="url(#triangle)" dur="1s" />
-    <set attributeName="marker-end" begin="ss.begin + 24" to="url(#trianglegray)" dur="2s" />
-  </line>
+  <g
+     id="g13658"
+     transform="translate(-33.603073,-4.0668774)">
+    <text
+       style="font-family:STIXGeneral-Italic"
+       inkscape:transform-center-y="0.41947012"
+       inkscape:transform-center-x="-3.7752311"
+       x="76.457603"
+       y="20.629377"
+       id="text905">x<tspan
+   style="font-size:10px;baseline-shift:-50%"
+   id="tspan903"
+   baseline-shift="-50%"
+   font-size="10px">1</tspan>
+</text>
+    <g
+       id="g14085"
+       transform="translate(-10)">
+      <text
+         x="54.526878"
+         y="53.835804"
+         id="text6"
+         style="font-family:STIXGeneral-Italic">ϵ</text>
+      <text
+         x="53.147167"
+         y="109.8511"
+         id="text8"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+        <tspan
+           sodipodi:role="line"
+           id="tspan2218"
+           x="53.147167"
+           y="109.8511">a</tspan>
+      </text>
+      <text
+         x="53.927769"
+         y="165.93782"
+         id="text10"
+         style="font-family:STIXGeneral-Italic">ϵ</text>
+      <text
+         x="52.513229"
+         y="221.56905"
+         id="text12"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+        <tspan
+           sodipodi:role="line"
+           id="tspan2216"
+           x="52.513229"
+           y="221.56905">b</tspan>
+      </text>
+      <text
+         x="53.898933"
+         y="277.36673"
+         id="text14"
+         style="font-family:STIXGeneral-Italic">ϵ</text>
+      <text
+         class="caption"
+         id="text2222"
+         y="240.89069"
+         x="613.58923">
+        <tspan
+           sodipodi:role="line"
+           id="tspan2230"
+           x="613.58923"
+           y="240.89069">Two output</tspan>
+        <tspan
+           sodipodi:role="line"
+           id="tspan2232"
+           x="613.58923"
+           y="258.39069">nodes</tspan>
+      </text>
+    </g>
+    <circle
+       style="fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle32"
+       r="16"
+       cy="51.356758"
+       cx="82.913948" />
+    <circle
+       style="opacity:0.5;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle34"
+       r="16"
+       cy="51.623592"
+       cx="173.15349" />
+    <circle
+       style="opacity:0.5;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle36"
+       r="16"
+       cy="51.246235"
+       cx="263.39304" />
+    <circle
+       style="opacity:0.25;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle38"
+       r="16"
+       cy="51.43491"
+       cx="353.17706" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle40"
+       r="16"
+       cy="51.246235"
+       cx="442.77243" />
+    <circle
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle42"
+       r="16"
+       cy="51.246235"
+       cx="533.65613" />
+    <circle
+       style="opacity:0.25;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle46"
+       r="16"
+       cy="107.35677"
+       cx="82.913948" />
+    <circle
+       style="fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle48"
+       r="16"
+       cy="107.62361"
+       cx="173.15349" />
+    <circle
+       style="opacity:0.5;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle50"
+       r="16"
+       cy="107.24624"
+       cx="263.39304" />
+    <circle
+       style="opacity:0.65;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle52"
+       r="16"
+       cy="107.43492"
+       cx="353.17706" />
+    <circle
+       style="opacity:0.25;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle54"
+       r="16"
+       cy="107.24625"
+       cx="442.77243" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle56"
+       r="16"
+       cy="107.24625"
+       cx="533.65613" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle60"
+       r="16"
+       cy="163.35677"
+       cx="82.913948" />
+    <circle
+       style="opacity:0.25;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle62"
+       r="16"
+       cy="163.62358"
+       cx="173.15349" />
+    <circle
+       style="fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle64"
+       r="16"
+       cy="163.24623"
+       cx="263.39304" />
+    <circle
+       style="fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle66"
+       r="16"
+       cy="163.43492"
+       cx="353.17706" />
+    <circle
+       style="opacity:0.4;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle68"
+       r="16"
+       cy="163.24623"
+       cx="442.77243" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle70"
+       r="16"
+       cy="163.24623"
+       cx="533.65613" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle74"
+       r="16"
+       cy="219.35677"
+       cx="82.913948" />
+    <circle
+       style="opacity:0.25;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle76"
+       r="16"
+       cy="219.62358"
+       cx="173.15349" />
+    <circle
+       style="opacity:0.65;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle78"
+       r="16"
+       cy="219.24623"
+       cx="263.39304" />
+    <circle
+       style="opacity:0.65;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle80"
+       r="16"
+       cy="219.43492"
+       cx="353.17706" />
+    <circle
+       style="fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle82"
+       r="16"
+       cy="219.24623"
+       cx="442.77243" />
+    <circle
+       style="opacity:0.4;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle84"
+       r="16"
+       cy="219.24623"
+       cx="533.65613" />
+    <circle
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle88"
+       r="16"
+       cy="275.35675"
+       cx="82.913948" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle90"
+       r="16"
+       cy="275.6236"
+       cx="173.15349" />
+    <circle
+       style="opacity:0.4;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle92"
+       r="16"
+       cy="275.24622"
+       cx="263.39304" />
+    <circle
+       style="opacity:0.65;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle94"
+       r="16"
+       cy="275.43491"
+       cx="353.17706" />
+    <circle
+       style="opacity:0.65;fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle96"
+       r="16"
+       cy="275.24622"
+       cx="442.77243" />
+    <circle
+       style="fill:#6fa8dc;fill-opacity:1;stroke:#000000;stroke-width:0.80000001"
+       id="circle98"
+       r="16"
+       cy="275.24622"
+       cx="533.65613" />
+    <text
+       id="text862"
+       y="20.629377"
+       x="166.45761"
+       inkscape:transform-center-x="-3.7752311"
+       inkscape:transform-center-y="0.41947012"
+       style="font-family:STIXGeneral-Italic">x<tspan
+   font-size="10px"
+   baseline-shift="-50%"
+   id="tspan860"
+   style="font-size:10px;baseline-shift:-50%">2</tspan>
+</text>
+    <text
+       style="font-family:STIXGeneral-Italic"
+       inkscape:transform-center-y="0.41947012"
+       inkscape:transform-center-x="-3.7752311"
+       x="256.45761"
+       y="20.629377"
+       id="text868">x<tspan
+   style="font-size:10px;baseline-shift:-50%"
+   id="tspan866"
+   baseline-shift="-50%"
+   font-size="10px">3</tspan>
+</text>
+    <text
+       id="text872"
+       y="20.629377"
+       x="346.45761"
+       inkscape:transform-center-x="-3.7752311"
+       inkscape:transform-center-y="0.41947012"
+       style="font-family:STIXGeneral-Italic">x<tspan
+   font-size="10px"
+   baseline-shift="-50%"
+   id="tspan870"
+   style="font-size:10px;baseline-shift:-50%">4</tspan>
+</text>
+    <text
+       style="font-family:STIXGeneral-Italic"
+       inkscape:transform-center-y="0.41947012"
+       inkscape:transform-center-x="-3.7752311"
+       x="436.45761"
+       y="20.629377"
+       id="text876">x<tspan
+   style="font-size:10px;baseline-shift:-50%"
+   id="tspan874"
+   baseline-shift="-50%"
+   font-size="10px">5</tspan>
+</text>
+    <text
+       id="text880"
+       y="20.629377"
+       x="526.45764"
+       inkscape:transform-center-x="-3.7752311"
+       inkscape:transform-center-y="0.41947012"
+       style="font-family:STIXGeneral-Italic">x<tspan
+   font-size="10px"
+   baseline-shift="-50%"
+   id="tspan878"
+   style="font-size:10px;baseline-shift:-50%">6</tspan>
+</text>
+    <g
+       id="g1300"
+       style="opacity:0.4">
+      <path
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:connector-curvature="0"
+         id="path871"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Mend)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path1177"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1187)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path1225"
+         d="m 197.67249,108.4325 41.90678,83.81356"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1235)" />
+    </g>
+    <g
+       style="opacity:0.4"
+       id="g1308"
+       transform="translate(-90)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Mend)"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         id="path1302"
+         inkscape:connector-curvature="0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1187)"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         id="path1304"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1235)"
+         d="m 197.67249,108.4325 41.90678,83.81356"
+         id="path1306"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g1316"
+       style="opacity:0.4"
+       transform="translate(90)">
+      <path
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:connector-curvature="0"
+         id="path1310"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Mend)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path1312"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1187)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path1314"
+         d="m 197.67249,108.4325 41.90678,83.81356"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1235)" />
+    </g>
+    <g
+       transform="translate(180)"
+       style="opacity:0.4"
+       id="g1324">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Mend)"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         id="path1318"
+         inkscape:connector-curvature="0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1187)"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         id="path1320"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1235)"
+         d="m 197.67249,108.4325 41.90678,83.81356"
+         id="path1322"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="translate(-90,-56)"
+       id="g1332"
+       style="opacity:0.4">
+      <path
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:connector-curvature="0"
+         id="path1326"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1336)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path1328"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1422)" />
+    </g>
+    <g
+       style="opacity:0.4"
+       id="g1488"
+       transform="translate(0,-56)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1336)"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         id="path1484"
+         inkscape:connector-curvature="0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1422)"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         id="path1486"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="translate(90,-56)"
+       id="g1494"
+       style="opacity:0.4">
+      <path
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:connector-curvature="0"
+         id="path1490"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1336)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path1492"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1422)" />
+    </g>
+    <g
+       style="opacity:0.4"
+       id="g1500"
+       transform="translate(180,-56)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1504)"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         id="path1498"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       style="opacity:0.4"
+       id="g1628"
+       transform="translate(0,112)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1336)"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         id="path1624"
+         inkscape:connector-curvature="0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1422)"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         id="path1626"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g1634"
+       style="opacity:0.4"
+       transform="translate(90,112)">
+      <path
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:connector-curvature="0"
+         id="path1630"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1336)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path1632"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1422)" />
+    </g>
+    <g
+       style="opacity:0.4"
+       id="g1640"
+       transform="translate(180,112)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1336)"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         id="path1636"
+         inkscape:connector-curvature="0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1422)"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         id="path1638"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="translate(0,54)"
+       id="g1646"
+       style="opacity:0.4">
+      <path
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:connector-curvature="0"
+         id="path1642"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1336)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path1644"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1422)" />
+    </g>
+    <g
+       transform="translate(90,54)"
+       style="opacity:0.4"
+       id="g1652">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1336)"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         id="path1648"
+         inkscape:connector-curvature="0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1422)"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         id="path1650"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="translate(180,54)"
+       id="g1658"
+       style="opacity:0.4">
+      <path
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:connector-curvature="0"
+         id="path1654"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1336)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path1656"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1422)" />
+    </g>
+    <g
+       style="opacity:0.4"
+       id="g1664"
+       transform="translate(270,112)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1336)"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         id="path1660"
+         inkscape:connector-curvature="0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1422)"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         id="path1662"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       style="opacity:0.4"
+       id="g1672"
+       transform="translate(270,54)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1676)"
+         d="m 197.67249,108.4325 41.90678,37.3517"
+         id="path1670"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="translate(90,168)"
+       style="opacity:0.4"
+       id="g1824">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1846)"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         id="path1820"
+         inkscape:connector-curvature="0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0" />
+    </g>
+    <g
+       transform="translate(180,168)"
+       id="g1830"
+       style="opacity:0.4">
+      <path
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:connector-curvature="0"
+         id="path1826"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1336)" />
+    </g>
+    <g
+       transform="translate(270,168)"
+       id="g1836"
+       style="opacity:0.4">
+      <path
+         inkscape:original-d="m 197.67249,108.4325 c 13.66626,-0.001 27.33151,-0.001 40.99577,0"
+         inkscape:path-effect="#path-effect873"
+         inkscape:connector-curvature="0"
+         id="path1832"
+         d="m 197.67249,108.4325 c 13.66626,0 27.33151,0 40.99577,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1336)" />
+    </g>
+    <path
+       style="opacity:1;fill:none;stroke:#a3a3a3;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 575.63877,202.81892 c 19.96978,0 19.32559,0 19.32559,0 v 0"
+       id="path2210"
+       inkscape:connector-curvature="0" />
+    <path
+       style="opacity:1;fill:none;stroke:#a3a3a3;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 594.96436,202.81892 v 88.25352 0"
+       id="path2212"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path2214"
+       d="m 575.63877,290.81892 c 19.96978,0 19.32559,0 19.32559,0 v 0"
+       style="opacity:1;fill:none;stroke:#a3a3a3;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
 </svg>

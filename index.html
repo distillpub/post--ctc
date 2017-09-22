@@ -402,7 +402,7 @@ the subsequence <script type="math/tex">Z_{1:s}</script> after
 </figcaption>
 </div>
 <figcaption style="position:absolute; top: 100px; width: 100px;">
-<span style="position:absolute; left:15px;">output,</span>
+<span style="position:absolute;">output</span>
 <span style="position:absolute; top:25px;"><script type="math/tex">Y =</script> [a, b]</span>
 </figcaption>
 <figcaption style="position:absolute; left:170px; top: 0px;">
@@ -579,10 +579,21 @@ independence assumption it makes. The cost function we wrote down above models
 the conditional output distribution as
 \begin{align}
 p(Y \mid X) = \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
-\end{align}
-The model assumes that a given output element is conditionally independent of
+\end{align}</p>
+
+<div style="height:150px;">
+<figure style="width:200px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
+  <img src="conditional_independence.svg" />
+  <figcaption>
+  Graphical model for CTC.
+  </figcaption>
+</figure>
+<p>The model assumes that a given output element is conditionally independent of
 the other output elements given the input. For many sequence transduction
-problems this is not a valid assumption. Say we had an audio clip of someone
+problems this is not a valid assumption.</p>
+</div>
+
+<p>Say we had an audio clip of someone
 saying “triple A”.<dt-cite key="Chan2016las"></dt-cite> Another valid transcription could be “AAA”. If the first
 letter of the predicted transcription is ‘A’, then with high probability the
 next letter should be ‘A’ and with low probability the next letter should be
@@ -604,8 +615,8 @@ alignments between <script type="math/tex">X</script> and <script type="math/tex
 alignments thus model is agnostic as to how probability is distributed amongst
 them. In some problems CTC ends up allotting most of the probability towards a
 single alignment, though this is not guaranteed. To force the model to upweight
-a single alignment, we can replace the <code class="highlighter-rouge">sum</code> over the
-alignments with a <code>max</code>,
+a single alignment, we can replace the sum over the
+alignments with a max,
 \begin{align}
 p(Y \mid X) = \max_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
 \end{align}</p>
@@ -619,7 +630,7 @@ the output must be no greater than the length of the input.<dt-fn>Note that if t
 where this is often not the case, CTC will not work.</p>
 
 <p>A final important property of CTC alignments is that they are <em>many-to-one</em>. In
-other words, multiple input element can align to at most one output element. In
+other words, multiple input elements can align to at most one output element. In
 some cases this may not be desirable. We may want to enforce a strict
 one-to-one correspondence between elements of <script type="math/tex">X</script> and <script type="math/tex">Y</script>. Alternatively,
 we may want to allow multiple output elements to align to a single input
@@ -631,8 +642,8 @@ of audio, but a character based CTC model would not allow for this.</p>
 <p>Inference with CTC is done in an <em>input synchronous</em> manner as opposed to an
 <em>output synchronous</em> manner. This means the beam search is pruned after
 processing each input element and the algorithm terminates when all of the
-input has been seen. This is opposed to output synchronous decoding which
-prunes the beam after each output time-step and typically terminates on an
+input has been seen. Output synchronous decoding prunes the beam after each
+output time-step and typically terminates on an
 end-of-sequence marker. Input synchronous inference makes streaming the
 decoding process easier. For some applications streaming the inference
 computation is critical to achieve low latency response times.</p>
@@ -855,8 +866,18 @@ time-step.  The <a href="ftp://ftp.idsia.ch/pub/juergen/icml2006.pdf">original p
 including the adjustments to the gradient. In practice this works well enough
 for medium length sequences but can still underflow for long sequences.
 A better solution is to compute the loss function in log-space with the
-<a href="https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations">log-sum-exp trick</a>. Inference should also be done in log-space
-using the log-sum-exp trick.</p>
+log-sum-exp trick
+<dt-fn>
+When computing the sum of two probabilities in log space use the identity
+\begin{align}
+\log(e^a + e^b) = \max\{a, b\} + \log(1 + e^{-|a-b|})
+\end{align}
+Most programming languages have an stable way to compute
+<script type="math/tex">\log(1 + x)</script> when
+<script type="math/tex">x</script> is close to zero.
+</dt-fn>.
+
+Inference should also be done in log-space using the log-sum-exp trick.</p>
 
 <p><strong>Beam Search:</strong> There are a couple of good tips to know about when
 implementing  and using the CTC beam search.</p>

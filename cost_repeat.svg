@@ -11,7 +11,7 @@
    width="175.11739"
    id="svg"
    version="1.1"
-   sodipodi:docname="cost_no_skip.svg"
+   sodipodi:docname="cost_epsilon.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06">
   <metadata
      id="metadata215">
@@ -40,11 +40,11 @@
      showgrid="false"
      inkscape:zoom="2.1953488"
      inkscape:cx="120.66449"
-     inkscape:cy="93.051195"
+     inkscape:cy="74.830856"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g861"
+     inkscape:current-layer="g845"
      fit-margin-left="10"
      fit-margin-top="10"
      fit-margin-bottom="10"
@@ -52,7 +52,7 @@
      showguides="true"
      inkscape:guide-bbox="true">
     <sodipodi:guide
-       position="15.03178,-2.7330509"
+       position="304.3568,224.3117"
        orientation="1,0"
        id="guide834"
        inkscape:locked="false" />
@@ -66,11 +66,6 @@
        id="grid840"
        originx="-21.601459"
        originy="70.995363" />
-    <sodipodi:guide
-       position="-25.052967,170.81568"
-       orientation="0,1"
-       id="guide2838"
-       inkscape:locked="false" />
   </sodipodi:namedview>
   <defs
      id="defs4">
@@ -297,6 +292,21 @@
      id="g861"
      transform="translate(-25.732319,-6.1013794)">
     <text
+       id="text12"
+       y="59.025597"
+       x="35.011616">a</text>
+    <text
+       id="text16"
+       y="128.29074"
+       x="36.286007"
+       style="font-family:STIXGeneral-Italic"
+       inkscape:transform-center-x="-108.2233"
+       inkscape:transform-center-y="-102.42562">ϵ</text>
+    <text
+       id="text14"
+       y="198.64192"
+       x="36.09993">a</text>
+    <text
        style="font-family:STIXGeneral-Italic"
        id="text26"
        y="25.434874"
@@ -356,23 +366,5 @@
          id="path2262"
          inkscape:connector-curvature="0" />
     </g>
-    <text
-       inkscape:transform-center-y="-102.42562"
-       inkscape:transform-center-x="-108.2233"
-       style="font-family:STIXGeneral-Italic"
-       x="36.286007"
-       y="198.95175"
-       id="text2836">ϵ</text>
-    <text
-       x="34.556107"
-       y="127.35188"
-       id="text2840">a</text>
-    <text
-       id="text2842"
-       y="58.65514"
-       x="35.830498"
-       style="font-family:STIXGeneral-Italic"
-       inkscape:transform-center-x="-108.2233"
-       inkscape:transform-center-y="-102.42562">ϵ</text>
   </g>
 </svg>

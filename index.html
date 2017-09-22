@@ -112,37 +112,49 @@ model.</p>
 output <script type="math/tex">Y</script> have a specific form. To motivate the CTC alignments, first
 consider a naive approach.</p>
 
-<p>Let’s use an example. Let the input length <script type="math/tex">T = 6</script> and <script type="math/tex">Y =</script> [c, a, t]. In
-this case, one way to align <script type="math/tex">Y</script> and <script type="math/tex">X</script> would be to let the elements of
-<script type="math/tex">Y</script> align to multiple elements of <script type="math/tex">X</script>. So the alignment could be</p>
+<p>Let’s use an example. Let the input length <script type="math/tex">T = 6</script>
+and <script type="math/tex">Y =</script> [c, a, t]. In
+this case, one way to align <script type="math/tex">Y</script> and
+<script type="math/tex">X</script> would be to let the elements of
+<script type="math/tex">Y</script> align to multiple elements of
+<script type="math/tex">X</script>. So the alignment could be</p>
 
 <figure style="width:300px; height:150px;">
   <figcaption>
-  <span style="position:absolute; left: 120px; top:15px;">output (<script type="math/tex">Y</script>)</span>
-  <span style="position:absolute; left: 120px; top:65px;">alignment</span>
-  <span style="position:absolute; left: 125px; top:110px;">input (<script type="math/tex">X</script>)</span>
+  <span style="position:absolute; left: 0; top:15px;">output (<script type="math/tex">Y</script>)</span>
+  <span style="position:absolute; left: 0; top:65px;">alignment</span>
+  <span style="position:absolute; left: 0; top:110px;">input (<script type="math/tex">X</script>)</span>
   </figcaption>
-  <div style="width:200px; position:absolute; left: 200px;">
+  <div style="width:200px; position:absolute; left: 80px;">
   <img src="naive_alignment.svg" />
   </div>
 </figure>
 
 <p>This approach has two problems.</p>
 <ul>
-  <li>Some elements of <script type="math/tex">X</script> may not correspond to any element of <script type="math/tex">Y</script>. In this case, we
-may not want to force every element of <script type="math/tex">X</script> to match with an element of
-<script type="math/tex">Y</script>.</li>
-  <li>The sequence <script type="math/tex">Y</script> can have consecutive repeat characters. This means the
-alignments for a given <script type="math/tex">Y</script> are not unique. We have no way to determine if
-the alignment [c, c, a, a, a, t] refers to [c, a, t] or [c, a, a, t] among
-others. Later we’ll need to distinguish between these cases to perform
-inference with the model.</li>
+  <li>
+    Some elements of <script type="math/tex">X</script> may not
+    correspond to any element of <script type="math/tex">Y</script>.
+    In this case, we may not want to force every element of
+    <script type="math/tex">X</script> to match with an element of
+    <script type="math/tex">Y</script>.
+  </li>
+
+  <li>
+    The sequence <script type="math/tex">Y</script> can have
+    consecutive repeat characters. This means the alignments for a given
+    <script type="math/tex">Y</script> are not unique. We have no way to
+    determine if the alignment [c, c, a, a, a, t] refers to [c, a, t] or
+    [c, a, a, t] among others. Later we’ll need to distinguish between these
+    cases to perform inference with the model.
+  </li>
 </ul>
 
 <p>To get around these problems, CTC introduces a new token to the set of allowed
 output characters. This new token is sometimes called the “blank” token. We’ll
-refer to it here as <script type="math/tex">\epsilon</script>. When an input element aligns to <script type="math/tex">\epsilon</script>
-then no output element corresponds to it.</p>
+refer to it here as <script type="math/tex">\epsilon</script>. When an input
+element aligns to <script type="math/tex">\epsilon</script> then no output
+element corresponds to it.</p>
 
 <p>The alignments allowed by CTC are of length <script type="math/tex">T</script>,
 the length of the input. For a given <script type="math/tex">Y</script>,
@@ -153,44 +165,66 @@ be the set of such alignments. An alignment is in the set
 
 <figure style="width:500px; height:240px;">
   <figcaption>
-  <div style="position:absolute; left: 80px; top:30px; width: 150px;">First, merge repeat characters.</div>
-  <div style="position:absolute; left: 80px; top:100px; width: 150px;">Then, remove any <script type="math/tex">\epsilon</script> tokens.</div>
-  <div style="position:absolute; left: 80px; top:190px; width: 150px;">The remaining characters are the output.</div>
+  <div style="position:absolute; top:30px; width: 150px;">
+    First, merge repeat characters.
+  </div>
+  <div style="position:absolute; top:100px; width: 150px;">
+    Then, remove any <script type="math/tex">\epsilon</script> tokens.
+  </div>
+  <div style="position:absolute; top:190px; width: 150px;">
+    The remaining characters are the output.
+  </div>
   </figcaption>
-  <div style="width:400px; position:absolute; left: 200px;">
+  <div style="width:400px; position:absolute; left: 100px;">
   <img src="ctc_alignment_steps.svg" />
   </div>
 </figure>
 
-<p>The set <script type="math/tex">\mathcal{A}</script> contains all possible alignments which map to <script type="math/tex">Y</script>.
-If there are consecutive repeat characters in <script type="math/tex">Y</script> then the <script type="math/tex">\epsilon</script>
-between them is required. This allows us to differentiate between alignments of
-[c, a, t] and [c, a, a, t].</p>
+<p>The set <script type="math/tex">\mathcal{A}</script> contains all possible
+alignments which map to <script type="math/tex">Y</script>. If there are
+consecutive repeat characters in <script type="math/tex">Y</script> then
+the <script type="math/tex">\epsilon</script> between them is required.
+This allows us to differentiate between alignments of [c, a, t] and
+[c, a, a, t].</p>
 
 <p>Let’s go back to the [c, a, t] example with <script type="math/tex">T =
 6</script>. Here are a few more examples of valid and invalid alignments.</p>
 
 <figure style="width:500px; height:150px;">
   <figcaption>
-  <div style="position:absolute; left: 13px; top:0px; width: 150px;"><strong>Valid Alignments</strong></div>
-  <div style="position:absolute; left: 233px; top:0px; width: 150px;"><strong>Invalid Alignments</strong></div>
-  <div style="position:absolute; left: 420px; top:30px; width: 100px;">corresponds to <script type="math/tex">Y =</script> [c, c, a, t]</div>
-  <div style="position:absolute; left: 420px; top:90px; width: 100px;">has length 5</div>
-  <div style="position:absolute; left: 420px; top:140px; width: 100px;">missing the 'a'</div>
+  <div style="position:absolute; left: 13px; top:0px; width: 150px;">
+    <strong>Valid Alignments</strong>
+  </div>
+  <div style="position:absolute; left: 233px; top:0px; width: 150px;">
+    <strong>Invalid Alignments</strong>
+  </div>
+  <div style="position:absolute; left: 420px; top:30px; width: 100px;">
+    corresponds to <script type="math/tex">Y =</script> [c, c, a, t]
+  </div>
+  <div style="position:absolute; left: 420px; top:90px; width: 100px;">
+    has length 5
+  </div>
+  <div style="position:absolute; left: 420px; top:140px; width: 100px;">
+    missing the 'a'
+  </div>
   </figcaption>
   <div style="width:400px; position:absolute; left: 0px; top: 25px;">
   <img src="valid_invalid_alignments.svg" />
   </div>
 </figure>
 
-<p>A convenient way to visualize the alignment between <script type="math/tex">X</script> and <script type="math/tex">Y</script> is with a
-2D alignment matrix. Below is an example for the [<script type="math/tex">\epsilon</script>, c, c,
-<script type="math/tex">\epsilon</script>, a, t] alignment. Sometimes it’s useful to include the
-<script type="math/tex">\epsilon</script>’s in the alignment matrix. Both are shown here. Note that some of
-the <script type="math/tex">\epsilon</script> tokens are left unaligned. They are optional since they don’t
-fall between consecutive repeat characters in <script type="math/tex">Y</script>.</p>
+<p>A convenient way to visualize the alignment between
+<script type="math/tex">X</script> and <script type="math/tex">Y</script>
+is with a 2D alignment matrix. Below is an example for the
+[<script type="math/tex">\epsilon</script>, c, c,
+<script type="math/tex">\epsilon</script>, a, t] alignment. Sometimes it’s
+useful to include the <script type="math/tex">\epsilon</script>’s in the
+alignment matrix. Both are shown here. Note that some of
+the <script type="math/tex">\epsilon</script> tokens are left unaligned.
+They are optional since they don’t fall between consecutive repeat characters
+in <script type="math/tex">Y</script>.</p>
 
-<figure class="l-body" style="width:750px;height:270px;">
+<figure style="height:270px;">
   <div style="width: 180px; position: absolute;">
   <img src="alignment_no_epsilon.svg" />
   <figcaption style="width:130px;margin-left:25px;">
@@ -218,12 +252,12 @@ output element but not vice-versa.</p>
 <p>With the alignment setup, we can write down the CTC objective
 function for a single <script type="math/tex">(X, Y)</script> pair.</p>
 
-<figure style="width:600px;height:100px;">
+<figure style="width:600px;height:80px;margin-top:0px;">
   <span style="position:absolute; left:30px; top:0px">
     <script type="math/tex">p(Y \mid X)</script>
   </span>
   <figcaption style="position:absolute; left:30px; top:50px; width:150px;">
-  The CTC conditional probability
+  The CTC conditional <strong>probability</strong>
   </figcaption>
   <span style="position:absolute; left:170px; top:0px">
     <script type="math/tex">=</script>
@@ -237,8 +271,8 @@ function for a single <script type="math/tex">(X, Y)</script> pair.</p>
   <span style="position:absolute; left:420px; top:0px">
     <script type="math/tex">\prod_{t=1}^T p_t(a_t \mid X)</script>
   </span>
-  <figcaption style="position:absolute; left:420px; top:50px; width:180px;">
-  computing the probability for a single alignment frame-by-frame.
+  <figcaption style="position:absolute; left:420px; top:50px; width:200px;">
+  computing the <strong>probability</strong> for a single alignment step-by-step.
   </figcaption>
 </figure>
 
@@ -264,59 +298,94 @@ compute the sum above.</p>
 dynamic programming algorithm. Like any dynamic programming algorithm, the key
 is recognizing the subproblems.</p>
 
-<p>To simplify the problem let the sequence
+<p>To simplify the problem, let the sequence
 \begin{align}
 Z = [z_{1}, \ldots, z_{2U+1}] = [\epsilon, y_1, \epsilon, y_2, \ldots, \epsilon, y_U, \epsilon]
 \end{align}
 consist of the elements of <script type="math/tex">Y</script> with an <script type="math/tex">\epsilon</script> at the beginning, end,
-and between every character. Let <script type="math/tex">\alpha_{i,j}</script> be the CTC score for the
-subsequences <script type="math/tex">X_{1:i}</script> and <script type="math/tex">Z_{1:j}</script>. We can compute <script type="math/tex">\alpha_{i, j}</script> if
-we know the values <script type="math/tex">\alpha_{\lt i, \lt j}</script>. There are two cases.</p>
+and between every character. Let <script type="math/tex">\alpha_{i,j}</script> be the CTC score 
+of the subsequence <script type="math/tex">Z_{1:j}</script>
+after <script type="math/tex">i</script> input steps. We can compute <script type="math/tex">\alpha_{i, j}</script> if
+we know the values <script type="math/tex">\alpha_{\lt i, \lt j}</script>. There are three cases.</p>
 
-<p><strong>Case 1:</strong> Either <script type="math/tex">z_{j} = \epsilon</script> or <script type="math/tex">z_{j} =
-z_{j-2}</script> (a consecutive repeat character in <script type="math/tex">Y</script>). In this case
-\begin{align}
-\alpha_{i, j} = (\alpha_{i-1, j-1} + \alpha_{i-1, j}) p_i(z_{j} \mid X).
-\end{align}
-We have this case because only alignments which have matched <script type="math/tex">z_{j-1}</script> to some previous
-input element are allowed. The first condition says we can’t leave any
-characters in <script type="math/tex">Y</script> unaligned. The second condition says we <em>must</em> have
-an <script type="math/tex">\epsilon</script> between repeat characters.</p>
-
-<figure class="l-body" style="width:700px;height:180px;">
-  <div style="width: 200px; position: absolute;">
+<div style="height:320px">
+<figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
   <img src="cost_no_skip.svg" />
-  <figcaption style="margin-left:20px;">
-    <strong>Case 1 (<script type="math/tex">\epsilon</script>):</strong>
-    All elements of <script type="math/tex">Y</script> must be aligned.
-  </figcaption>
-  </div>
-  <div style="width: 200px; position: absolute; left: 250px;">
-  <img src="cost_epsilon.svg" />
-  <figcaption style="margin-left:20px;">
-    <strong>Case 1 (repeat):</strong>
-    An <script type="math/tex">\epsilon</script> has to be
-    between repeat elements of <script type="math/tex">Y</script>.
-  </figcaption>
-  </div>
-  <div style="width: 200px; position: absolute; left: 500px;">
-  <img src="cost_regular.svg" />
-  <figcaption style="margin-left:20px;">
-  <strong>Case 2:</strong>
-    When aligning distinct elements of <script type="math/tex">Y</script>
-    the <script type="math/tex">\epsilon</script> is optional.
-  </figcaption>
-  </div>
 </figure>
+<p><strong>Case 1 (<script type="math/tex"> z_{j} = \epsilon </script>):</strong></p>
+
+<p>This case says that we can't skip elements of <script type="math/tex">Y</script>
+for any alignment. If we want to align the current input to <script type="math/tex">\epsilon</script>, the previous output must be aligned to some previous input.
+
+<figure style="margin-top:0px;">
+  <span style="position:absolute; left:40px">
+    <script type="math/tex">\alpha_{i, j} = </script>
+  </span>
+  <span style="position:absolute; left:120px">
+    <script type="math/tex">(\alpha_{i-1, j-1} + \alpha_{i-1, j})</script>
+  </span>
+  <figcaption style="position:absolute; left:120px; top:50px; width:240px;">
+  The CTC probability of the two valid subsequences after
+  <script type="math/tex">i-1</script> input steps.
+  </figcaption>
+  <span style="position:absolute; left:335px">
+    <script type="math/tex">\cdot</script>
+  </span>
+  <span style="position:absolute; left:400px">
+    <script type="math/tex">p_i(z_{j} \mid X)</script>
+  </span>
+  <figcaption style="position:absolute; left:400px; top:50px; width:200px;">
+  The probability of the current character at input step <script type="math/tex">i</script>.
+  </figcaption>
+</figure>
+</p>
+</div>
+
+<div style="height:220px;">
+<figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
+  <img src="cost_repeat.svg" />
+</figure>
+<p><strong>Case 2 (<script type="math/tex">z_{j} = z_{j-2}</script>):</strong></p>
+
+<p>This case handles consecutive repeats in <script type="math/tex">Y</script>.
+Any alignment <em>must</em> have an <script type="math/tex">\epsilon</script>
+between repeat characters. The update equation is the same as in Case 1.</p>
+</div>
+
+<div style="height:260px;">
+<figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
+  <img src="cost_regular.svg" />
+</figure>
+<p><strong>Case 3:</strong></p>
+<p>If we aren’t in the first two cases, then we’re in the third case. We have
+this case because an <script type="math/tex">\epsilon</script> between unique
+characters of <script type="math/tex">Y</script> is optional.</p>
+<figure style="margin-top:0px;">
+  <span style="position:absolute; left:40px">
+    <script type="math/tex">\alpha_{i, j} = </script>
+  </span>
+  <span style="position:absolute; left:120px">
+    <script type="math/tex">(\alpha_{i-1, j-2} + \alpha_{i-1, j-1} + \alpha_{i-1, j})</script>
+  </span>
+  <figcaption style="position:absolute; left:120px; top:50px; width:240px;">
+  The CTC probability of the three valid subsequences after
+  <script type="math/tex">i-1</script> input steps.
+  </figcaption>
+  <span style="position:absolute; left:395px">
+    <script type="math/tex">\cdot</script>
+  </span>
+  <span style="position:absolute; left:420px">
+    <script type="math/tex">p_i(z_{j} \mid X)</script>
+  </span>
+  <figcaption style="position:absolute; left:420px; top:50px; width:200px;">
+  The probability of the current character at input step <script type="math/tex">i</script>.
+  </figcaption>
+</figure>
+</p>
+</div>
 
 
-<p><strong>Case 2:</strong> If we aren’t in the first case, then we’re in the second case and
-\begin{align}
-\alpha_{i, j} = (\alpha_{i-1, j-2} + \alpha_{i-1, j-1} + \alpha_{i-1, j}) p_i(z_j \mid X).
-\end{align}
-We have this case because <script type="math/tex">\epsilon</script> between unique characters is optional.
-Alignments which align <script type="math/tex">z_{j-2}</script> but not <script type="math/tex">z_{j-1}</script> to a previous input are
-allowed. Below is an animation of the steps taken by the dynamic programming
+<p>Below is an animation of the steps taken by the dynamic programming
 algorithm.</p>
 
 <figure class="l-body">
@@ -439,36 +508,33 @@ an example implementation in Python.</p>
 over the outputs significantly improves accuracy. To do this, we can
 repose the inference problem.</p>
 
-<figure style="width:500px;height:120px">
-  <span style="position:absolute; left:30px; top:0px">
-    <script type="math/tex">Y^*</script>
+<figure style="width:650px;height:80px;margin-top:0px;">
+  <span style="position:absolute; left:0px; top:0px">
+    <script type="math/tex">Y^* = \text{argmax}_{Y \in \mathcal{Y}}</script>
   </span>
-  <figcaption style="position:absolute; left:30px; top:50px; width:120px">
-  The most likely output based on a product of
-  </figcaption>
-  <span style="position:absolute; left:70px; top:0px">
-    <script type="math/tex">=</script>
-  </span>
-  <span style="position:absolute; left:100px; top:0px">
-    <script type="math/tex">\text{argmax}_{Y \in \mathcal{Y}}</script>
-  </span>
-  <span style="position:absolute; left:230px; top:0px">
+  <span style="position:absolute; left:180px; top:0px">
     <script type="math/tex">p(Y \mid X)</script>
   </span>
-  <figcaption style="position:absolute; left:230px; top:50px; width:100px">
-  the CTC conditional probability
+  <figcaption style="position:absolute; left:180px; top:50px; width:150px">
+  The CTC conditional probability.
   </figcaption>
-  <span style="position:absolute; left:350px; top:0px">
+  <span style="position:absolute; left:295px; top:0px">
+    <script type="math/tex">\cdot</script>
+  </span>
+  <span style="position:absolute; left:340px; top:0px">
     <script type="math/tex">p(Y)^\alpha</script>
   </span>
-  <figcaption style="position:absolute; left:350px; top:50px; width:100px">
-  the language model probability 
+  <span style="position:absolute; left:440px; top:0px">
+    <script type="math/tex">\cdot</script>
+  </span>
+  <figcaption style="position:absolute; left:340px; top:50px; width:150px">
+  The language model probability.
   </figcaption>
-  <span style="position:absolute; left:480px; top:0px">
+  <span style="position:absolute; left:500px; top:0px">
     <script type="math/tex">L(Y)^\beta</script>
   </span>
-  <figcaption style="position:absolute; left:480px; top:50px; width:100px">
-  and a "word" insertion bonus.
+  <figcaption style="position:absolute; left:500px; top:50px; width:100px">
+  The "word" insertion bonus.
   </figcaption>
 </figure>
 
@@ -664,7 +730,7 @@ same alphabet as before and <script type="math/tex">Y =</script> [a, b]. Another
 <em>Bakis</em> or left-right HMM. In this model any transition which proceeds from the
 left to the right is allowed.</p>
 
-<figure class="l-body" style="width:750px;height:220px;">
+<figure class="l-body" style="width:700px;height:220px;">
   <div style="width: 150px; position: absolute;">
   <img src="ergodic_hmm.svg" />
   <figcaption style="margin-left:30px;">
@@ -818,9 +884,6 @@ applications to speech recognition see Rabiner’s canonical tutorial.<dt-cite k
 The online publication <em>Distill</em> gives an in-depth guide to
 attention in encoder-decoder models.<dt-cite key="Olah2016"></dt-cite></p>
 
-</div>
-
-  
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </dt-article>
 

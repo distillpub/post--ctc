@@ -500,9 +500,15 @@ the output prefix that the proposed extension maps to.</p>
 </figure>
 
 <p>A proposed extension can map to two output prefixes if the character is a
-repeat. This is shown at <script type="math/tex">T=3</script> in the figure above where ‘a’ is proposed as
-an extension to the prefix [a]. Both [a] and [a, a] are valid outputs with this
-proposed extension. For the [a,a] case we should only include the part of the
+repeat. This is shown at <script type="math/tex">T=3</script> in the figure above
+where ‘a’ is proposed as an extension to the prefix [a]. Both [a] and [a, a] are
+valid outputs for this proposed extension.</p>
+<figure class="l-body" style="width:900px;">
+  <embed src="prefix_beam_search_single.svg"/>
+</figure>
+
+
+<p>For the [a,a] case we should only include the part of the
 score of the previous prefix for alignments which end in <script type="math/tex">\epsilon</script>. This is
 because <script type="math/tex">\epsilon</script> must be between consecutive repeat characters. For the [a]
 case, where we don’t extend the prefix, we should only consider the part of the

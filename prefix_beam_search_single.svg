@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="304.47748"
+   width="921.70093"
+   id="svg"
+   version="1.1"
+   sodipodi:docname="prefix_beam_search_single.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata201">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs199">
+    <style
+       id="style3">
+    svg {
+      font: 400 16px/1.55em -apple-system, BlinkMacSystemFont, &quot;Roboto&quot;, Helvetica, sans-serif;
+    }
+    .caption {
+      font-size: 12px;
+      fill: rgba(0,0,0,0.6);
+    }
+  </style>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1440"
+     inkscape:window-height="765"
+     id="namedview197"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     fit-margin-left="10"
+     fit-margin-top="10"
+     fit-margin-bottom="10"
+     fit-margin-right="10"
+     inkscape:zoom="1.1781818"
+     inkscape:cx="380.0109"
+     inkscape:cy="169.77295"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g1034">
+    <sodipodi:guide
+       position="656.94445,232.81624"
+       orientation="0,1"
+       id="guide1285"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="1089.7275,374.56735"
+       orientation="1,0"
+       id="guide1287"
+       inkscape:locked="false" />
+    <inkscape:grid
+       type="xygrid"
+       id="grid1289"
+       originx="-1.2003458"
+       originy="-100.99878" />
+    <sodipodi:guide
+       position="1089.7275,349.10439"
+       orientation="1,0"
+       id="guide934"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="695.05163,151.33475"
+       orientation="1,0"
+       id="guide1023"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <g
+     id="g1283"
+     transform="translate(256.79966,32.633477)">
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.5, 7.5;stroke-dashoffset:0;stroke-opacity:1"
+       d="M -143,57.842773 H 12 v 0"
+       id="path1291"
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g970.mouseover;g973.mouseover;g991.mouseover"
+         end="g970.mouseout;g973.mouseout;g991.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g970.mouseover;g973.mouseover;g991.mouseover"
+         end="g970.mouseout;g973.mouseout;g991.mouseout" />
+    </path>
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.52611816;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.6305903, 7.6305903;stroke-dashoffset:0;stroke-opacity:1"
+       d="M -142.99387,92.350575 10.205425,173.43136 v 0"
+       id="path1293"
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g970.mouseover;g977.mouseover;g973.mouseover;g980.mouseover;g995.mouseover"
+         end="g970.mouseout;g977.mouseout;g973.mouseout;g980.mouseout;g995.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g970.mouseover;g977.mouseover;g973.mouseover;g980.mouseover;g995.mouseover"
+         end="g970.mouseout;g977.mouseout;g973.mouseout;g980.mouseout;g995.mouseout" />
+    </path>
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.50386596;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.51932993, 7.51932993;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 114.3,57.842773 h 155.8 v 0"
+       id="path1297"
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g970.mouseover;g973.mouseover;"
+         end="g970.mouseout;g973.mouseout;" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g970.mouseover;g973.mouseover;"
+         end="g970.mouseout;g973.mouseout;" />
+    </path>
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.52323353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.6161675, 7.6161675;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 114.40527,138.23244 272.3042,57.249455 v 0"
+       id="path1299"
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g977.mouseover;g973.mouseover"
+         end="g977.mouseout;g973.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g977.mouseover;g973.mouseover"
+         end="g977.mouseout;g973.mouseout" />
+    </path>
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.54252923;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.71264584, 7.71264584;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 114.71061,173.92415 274.90379,56.252795 v 0"
+       id="path1301"
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g970.mouseover;g973.mouseover"
+         end="g970.mouseout;g973.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g970.mouseover;g973.mouseover"
+         end="g970.mouseout;g973.mouseout" />
+    </path>
+    <path
+       style="opacity:0.3;fill:none;stroke:#a3a3a3;stroke-width:1.51203179;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.56015857, 7.56015857;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 114.90148,207.83684 157.10108,-35.08813 v 0"
+       id="path1303"
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g980.mouseover"
+         end="g980.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g980.mouseover"
+         end="g980.mouseout" />
+    </path>
+    <path
+       style="opacity:0.1;fill:none;stroke:#a3a3a3;stroke-width:1.51744342;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.58721638, 7.58721638;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 424.30205,21.651863 583.0052,56.634839 v 0"
+       id="path1307"
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g970.mouseover"
+         end="g970.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g970.mouseover"
+         end="g970.mouseout" />
+    </path>
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.50138021;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.5069009, 7.5069009;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 424.39046,57.453908 155.54311,-0.298704 v 0"
+       id="path1315"
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g970.mouseover"
+         end="g970.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g970.mouseover"
+         end="g970.mouseout" />
+    </path>
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.55220485;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.76102421, 7.76102421;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 424.10487,58.473579 585.12038,175.56484 v 0"
+       id="path1317"
+       inkscape:connector-curvature="0">
+      <set
+         attributeName="stroke-width"
+         to="3.0"
+         begin="g977.mouseover"
+         end="g977.mouseout" />
+      <set
+         attributeName="stroke-dasharray"
+         to="0"
+         begin="g977.mouseover"
+         end="g977.mouseout" />
+    </path>
+    <g
+       transform="translate(132.40124,-7.7438272)"
+       id="g1018">
+      <g
+         id="g970">
+        <circle
+           id="circle106"
+           r="12"
+           cy="65"
+           cx="460"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g970.mouseover"
+             end="g970.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g970.mouseover"
+             end="g970.mouseout" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text108"
+           font-size="18px"
+           y="70"
+           x="455">a</text>
+      </g>
+      <g
+         id="g977">
+        <circle
+           id="circle110"
+           r="12"
+           cy="180"
+           cx="460"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g977.mouseover"
+             end="g977.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g977.mouseover"
+             end="g977.mouseout" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text112"
+           font-size="18px"
+           y="185"
+           x="455">a</text>
+        <circle
+           id="circle114"
+           r="12"
+           cy="180"
+           cx="510"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g977.mouseover"
+             end="g977.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g977.mouseover"
+             end="g977.mouseout" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text116"
+           font-size="18px"
+           y="185"
+           x="505">a</text>
+        <line
+           x1="472"
+           y1="180"
+           x2="498"
+           y2="180"
+           id="line172"
+           style="stroke:#000000;stroke-width:1.5">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g977.mouseover"
+             end="g977.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g977.mouseover"
+             end="g977.mouseout" />
+        </line>
+      </g>
+    </g>
+    <g
+       transform="translate(52.197531,-7.5)"
+       id="g1048">
+      <g
+         id="g973">
+        <circle
+           id="circle50"
+           r="12"
+           cy="65"
+           cx="230"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g970.mouseover;g977.mouseover;g973.mouseover"
+             end="g970.mouseout;g977.mouseout;g973.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g970.mouseover;g977.mouseover;g973.mouseover"
+             end="g970.mouseout;g977.mouseout;g973.mouseout" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text52"
+           font-size="18px"
+           y="70"
+           x="225">a</text>
+      </g>
+      <g
+         id="g980"
+         style="opacity:0.1">
+        <circle
+           id="circle54"
+           r="12"
+           cy="180"
+           cx="230"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g980.mouseover"
+             end="g980.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g980.mouseover"
+             end="g980.mouseout" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text56"
+           font-size="18px"
+           y="185"
+           x="225">a</text>
+        <circle
+           id="circle58"
+           r="12"
+           cy="180"
+           cx="280"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g980.mouseover"
+             end="g980.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g980.mouseover"
+             end="g980.mouseout" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text60"
+           font-size="18px"
+           y="187"
+           x="275">b</text>
+        <line
+           x1="242"
+           y1="180"
+           x2="268"
+           y2="180"
+           id="line150"
+           style="stroke:#000000;stroke-width:1.5">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g980.mouseover"
+             end="g980.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g980.mouseover"
+             end="g980.mouseout" />
+        </line>
+      </g>
+      <circle
+         style="opacity:0.3;fill:#e77471;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="30"
+         r="12"
+         id="circle70">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover"
+           end="g970.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover"
+           end="g970.mouseout" />
+      </circle>
+      <text
+         style="font-size:18px;font-family:STIXGeneral-Italic;opacity:0.3"
+         x="355"
+         y="35"
+         font-size="18px"
+         id="text72">ϵ</text>
+      <circle
+         style="fill:#e77471;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="65"
+         r="12"
+         id="circle74">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g977.mouseover"
+           end="g970.mouseout;g977.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g977.mouseover"
+           end="g970.mouseout;g977.mouseout" />
+      </circle>
+      <text
+         x="355"
+         y="70"
+         font-size="18px"
+         id="text76"
+         style="font-size:18px">a</text>
+      <circle
+         style="opacity:0.1;fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="100"
+         r="12"
+         id="circle78" />
+      <text
+         x="355"
+         y="107"
+         font-size="18px"
+         id="text80"
+         style="font-size:18px;opacity:0.1">b</text>
+      <circle
+         style="opacity:0.1;fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="145"
+         r="12"
+         id="circle82" />
+      <text
+         style="font-size:18px;font-family:STIXGeneral-Italic;opacity:0.1"
+         x="355"
+         y="150"
+         font-size="18px"
+         id="text84">ϵ</text>
+      <circle
+         style="opacity:0.1;fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="180"
+         r="12"
+         id="circle86" />
+      <text
+         x="355"
+         y="185"
+         font-size="18px"
+         id="text88"
+         style="font-size:18px;opacity:0.1">a</text>
+      <circle
+         style="opacity:0.1;fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="360"
+         cy="215"
+         r="12"
+         id="circle90" />
+      <text
+         x="355"
+         y="222"
+         font-size="18px"
+         id="text92"
+         style="font-size:18px;opacity:0.1">b</text>
+      <line
+         style="opacity:0.1;stroke:#000000;stroke-width:1.5"
+         id="line164"
+         y2="215"
+         x2="348"
+         y1="188"
+         x1="289" />
+      <line
+         style="opacity:0.1;stroke:#000000;stroke-width:1.5"
+         id="line162"
+         y2="180"
+         x2="348"
+         y1="180"
+         x1="292" />
+      <line
+         style="opacity:0.1;stroke:#000000;stroke-width:1.5"
+         id="line160"
+         y2="145"
+         x2="348"
+         y1="172"
+         x1="289" />
+      <line
+         style="opacity:0.1;stroke:#000000;stroke-width:1.35800958"
+         id="line156"
+         y2="100"
+         x2="348"
+         y1="65"
+         x1="279.07999" />
+      <line
+         style="stroke:#000000;stroke-width:1.50092256"
+         id="line154"
+         y2="65"
+         x2="348"
+         y1="65"
+         x1="241.86958">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g977.mouseover"
+           end="g970.mouseout;g977.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g977.mouseover"
+           end="g970.mouseout;g977.mouseout" />
+      </line>
+      <line
+         style="opacity:0.1;stroke:#000000;stroke-width:1.35800958"
+         id="line152"
+         y2="30"
+         x2="348"
+         y1="65"
+         x1="279.07999">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover"
+           end="g970.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover"
+           end="g970.mouseout" />
+      </line>
+    </g>
+    <g
+       transform="translate(-27.5,-7.5)"
+       id="g1074">
+      <g
+         id="g991">
+        <circle
+           id="circle2"
+           r="12"
+           cy="65"
+           cx="50"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g970.mouseover;g973.mouseover;g991.mouseover"
+             end="g970.mouseout;g973.mouseout;g991.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g970.mouseover;g973.mouseover;g991.mouseover"
+             end="g970.mouseout;g973.mouseout;g991.mouseout" />
+        </circle>
+        <text
+           id="text4"
+           font-size="18px"
+           y="70"
+           x="45"
+           style="font-size:18px;font-family:STIXGeneral-Italic">λ</text>
+      </g>
+      <g
+         id="g995">
+        <circle
+           id="circle6"
+           r="12"
+           cy="180"
+           cx="50"
+           style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+          <set
+             attributeName="stroke-width"
+             to="3.0"
+             begin="g970.mouseover;g977.mouseover;g973.mouseover;g995.mouseover;g980.mouseover"
+             end="g970.mouseout;g977.mouseout;g973.mouseout;g995.mouseout;g980.mouseout" />
+          <set
+             attributeName="stroke"
+             to="#a3a3a3"
+             begin="g970.mouseover;g977.mouseover;g973.mouseover;g995.mouseover;g980.mouseover"
+             end="g970.mouseout;g977.mouseout;g973.mouseout;g995.mouseout;g980.mouseout" />
+        </circle>
+        <text
+           style="font-size:18px"
+           id="text8"
+           font-size="18px"
+           y="185"
+           x="45">a</text>
+      </g>
+      <circle
+         style="opacity:0.1;fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="30"
+         r="12"
+         id="circle14" />
+      <text
+         style="font-size:18px;font-family:STIXGeneral-Italic;opacity:0.1"
+         x="125"
+         y="35"
+         font-size="18px"
+         id="text16">ϵ</text>
+      <circle
+         style="fill:#e77471;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="65"
+         r="12"
+         id="circle18">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g973.mouseover;"
+           end="g970.mouseout;g973.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g973.mouseover;"
+           end="g970.mouseout;g973.mouseout;" />
+      </circle>
+      <text
+         x="125"
+         y="70"
+         font-size="18px"
+         id="text20"
+         style="font-size:18px">a</text>
+      <circle
+         style="opacity:0.1;fill:#d3d3d3;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="100"
+         r="12"
+         id="circle22" />
+      <text
+         x="125"
+         y="107"
+         font-size="18px"
+         id="text24"
+         style="font-size:18px;opacity:0.1">b</text>
+      <circle
+         style="fill:#e77471;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="145"
+         r="12"
+         id="circle26">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g977.mouseover;g973.mouseover"
+           end="g977.mouseout;g973.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g977.mouseover;g973.mouseover"
+           end="g977.mouseout;g973.mouseout" />
+      </circle>
+      <text
+         style="font-size:18px;font-family:STIXGeneral-Italic"
+         x="125"
+         y="150"
+         font-size="18px"
+         id="text28">ϵ</text>
+      <circle
+         style="fill:#e77471;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="180"
+         r="12"
+         id="circle30">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g973.mouseover"
+           end="g970.mouseout;g973.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g973.mouseover"
+           end="g970.mouseout;g973.mouseout" />
+      </circle>
+      <text
+         x="125"
+         y="185"
+         font-size="18px"
+         id="text32"
+         style="font-size:18px">a</text>
+      <circle
+         style="opacity:0.1;fill:#e77471;stroke:#000000;stroke-width:1"
+         cx="130"
+         cy="215"
+         r="12"
+         id="circle34">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g980.mouseover"
+           end="g980.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g980.mouseover"
+           end="g980.mouseout" />
+      </circle>
+      <text
+         x="125"
+         y="222"
+         font-size="18px"
+         id="text36"
+         style="font-size:18px;opacity:0.1">b</text>
+      <line
+         style="opacity:0.1;stroke:#000000;stroke-width:1.5"
+         id="line142"
+         y2="215"
+         x2="118"
+         y1="188"
+         x1="59">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g980.mouseover"
+           end="g980.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g980.mouseover"
+           end="g980.mouseout" />
+      </line>
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         id="line140"
+         y2="180"
+         x2="118"
+         y1="180"
+         x1="62">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g973.mouseover"
+           end="g970.mouseout;g973.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g973.mouseover"
+           end="g970.mouseout;g973.mouseout" />
+      </line>
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         id="line138"
+         y2="145"
+         x2="118"
+         y1="172"
+         x1="59">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g977.mouseover;g973.mouseover"
+           end="g977.mouseout;g973.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g977.mouseover;g973.mouseover"
+           end="g977.mouseout;g973.mouseout" />
+      </line>
+      <line
+         style="opacity:0.1;stroke:#000000;stroke-width:1.5"
+         id="line136"
+         y2="100"
+         x2="118"
+         y1="73"
+         x1="59" />
+      <line
+         style="stroke:#000000;stroke-width:1.5"
+         id="line134"
+         y2="65"
+         x2="118"
+         y1="65"
+         x1="62">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g973.mouseover;"
+           end="g970.mouseout;g973.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g973.mouseover;"
+           end="g970.mouseout;g973.mouseout;" />
+      </line>
+      <line
+         style="opacity:0.1;stroke:#000000;stroke-width:1.5"
+         id="line132"
+         y2="30"
+         x2="118"
+         y1="57"
+         x1="59" />
+    </g>
+    <g
+       id="g1177"
+       transform="translate(-284.29966,27.9099)">
+      <circle
+         id="circle1111"
+         r="12"
+         cy="65"
+         cx="50"
+         style="fill:#6fa8dc;stroke:#000000;stroke-width:1">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="circle1111.mouseover;g970.mouseover;g977.mouseover;g984.mouseover;g973.mouseover;g980.mouseover;g987.mouseover;g995.mouseover;g991.mouseover;g999.mouseover"
+           end="circle1111.mouseout;g970.mouseout;g977.mouseout;g984.mouseout;g973.mouseout;g980.mouseout;g987.mouseout;g995.mouseout;g991.mouseout;g999.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="circle1111.mouseover;g970.mouseover;g977.mouseover;g984.mouseover;g973.mouseover;g980.mouseover;g987.mouseover;g995.mouseover;g991.mouseover;g999.mouseover"
+           end="circle1111.mouseout;g970.mouseout;g977.mouseout;g984.mouseout;g973.mouseout;g980.mouseout;g987.mouseout;g995.mouseout;g991.mouseout;g999.mouseout" />
+      </circle>
+      <text
+         id="text1113"
+         font-size="18px"
+         y="70"
+         x="45"
+         style="font-size:18px;font-family:STIXGeneral-Italic">λ</text>
+      <circle
+         id="circle1123"
+         r="12"
+         cy="30"
+         cx="130"
+         style="fill:#e77471;fill-opacity:1;stroke:#000000;stroke-width:1">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g973.mouseover;g991.mouseover"
+           end="g970.mouseout;g973.mouseout;g991.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g973.mouseover;g991.mouseover"
+           end="g970.mouseout;g973.mouseout;g991.mouseout" />
+      </circle>
+      <text
+         id="text1125"
+         font-size="18px"
+         y="35"
+         x="125"
+         style="font-size:18px;font-family:STIXGeneral-Italic">ϵ</text>
+      <circle
+         id="circle1127"
+         r="12"
+         cy="65"
+         cx="130"
+         style="fill:#e77471;stroke:#000000;stroke-width:1">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g977.mouseover;g973.mouseover;g980.mouseover;g995.mouseover"
+           end="g970.mouseout;g977.mouseout;g973.mouseout;g980.mouseout;g995.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g977.mouseover;g973.mouseover;g980.mouseover;g995.mouseover"
+           end="g970.mouseout;g977.mouseout;g973.mouseout;g980.mouseout;g995.mouseout" />
+      </circle>
+      <text
+         id="text1129"
+         font-size="18px"
+         y="70"
+         x="125"
+         style="font-size:18px">a</text>
+      <circle
+         id="circle1131"
+         r="12"
+         cy="100"
+         cx="130"
+         style="opacity:0.1;fill:#e77471;fill-opacity:1;stroke:#000000;stroke-width:1">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g999.mouseover;g987.mouseover;g984.mouseover;"
+           end="g999.mouseout;g987.mouseout;g984.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g999.mouseover;g987.mouseover;g984.mouseover;"
+           end="g999.mouseout;g987.mouseout;g984.mouseout;" />
+      </circle>
+      <text
+         id="text1133"
+         font-size="18px"
+         y="107"
+         x="125"
+         style="font-size:18px;opacity:0.1">b</text>
+      <line
+         x1="59"
+         y1="73"
+         x2="118"
+         y2="100"
+         id="line1171"
+         style="opacity:0.1;stroke:#000000;stroke-width:1.5">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g999.mouseover;g987.mouseover;g984.mouseover;"
+           end="g999.mouseout;g987.mouseout;g984.mouseout;" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g999.mouseover;g987.mouseover;g984.mouseover;"
+           end="g999.mouseout;g987.mouseout;g984.mouseout;" />
+      </line>
+      <line
+         x1="62"
+         y1="65"
+         x2="118"
+         y2="65"
+         id="line1173"
+         style="stroke:#000000;stroke-width:1.5">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g977.mouseover;g973.mouseover;g980.mouseover;g995.mouseover"
+           end="g970.mouseout;g977.mouseout;g973.mouseout;g980.mouseout;g995.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g977.mouseover;g973.mouseover;g980.mouseover;g995.mouseover"
+           end="g970.mouseout;g977.mouseout;g973.mouseout;g980.mouseout;g995.mouseout" />
+      </line>
+      <line
+         x1="59"
+         y1="57"
+         x2="118"
+         y2="30"
+         id="line1175"
+         style="stroke:#000000;stroke-width:1.5">
+        <set
+           attributeName="stroke-width"
+           to="3.0"
+           begin="g970.mouseover;g973.mouseover;g991.mouseover"
+           end="g970.mouseout;g973.mouseout;g991.mouseout" />
+        <set
+           attributeName="stroke"
+           to="#a3a3a3"
+           begin="g970.mouseover;g973.mouseover;g991.mouseover"
+           end="g970.mouseout;g973.mouseout;g991.mouseout" />
+      </line>
+    </g>
+    <text
+       class="caption"
+       x="133.17928"
+       y="-12.55024"
+       id="text938"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+      <tspan
+         sodipodi:role="line"
+         id="tspan1153"
+         x="133.17928"
+         y="-12.55024">Multiple extensions can merge</tspan>
+      <tspan
+         sodipodi:role="line"
+         id="tspan1155"
+         x="133.17928"
+         y="2.4497604">to the same hypotheses.</tspan>
+    </text>
+    <g
+       id="g1034"
+       style="opacity:0.6">
+      <circle
+         r="8.3999996"
+         style="fill:#e77471;stroke:#000000;stroke-width:0.69999999"
+         cx="320.4447"
+         cy="87.148018"
+         id="circle1010">
+      </circle>
+      <text
+         style="font-size:12.60000038px;font-family:STIXGeneral-Italic;stroke-width:0.69999999"
+         x="316.9447"
+         y="90.648018"
+         font-size="18px"
+         id="text1012">ϵ</text>
+      <circle
+         style="fill:#6fa8dc;stroke:#000000;stroke-width:0.69999999"
+         cx="282.31155"
+         cy="87.437889"
+         id="circle1002"
+         r="8.3999996">
+      </circle>
+      <text
+         x="278.81155"
+         y="90.937889"
+         font-size="18px"
+         id="text1004"
+         style="font-size:12.60000038px;stroke-width:0.69999999">a</text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path1025"
+         d="m 291.06628,87.335863 c 20.8429,0 20.22987,0 20.22987,0"
+         style="fill:none;stroke:#000000;stroke-width:1.51598394;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <text
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+       id="text1054"
+       y="-13.51629"
+       x="428.99899"
+       class="caption">
+      <tspan
+         sodipodi:role="line"
+         id="tspan1121"
+         x="428.99899"
+         y="-13.51629">An extension can also</tspan>
+      <tspan
+         sodipodi:role="line"
+         id="tspan1123"
+         x="428.99899"
+         y="1.4837103">split into two hypothesis.</tspan>
+      <tspan
+         sodipodi:role="line"
+         id="tspan1125"
+         x="428.99899"
+         y="16.483711" />
+    </text>
+    <path
+       inkscape:connector-curvature="0"
+       id="path1115"
+       d="m 449.73335,39.027771 v -24.024379 0"
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.25702405;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.25702405;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 249.00032,39.027771 v -24.024379 0"
+       id="path1131"
+       inkscape:connector-curvature="0" />
+    <text
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+       id="text1137"
+       y="229.34792"
+       x="168.82742"
+       class="caption">
+      <tspan
+         sodipodi:role="line"
+         id="tspan1157"
+         x="168.82742"
+         y="229.34792">Track the probability that the</tspan>
+      <tspan
+         sodipodi:role="line"
+         id="tspan1159"
+         x="168.82742"
+         y="244.6787">hypothesis was extended by <tspan
+   style="font-family:STIXGeneral-Italic"
+   id="tspan113">ϵ</tspan>
+ to</tspan>
+      <tspan
+         sodipodi:role="line"
+         id="tspan1161"
+         x="168.82742"
+         y="260.00946">distinguish &quot;a<tspan
+   style="font-family:STIXGeneral-Italic"
+   id="tspan116">ϵ</tspan>
+&quot; from &quot;aa&quot; and &quot;<tspan
+   style="font-family:STIXGeneral-Italic"
+   id="tspan118">ϵ</tspan>a&quot;.</tspan>
+    </text>
+    <path
+       style="fill:none;stroke:#a3a3a3;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 201.53367,204.53703 71.2963,-97.60802"
+       id="path1145"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

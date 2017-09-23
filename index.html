@@ -17,17 +17,31 @@
 
 <h2 id="the-problem">The Problem</h2>
 
-<p>We’ve seen an explosion in the use of neural networks for mapping sequences
-to sequences. One work-horse algorithm for neural sequence transduction is
-Connectionist Temporal Classification (CTC).
-Certain assumptions made by the CTC algorithm make it especially well suited
-for problems such as automatic speech recognition and hand-writing recognition,
-where it’s used in many state-of-the-art models.</p>
+<p>Consider speech recognition. The input is a time series.  It can
+have hundreds or even thousands of time-steps.
+<dt-fn>
+In speech it's common to use a frequency based feature extractor on the raw
+audio. A spectrogram with a 10 millisecond window applied to a 10 second audio
+clip yields 1000 time-steps.
+</dt-fn>
+The transcript is generally much
+shorter, say tens of characters in length.</p>
+
+<p>We can't train a model to predict a character for each input. We don't know
+which character to use as the label. Also, not every input has a corresponding
+character. There can be stretches of silence. Any rule we devise like "one
+character corresponds to ten inputs" can be broken. People's rates of
+speech change. Sometimes we talk quickly and sometimes slowly.</p>
+
+<p>An alternative is to hand-align each character to it's location in the
+audio. From a modeling standpoint this works well. We'd know the ground truth
+for each input. But, for any reasonably sized dataset, this is prohibitively
+time consuming.</p>
 
 <figure class="l-body" style="height:250px;">
   <div style="width:330px; position:absolute;">
   <img src="handwriting_recognition.svg" />
-  <figcaption>
+  <figcaption style="width:280px;">
   <strong>Handwriting recognition:</strong> The input can be
   <script type="math/tex">(x,y)</script> coordinates of a pen stroke or 
   pixels in an image.
@@ -36,11 +50,16 @@ where it’s used in many state-of-the-art models.</p>
   <div style="width:280px; position:absolute; left:380px;">
   <img src="speech_recognition.svg" />
   <figcaption>
-  <strong>Speech recognition:</strong> The input features are audio usually
-  after applying a spectrogram or some other frequency based feature extractor.
+  <strong>Speech recognition:</strong> The input can be a spectrogram or some
+  other frequency based feature extractor.
   </figcaption>
   </div>
 </figure>
+
+<p>Connectionist Temporal Classification (CTC) solves these problems.
+Certain assumptions made by the algorithm make it especially well suited to 
+problems like speech recognition and handwriting recognition. Today,
+it’s used in many state-of-the-art models in these domains.</p>
 
 <p>To be a bit more formal, let's consider the problem of mapping input
 sequences <script type="math/tex">X = [x_1, x_2, \ldots, x_T] \in
@@ -567,7 +586,7 @@ updates. The insertion bonus helps with this. The parameters <script type="math/
 <hr />
 <h2 id="properties-of-ctc">Properties of CTC</h2>
 
-<p>We briefly mentioned a few important properties of CTC so far. Here we’ll go
+<p>We mentioned a few important properties of CTC so far. Here we’ll go
 into more depth on what these properties are and what trade-offs they offer.</p>
 
 <h3 id="conditional-independence">Conditional Independence</h3>
@@ -928,7 +947,7 @@ reading from video<dt-cite key="Assael2016"></dt-cite>, action labelling from
 video<dt-cite key="Huang2016"></dt-cite> and keyword detection in audio.
 <dt-cite key="Fernandez2007,Lengerich2016"></dt-cite></p>
 
-<p>Many extensions and improvements to CTC have been proposed. We name a few here.
+<p>Many extensions and improvements to CTC have been proposed. Here are a few.
 The <em>Sequence Transducer</em> discards the conditional independence assumption
 made by CTC.<dt-cite key="Graves2012transducer"></dt-cite> As a consequence the
 model also allows the output to be longer than the input. The <em>Gram-CTC</em> model

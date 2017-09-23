@@ -296,6 +296,27 @@ function <script type="math/tex">p_t(a_t \mid X)</script> can be any function wh
 for each input time-step <script type="math/tex">t</script> over the output alphabet given the full
 input <script type="math/tex">X</script>.</p>
 
+<figure style="width:550px; height:350px;">
+  <figcaption>
+  <div style="position:absolute; top:0px; width: 200px;">
+    The function <script type="math/tex">p_t(a \mid X)</script> 
+    is a distribution over the alphabet
+    {h, e, l, o, <script type="math/tex">\epsilon</script>} for
+    each input step.
+  </div>
+  <div style="position:absolute; top:172px; width: 200px;">
+    From the step-by-step distribution over the alphabet, we can compute the
+    probability of different sequences. 
+  </div>
+  <div style="position:absolute; top:290px; width: 200px;">
+    By marginalizaing over the alignments, we get a distribution over outputs.
+  </div>
+  </figcaption>
+  <div style="width:300px; position:absolute; left: 230px;">
+  <img src="ctc_distribution.svg" />
+  </div>
+</figure>
+
 <p>The hard part of the CTC loss is not understanding what it is, but computing
 it efficiently. The set <script type="math/tex">\mathcal{A}</script> can be
 <em>very</em> large.<dt-fn>For a <script type="math/tex">Y</script> of length

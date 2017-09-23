@@ -4,7 +4,7 @@
 
 <script type="text/front-matter">
   title: "An In-depth Guide to Connectionist Temporal Classification"
-  description: "In this tutorial you will learn about the Connectionist Temporal Classification (CTC) – a popular algorithm for sequence to sequence mapping with neural networks."
+  description: "This is a guide to Connectionist Temporal Classification (CTC) – a popular algorithm for sequence to sequence mapping with neural networks."
   authors:
   - Awni Hannun : http://stanford.edu/~awni/
   affiliations:
@@ -13,17 +13,13 @@
 
 <dt-article class="centered">
   <h1>An In-depth Guide to CTC</h1>
-  <h2>
-  In this tutorial you will learn about the Connectionist Temporal
-  Classification (CTC) – a popular algorithm for sequence to sequence
-  mapping with neural networks.
-  </h2>
   <dt-byline></dt-byline>
 
 <h2 id="the-problem">The Problem</h2>
 
 <p>We’ve seen an explosion in the use of neural networks for mapping sequences
-to sequences. One work-horse algorithm for neural sequence transduction is CTC.
+to sequences. One work-horse algorithm for neural sequence transduction is
+Connectionist Temporal Classification (CTC).
 Certain assumptions made by the CTC algorithm make it especially well suited
 for problems such as automatic speech recognition and hand-writing recognition,
 where it’s used in many state-of-the-art models.</p>
@@ -881,7 +877,7 @@ When computing the sum of two probabilities in log space use the identity
 \begin{align}
 \log(e^a + e^b) = \max\{a, b\} + \log(1 + e^{-|a-b|})
 \end{align}
-Most programming languages have stable function to compute
+Most programming languages have a stable function to compute
 <script type="math/tex">\log(1 + x)</script> when
 <script type="math/tex">x</script> is close to zero.
 </dt-fn>.
@@ -913,9 +909,11 @@ increase in the beam size may be warranted.</p>
 <hr />
 <h2 class="no_toc" id="bibliographic-notes">Bibliographic Notes</h2>
 
-<p>The CTC algorithm was first published by Graves et al. in 2006.<dt-cite key="Graves2006"></dt-cite> The
-first experiments were on TIMIT, a popular phoneme recognition benchmark.<dt-cite key="Lopes2011"></dt-cite>
-Chapter 7 of Graves’ thesis<dt-cite key="Graves2012"></dt-cite> gives a more detailed treatment of CTC.</p>
+<p>The CTC algorithm was first published by Graves et al. in 2006.
+<dt-cite key="Graves2006"></dt-cite> The first experiments were on TIMIT,
+a popular phoneme recognition benchmark.<dt-cite key="Lopes2011"></dt-cite>
+Chapter 7 of Graves’ thesis<dt-cite key="Graves2012"></dt-cite> gives a
+more detailed treatment of CTC.</p>
 
 <p>One of the first applications of CTC to large vocabulary speech recognition was
 by Graves et al. in 2014 where they used a hybrid HMM and CTC
@@ -930,13 +928,24 @@ reading from video<dt-cite key="Assael2016"></dt-cite>, action labelling from
 video<dt-cite key="Huang2016"></dt-cite> and keyword detection in audio.
 <dt-cite key="Fernandez2007,Lengerich2016"></dt-cite></p>
 
+<p>Many extensions and improvements to CTC have been proposed. We name a few here.
+The <em>Sequence Transducer</em> discards the conditional independence assumption
+made by CTC.<dt-cite key="Graves2012transducer"></dt-cite> As a consequence the
+model also allows the output to be longer than the input. The <em>Gram-CTC</em> model
+generalizes CTC to marginalize over n-gram output classes.
+<dt-cite key="Liu2017"></dt-cite> Other works have generalized CTC or proposed
+similar algorithms to account for segmental structure in the output.
+<dt-cite key="Wang2017,Kong2016"></dt-cite></p>
+
 <p>The Hidden Markov Model was developed in the 1960’s with the first application
 to speech recognition in the 1970’s. For an introduction to the HMM and
-applications to speech recognition see Rabiner’s canonical tutorial.<dt-cite key="Rabiner1989"></dt-cite></p>
+applications to speech recognition see Rabiner’s canonical tutorial.
+<dt-cite key="Rabiner1989"></dt-cite></p>
 
-<p>Encoder-decoder models were developed in 2014.<dt-cite key="Cho2014,Sutskever2014"></dt-cite>
-The online publication <em>Distill</em> gives an in-depth guide to
-attention in encoder-decoder models.<dt-cite key="Olah2016"></dt-cite></p>
+<p>Encoder-decoder models were developed in 2014.
+<dt-cite key="Cho2014,Sutskever2014"></dt-cite> The online publication
+<em>Distill</em> gives an in-depth guide to attention in encoder-decoder
+models.<dt-cite key="Olah2016"></dt-cite></p>
 
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </dt-article>
@@ -1131,5 +1140,51 @@ pages = {220--229},
 title = {An application of recurrent neural networks to discriminative keyword spotting},
 url = {http://link.springer.com/10.1007/978-3-540-74695-9_23},
 year = {2007}
+}
+@article{Graves2012transducer,
+archivePrefix = {arXiv},
+arxivId = {1211.3711},
+author = {Graves, Alex},
+doi = {10.1145/2661829.2661935},
+eprint = {1211.3711},
+isbn = {2000201075},
+issn = {18792782},
+pmid = {23459267},
+title = {Sequence Transduction with Recurrent Neural Networks},
+url = {https://arxiv.org/pdf/1211.3711.pdf http://arxiv.org/abs/1211.3711},
+year = {2012}
+}
+@article{Liu2017,
+archivePrefix = {arXiv},
+arxivId = {1703.00096},
+author = {Liu, Hairong and Zhu, Zhenyao and Li, Xiangang and Satheesh, Sanjeev},
+eprint = {1703.00096},
+journal = {Proceedings of the 34th International Conference on Machine Learning},
+month = {feb},
+title = {Gram-CTC: Automatic Unit Selection and Target Decomposition for Sequence Labelling},
+url = {http://arxiv.org/abs/1703.00096},
+year = {2017}
+}
+@article{Wang2017,
+archivePrefix = {arXiv},
+arxivId = {1702.07463},
+author = {Wang, Chong and Wang, Yining and Huang, Po-Sen and Mohamed, Abdelrahman and Zhou, Dengyong and Deng, Li},
+eprint = {1702.07463},
+month = {feb},
+title = {Sequence Modeling via Segmentations},
+url = {http://arxiv.org/abs/1702.07463},
+year = {2017}
+}
+@article{Kong2016,
+archivePrefix = {arXiv},
+arxivId = {1511.06018},
+author = {Kong, Lingpeng and Dyer, Chris and Smith, Noah A.},
+doi = {10.21437/Interspeech.2016-40},
+eprint = {1511.06018},
+journal = {ICLR},
+month = {nov},
+title = {Segmental Recurrent Neural Networks},
+url = {http://arxiv.org/abs/1511.06018},
+year = {2016}
 }
 </script>

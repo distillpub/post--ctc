@@ -12,7 +12,7 @@
 </script>
 
 <dt-article class="centered">
-  <h1>An In-depth Guide to Connectionist Temporal Classification</h1>
+  <h1>An In-depth Guide to CTC</h1>
   <h2>
   In this tutorial you will learn about the Connectionist Temporal
   Classification (CTC) – a popular algorithm for sequence to sequence
@@ -435,32 +435,34 @@ as opposed to maximizing the likelihood directly.</p>
 
 <h3 id="inference">Inference</h3>
 
-<p>To infer the most likely output sequence for a given input we solve
+<p>We can find the most likely output by solving
 \begin{align}
 Y^* = \text{argmax}_{Y \in \mathcal{Y}} p(Y \mid X).
 \end{align}</p>
 
-<p>The simplest method to compute a likely <script type="math/tex">Y</script> is to take the most likely output
-at each time-step. Since there are no conditional dependencies in the output,
-this computes exactly
+<p>One way to approximate this is to take the most likely output at each
+time-step. This gives us the alignment with the highest probability:
+
 \begin{align}
-A^* = \text{argmax}_{A \in \mathcal{A}} p_t(a_t \mid X).
+A^* = \text{argmax}_{A \in \mathcal{A}} \prod_{t=1}^{T} p_t(a_t \mid X)
 \end{align}
-We can then collapse repeat characters and remove <script type="math/tex">\epsilon</script> tokens to
-produce <script type="math/tex">Y</script>.</p>
 
-<p>In most applications this simple algorithm works well because CTC tends to
-allocate most of the probability to a single alignment. However, this
+We can then collapse repeats and remove <script type="math/tex">\epsilon</script>
+tokens to produce <script type="math/tex">Y</script>.</p>
+
+<p>For most applications this simple algorithm works well. This is because 
+most of the probability mass is given to a single alignment. However, this
 method is not guaranteed to find the most likely <script type="math/tex">Y</script>.
-This is because multiple alignments can map to the same <script type="math/tex">Y</script>.</p>
+The problem is multiple alignments can map to the same <script type="math/tex">Y</script>.</p>
 
-<p>The alignments [a, a, <script type="math/tex">\epsilon</script>] and [a, a, a]
-could individually have lower probability than [b, b, b]. But, the sum of their
-probabilities could be larger. The beam search will incorrectly propose
-<script type="math/tex">Y =</script> [b] as the most likely hypothesis.
-The algorithm needs to account for the fact that [a, a, a] and
-[a, a, <script type="math/tex">\epsilon</script>] map to the same
-output, namely <script type="math/tex">Y =</script> [a].</p>
+<p>As an example, assume the alignments [a, a, <script type="math/tex">\epsilon</script>]
+and [a, a, a] individually have lower probability than [b, b, b]. However,
+the sum of their probabilities is greater than that of [b, b, b]. The beam
+search will incorrectly propose <script type="math/tex">Y =</script> [b] as
+the most likely hypothesis. It should have chosen
+<script type="math/tex">Y =</script> [a]. The algorithm needs to account for
+the fact that [a, a, a] and [a, a, <script type="math/tex">\epsilon</script>]
+map to the same output.</p>
 
 <p>We can solve this problem with a modified beam search. Given limited 
 computation, the modified beam search is not guaranteed to find the
@@ -575,8 +577,8 @@ into more depth on what these properties are and what trade-offs they offer.</p>
 <h3 id="conditional-independence">Conditional Independence</h3>
 
 <p>One of the most commonly cited shortcomings of CTC is the conditional
-independence assumption it makes. The cost function we wrote down above models
-the conditional output distribution as
+independence assumption it makes. Recall, the conditional
+output distribution is
 \begin{align}
 p(Y \mid X) = \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
 \end{align}</p>
@@ -588,54 +590,61 @@ p(Y \mid X) = \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
   Graphical model for CTC.
   </figcaption>
 </figure>
-<p>The model assumes that a given output element is conditionally independent of
-the other output elements given the input. For many sequence transduction
-problems this is not a valid assumption.</p>
+<p>The model assumes that every output is conditionally independent of
+the other outputs given the input. This is a bad assumption for many
+sequence to sequence problems.</p>
 </div>
 
-<p>Say we had an audio clip of someone
-saying “triple A”.<dt-cite key="Chan2016las"></dt-cite> Another valid transcription could be “AAA”. If the first
-letter of the predicted transcription is ‘A’, then with high probability the
-next letter should be ‘A’ and with low probability the next letter should be
-‘r’. The conditional independence assumption does not allow for this.</p>
+<p>Say we had an audio clip of someone saying “triple A”.
+<dt-cite key="Chan2016las"></dt-cite> Another valid transcription could
+be “AAA”. If the first letter of the predicted transcription is ‘A’, then
+the next letter should be ‘A’ with high probability and 'r' with low
+probability. The conditional independence assumption does not allow for this.</p>
 
-<p>In fact speech recognizers using CTC are not able to learn an implicit language
-model nearly as well as other models which do not make this conditional
-independence assumption.<dt-cite key="Battenberg2017"></dt-cite> However, this isn’t always a bad trait. In some
-cases, having the model implicitly learn a strong language model over the output
-can make it less adaptable to new or altered domains. For example we might want
-to adapt a model trained to transcribe on phone conversations between friends
-to customer support calls.</p>
+<p>In fact speech recognizers using CTC are not able to learn a language
+model over the output nearly as well as models which do not make this
+assumption.<dt-cite key="Battenberg2017"></dt-cite> However, this isn’t always
+a bad trait. Baking in strong beliefs over output interactions makes the model
+less adaptable to new or altered domains. For example, we might want
+to use a speech recognizer trained on phone conversations between friends
+for customer support calls.</p>
 
 <h3 id="alignment-properties">Alignment Properties</h3>
 
-<p>While the CTC algorithm does make strong assumptions about the form of
-alignments between <script type="math/tex">X</script> and <script type="math/tex">Y</script>, technically the algorithm is
-<em>alignment-free</em>. The objective function marginalizes over the allowed
-alignments thus model is agnostic as to how probability is distributed amongst
-them. In some problems CTC ends up allotting most of the probability towards a
-single alignment, though this is not guaranteed. To force the model to upweight
-a single alignment, we can replace the sum over the
-alignments with a max,
+<p>The CTC algorithm is <em>alignment-free</em>. The objective function marginalizes over all 
+alignments. While CTC does make strong assumptions about the form of
+alignments between <script type="math/tex">X</script> and
+<script type="math/tex">Y</script>, the model is agnostic as to how probability
+is distributed amongst
+them. In some problems CTC ends up allocating most of the probability to a
+single alignment. However, this isn't guaranteed. We can force the model to
+choose a single alignment by replacing the sum with a max in the objective function,
 \begin{align}
 p(Y \mid X) = \max_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
 \end{align}</p>
 
-<p>As mentioned before, CTC allows only <em>strictly monotonic</em> alignments. In some
+<p>As mentioned before, CTC allows only <em>strictly monotonic</em> alignments. In
 problems such as speech recognition this may be a valid assumption. For other
-problems such as machine translation where a future word in a target sentence
-can align to an earlier part of the source sentence, this assumption might be a
-deal-breaker. The <em>strictly monotonic</em> property also implies that the length of
-the output must be no greater than the length of the input.<dt-fn>Note that if there are <script type="math/tex">r</script> consecutive repeats in <script type="math/tex">Y</script>, the length <script type="math/tex">U</script> must be less than <script type="math/tex">T</script> by <script type="math/tex">2r - 1</script>.</dt-fn> For problems
-where this is often not the case, CTC will not work.</p>
+problems like machine translation where a future word in a target sentence
+can align to an earlier part of the source sentence, this assumption is a
+deal-breaker. The <em>strictly monotonic</em> property also means the length of
+the output can be no greater than the length of the input.
+<dt-fn>
+  Note that if there are <script type="math/tex">r</script> consecutive
+  repeats in <script type="math/tex">Y</script>, the length
+  <script type="math/tex">U</script> must be less than
+  <script type="math/tex">T</script> by <script type="math/tex">2r - 1</script>.
+</dt-fn>
+We can't use CTC for problems where this is not the case.</p>
 
-<p>A final important property of CTC alignments is that they are <em>many-to-one</em>. In
-other words, multiple input elements can align to at most one output element. In
-some cases this may not be desirable. We may want to enforce a strict
-one-to-one correspondence between elements of <script type="math/tex">X</script> and <script type="math/tex">Y</script>. Alternatively,
+<p>A final important property of CTC alignments is that they are
+<em>many-to-one</em>. Multiple inputs can align to at most one output. In some
+cases this may not be desirable. We might want to enforce a strict
+one-to-one correspondence between elements of <script type="math/tex">X</script>
+and <script type="math/tex">Y</script>. Alternatively,
 we may want to allow multiple output elements to align to a single input
-element. For example the sound made by “th” might align to a single input frame
-of audio, but a character based CTC model would not allow for this.</p>
+element. For example, the sound made by “th” might align to a single input frame
+of audio. A character based CTC model would not allow that.</p>
 
 <h3 id="input-synchronous-inference">Input Synchronous Inference</h3>
 
@@ -685,13 +694,13 @@ To simplify notation, let’s remove the conditioning on <script type="math/tex"
 unchanging in every <script type="math/tex">p(\cdot)</script>. Using the HMM assumptions we can
 write</p>
 
-<figure style="width:700px;height:100px;">
+<figure style="width:650px;height:100px;">
   <figcaption>
     <div style="position:absolute; left:10px; top:50px; width:120px;">
-      The probability of the observation (given <script type="math/tex">Y</script>)
+      The probability of the <em>input</em> 
     </div>
     <div style="position:absolute; left:150px; top:50px; width:170px;">
-      sums over each alignment the frame-by-frame product of
+      marginalizes over alignments
     </div>
     <div style="position:absolute; left:350px; top:50px; width:120px;">
       the emission probability 
@@ -872,7 +881,7 @@ When computing the sum of two probabilities in log space use the identity
 \begin{align}
 \log(e^a + e^b) = \max\{a, b\} + \log(1 + e^{-|a-b|})
 \end{align}
-Most programming languages have an stable way to compute
+Most programming languages have stable function to compute
 <script type="math/tex">\log(1 + x)</script> when
 <script type="math/tex">x</script> is close to zero.
 </dt-fn>.

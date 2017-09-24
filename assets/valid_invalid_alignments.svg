@@ -22,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -40,12 +40,12 @@
      id="namedview11"
      showgrid="false"
      inkscape:zoom="2.38396"
-     inkscape:cx="189.85269"
+     inkscape:cx="173.07388"
      inkscape:cy="50.245228"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g1077"
+     inkscape:current-layer="g1021"
      showguides="true"
      inkscape:guide-bbox="true"
      fit-margin-top="10"
@@ -62,10 +62,14 @@
        orientation="1,0"
        id="guide1256"
        inkscape:locked="false" />
+    <sodipodi:guide
+       position="169.46593,14.681454"
+       orientation="0,1"
+       id="guide954"
+       inkscape:locked="false" />
   </sodipodi:namedview>
   <defs
-     id="defs4">
-  </defs>
+     id="defs4" />
   <g
      id="g1077"
      transform="translate(6)">
@@ -87,7 +91,8 @@
            x="15.74159"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           inkscape:transform-center-y="0.41947012"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1189"
@@ -111,7 +116,8 @@
            font-size="20px"
            x="15.74159"
            y="26.58053"
-           id="text973">
+           id="text973"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1187"
@@ -172,7 +178,8 @@
            font-size="20px"
            x="17.41947"
            y="27.74159"
-           id="text999">
+           id="text999"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1179"
@@ -218,7 +225,8 @@
            font-size="20px"
            x="15.74159"
            y="26.58053"
-           id="text927">
+           id="text927"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1177"
@@ -242,7 +250,8 @@
            x="15.74159"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           inkscape:transform-center-y="0.41947012"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1175"
@@ -266,7 +275,8 @@
            font-size="20px"
            x="15.74159"
            y="26.58053"
-           id="text939">
+           id="text939"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1173"
@@ -290,7 +300,8 @@
            x="17.41947"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           inkscape:transform-center-y="0.41947012"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1149"
@@ -314,7 +325,8 @@
            font-size="20px"
            x="17.41947"
            y="27.74159"
-           id="text1155">
+           id="text1155"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1171"
@@ -338,7 +350,8 @@
            x="17.41947"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           inkscape:transform-center-y="0.41947012"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1167"
@@ -366,7 +379,8 @@
            font-size="20px"
            x="15.74159"
            y="26.58053"
-           id="text817">
+           id="text817"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1131"
@@ -390,7 +404,8 @@
            x="15.74159"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           inkscape:transform-center-y="0.41947012"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1133"
@@ -433,7 +448,8 @@
            font-size="20px"
            x="17.41947"
            y="27.74159"
-           id="text841">
+           id="text841"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1143"
@@ -475,7 +491,8 @@
            x="17.41947"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           inkscape:transform-center-y="0.41947012"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1147"
@@ -502,7 +519,8 @@
            font-size="20px"
            x="15.74159"
            y="26.58053"
-           id="text1007">
+           id="text1007"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1242"
@@ -525,13 +543,14 @@
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="15.74159"
-           y="26.58053"
-           id="text1019">
+           y="27.83894"
+           id="text1019"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1244"
              x="15.74159"
-             y="26.58053">t</tspan>
+             y="27.83894">t</tspan>
         </text>
       </g>
       <g
@@ -587,7 +606,8 @@
            x="17.41947"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           inkscape:transform-center-y="0.41947012"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1246"
@@ -632,7 +652,8 @@
            x="15.74159"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           inkscape:transform-center-y="0.41947012"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1234"
@@ -656,7 +677,8 @@
            font-size="20px"
            x="15.74159"
            y="26.58053"
-           id="text1053">
+           id="text1053"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1232"
@@ -680,7 +702,8 @@
            x="15.74159"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           inkscape:transform-center-y="0.41947012"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1230"
@@ -711,7 +734,8 @@
            font-size="20px"
            x="15.74159"
            y="26.58053"
-           id="text1216">
+           id="text1216"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1228"
@@ -735,7 +759,8 @@
            x="15.74159"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           inkscape:transform-center-y="0.41947012"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1226"
@@ -762,7 +787,8 @@
            font-size="20px"
            x="15.74159"
            y="26.58053"
-           id="text1087">
+           id="text1087"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1211"
@@ -786,7 +812,8 @@
            font-size="20px"
            x="15.74159"
            y="26.58053"
-           id="text1099">
+           id="text1099"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1209"
@@ -829,7 +856,8 @@
            x="17.41947"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           inkscape:transform-center-y="0.41947012"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1191"
@@ -853,7 +881,8 @@
            font-size="20px"
            x="17.41947"
            y="27.74159"
-           id="text1197">
+           id="text1197"
+           style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan1207"

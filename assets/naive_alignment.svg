@@ -63,7 +63,7 @@
        type="text/css"
        id="style2">
   svg {
-    font: 400 20px -apple-system, BlinkMacSystemFont, &quot;Roboto&quot;, Helvetica, sans-serif;
+    font: 200 20px -apple-system, BlinkMacSystemFont, &quot;Roboto&quot;, Helvetica, sans-serif;
   }
   </style>
   </defs>

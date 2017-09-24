@@ -13,7 +13,7 @@
    version="1.1"
    sodipodi:docname="valid_invalid_alignments.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
-   style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:20px;line-height:normal;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;enable-background:new">
+   style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:20px;line-height:normal;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;enable-background:new">
   <metadata
      id="metadata13">
     <rdf:RDF>
@@ -65,13 +65,6 @@
   </sodipodi:namedview>
   <defs
      id="defs4">
-    <style
-       type="text/css"
-       id="style2">
-  svg {
-    font: 400 20px -apple-system, BlinkMacSystemFont, &quot;Roboto&quot;, Helvetica, sans-serif;
-  }
-  </style>
   </defs>
   <g
      id="g1077"
@@ -94,8 +87,7 @@
            x="15.74159"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+           inkscape:transform-center-y="0.41947012">
           <tspan
              sodipodi:role="line"
              id="tspan1189"
@@ -114,7 +106,6 @@
            width="22.516821"
            id="rect971" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
@@ -181,8 +172,7 @@
            font-size="20px"
            x="17.41947"
            y="27.74159"
-           id="text999"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+           id="text999">
           <tspan
              sodipodi:role="line"
              id="tspan1179"
@@ -223,7 +213,6 @@
            width="22.516821"
            id="rect925" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
@@ -253,8 +242,7 @@
            x="15.74159"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+           inkscape:transform-center-y="0.41947012">
           <tspan
              sodipodi:role="line"
              id="tspan1175"
@@ -273,7 +261,6 @@
            width="22.516821"
            id="rect937" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
@@ -298,7 +285,6 @@
            x="10"
            style="opacity:0.5;fill:#d3d3d3;stroke-width:1.12584102" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            id="text959"
            y="27.74159"
            x="17.41947"
@@ -328,8 +314,7 @@
            font-size="20px"
            x="17.41947"
            y="27.74159"
-           id="text1155"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+           id="text1155">
           <tspan
              sodipodi:role="line"
              id="tspan1171"
@@ -348,7 +333,6 @@
            x="10"
            style="opacity:0.5;fill:#d3d3d3;stroke-width:1.12584102" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            id="text1163"
            y="27.74159"
            x="17.41947"
@@ -377,7 +361,6 @@
            width="22.516821"
            id="rect815" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
@@ -407,8 +390,7 @@
            x="15.74159"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+           inkscape:transform-center-y="0.41947012">
           <tspan
              sodipodi:role="line"
              id="tspan1133"
@@ -451,8 +433,7 @@
            font-size="20px"
            x="17.41947"
            y="27.74159"
-           id="text841"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+           id="text841">
           <tspan
              sodipodi:role="line"
              id="tspan1143"
@@ -489,7 +470,6 @@
            x="10"
            style="opacity:0.5;fill:#d3d3d3;stroke-width:1.12584102" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            id="text1139"
            y="27.74159"
            x="17.41947"
@@ -517,7 +497,6 @@
            width="22.516821"
            id="rect1005" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
@@ -542,7 +521,6 @@
            width="22.516821"
            id="rect1017" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
@@ -604,7 +582,6 @@
            x="10"
            style="opacity:0.5;fill:#d3d3d3;stroke-width:1.12584102" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            id="text1039"
            y="27.74159"
            x="17.41947"
@@ -655,8 +632,7 @@
            x="15.74159"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+           inkscape:transform-center-y="0.41947012">
           <tspan
              sodipodi:role="line"
              id="tspan1234"
@@ -675,7 +651,6 @@
            width="22.516821"
            id="rect1051" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
@@ -705,8 +680,7 @@
            x="15.74159"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+           inkscape:transform-center-y="0.41947012">
           <tspan
              sodipodi:role="line"
              id="tspan1230"
@@ -732,7 +706,6 @@
            width="22.516821"
            id="rect1214" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
@@ -762,8 +735,7 @@
            x="15.74159"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+           inkscape:transform-center-y="0.41947012">
           <tspan
              sodipodi:role="line"
              id="tspan1226"
@@ -785,7 +757,6 @@
            width="22.516821"
            id="rect1085" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
@@ -810,7 +781,6 @@
            width="22.516821"
            id="rect1097" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
@@ -854,7 +824,6 @@
            x="10"
            style="opacity:0.5;fill:#d3d3d3;stroke-width:1.12584102" />
         <text
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
            id="text1119"
            y="27.74159"
            x="17.41947"
@@ -884,8 +853,7 @@
            font-size="20px"
            x="17.41947"
            y="27.74159"
-           id="text1197"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;-inkscape-font-specification:'-apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+           id="text1197">
           <tspan
              sodipodi:role="line"
              id="tspan1207"

@@ -13,7 +13,7 @@
    version="1.1"
    sodipodi:docname="ctc_alignment_steps.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
-   style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:20px;line-height:normal;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;enable-background:new">
+   style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:20px;line-height:normal;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;enable-background:new">
   <metadata
      id="metadata13">
     <rdf:RDF>
@@ -22,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -40,12 +40,12 @@
      id="namedview11"
      showgrid="false"
      inkscape:zoom="3.3714286"
-     inkscape:cx="115.45267"
-     inkscape:cy="-1.3019747"
+     inkscape:cx="200.18987"
+     inkscape:cy="172.5929"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g923"
+     inkscape:current-layer="g916"
      showguides="true"
      inkscape:guide-bbox="true"
      fit-margin-top="10"
@@ -53,20 +53,18 @@
      fit-margin-bottom="10"
      fit-margin-left="10">
     <sodipodi:guide
-       position="278.02667,192.55105"
+       position="309.3644,113.60169"
        orientation="1,0"
        id="guide908"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="299.57627,212.37288"
+       orientation="0,1"
+       id="guide924"
        inkscape:locked="false" />
   </sodipodi:namedview>
   <defs
      id="defs4">
-    <style
-       type="text/css"
-       id="style2">
-  svg {
-    font: 400 20px -apple-system, BlinkMacSystemFont, &quot;Roboto&quot;, Helvetica, sans-serif;
-  }
-  </style>
     <filter
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
@@ -98,8 +96,8 @@
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
-           x="15.74159"
-           y="26.58053"
+           x="15.44498"
+           y="27.766972"
            id="text909">h</text>
       </g>
       <g
@@ -180,14 +178,14 @@
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
-           x="17.41947"
-           y="27.74159"
+           x="15.41947"
+           y="27.148371"
            id="text950">
           <tspan
              sodipodi:role="line"
              id="tspan948"
-             x="17.41947"
-             y="27.74159">o</tspan>
+             x="15.41947"
+             y="27.148371">o</tspan>
         </text>
       </g>
     </g>
@@ -210,7 +208,7 @@
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="26.483179"
-           y="26.58053"
+           y="28.063581"
            id="text864">h</text>
       </g>
       <g
@@ -309,14 +307,14 @@
         <text
            style="font-size:20px"
            id="text945"
-           y="27.74159"
-           x="17.41947"
+           y="26.851761"
+           x="16.233028"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
            inkscape:transform-center-y="0.41947012">
           <tspan
-             y="27.74159"
-             x="17.41947"
+             y="26.851761"
+             x="16.233028"
              id="tspan943"
              sodipodi:role="line">o</tspan>
         </text>
@@ -336,7 +334,7 @@
            style="opacity:0.5;fill:#d3d3d3;stroke-width:1.6164794" />
         <text
            id="text953"
-           y="26.58053"
+           y="27.47036"
            x="26.483179"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
@@ -468,15 +466,15 @@
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
-           x="17.41947"
-           y="27.74159"
+           x="16.233028"
+           y="26.851761"
            id="text997"
            style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan995"
-             x="17.41947"
-             y="27.74159">o</tspan>
+             x="16.233028"
+             y="26.851761">o</tspan>
         </text>
       </g>
     </g>
@@ -494,7 +492,7 @@
            style="opacity:0.5;fill:#d3d3d3;stroke-width:1.12584102" />
         <text
            id="text8"
-           y="26.58053"
+           y="27.47036"
            x="15.74159"
            font-size="20px"
            inkscape:transform-center-x="-3.7752311"
@@ -517,7 +515,7 @@
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="15.74159"
-           y="26.58053"
+           y="27.47036"
            id="text817">h</text>
       </g>
       <g
@@ -739,15 +737,15 @@
            inkscape:transform-center-y="0.41947012"
            inkscape:transform-center-x="-3.7752311"
            font-size="20px"
-           x="17.41947"
-           y="27.74159"
+           x="15.936419"
+           y="26.555149"
            id="text914"
            style="font-size:20px">
           <tspan
              sodipodi:role="line"
              id="tspan912"
-             x="17.41947"
-             y="27.74159">o</tspan>
+             x="15.936419"
+             y="26.555149">o</tspan>
         </text>
       </g>
     </g>

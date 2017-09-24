@@ -8,7 +8,7 @@
        type="text/css"
        id="style2">
       svg {
-        font: 400 16px -apple-system, BlinkMacSystemFont, &quot;Roboto&quot;, Helvetica, sans-serif;
+        font: 200 16px -apple-system, BlinkMacSystemFont, &quot;Roboto&quot;, Helvetica, sans-serif;
       }
     </style>
     </defs>
@@ -19,7 +19,7 @@
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.302875906" x="225" y="3" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.302875906" x="200" y="3" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.302875906" x="175" y="3" width="22.516821" height="22.516821"></rect>
-                    <g id="text841" transform="translate(184.000000, 1.000000)" fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(184.000000, 1.000000)" fill="#000000">
                         <text id="tspan845">
                             <tspan x="0.41947" y="19.74159">l</tspan>
                         </text>
@@ -27,124 +27,124 @@
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.302875906" x="150" y="3" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.302875906" x="125" y="3" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.302875906" x="100" y="3" width="22.516821" height="22.516821"></rect>
-                    <g id="text841" transform="translate(108.000000, 1.000000)" fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(108.000000, 1.000000)" fill="#000000" >
                         <text id="tspan845">
                             <tspan x="0.41947" y="19.74159">l</tspan>
                         </text>
                     </g>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.302875906" x="75" y="3" width="22.516821" height="22.516821"></rect>
-                    <g id="text841" transform="translate(83.000000, 1.000000)" fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(83.000000, 1.000000)" fill="#000000" >
                         <text id="tspan845">
                             <tspan x="0.41947" y="19.74159">l</tspan>
                         </text>
                     </g>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.302875906" x="50" y="3" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.302875906" x="25" y="3" width="22.516821" height="22.516821"></rect>
-                    <g id="text841" transform="translate(31.000000, 0.000000)" fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(31.000000, 0.000000)" fill="#000000" >
                         <text id="e">
                             <tspan x="0" y="19">e</tspan>
                         </text>
                     </g>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.302875906" x="0" y="3" width="22.516821" height="22.516821"></rect>
-                    <g id="text841" transform="translate(230.000000, 0.000000)" fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(230.000000, 0.000000)" fill="#000000" >
                         <text id="o">
                             <tspan x="0" y="19">o</tspan>
                         </text>
                     </g>
                 </g>
                 <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979846" x="225" y="29" width="22.516821" height="22.516821"></rect>
-                <text id="o" fill="#000000" font-weight="normal">
+                <text id="o" fill="#000000" >
                     <tspan x="230" y="45">o</tspan>
                 </text>
                 <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979846" x="200" y="29" width="22.516821" height="22.516821"></rect>
                 <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979846" x="175" y="29" width="22.516821" height="22.516821"></rect>
-                <text id="l" fill="#000000" font-weight="normal">
+                <text id="l" fill="#000000" >
                     <tspan x="184" y="47">l</tspan>
                 </text>
                 <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979846" x="150" y="29" width="22.516821" height="22.516821"></rect>
                 <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979846" x="125" y="29" width="22.516821" height="22.516821"></rect>
                 <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979846" x="100" y="29" width="22.516821" height="22.516821"></rect>
-                <text id="l" fill="#000000" font-weight="normal">
+                <text id="l" fill="#000000" >
                     <tspan x="108" y="47">l</tspan>
                 </text>
                 <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979846" x="75" y="29" width="22.516821" height="22.516821"></rect>
-                <text id="l" fill="#000000" font-weight="normal">
+                <text id="l" fill="#000000" >
                     <tspan x="84" y="47">l</tspan>
                 </text>
                 <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979846" x="50" y="29" width="22.516821" height="22.516821"></rect>
-                <text id="text823" fill="#000000"  font-weight="normal">
+                <text id="text823" fill="#000000"  >
                     <tspan x="55" y="45">e</tspan>
                 </text>
                 <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979846" x="25" y="29" width="22.516821" height="22.516821"></rect>
-                <text id="h" fill="#000000"  font-weight="normal">
+                <text id="h" fill="#000000"  >
                     <tspan x="31" y="46">h</tspan>
                 </text>
                 <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979846" x="0" y="29" width="22.516821" height="22.516821"></rect>
-                <text id="h" fill="#000000"  font-weight="normal">
+                <text id="h" fill="#000000"  >
                     <tspan x="5" y="46">h</tspan>
                 </text>
                 <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="100" y="6" width="22.516821" height="22.516821"></rect>
-                <text id="l" fill="#000000"  font-weight="normal">
+                <text id="l" fill="#000000"  >
                     <tspan x="108.393272" y="23.58053">l</tspan>
                 </text>
                 <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="75" y="6" width="22.516821" height="22.516821"></rect>
-                <text id="l" fill="#000000" font-weight="normal">
+                <text id="l" fill="#000000" >
                     <tspan x="84.393272" y="23.58053">l</tspan>
                 </text>
                 <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="50" y="6" width="22.516821" height="22.516821"></rect>
                 <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="25" y="6" width="22.516821" height="22.516821"></rect>
-                <text id="e" fill="#000000" font-weight="normal">
+                <text id="e" fill="#000000" >
                     <tspan x="31" y="22.58053">e</tspan>
                 </text>
                 <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="0" y="6" width="22.516821" height="22.516821"></rect>
-                <text id="h" fill="#000000" font-weight="normal">
+                <text id="h" fill="#000000" >
                     <tspan x="5" y="22.58053">h</tspan>
                 </text>
                 <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="200" y="6" width="22.516821" height="22.516821"></rect>
-                <text id="o" fill="#000000" font-weight="normal">
+                <text id="o" fill="#000000" >
                     <tspan x="205" y="22.58053">o</tspan>
                 </text>
-                <text id="o" fill="#000000" font-weight="normal">
+                <text id="o" fill="#000000" >
                     <tspan x="205" y="68">o</tspan>
                 </text>
                 <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="175" y="6" width="22.516821" height="22.516821"></rect>
-                <text id="l" fill="#000000" font-weight="normal">
+                <text id="l" fill="#000000" >
                     <tspan x="184" y="24">l</tspan>
                 </text>
                 <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="150" y="6" width="22.516821" height="22.516821"></rect>
-                <text id="l" fill="#000000" font-weight="normal">
+                <text id="l" fill="#000000" >
                     <tspan x="159.393272" y="23.58053">l</tspan>
                 </text>
                 <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="125" y="6" width="22.516821" height="22.516821"></rect>
                 <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="225" y="6" width="22.516821" height="22.516821"></rect>
-                <text id="o" fill="#000000" font-weight="normal">
+                <text id="o" fill="#000000" >
                     <tspan x="230" y="22.58053">o</tspan>
                 </text>
-                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                     <tspan x="57" y="21">ϵ</tspan>
                 </text>
-                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                     <tspan x="57" y="67">ϵ</tspan>
                 </text>
-                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                     <tspan x="6" y="68">ϵ</tspan>
                 </text>
-                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                     <tspan x="132" y="21">ϵ</tspan>
                 </text>
-                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                     <tspan x="132" y="44">ϵ</tspan>
                 </text>
-                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                     <tspan x="157" y="44">ϵ</tspan>
                 </text>
-                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                     <tspan x="132" y="67">ϵ</tspan>
                 </text>
-                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                     <tspan x="157" y="67">ϵ</tspan>
                 </text>
-                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                     <tspan x="207" y="44">ϵ</tspan>
                 </text>
             </g>
@@ -162,45 +162,45 @@
                 <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="50" y="3" width="22.516821" height="22.516821"></rect>
                 <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="25" y="3" width="22.516821" height="22.516821"></rect>
                 <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="0" y="3" width="22.516821" height="22.516821"></rect>
-                <g id="text841" transform="translate(31.000000, 46.000000)"  fill="#000000" font-weight="normal">
+                <g id="text841" transform="translate(31.000000, 46.000000)"  fill="#000000" >
                     <text id="e">
                         <tspan x="0" y="19">e</tspan>
                     </text>
                 </g>
-                <text id="l" fill="#000000" font-weight="normal">
+                <text id="l" fill="#000000" >
                     <tspan x="59" y="44">l</tspan>
                 </text>
-                <text id="l" fill="#000000" font-weight="normal">
+                <text id="l" fill="#000000" >
                     <tspan x="59" y="67">l</tspan>
                 </text>
-                <text id="l" fill="#000000" font-weight="normal">
+                <text id="l" fill="#000000" >
                     <tspan x="34" y="44">l</tspan>
                 </text>
-                <text id="e" fill="#000000" font-weight="normal">
+                <text id="e" fill="#000000" >
                     <tspan x="5" y="42">e</tspan>
                 </text>
-                <text id="o" fill="#000000" font-weight="normal">
+                <text id="o" fill="#000000" >
                     <tspan x="106.393272" y="19.58053">o</tspan>
                 </text>
-                <text id="o" fill="#000000" font-weight="normal">
+                <text id="o" fill="#000000" >
                     <tspan x="80.393272" y="41.58053">o</tspan>
                 </text>
-                <text id="o" fill="#000000" font-weight="normal">
+                <text id="o" fill="#000000" >
                     <tspan x="80.393272" y="64.58053">o</tspan>
                 </text>
-                <text id="l" fill="#000000" font-weight="normal">
+                <text id="l" fill="#000000" >
                     <tspan x="84.393272" y="20.58053">l</tspan>
                 </text>
-                <text id="l" fill="#000000" font-weight="normal">
+                <text id="l" fill="#000000" >
                     <tspan x="59" y="20.58053">l</tspan>
                 </text>
-                <text id="e" fill="#000000"  font-weight="normal">
+                <text id="e" fill="#000000"  >
                     <tspan x="31" y="19.58053">e</tspan>
                 </text>
-                <text id="h" fill="#000000"  font-weight="normal">
+                <text id="h" fill="#000000"  >
                     <tspan x="5" y="19.58053">h</tspan>
                 </text>
-                <text id="h" fill="#000000"  font-weight="normal">
+                <text id="h" fill="#000000"  >
                     <tspan x="5" y="65.58053">h</tspan>
                 </text>
             </g>
@@ -211,21 +211,21 @@
                     <rect id="rect886" fill="#D3D3D3" fill-rule="nonzero" x="0" y="72" width="22.516821" height="22.516821"></rect>
                     <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.223562047" x="0" y="26" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.223562047" x="0" y="49" width="22.516821" height="22.516821"></rect>
-                    <text id="text8" fill="#000000"  font-weight="normal">
+                    <text id="text8" fill="#000000"  >
                         <tspan x="5.393272" y="19.58053">h</tspan>
                     </text>
-                    <text id="text823" fill="#000000"  font-weight="normal">
+                    <text id="text823" fill="#000000"  >
                         <tspan x="5" y="42">e</tspan>
                     </text>
-                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                         <tspan x="7" y="111">ϵ</tspan>
                     </text>
-                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" >
                         <text id="tspan845">
                             <tspan x="0.41947" y="19.74159">l</tspan>
                         </text>
                     </g>
-                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" >
                         <text id="tspan912">
                             <tspan x="0.41947" y="19.74159">o</tspan>
                         </text>
@@ -237,21 +237,21 @@
                     <rect id="rect886" fill="#D3D3D3" fill-rule="nonzero" opacity="0.702162591" x="0" y="72" width="22.516821" height="22.516821"></rect>
                     <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.204144022" x="0" y="26" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.204144022" x="0" y="49" width="22.516821" height="22.516821"></rect>
-                    <text id="text8" fill="#000000"  font-weight="normal">
+                    <text id="text8" fill="#000000"  >
                         <tspan x="5.393272" y="19.58053">h</tspan>
                     </text>
-                    <text id="text823" fill="#000000"  font-weight="normal">
+                    <text id="text823" fill="#000000"  >
                         <tspan x="5" y="42">e</tspan>
                     </text>
-                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                         <tspan x="7" y="111">ϵ</tspan>
                     </text>
-                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" >
                         <text id="tspan845">
                             <tspan x="0.41947" y="19.74159">l</tspan>
                         </text>
                     </g>
-                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" >
                         <text id="tspan912">
                             <tspan x="0.41947" y="19.74159">o</tspan>
                         </text>
@@ -263,21 +263,21 @@
                     <rect id="rect886" fill="#D3D3D3" fill-rule="nonzero" opacity="0.261152627" x="0" y="72" width="22.516821" height="22.516821"></rect>
                     <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.261152627" x="0" y="26" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" x="0" y="49" width="22.516821" height="22.516821"></rect>
-                    <text id="text8" fill="#000000"  font-weight="normal">
+                    <text id="text8" fill="#000000"  >
                         <tspan x="5.393272" y="19.58053">h</tspan>
                     </text>
-                    <text id="text823" fill="#000000"  font-weight="normal">
+                    <text id="text823" fill="#000000"  >
                         <tspan x="5" y="42">e</tspan>
                     </text>
-                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                         <tspan x="7" y="111">ϵ</tspan>
                     </text>
-                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" >
                         <text id="tspan845">
                             <tspan x="0.41947" y="19.74159">l</tspan>
                         </text>
                     </g>
-                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" >
                         <text id="tspan912">
                             <tspan x="0.41947" y="19.74159">o</tspan>
                         </text>
@@ -289,21 +289,21 @@
                     <rect id="rect886" fill="#D3D3D3" fill-rule="nonzero" opacity="0.148380888" x="0" y="72" width="22.516821" height="22.516821"></rect>
                     <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.148380888" x="0" y="26" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.797837409" x="0" y="49" width="22.516821" height="22.516821"></rect>
-                    <text id="text8" fill="#000000"  font-weight="normal">
+                    <text id="text8" fill="#000000"  >
                         <tspan x="5.393272" y="19.58053">h</tspan>
                     </text>
-                    <text id="text823" fill="#000000"  font-weight="normal">
+                    <text id="text823" fill="#000000"  >
                         <tspan x="5" y="42">e</tspan>
                     </text>
-                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                         <tspan x="7" y="111">ϵ</tspan>
                     </text>
-                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" >
                         <text id="tspan845">
                             <tspan x="0.41947" y="19.74159">l</tspan>
                         </text>
                     </g>
-                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" >
                         <text id="tspan912">
                             <tspan x="0.41947" y="19.74159">o</tspan>
                         </text>
@@ -315,21 +315,21 @@
                     <rect id="rect886" fill="#D3D3D3" fill-rule="nonzero" opacity="0.151834239" x="0" y="72" width="22.516821" height="22.516821"></rect>
                     <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.151834239" x="0" y="26" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.395210598" x="0" y="49" width="22.516821" height="22.516821"></rect>
-                    <text id="text8" fill="#000000"  font-weight="normal">
+                    <text id="text8" fill="#000000"  >
                         <tspan x="5.393272" y="19.58053">h</tspan>
                     </text>
-                    <text id="text823" fill="#000000"  font-weight="normal">
+                    <text id="text823" fill="#000000"  >
                         <tspan x="5" y="42">e</tspan>
                     </text>
-                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                         <tspan x="7" y="111">ϵ</tspan>
                     </text>
-                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" >
                         <text id="tspan845">
                             <tspan x="0.41947" y="19.74159">l</tspan>
                         </text>
                     </g>
-                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" >
                         <text id="tspan912">
                             <tspan x="0.41947" y="19.74159">o</tspan>
                         </text>
@@ -341,21 +341,21 @@
                     <rect id="rect886" fill="#D3D3D3" fill-rule="nonzero" opacity="0.199162138" x="0" y="72" width="22.516821" height="22.516821"></rect>
                     <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.199162138" x="0" y="26" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" x="0" y="49" width="22.516821" height="22.516821"></rect>
-                    <text id="text8" fill="#000000"  font-weight="normal">
+                    <text id="text8" fill="#000000"  >
                         <tspan x="5.393272" y="19.58053">h</tspan>
                     </text>
-                    <text id="text823" fill="#000000"  font-weight="normal">
+                    <text id="text823" fill="#000000"  >
                         <tspan x="5" y="42">e</tspan>
                     </text>
-                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                         <tspan x="7" y="111">ϵ</tspan>
                     </text>
-                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" >
                         <text id="tspan845">
                             <tspan x="0.41947" y="19.74159">l</tspan>
                         </text>
                     </g>
-                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" >
                         <text id="tspan912">
                             <tspan x="0.41947" y="19.74159">o</tspan>
                         </text>
@@ -367,21 +367,21 @@
                     <rect id="rect886" fill="#D3D3D3" fill-rule="nonzero" opacity="0.0682744565" x="0" y="72" width="22.516821" height="22.516821"></rect>
                     <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.301573822" x="0" y="26" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" x="0" y="49" width="22.516821" height="22.516821"></rect>
-                    <text id="text8" fill="#000000"  font-weight="normal">
+                    <text id="text8" fill="#000000"  >
                         <tspan x="5.393272" y="19.58053">h</tspan>
                     </text>
-                    <text id="text823" fill="#000000"  font-weight="normal">
+                    <text id="text823" fill="#000000"  >
                         <tspan x="5" y="42">e</tspan>
                     </text>
-                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                         <tspan x="7" y="111">ϵ</tspan>
                     </text>
-                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" >
                         <text id="tspan845">
                             <tspan x="0.41947" y="19.74159">l</tspan>
                         </text>
                     </g>
-                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" >
                         <text id="tspan912">
                             <tspan x="0.41947" y="19.74159">o</tspan>
                         </text>
@@ -393,21 +393,21 @@
                     <rect id="rect886" fill="#D3D3D3" fill-rule="nonzero" opacity="0.152683424" x="0" y="72" width="22.516821" height="22.516821"></rect>
                     <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.599241395" x="0" y="26" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.302083333" x="0" y="49" width="22.516821" height="22.516821"></rect>
-                    <text id="text8" fill="#000000"  font-weight="normal">
+                    <text id="text8" fill="#000000"  >
                         <tspan x="5.393272" y="19.58053">h</tspan>
                     </text>
-                    <text id="text823" fill="#000000"  font-weight="normal">
+                    <text id="text823" fill="#000000"  >
                         <tspan x="5" y="42">e</tspan>
                     </text>
-                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                         <tspan x="7" y="111">ϵ</tspan>
                     </text>
-                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" >
                         <text id="tspan845">
                             <tspan x="0.41947" y="19.74159">l</tspan>
                         </text>
                     </g>
-                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" >
                         <text id="tspan912">
                             <tspan x="0.41947" y="19.74159">o</tspan>
                         </text>
@@ -419,21 +419,21 @@
                     <rect id="rect886" fill="#D3D3D3" fill-rule="nonzero" opacity="0.107563406" x="0" y="72" width="22.516821" height="22.516821"></rect>
                     <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" x="0" y="26" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.301573822" x="0" y="49" width="22.516821" height="22.516821"></rect>
-                    <text id="text8" fill="#000000"  font-weight="normal">
+                    <text id="text8" fill="#000000"  >
                         <tspan x="5.393272" y="19.58053">h</tspan>
                     </text>
-                    <text id="text823" fill="#000000"  font-weight="normal">
+                    <text id="text823" fill="#000000"  >
                         <tspan x="5" y="42">e</tspan>
                     </text>
-                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                         <tspan x="7" y="111">ϵ</tspan>
                     </text>
-                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" >
                         <text id="tspan845">
                             <tspan x="0.41947" y="19.74159">l</tspan>
                         </text>
                     </g>
-                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" >
                         <text id="tspan912">
                             <tspan x="0.41947" y="19.74159">o</tspan>
                         </text>
@@ -445,21 +445,21 @@
                     <rect id="rect886" fill="#D3D3D3" fill-rule="nonzero" opacity="0.154438406" x="0" y="72" width="22.516821" height="22.516821"></rect>
                     <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.299535779" x="0" y="26" width="22.516821" height="22.516821"></rect>
                     <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.154438406" x="0" y="49" width="22.516821" height="22.516821"></rect>
-                    <text id="text8" fill="#000000"  font-weight="normal">
+                    <text id="text8" fill="#000000"  >
                         <tspan x="5.393272" y="19.58053">h</tspan>
                     </text>
-                    <text id="text823" fill="#000000"  font-weight="normal">
+                    <text id="text823" fill="#000000"  >
                         <tspan x="5" y="42">e</tspan>
                     </text>
-                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <text id="text17" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
                         <tspan x="7" y="111">ϵ</tspan>
                     </text>
-                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text841" transform="translate(8.000000, 47.000000)"  fill="#000000" >
                         <text id="tspan845">
                             <tspan x="0.41947" y="19.74159">l</tspan>
                         </text>
                     </g>
-                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" font-weight="normal">
+                    <g id="text914" transform="translate(5.000000, 70.000000)"  fill="#000000" >
                         <text id="tspan912">
                             <tspan x="0.41947" y="19.74159">o</tspan>
                         </text>

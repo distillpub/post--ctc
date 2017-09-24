@@ -368,7 +368,7 @@ some previous input.
   The CTC probability of the two valid subsequences after
   <dt-math>t-1</dt-math> input steps.
   </figcaption>
-  <span style="position:absolute; left:335px">
+  <span style="position:absolute; left:350px">
     <dt-math>\cdot</dt-math>
   </span>
   <span style="position:absolute; left:400px">
@@ -381,18 +381,18 @@ some previous input.
 </p>
 </div>
 
-<div style="height:220px;">
+<div style="height:200px;">
 <figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
   <img src="assets/cost_repeat.svg" />
 </figure>
 <p><strong>Case 2 (<dt-math>z_{s} = z_{s-2}</dt-math>):</strong></p>
 
 <p>This case handles consecutive repeats in <dt-math>Y</dt-math>.
-Any alignment <em>must</em> have an <dt-math>\epsilon</dt-math>
+Every alignment <em>must</em> have an <dt-math>\epsilon</dt-math>
 between repeat characters. The update equation is the same as in Case 1.</p>
 </div>
 
-<div style="height:260px;">
+<div style="height:300px;">
 <figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
   <img src="assets/cost_regular.svg" />
 </figure>
@@ -400,24 +400,21 @@ between repeat characters. The update equation is the same as in Case 1.</p>
 <p>If we aren’t in the first two cases, then we’re in the third case. We have
 this case because an <dt-math>\epsilon</dt-math> between unique
 characters of <dt-math>Y</dt-math> is optional.</p>
-<figure style="margin-top:0px;">
+<figure style="height:190px;margin-top:60px;">
   <span style="position:absolute; left:40px">
-    <dt-math>\alpha_{s, t} = </dt-math>
+    <dt-math>\alpha_{s, t} = (\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</dt-math>
   </span>
-  <span style="position:absolute; left:120px">
-    <dt-math>(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</dt-math>
-  </span>
-  <figcaption style="position:absolute; left:120px; top:50px; width:240px;">
+  <figcaption style="position:absolute; left:110px; top:50px; width:240px;">
   The CTC probability of the three valid subsequences after
   <dt-math>t-1</dt-math> input steps.
   </figcaption>
-  <span style="position:absolute; left:395px">
+  <span style="position:absolute; left:415px">
     <dt-math>\cdot</dt-math>
   </span>
-  <span style="position:absolute; left:420px">
+  <span style="position:absolute; left:440px">
     <dt-math>p_t(z_{s} \mid X)</dt-math>
   </span>
-  <figcaption style="position:absolute; left:420px; top:50px; width:200px;">
+  <figcaption style="position:absolute; left:440px; top:50px; width:200px;">
   The probability of the current character at input step <dt-math>t</dt-math>.
   </figcaption>
 </figure>
@@ -567,28 +564,28 @@ an example implementation in Python.</p>
 over the outputs significantly improves accuracy. To do this, we can
 repose the inference problem.</p>
 
-<figure style="width:650px;height:80px;margin-top:0px;">
+<figure style="width:600px;height:80px;margin-top:0px;">
   <span style="position:absolute; left:0px; top:0px">
     <dt-math>Y^* = \text{argmax}_{Y \in \mathcal{Y}}</dt-math>
   </span>
-  <span style="position:absolute; left:180px; top:0px">
+  <span style="position:absolute; left:190px; top:0px">
     <dt-math>p(Y \mid X)</dt-math>
   </span>
-  <figcaption style="position:absolute; left:180px; top:50px; width:150px">
+  <figcaption style="position:absolute; left:190px; top:50px; width:130px">
   The CTC conditional probability.
   </figcaption>
-  <span style="position:absolute; left:295px; top:0px">
+  <span style="position:absolute; left:310px; top:0px">
     <dt-math>\cdot</dt-math>
   </span>
-  <span style="position:absolute; left:340px; top:0px">
+  <span style="position:absolute; left:350px; top:0px">
     <dt-math>p(Y)^\alpha</dt-math>
   </span>
-  <span style="position:absolute; left:440px; top:0px">
-    <dt-math>\cdot</dt-math>
-  </span>
-  <figcaption style="position:absolute; left:340px; top:50px; width:150px">
+  <figcaption style="position:absolute; left:350px; top:50px; width:120px">
   The language model probability.
   </figcaption>
+  <span style="position:absolute; left:450px; top:0px">
+    <dt-math>\cdot</dt-math>
+  </span>
   <span style="position:absolute; left:500px; top:0px">
     <dt-math>L(Y)^\beta</dt-math>
   </span>
@@ -811,24 +808,24 @@ same alphabet as before and <dt-math>Y =</dt-math> [a, b]. Another commonly used
 <em>Bakis</em> or left-right HMM. In this model any transition which proceeds from the
 left to the right is allowed.</p>
 
-<figure class="l-body" style="width:700px;height:220px;">
-  <div style="width: 150px; position: absolute;">
-  <img src="assets/ergodic_hmm.svg" />
-  <figcaption style="margin-left:30px;">
+<figure style="width:750px;height:200px;">
+  <div style="position:absolute;">
+  <img src="assets/ergodic_hmm.svg" style="width:150px;" />
+  <figcaption style="margin-left:30px;width:150px;">
   <strong>Ergodic HMM:</strong> Any node can be either a starting or
   final state.
   </figcaption>
   </div>
-  <div style="width: 150px; position: absolute; left: 180px;">
-  <img style="margin-bottom:30px; margin-top: 30px;" src="assets/linear_hmm.svg" />
-  <figcaption style="margin-left:30px;">
+  <div style="position:absolute; left:200px;">
+  <img style="margin-bottom:30px;margin-left:10px;margin-top:30px;width:150px;" src="assets/linear_hmm.svg" />
+  <figcaption style="margin-left:10px;width:185px;">
   <strong>Linear HMM:</strong> The first node is the starting state
   and the second node is the final state.
   </figcaption>
   </div>
-  <div style="width: 350px; position: absolute; left: 360px;">
-  <img style="margin-bottom:30px; margin-top: 30px;" src="assets/ctc_hmm.svg" />
-  <figcaption style="margin-left:30px;width:300px;">
+  <div style="width:350px; position: absolute; left:390px;">
+  <img style="margin-bottom:30px; margin-top:30px;" src="assets/ctc_hmm.svg" />
+  <figcaption style="margin-left:40px;width:250px;">
   <strong>CTC HMM:</strong> The first two nodes are the starting
   states and the last two nodes are the final states.
   </figcaption>
@@ -862,12 +859,12 @@ distribution over the output space <dt-math>\mathcal{Y}</dt-math>. We can write 
 
 <dt-math block>
 \begin{aligned}
-h &= \texttt{encode}(X) \\
-p(Y \mid X) &= \texttt{decode}(h).
+h &= \textsf{encode}(X) \\
+p(Y \mid X) &= \textsf{decode}(h).
 \end{aligned}
 </dt-math>
 
-The <dt-math>\texttt{encode}(\cdot)</dt-math> and <dt-math>\texttt{decode}(\cdot)</dt-math> functions are typically RNNs.
+The <dt-math>\textsf{encode}(\cdot)</dt-math> and <dt-math>\textsf{decode}(\cdot)</dt-math> functions are typically RNNs.
 The decoder can optionally be equipped with an attention mechanism. The hidden
 state <dt-math>h</dt-math> usually has dimensions
 <dt-math>T \times d</dt-math> where <dt-math>d</dt-math> is

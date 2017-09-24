@@ -1,6 +1,9 @@
 <!doctype html>
 <meta charset="utf-8">
 <script src="https://distill.pub/template.v1.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+  integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0"
+  crossorigin="anonymous">
 
 <script type="text/front-matter">
   title: "An In-depth Guide to Connectionist Temporal Classification"
@@ -43,7 +46,7 @@ time consuming.</p>
   <img src="handwriting_recognition.svg" />
   <figcaption style="width:280px;">
   <strong>Handwriting recognition:</strong> The input can be
-  <script type="math/tex">(x,y)</script> coordinates of a pen stroke or 
+  <dt-math>(x,y)</dt-math> coordinates of a pen stroke or 
   pixels in an image.
   </figcaption>
   </div>
@@ -61,85 +64,84 @@ Certain assumptions made by the algorithm make it especially well suited to
 problems like speech recognition and handwriting recognition. Today,
 it’s used in many state-of-the-art models in these domains.</p>
 
-<p>To be a bit more formal, let's consider the problem of mapping input
-sequences <script type="math/tex">X = [x_1, x_2, \ldots, x_T] \in
-\mathcal{X}</script> to corresponding output sequences <script
-type="math/tex">Y = [y_1, y_2, \ldots, y_U] \in \mathcal{Y}</script>. We want
-to learn a "good" mapping of <script type="math/tex">X</script>s to <script
-type="math/tex">Y</script>s. For example, in speech recognition a "good"
-mapping is one which takes an audio input to an accurate transcription.</p>
+<p>To be a bit more formal, let's consider the problem of mapping input sequences
+<dt-math>X = [x_1, x_2, \ldots, x_T] \in \mathcal{X}</dt-math> to corresponding output
+sequences <dt-math>Y = [y_1, y_2, \ldots, y_U] \in \mathcal{Y}</dt-math>.
+We want to learn a "good" mapping of <dt-math>X</dt-math>s to <dt-math>Y</dt-math>s.
+For example, in speech recognition a "good" mapping is one which takes an audio
+input to an accurate transcription.</p>
 
 <p>The "sequence transduction" problem has three properties which make it difficult
 to use traditional supervised learning algorithms.</p>
 <ul>
-  <li>Both <script type="math/tex">X</script> and <script type="math/tex">Y</script>
+  <li>Both <dt-math>X</dt-math> and <dt-math>Y</dt-math>
     can vary in length.</li>
-  <li>The ratio of the lengths <script type="math/tex">X</script> and <script type="math/tex">Y</script> can vary.</li>
+  <li>The ratio of the lengths <dt-math>X</dt-math> and <dt-math>Y</dt-math> can vary.</li>
   <li>We don’t have an accurate alignment (correspondence of the elements) of
-  <script type="math/tex">X</script> and <script type="math/tex">Y</script>.</li>
+  <dt-math>X</dt-math> and <dt-math>Y</dt-math>.</li>
 </ul>
 
-<p>In these circumstances, CTC can learn a function to map elements of <script type="math/tex">\mathcal{X}</script>
-to a distribution over members of <script type="math/tex">\mathcal{Y}</script>.
-We can then infer a likely <script type="math/tex">Y</script> from this
+<p>In these circumstances, CTC can learn a function to map elements of <dt-math>\mathcal{X}</dt-math>
+to a distribution over members of <dt-math>\mathcal{Y}</dt-math>.
+We can then infer a likely <dt-math>Y</dt-math> from this
 distribution. For such an algorithm to be useful it needs to solve two
 problems: the objective function should be computable and inference should be
 tractable.</p>
 
 <p><strong>Objective Function:</strong> We should be able to efficiently
-compute a score for how likely any <script type="math/tex">Y</script> is given
-an <script type="math/tex">X</script>. In our case the score will be a
-conditional probability <script type="math/tex">p(Y \mid X)</script>, though this
-isn’t a strict requirement.  The function <script type="math/tex">p(Y \mid
-X)</script> should be differentiable. This makes optimizing the function
+compute a score for how likely any <dt-math>Y</dt-math> is given
+an <dt-math>X</dt-math>. In our case the score will be a
+conditional probability <dt-math>p(Y \mid X)</dt-math>, though this
+isn’t a strict requirement.  The function <dt-math>p(Y \mid
+X)</dt-math> should be differentiable. This makes optimizing the function
 parameters easier.</p>
 
-<p>We need to compute the score for <script type="math/tex">X</script>s and <script
-type="math/tex">Y</script>s of variable and differing lengths. We also want to
-avoid algorithms which require an alignment between <script type="math/tex">X</script>
-and <script type="math/tex">Y</script>.</p>
+<p>We need to compute the score for <dt-math>X</dt-math>s and
+<dt-math>Y</dt-math>s of variable and differing lengths. We also want to
+avoid algorithms which require an alignment between <dt-math>X</dt-math>
+and <dt-math>Y</dt-math>.</p>
 
-<p><strong>Inference:</strong> Given a model for <script type="math/tex">p(Y
-\mid X)</script>, for any <script type="math/tex">X</script> we need to
-tractably infer a likely <script type="math/tex">Y</script>. This means solving 
+<p><strong>Inference:</strong> Given a model for <dt-math>p(Y
+\mid X)</dt-math>, for any <dt-math>X</dt-math> we need to
+tractably infer a likely <dt-math>Y</dt-math>. This means solving 
 
-\begin{align}
+<dt-math block>
 Y^* = \text{argmax}_{Y \in \mathcal{Y}} p(Y \mid X).
-\end{align}
+</dt-math>
 
-Ideally an optimal <script type="math/tex">Y^*</script> can be found
+Ideally an optimal <dt-math>Y^*</dt-math> can be found
 efficiently.  With CTC we’ll settle for a close to optimal solution that's not
 too expensive to find.</p>
 
 <hr />
 <h2 id="the-algorithm">The Algorithm</h2>
 
-<p>The first thing we need to do is compute a score of how likely a <script type="math/tex">Y</script>
-is given an <script type="math/tex">X</script>. To
-do this, the CTC model allows a set of alignments between <script type="math/tex">X</script>
-and <script type="math/tex">Y</script>. To get around the fact that the alignment is unknown,
+<p>The first thing we need to do is compute a score of how likely a <dt-math>Y</dt-math>
+is given an <dt-math>X</dt-math>. To
+do this, the CTC model allows a set of alignments between <dt-math>X</dt-math>
+and <dt-math>Y</dt-math>. To get around the fact that the alignment is unknown,
 CTC <em>marginalizes</em> over all possible allowed alignments between the two
 sequences. In this section we’ll cover what these allowed alignments are, how
 to compute the CTC loss function and how to perform inference with a learned
 model.</p>
 
 <h3 id="alignment">Alignment</h3>
-<p>The CTC algorithm assumes the alignments between the input <script type="math/tex">X</script> and the
-output <script type="math/tex">Y</script> have a specific form. To motivate the CTC alignments, first
+<p>The CTC algorithm assumes the alignments between the input <dt-math>X</dt-math> and the
+output <dt-math>Y</dt-math> have a specific form. To motivate the CTC alignments, first
 consider a naive approach.</p>
 
-<p>Let’s use an example. Let the input length <script type="math/tex">T = 6</script>
-and <script type="math/tex">Y =</script> [c, a, t]. In
-this case, one way to align <script type="math/tex">Y</script> and
-<script type="math/tex">X</script> would be to let the elements of
-<script type="math/tex">Y</script> align to multiple elements of
-<script type="math/tex">X</script>. So the alignment could be</p>
+<p>Let’s use an example. Let the input length <dt-math>T = 6</dt-math>
+and <dt-math>Y =</dt-math> [c, a, t]. In
+this case, one way to align <dt-math>Y</dt-math> and
+<dt-math>X</dt-math> would be to let the elements of
+<dt-math>Y</dt-math> align to multiple elements of
+<dt-math>X</dt-math>. So the alignment could be</p>
 
 <figure style="width:300px; height:150px;">
   <figcaption>
-  <span style="position:absolute; left: 0; top:15px;">output (<script type="math/tex">Y</script>)</span>
+  <span style="position:absolute; left: 0; top:15px;">output (<dt-math>Y</dt-math>)</span>
   <span style="position:absolute; left: 0; top:65px;">alignment</span>
-  <span style="position:absolute; left: 0; top:110px;">input (<script type="math/tex">X</script>)</span>
+  <span style="position:absolute; left: 0; top:110px;">input (<dt-math>X</dt-math>)</span>
   </figcaption>
   <div style="width:200px; position:absolute; left: 80px;">
   <img src="naive_alignment.svg" />
@@ -149,17 +151,17 @@ this case, one way to align <script type="math/tex">Y</script> and
 <p>This approach has two problems.</p>
 <ul>
   <li>
-    Some elements of <script type="math/tex">X</script> may not
-    correspond to any element of <script type="math/tex">Y</script>.
+    Some elements of <dt-math>X</dt-math> may not
+    correspond to any element of <dt-math>Y</dt-math>.
     In this case, we may not want to force every element of
-    <script type="math/tex">X</script> to match with an element of
-    <script type="math/tex">Y</script>.
+    <dt-math>X</dt-math> to match with an element of
+    <dt-math>Y</dt-math>.
   </li>
 
   <li>
-    The sequence <script type="math/tex">Y</script> can have
+    The sequence <dt-math>Y</dt-math> can have
     consecutive repeat characters. This means the alignments for a given
-    <script type="math/tex">Y</script> are not unique. We have no way to
+    <dt-math>Y</dt-math> are not unique. We have no way to
     determine if the alignment [c, c, a, a, a, t] refers to [c, a, t] or
     [c, a, a, t] among others. Later we’ll need to distinguish between these
     cases to perform inference with the model.
@@ -168,16 +170,16 @@ this case, one way to align <script type="math/tex">Y</script> and
 
 <p>To get around these problems, CTC introduces a new token to the set of allowed
 output characters. This new token is sometimes called the “blank” token. We’ll
-refer to it here as <script type="math/tex">\epsilon</script>. When an input
-element aligns to <script type="math/tex">\epsilon</script> then no output
+refer to it here as <dt-math>\epsilon</dt-math>. When an input
+element aligns to <dt-math>\epsilon</dt-math> then no output
 element corresponds to it.</p>
 
-<p>The alignments allowed by CTC are of length <script type="math/tex">T</script>,
-the length of the input. For a given <script type="math/tex">Y</script>,
-let <script type="math/tex">\mathcal{A}</script>
+<p>The alignments allowed by CTC are of length <dt-math>T</dt-math>,
+the length of the input. For a given <dt-math>Y</dt-math>,
+let <dt-math>\mathcal{A}</dt-math>
 be the set of such alignments. An alignment is in the set
-<script type="math/tex">\mathcal{A}</script> if it maps to
-<script type="math/tex">Y</script> as follows:</p>
+<dt-math>\mathcal{A}</dt-math> if it maps to
+<dt-math>Y</dt-math> as follows:</p>
 
 <figure style="width:500px; height:240px;">
   <figcaption>
@@ -185,7 +187,7 @@ be the set of such alignments. An alignment is in the set
     First, merge repeat characters.
   </div>
   <div style="position:absolute; top:100px; width: 150px;">
-    Then, remove any <script type="math/tex">\epsilon</script> tokens.
+    Then, remove any <dt-math>\epsilon</dt-math> tokens.
   </div>
   <div style="position:absolute; top:190px; width: 150px;">
     The remaining characters are the output.
@@ -196,15 +198,15 @@ be the set of such alignments. An alignment is in the set
   </div>
 </figure>
 
-<p>The set <script type="math/tex">\mathcal{A}</script> contains all possible
-alignments which map to <script type="math/tex">Y</script>. If there are
-consecutive repeat characters in <script type="math/tex">Y</script> then
-the <script type="math/tex">\epsilon</script> between them is required.
+<p>The set <dt-math>\mathcal{A}</dt-math> contains all possible
+alignments which map to <dt-math>Y</dt-math>. If there are
+consecutive repeat characters in <dt-math>Y</dt-math> then
+the <dt-math>\epsilon</dt-math> between them is required.
 This allows us to differentiate between alignments of [c, a, t] and
 [c, a, a, t].</p>
 
-<p>Let’s go back to the [c, a, t] example with <script type="math/tex">T =
-6</script>. Here are a few more examples of valid and invalid alignments.</p>
+<p>Let’s go back to the [c, a, t] example with <dt-math>T =
+6</dt-math>. Here are a few more examples of valid and invalid alignments.</p>
 
 <figure style="width:500px; height:150px;">
   <figcaption>
@@ -215,7 +217,7 @@ This allows us to differentiate between alignments of [c, a, t] and
     <strong>Invalid Alignments</strong>
   </div>
   <div style="position:absolute; left: 420px; top:30px; width: 100px;">
-    corresponds to <script type="math/tex">Y =</script> [c, c, a, t]
+    corresponds to <dt-math>Y =</dt-math> [c, c, a, t]
   </div>
   <div style="position:absolute; left: 420px; top:90px; width: 100px;">
     has length 5
@@ -230,15 +232,15 @@ This allows us to differentiate between alignments of [c, a, t] and
 </figure>
 
 <p>A convenient way to visualize the alignment between
-<script type="math/tex">X</script> and <script type="math/tex">Y</script>
+<dt-math>X</dt-math> and <dt-math>Y</dt-math>
 is with a 2D alignment matrix. Below is an example for the
-[<script type="math/tex">\epsilon</script>, c, c,
-<script type="math/tex">\epsilon</script>, a, t] alignment. Sometimes it’s
-useful to include the <script type="math/tex">\epsilon</script>’s in the
+[<dt-math>\epsilon</dt-math>, c, c,
+<dt-math>\epsilon</dt-math>, a, t] alignment. Sometimes it’s
+useful to include the <dt-math>\epsilon</dt-math>’s in the
 alignment matrix. Both are shown here. Note that some of
-the <script type="math/tex">\epsilon</script> tokens are left unaligned.
+the <dt-math>\epsilon</dt-math> tokens are left unaligned.
 They are optional since they don’t fall between consecutive repeat characters
-in <script type="math/tex">Y</script>.</p>
+in <dt-math>Y</dt-math>.</p>
 
 <figure style="height:350px;width:500px;">
   <img style="width:350px;" src="alignment_no_epsilon.svg" />
@@ -246,62 +248,62 @@ in <script type="math/tex">Y</script>.</p>
   <img src="alignment_epsilon.svg" />
   </div>
   <figcaption style="width:130px;position:absolute; left:350px; top:30px;">
-  The alignment matrix without the <script type="math/tex">\epsilon</script>
+  The alignment matrix without the <dt-math>\epsilon</dt-math>
   token.
   </figcaption>
   <figcaption style="width:150px;position:absolute; left:350px; top:170px;">
-  The alignment matrix including the <script type="math/tex">\epsilon</script> token.
+  The alignment matrix including the <dt-math>\epsilon</dt-math> token.
   </figcaption>
 </figure>
 
 <p>We can observe several properties about CTC right away. First, the allowed
-alignments between <script type="math/tex">Y</script> and <script type="math/tex">X</script> are strictly monotonic. If the ‘c’ in our
+alignments between <dt-math>Y</dt-math> and <dt-math>X</dt-math> are strictly monotonic. If the ‘c’ in our
 example aligns to the first input element then the ‘a’ must align to input
-element two or greater. This implies a second property: the length of <script type="math/tex">Y</script> can
-be no longer than the length of <script type="math/tex">X</script>. A third property is that the alignment
-of <script type="math/tex">X</script> to <script type="math/tex">Y</script> is many-to-one. Many input elements can align to a single
+element two or greater. This implies a second property: the length of <dt-math>Y</dt-math> can
+be no longer than the length of <dt-math>X</dt-math>. A third property is that the alignment
+of <dt-math>X</dt-math> to <dt-math>Y</dt-math> is many-to-one. Many input elements can align to a single
 output element but not vice-versa.</p>
 
 <h3 id="loss-function">Loss Function</h3>
 <p>With the alignment setup, we can write down the CTC objective
-function for a single <script type="math/tex">(X, Y)</script> pair.</p>
+function for a single <dt-math>(X, Y)</dt-math> pair.</p>
 
 <figure style="width:600px;height:80px;margin-top:0px;">
   <span style="position:absolute; left:30px; top:0px">
-    <script type="math/tex">p(Y \mid X)</script>
+    <dt-math>p(Y \mid X)</dt-math>
   </span>
   <figcaption style="position:absolute; left:30px; top:50px; width:150px;">
   The CTC conditional <strong>probability</strong>
   </figcaption>
   <span style="position:absolute; left:170px; top:0px">
-    <script type="math/tex">=</script>
+    <dt-math>=</dt-math>
   </span>
   <span style="position:absolute; left:220px; top:0px">
-    <script type="math/tex">\sum_{A \in \mathcal{A}}</script>
+    <dt-math>\sum_{A \in \mathcal{A}}</dt-math>
   </span>
   <figcaption style="position:absolute; left:220px; top:50px; width:150px;">
   <strong>marginalizes</strong> over the set of valid alignments 
   </figcaption>
   <span style="position:absolute; left:420px; top:0px">
-    <script type="math/tex">\prod_{t=1}^T p_t(a_t \mid X)</script>
+    <dt-math>\prod_{t=1}^T p_t(a_t \mid X)</dt-math>
   </span>
   <figcaption style="position:absolute; left:420px; top:50px; width:200px;">
   computing the <strong>probability</strong> for a single alignment step-by-step.
   </figcaption>
 </figure>
 
-<p>Recall <script type="math/tex">\mathcal{A}</script> is the set of alignments of <script type="math/tex">Y</script> to <script type="math/tex">X</script> allowed by
-CTC. The element <script type="math/tex">A = [a_1, \ldots, a_T]</script> is a member of <script type="math/tex">\mathcal{A}</script>. The
-function <script type="math/tex">p_t(a_t \mid X)</script> can be any function which produces a distribution
-for each input time-step <script type="math/tex">t</script> over the output alphabet given the full
-input <script type="math/tex">X</script>.</p>
+<p>Recall <dt-math>\mathcal{A}</dt-math> is the set of alignments of <dt-math>Y</dt-math> to <dt-math>X</dt-math> allowed by
+CTC. The element <dt-math>A = [a_1, \ldots, a_T]</dt-math> is a member of <dt-math>\mathcal{A}</dt-math>. The
+function <dt-math>p_t(a_t \mid X)</dt-math> can be any function which produces a distribution
+for each input time-step <dt-math>t</dt-math> over the output alphabet given the full
+input <dt-math>X</dt-math>.</p>
 
 <figure style="width:550px; height:350px;">
   <figcaption>
   <div style="position:absolute; top:0px; width: 200px;">
-    The function <script type="math/tex">p_t(a \mid X)</script> 
+    The function <dt-math>p_t(a \mid X)</dt-math> 
     is a distribution over the alphabet
-    {h, e, l, o, <script type="math/tex">\epsilon</script>} for
+    {h, e, l, o, <dt-math>\epsilon</dt-math>} for
     each input step.
   </div>
   <div style="position:absolute; top:172px; width: 200px;">
@@ -318,15 +320,14 @@ input <script type="math/tex">X</script>.</p>
 </figure>
 
 <p>The hard part of the CTC loss is not understanding what it is, but computing
-it efficiently. The set <script type="math/tex">\mathcal{A}</script> can be
-<em>very</em> large.<dt-fn>For a <script type="math/tex">Y</script> of length
-<script type="math/tex">U</script> without any repeat characters and an
-<script type="math/tex">X</script> of length <script
-type="math/tex">T</script> the size of the set is <script type="math/tex">{T +
-U \choose T - U}</script>. For <script type="math/tex">T=100</script> and
-<script type="math/tex">U=50</script> this number is almost <script
-type="math/tex">10^{40}</script>.</dt-fn> For most practical problems, we can’t
-delineate the elements of <script type="math/tex">\mathcal{A}</script> to
+it efficiently. The set <dt-math>\mathcal{A}</dt-math> can be
+<em>very</em> large.<dt-fn>For a <dt-math>Y</dt-math> of length
+<dt-math>U</dt-math> without any repeat characters and an
+<dt-math>X</dt-math> of length <dt-math>T</dt-math> the size of the set is <dt-math>{T +
+U \choose T - U}</dt-math>. For <dt-math>T=100</dt-math> and
+<dt-math>U=50</dt-math> this number is almost
+<dt-math>10^{40}</dt-math>.</dt-fn> For most practical problems, we can’t
+delineate the elements of <dt-math>\mathcal{A}</dt-math> to
 compute the sum above.</p>
 
 <p>Instead, we can compute the CTC loss both exactly and efficiently with a
@@ -334,47 +335,47 @@ dynamic programming algorithm. Like any dynamic programming algorithm, the key
 is recognizing the subproblems.</p>
 
 <p>To simplify the problem, let the sequence
-\begin{align}
+<dt-math block>
 Z = [z_{1}, \ldots, z_{2U+1}] = [\epsilon, y_1, \epsilon, y_2, \ldots, \epsilon, y_U, \epsilon]
-\end{align}
-consist of the elements of <script type="math/tex">Y</script> with an
-<script type="math/tex">\epsilon</script> at the beginning, end, and between
-every character. Let <script type="math/tex">\alpha_{s, t}</script> be the
-CTC score of the subsequence <script type="math/tex">Z_{1:s}</script>
-after <script type="math/tex">t</script> input steps. We can compute
-<script type="math/tex">\alpha_{s, t}</script> if we know the values
-<script type="math/tex">\alpha_{\lt s, \lt t}</script>. There are three cases.</p>
+</dt-math>
+consist of the elements of <dt-math>Y</dt-math> with an
+<dt-math>\epsilon</dt-math> at the beginning, end, and between
+every character. Let <dt-math>\alpha_{s, t}</dt-math> be the
+CTC score of the subsequence <dt-math>Z_{1:s}</dt-math>
+after <dt-math>t</dt-math> input steps. We can compute
+<dt-math>\alpha_{s, t}</dt-math> if we know the values
+<dt-math>\alpha_{\lt s, \lt t}</dt-math>. There are three cases.</p>
 
 <div style="height:320px">
 <figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
   <img src="cost_no_skip.svg" />
 </figure>
-<p><strong>Case 1 (<script type="math/tex"> z_{s} = \epsilon </script>):</strong></p>
+<p><strong>Case 1 (<dt-math> z_{s} = \epsilon </dt-math>):</strong></p>
 
-<p>This case says that we can't skip elements of <script type="math/tex">Y</script>
+<p>This case says that we can't skip elements of <dt-math>Y</dt-math>
 for any alignment. If we want to align the current input to
-<script type="math/tex">\epsilon</script>, the previous output must be aligned to
+<dt-math>\epsilon</dt-math>, the previous output must be aligned to
 some previous input.
 
 <figure style="margin-top:0px;">
   <span style="position:absolute; left:40px">
-    <script type="math/tex">\alpha_{s, t} = </script>
+    <dt-math>\alpha_{s, t} = </dt-math>
   </span>
   <span style="position:absolute; left:120px">
-    <script type="math/tex">(\alpha_{s-1, t-1} + \alpha_{s, t-1})</script>
+    <dt-math>(\alpha_{s-1, t-1} + \alpha_{s, t-1})</dt-math>
   </span>
   <figcaption style="position:absolute; left:120px; top:50px; width:240px;">
   The CTC probability of the two valid subsequences after
-  <script type="math/tex">t-1</script> input steps.
+  <dt-math>t-1</dt-math> input steps.
   </figcaption>
   <span style="position:absolute; left:335px">
-    <script type="math/tex">\cdot</script>
+    <dt-math>\cdot</dt-math>
   </span>
   <span style="position:absolute; left:400px">
-    <script type="math/tex">p_t(z_{s} \mid X)</script>
+    <dt-math>p_t(z_{s} \mid X)</dt-math>
   </span>
   <figcaption style="position:absolute; left:400px; top:50px; width:200px;">
-  The probability of the current character at input step <script type="math/tex">t</script>.
+  The probability of the current character at input step <dt-math>t</dt-math>.
   </figcaption>
 </figure>
 </p>
@@ -384,10 +385,10 @@ some previous input.
 <figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
   <img src="cost_repeat.svg" />
 </figure>
-<p><strong>Case 2 (<script type="math/tex">z_{s} = z_{s-2}</script>):</strong></p>
+<p><strong>Case 2 (<dt-math>z_{s} = z_{s-2}</dt-math>):</strong></p>
 
-<p>This case handles consecutive repeats in <script type="math/tex">Y</script>.
-Any alignment <em>must</em> have an <script type="math/tex">\epsilon</script>
+<p>This case handles consecutive repeats in <dt-math>Y</dt-math>.
+Any alignment <em>must</em> have an <dt-math>\epsilon</dt-math>
 between repeat characters. The update equation is the same as in Case 1.</p>
 </div>
 
@@ -397,27 +398,27 @@ between repeat characters. The update equation is the same as in Case 1.</p>
 </figure>
 <p><strong>Case 3:</strong></p>
 <p>If we aren’t in the first two cases, then we’re in the third case. We have
-this case because an <script type="math/tex">\epsilon</script> between unique
-characters of <script type="math/tex">Y</script> is optional.</p>
+this case because an <dt-math>\epsilon</dt-math> between unique
+characters of <dt-math>Y</dt-math> is optional.</p>
 <figure style="margin-top:0px;">
   <span style="position:absolute; left:40px">
-    <script type="math/tex">\alpha_{s, t} = </script>
+    <dt-math>\alpha_{s, t} = </dt-math>
   </span>
   <span style="position:absolute; left:120px">
-    <script type="math/tex">(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</script>
+    <dt-math>(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</dt-math>
   </span>
   <figcaption style="position:absolute; left:120px; top:50px; width:240px;">
   The CTC probability of the three valid subsequences after
-  <script type="math/tex">t-1</script> input steps.
+  <dt-math>t-1</dt-math> input steps.
   </figcaption>
   <span style="position:absolute; left:395px">
-    <script type="math/tex">\cdot</script>
+    <dt-math>\cdot</dt-math>
   </span>
   <span style="position:absolute; left:420px">
-    <script type="math/tex">p_t(z_{s} \mid X)</script>
+    <dt-math>p_t(z_{s} \mid X)</dt-math>
   </span>
   <figcaption style="position:absolute; left:420px; top:50px; width:200px;">
-  The probability of the current character at input step <script type="math/tex">t</script>.
+  The probability of the current character at input step <dt-math>t</dt-math>.
   </figcaption>
 </figure>
 </p>
@@ -431,78 +432,78 @@ algorithm.</p>
 <div style="width:650px; position:absolute; left:80px; top:30px;">
 <img src="ctc_cost.svg"/>
 <figcaption style="width:350px;">
-Node <script type="math/tex">(s, t)</script> in the diagram represents
-<script type="math/tex">\alpha_{s, t}</script> – the CTC score of 
-the subsequence <script type="math/tex">Z_{1:s}</script> after
-<script type="math/tex">t</script> input steps.
+Node <dt-math>(s, t)</dt-math> in the diagram represents
+<dt-math>\alpha_{s, t}</dt-math> – the CTC score of 
+the subsequence <dt-math>Z_{1:s}</dt-math> after
+<dt-math>t</dt-math> input steps.
 </figcaption>
 </div>
 <figcaption style="position:absolute; top: 100px; width: 100px;">
 <span style="position:absolute;">output</span>
-<span style="position:absolute; top:25px;"><script type="math/tex">Y =</script> [a, b]</span>
+<span style="position:absolute; top:25px;"><dt-math>Y =</dt-math> [a, b]</span>
 </figcaption>
 <figcaption style="position:absolute; left:170px; top: 0px;">
-  input, <script type="math/tex">X</script>
+  input, <dt-math>X</dt-math>
 </figcaption>
 </figure>
 
 <p>The final probability is the sum of the two output nodes
-\begin{align}
+<dt-math block>
 p(Y \mid X) = \alpha_{S, T} + \alpha_{S-1, T}
-\end{align}
-where <script type="math/tex">S = 2U + 1</script>.</p>
+</dt-math>
+where <dt-math>S = 2U + 1</dt-math>.</p>
 
 <p>As long as the individual output model
-<script type="math/tex">p_t(z \mid X)</script> is differentiable then
+<dt-math>p_t(z \mid X)</dt-math> is differentiable then
 the entire loss function is differentiable. This is true since computing
-<script type="math/tex">p(Y \mid X)</script> simply consists of sums and
-products of the <script type="math/tex">p_t(z \mid X)</script>.</p>
+<dt-math>p(Y \mid X)</dt-math> simply consists of sums and
+products of the <dt-math>p_t(z \mid X)</dt-math>.</p>
 
-<p>The time complexity of this dynamic programming algorithm is <script type="math/tex">O(TU)</script> with a
+<p>The time complexity of this dynamic programming algorithm is <dt-math>O(TU)</dt-math> with a
 fairly small constant. Conveniently, the time to compute the loss function does
 not depend at all on the size of the output alphabet.</p>
 
-<p>For a training set <script type="math/tex">\mathcal{D}</script>, the parameters of a model are tuned to
+<p>For a training set <dt-math>\mathcal{D}</dt-math>, the parameters of a model are tuned to
 minimize the negative log-likelihood
-\begin{align}
+<dt-math block>
 \sum_{(X, Y) \in \mathcal{D}} -\log p(Y \mid X)
-\end{align}
+</dt-math>
 as opposed to maximizing the likelihood directly.</p>
 
 <h3 id="inference">Inference</h3>
 
 <p>We can find the most likely output by solving
-\begin{align}
+<dt-math block>
 Y^* = \text{argmax}_{Y \in \mathcal{Y}} p(Y \mid X).
-\end{align}</p>
+</dt-math>
 
 <p>One way to approximate this is to take the most likely output at each
 time-step. This gives us the alignment with the highest probability:
 
-\begin{align}
+<dt-math block>
 A^* = \text{argmax}_{A \in \mathcal{A}} \prod_{t=1}^{T} p_t(a_t \mid X)
-\end{align}
+</dt-math>
 
-We can then collapse repeats and remove <script type="math/tex">\epsilon</script>
-tokens to produce <script type="math/tex">Y</script>.</p>
+We can then collapse repeats and remove <dt-math>\epsilon</dt-math>
+tokens to produce <dt-math>Y</dt-math>.</p>
 
 <p>For most applications this simple algorithm works well. This is because 
 most of the probability mass is given to a single alignment. However, this
-method is not guaranteed to find the most likely <script type="math/tex">Y</script>.
-The problem is multiple alignments can map to the same <script type="math/tex">Y</script>.</p>
+method is not guaranteed to find the most likely <dt-math>Y</dt-math>.
+The problem is multiple alignments can map to the same <dt-math>Y</dt-math>.</p>
 
-<p>As an example, assume the alignments [a, a, <script type="math/tex">\epsilon</script>]
+<p>As an example, assume the alignments [a, a, <dt-math>\epsilon</dt-math>]
 and [a, a, a] individually have lower probability than [b, b, b]. However,
 the sum of their probabilities is greater than that of [b, b, b]. The beam
-search will incorrectly propose <script type="math/tex">Y =</script> [b] as
+search will incorrectly propose <dt-math>Y =</dt-math> [b] as
 the most likely hypothesis. It should have chosen
-<script type="math/tex">Y =</script> [a]. The algorithm needs to account for
-the fact that [a, a, a] and [a, a, <script type="math/tex">\epsilon</script>]
+<dt-math>Y =</dt-math> [a]. The algorithm needs to account for
+the fact that [a, a, a] and [a, a, <dt-math>\epsilon</dt-math>]
 map to the same output.</p>
 
 <p>We can solve this problem with a modified beam search. Given limited 
 computation, the modified beam search is not guaranteed to find the
-most likely <script type="math/tex">Y</script>. It does, at least, have
+most likely <dt-math>Y</dt-math>. It does, at least, have
 the desirable property that we can trade-off more computation
 (a larger beam-size) for an asymptotically better solution.</p>
 
@@ -515,7 +516,7 @@ extending each hypothesis with all possible output characters.</p>
   <img src="beam_search.svg" />
   <figcaption style="width:300px;">
   A standard beam search algorithm with an alphabet of
-  <script type="math/tex">\{\epsilon, a, b\}</script> and a beam size
+  <dt-math>\{\epsilon, a, b\}</dt-math> and a beam size
   of three.
   </figcaption>
 </figure>
@@ -523,7 +524,7 @@ extending each hypothesis with all possible output characters.</p>
 <p>We can modify the vanilla beam search to handle multiple alignments mapping to
 the same output. In this case instead of keeping a list of alignments in the
 beam, we store the output prefixes after collapsing repeats and removing
-<script type="math/tex">\epsilon</script> characters. At each step of the search we accumulate scores for a
+<dt-math>\epsilon</dt-math> characters. At each step of the search we accumulate scores for a
 given prefix based on all the alignments which map to it. The image below
 displays steps two, three and four of the algorithm. The dashed lines indicate
 the output prefix that the proposed extension maps to.</p>
@@ -532,13 +533,13 @@ the output prefix that the proposed extension maps to.</p>
   <embed src="prefix_beam_search.svg"/>
   <figcaption style="width:300px;">
   The CTC beam search algorithm with an output alphabet
-  <script type="math/tex">\{\epsilon, a, b\}</script>
+  <dt-math>\{\epsilon, a, b\}</dt-math>
   and a beam size of three.
   </figcaption>
 </figure>
 
 <p>A proposed extension can map to two output prefixes if the character is a
-repeat. This is shown at <script type="math/tex">T=3</script> in the figure above
+repeat. This is shown at <dt-math>T=3</dt-math> in the figure above
 where ‘a’ is proposed as an extension to the prefix [a]. Both [a] and [a, a] are
 valid outputs for this proposed extension.</p>
 <figure class="l-body" style="width:900px;">
@@ -547,14 +548,14 @@ valid outputs for this proposed extension.</p>
 
 
 <p>For the [a,a] case we should only include the part of the
-score of the previous prefix for alignments which end in <script type="math/tex">\epsilon</script>. This is
-because <script type="math/tex">\epsilon</script> must be between consecutive repeat characters. For the [a]
+score of the previous prefix for alignments which end in <dt-math>\epsilon</dt-math>. This is
+because <dt-math>\epsilon</dt-math> must be between consecutive repeat characters. For the [a]
 case, where we don’t extend the prefix, we should only consider the part of the
-score of the previous prefix for alignments which don’t end in <script type="math/tex">\epsilon</script>.</p>
+score of the previous prefix for alignments which don’t end in <dt-math>\epsilon</dt-math>.</p>
 
 <p>Given this, it’s necessary to keep track of two probabilities for each prefix
-in the beam. The probability of all alignments which end in <script type="math/tex">\epsilon</script> and
-the probability of all alignments which don’t end in <script type="math/tex">\epsilon</script>. Note that
+in the beam. The probability of all alignments which end in <dt-math>\epsilon</dt-math> and
+the probability of all alignments which don’t end in <dt-math>\epsilon</dt-math>. Note that
 when we rank the hypotheses at each step before pruning the beam, we should
 rank by the combined score.</p>
 
@@ -568,41 +569,41 @@ repose the inference problem.</p>
 
 <figure style="width:650px;height:80px;margin-top:0px;">
   <span style="position:absolute; left:0px; top:0px">
-    <script type="math/tex">Y^* = \text{argmax}_{Y \in \mathcal{Y}}</script>
+    <dt-math>Y^* = \text{argmax}_{Y \in \mathcal{Y}}</dt-math>
   </span>
   <span style="position:absolute; left:180px; top:0px">
-    <script type="math/tex">p(Y \mid X)</script>
+    <dt-math>p(Y \mid X)</dt-math>
   </span>
   <figcaption style="position:absolute; left:180px; top:50px; width:150px">
   The CTC conditional probability.
   </figcaption>
   <span style="position:absolute; left:295px; top:0px">
-    <script type="math/tex">\cdot</script>
+    <dt-math>\cdot</dt-math>
   </span>
   <span style="position:absolute; left:340px; top:0px">
-    <script type="math/tex">p(Y)^\alpha</script>
+    <dt-math>p(Y)^\alpha</dt-math>
   </span>
   <span style="position:absolute; left:440px; top:0px">
-    <script type="math/tex">\cdot</script>
+    <dt-math>\cdot</dt-math>
   </span>
   <figcaption style="position:absolute; left:340px; top:50px; width:150px">
   The language model probability.
   </figcaption>
   <span style="position:absolute; left:500px; top:0px">
-    <script type="math/tex">L(Y)^\beta</script>
+    <dt-math>L(Y)^\beta</dt-math>
   </span>
   <figcaption style="position:absolute; left:500px; top:50px; width:100px">
   The "word" insertion bonus.
   </figcaption>
 </figure>
 
-<p>The function <script type="math/tex">L(\cdot)</script> computes the length of <script type="math/tex">Y</script> in terms of the language
+<p>The function <dt-math>L(\cdot)</dt-math> computes the length of <dt-math>Y</dt-math> in terms of the language
 model tokens and serves as a word insertion bonus. The language model scores
 are only included when a prefix is extended by a character (or word) and not at
 every step of the algorithm. This causes the search to favor shorter prefixes,
-as measured by <script type="math/tex">L(\cdot)</script>, since they do not have many language model
-updates. The insertion bonus helps with this. The parameters <script type="math/tex">\alpha</script> and
-<script type="math/tex">\beta</script> are usually set by cross-validation.</p>
+as measured by <dt-math>L(\cdot)</dt-math>, since they do not have many language model
+updates. The insertion bonus helps with this. The parameters <dt-math>\alpha</dt-math> and
+<dt-math>\beta</dt-math> are usually set by cross-validation.</p>
 
 <hr />
 <h2 id="properties-of-ctc">Properties of CTC</h2>
@@ -615,9 +616,9 @@ into more depth on what these properties are and what trade-offs they offer.</p>
 <p>One of the most commonly cited shortcomings of CTC is the conditional
 independence assumption it makes. Recall, the conditional
 output distribution is
-\begin{align}
+<dt-math block>
 p(Y \mid X) = \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
-\end{align}</p>
+</dt-math>
 
 <div style="height:150px;">
 <figure style="width:200px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
@@ -649,15 +650,15 @@ for customer support calls.</p>
 
 <p>The CTC algorithm is <em>alignment-free</em>. The objective function marginalizes over all 
 alignments. While CTC does make strong assumptions about the form of
-alignments between <script type="math/tex">X</script> and
-<script type="math/tex">Y</script>, the model is agnostic as to how probability
+alignments between <dt-math>X</dt-math> and
+<dt-math>Y</dt-math>, the model is agnostic as to how probability
 is distributed amongst
 them. In some problems CTC ends up allocating most of the probability to a
 single alignment. However, this isn't guaranteed. We can force the model to
 choose a single alignment by replacing the sum with a max in the objective function,
-\begin{align}
+<dt-math block>
 p(Y \mid X) = \max_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
-\end{align}</p>
+</dt-math></p>
 
 <p>As mentioned before, CTC allows only <em>strictly monotonic</em> alignments. In
 problems such as speech recognition this may be a valid assumption. For other
@@ -666,18 +667,18 @@ can align to an earlier part of the source sentence, this assumption is a
 deal-breaker. The <em>strictly monotonic</em> property also means the length of
 the output can be no greater than the length of the input.
 <dt-fn>
-  Note that if there are <script type="math/tex">r</script> consecutive
-  repeats in <script type="math/tex">Y</script>, the length
-  <script type="math/tex">U</script> must be less than
-  <script type="math/tex">T</script> by <script type="math/tex">2r - 1</script>.
+  Note that if there are <dt-math>r</dt-math> consecutive
+  repeats in <dt-math>Y</dt-math>, the length
+  <dt-math>U</dt-math> must be less than
+  <dt-math>T</dt-math> by <dt-math>2r - 1</dt-math>.
 </dt-fn>
 We can't use CTC for problems where this is not the case.</p>
 
 <p>A final important property of CTC alignments is that they are
 <em>many-to-one</em>. Multiple inputs can align to at most one output. In some
 cases this may not be desirable. We might want to enforce a strict
-one-to-one correspondence between elements of <script type="math/tex">X</script>
-and <script type="math/tex">Y</script>. Alternatively,
+one-to-one correspondence between elements of <dt-math>X</dt-math>
+and <dt-math>Y</dt-math>. Alternatively,
 we may want to allow multiple output elements to align to a single input
 element. For example, the sound made by “th” might align to a single input frame
 of audio. A character based CTC model would not allow that.</p>
@@ -710,24 +711,24 @@ understand what exactly CTC does that couldn’t be done before. Putting CTC in
 this context will also allow us to understand how it can be changed and
 potentially improved for various use cases.</p>
 
-<p>We’ll use the same notation from before, <script type="math/tex">X</script> is the input sequence and <script type="math/tex">Y</script>
-is the output sequence with lengths <script type="math/tex">T</script> and <script type="math/tex">U</script> respectively. Like before
-we’re interested in finding a “good” model for <script type="math/tex">p(Y \mid X)</script>. One way to
+<p>We’ll use the same notation from before, <dt-math>X</dt-math> is the input sequence and <dt-math>Y</dt-math>
+is the output sequence with lengths <dt-math>T</dt-math> and <dt-math>U</dt-math> respectively. Like before
+we’re interested in finding a “good” model for <dt-math>p(Y \mid X)</dt-math>. One way to
 simplify the modeling problem is to transform this probability with Bayes’ Rule
 and compute
-\begin{align}
+<dt-math block>
 p(Y \mid X) \propto p(X \mid Y) p(Y).
-\end{align}
-The <script type="math/tex">p(Y)</script> term is straight-forward to model with a language model, so let’s focus
-on <script type="math/tex">p(X \mid Y)</script>. Like before we’ll let <script type="math/tex">\mathcal{A}</script> be a set of allowed
-of alignments of <script type="math/tex">Y</script> to <script type="math/tex">X</script>. In this case members of <script type="math/tex">\mathcal{A}</script> have length <script type="math/tex">T</script>.
-Let’s otherwise leave <script type="math/tex">\mathcal{A}</script> unspecified for now. We’ll come back to
-it later. We can marginalize over <script type="math/tex">\mathcal{A}</script> to get
-\begin{align}
+</dt-math>
+The <dt-math>p(Y)</dt-math> term is straight-forward to model with a language model, so let’s focus
+on <dt-math>p(X \mid Y)</dt-math>. Like before we’ll let <dt-math>\mathcal{A}</dt-math> be a set of allowed
+of alignments of <dt-math>Y</dt-math> to <dt-math>X</dt-math>. In this case members of <dt-math>\mathcal{A}</dt-math> have length <dt-math>T</dt-math>.
+Let’s otherwise leave <dt-math>\mathcal{A}</dt-math> unspecified for now. We’ll come back to
+it later. We can marginalize over <dt-math>\mathcal{A}</dt-math> to get
+<dt-math block>
 p(X \mid Y) = \sum_{A \in \mathcal{A}} p(X, A \mid Y).
-\end{align}
-To simplify notation, let’s remove the conditioning on <script type="math/tex">Y</script>, it will be
-unchanging in every <script type="math/tex">p(\cdot)</script>. Using the HMM assumptions we can
+</dt-math>
+To simplify notation, let’s remove the conditioning on <dt-math>Y</dt-math>, it will be
+unchanging in every <dt-math>p(\cdot)</dt-math>. Using the HMM assumptions we can
 write</p>
 
 <figure style="width:650px;height:100px;">
@@ -746,65 +747,67 @@ write</p>
     </div>
   </figcaption>
 <span style="position:absolute; left:10px;">
-  <script type="math/tex">p(X)</script>
+  <dt-math>p(X)</dt-math>
 </span>
 <span style="position:absolute; left:100px;">
-  <script type="math/tex">=</script>
+  <dt-math>=</dt-math>
 </span>
 <span style="position:absolute; left:150px;">
-  <script type="math/tex">\sum_{A \in \mathcal{A}} \prod_{t=1}^T</script>
+  <dt-math>\sum_{A \in \mathcal{A}} \prod_{t=1}^T</dt-math>
 </span>
 <span style="position:absolute; left:350px;">
-  <script type="math/tex">p(x_t \mid a_t)</script>
+  <dt-math>p(x_t \mid a_t)</dt-math>
 </span>
 <span style="position:absolute; left:500px;">
-  <script type="math/tex">p(a_t \mid a_{t-1})</script>
+  <dt-math>p(a_t \mid a_{t-1})</dt-math>
 </span>
 
 </figure>
 
 <p>Two assumptions have been made here. The first is the usual Markov property.
-The state <script type="math/tex">a_t</script> is conditionally independent of all historical states given
-the previous state <script type="math/tex">a_{t-1}</script>. The second is that the observation <script type="math/tex">x_t</script> is
-conditionally independent of everything else given the current state <script type="math/tex">a_t</script>.</p>
+The state <dt-math>a_t</dt-math> is conditionally independent of all historical states given
+the previous state <dt-math>a_{t-1}</dt-math>. The second is that the observation <dt-math>x_t</dt-math> is
+conditionally independent of everything else given the current state <dt-math>a_t</dt-math>.</p>
 
-<p>Let’s assume that the transition probabilities <script type="math/tex">p(a_t \mid a_{t-1})</script> are
+<p>Let’s assume that the transition probabilities <dt-math>p(a_t \mid a_{t-1})</dt-math> are
 uniform. This gives
-\begin{align}
+<dt-math block>
 p(X) \propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(x_t \mid a_t).
-\end{align}
+</dt-math>
 This equation is starting to resemble the CTC loss function from above. In fact
 there are only two differences. The first is that we are learning a model of
-<script type="math/tex">X</script> given <script type="math/tex">Y</script> as opposed to <script type="math/tex">Y</script> given <script type="math/tex">X</script>. The second is how the set
-<script type="math/tex">\mathcal{A}</script> is produced. Let’s deal with each in turn.</p>
+<dt-math>X</dt-math> given <dt-math>Y</dt-math> as opposed to <dt-math>Y</dt-math> given <dt-math>X</dt-math>. The second is how the set
+<dt-math>\mathcal{A}</dt-math> is produced. Let’s deal with each in turn.</p>
 
-<p>The HMM can be used with discriminative models which estimate <script type="math/tex">p(a \mid x)</script>.
+<p>The HMM can be used with discriminative models which estimate <dt-math>p(a \mid x)</dt-math>.
 To do this, we apply Bayes’ rule and rewrite the model as 
-\begin{align}
-p(X) &amp;\propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T \frac{p(a_t \mid x_t)p(x_t)}{p(a_t)} \\
-&amp;\propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T \frac{p(a_t \mid x_t)}{p(a_t)}. 
-\end{align}</p>
+<dt-math block>
+\begin{aligned}
+p(X) &\propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T \frac{p(a_t \mid x_t)p(x_t)}{p(a_t)} \\
+&\propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T \frac{p(a_t \mid x_t)}{p(a_t)}. 
+\end{aligned}
+</dt-math></p>
 
-<p>If we assume a uniform prior over the states <script type="math/tex">a</script> and condition on all of
-<script type="math/tex">X</script> instead of a single element at a time, we arrive at 
-\begin{align}
+<p>If we assume a uniform prior over the states <dt-math>a</dt-math> and condition on all of
+<dt-math>X</dt-math> instead of a single element at a time, we arrive at 
+<dt-math block>
 p(X) \propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X). 
-\end{align}</p>
+</dt-math></p>
 
 <p>The above equation is essentially the CTC loss function, assuming the set
-<script type="math/tex">\mathcal{A}</script> is the same. In fact, the HMM framework does not specify what
-<script type="math/tex">\mathcal{A}</script> should consist of. This part of the model can be designed on a
-per-problem basis. In many cases the model doesn’t condition on <script type="math/tex">Y</script> and the
-set <script type="math/tex">\mathcal{A}</script> consists of all possible length <script type="math/tex">T</script> sequences from the
+<dt-math>\mathcal{A}</dt-math> is the same. In fact, the HMM framework does not specify what
+<dt-math>\mathcal{A}</dt-math> should consist of. This part of the model can be designed on a
+per-problem basis. In many cases the model doesn’t condition on <dt-math>Y</dt-math> and the
+set <dt-math>\mathcal{A}</dt-math> consists of all possible length <dt-math>T</dt-math> sequences from the
 output alphabet. In this case, the HMM can be drawn as an  <em>ergodic</em> state
 transition diagram in which every state connects to every other state.  The
 figure below shows this model with the alphabet or set of unique hidden states
-as <script type="math/tex">\{a, b, c\}</script>.</p>
+as <dt-math>\{a, b, c\}</dt-math>.</p>
 
-<p>In our case the hidden states of the model (the elements of <script type="math/tex">A</script>) are strongly
-related to <script type="math/tex">Y</script>. We want the HMM to reflect this. One possible model could be
+<p>In our case the hidden states of the model (the elements of <dt-math>A</dt-math>) are strongly
+related to <dt-math>Y</dt-math>. We want the HMM to reflect this. One possible model could be
 a simple linear state transition diagram. The figure below shows this with the
-same alphabet as before and <script type="math/tex">Y =</script> [a, b]. Another commonly used model is the
+same alphabet as before and <dt-math>Y =</dt-math> [a, b]. Another commonly used model is the
 <em>Bakis</em> or left-right HMM. In this model any transition which proceeds from the
 left to the right is allowed.</p>
 
@@ -832,43 +835,45 @@ left to the right is allowed.</p>
   </div>
 </figure>
 
-<p>In CTC we augment the alphabet with <script type="math/tex">\epsilon</script> and the HMM model allows a
+<p>In CTC we augment the alphabet with <dt-math>\epsilon</dt-math> and the HMM model allows a
 subset of the left-right transitions. The CTC HMM has two start
 states and two accepting states.</p>
 
 <p>One possible source of confusion is that the HMM model differs for any unique
-<script type="math/tex">Y</script>. This is in fact standard in applications such as speech recognition. The
-state diagram changes based on the output <script type="math/tex">Y</script>. However, the functions which
+<dt-math>Y</dt-math>. This is in fact standard in applications such as speech recognition. The
+state diagram changes based on the output <dt-math>Y</dt-math>. However, the functions which
 estimate the observation and transition probabilities are shared.</p>
 
 <p>Let’s discuss how CTC improves on the original HMM model. First, we can think
 of the CTC state diagram as a special case HMM which works well for many
 problems of interest. Incorporating the blank as a hidden state in the HMM
-allows us to use the alphabet of <script type="math/tex">Y</script> as the other hidden states. This model
+allows us to use the alphabet of <dt-math>Y</dt-math> as the other hidden states. This model
 also gives a set of allowed alignments which may be a good prior for some
-problems. Perhaps most importantly, CTC is discriminative as it models <script type="math/tex">p(Y \mid X)</script> directly. This allows us to train the model “end-to-end” and
+problems. Perhaps most importantly, CTC is discriminative as it models <dt-math>p(Y \mid X)</dt-math> directly. This allows us to train the model “end-to-end” and
 unleashes the capacity of powerful models like the RNN.</p>
 
 <h3 id="encoder-decoder-models">Encoder-Decoder Models</h3>
 
 <p>The neural encoder-decoder is perhaps the most commonly used framework for
 sequence transduction. This class of models consists of an encoder and a
-decoder. The encoder maps the input sequence <script type="math/tex">X</script> into a hidden
+decoder. The encoder maps the input sequence <dt-math>X</dt-math> into a hidden
 representation. The decoder consumes the hidden representation and produces a
-distribution over the output space <script type="math/tex">\mathcal{Y}</script>. We can write this as
+distribution over the output space <dt-math>\mathcal{Y}</dt-math>. We can write this as
 
-\begin{align}
-h &amp;= \texttt{encode}(X) \\
-p(Y \mid X) &amp;= \texttt{decode}(h).
-\end{align}
+<dt-math block>
+\begin{aligned}
+h &= \texttt{encode}(X) \\
+p(Y \mid X) &= \texttt{decode}(h).
+\end{aligned}
+</dt-math>
 
-The <script type="math/tex">\texttt{encode}(\cdot)</script> and <script type="math/tex">\texttt{decode}(\cdot)</script> functions are typically RNNs.
+The <dt-math>\texttt{encode}(\cdot)</dt-math> and <dt-math>\texttt{decode}(\cdot)</dt-math> functions are typically RNNs.
 The decoder can optionally be equipped with an attention mechanism. The hidden
-state <script type="math/tex">h</script> usually has dimensions <script
-type="math/tex">T \times d</script> where <script type="math/tex">d</script> is
+state <dt-math>h</dt-math> usually has dimensions
+<dt-math>T \times d</dt-math> where <dt-math>d</dt-math> is
 a hyperparameter. Sometimes the encoder subsamples the input. If the encoder
-subsamples the input by a factor <script type="math/tex">s</script> then the
-inner dimension of <script type="math/tex">h</script> will be <script type="math/tex">\frac{T}{s}</script>.</p>
+subsamples the input by a factor <dt-math>s</dt-math> then the
+inner dimension of <dt-math>h</dt-math> will be <dt-math>\frac{T}{s}</dt-math>.</p>
 
 <p>We can interpret CTC in the encoder-decoder framework. This is helpful to
 understand the developments in encoder-decoder models that are applicable to
@@ -879,11 +884,11 @@ models.</p>
 in commonly used encoder-decoder models. For example the encoder could be a
 multi-layer bidirectional RNN or a convolutional network. There is a constraint
 on the CTC encoder that doesn’t apply to the others. The input length cannot be
-subsampled so much that <script type="math/tex">\frac{T}{s}</script> is less than <script type="math/tex">U</script>.</p>
+subsampled so much that <dt-math>\frac{T}{s}</dt-math> is less than <dt-math>U</dt-math>.</p>
 
 <p><strong>Decoder:</strong> We can view the decoder of a CTC model as a simple linear
 transformation followed by a softmax normalization. This layer should project
-all <script type="math/tex">T</script> components of the encoder output <script type="math/tex">h</script> into the dimensionality of the
+all <dt-math>T</dt-math> components of the encoder output <dt-math>h</dt-math> into the dimensionality of the
 output alphabet.</p>
 
 <hr />
@@ -906,7 +911,7 @@ available for Torch, TensorFlow and <a href="https://github.com/awni/warp-ctc">P
 </ul>
 
 <p><strong>Numerical Stability:</strong> Computing the CTC loss naively is numerically
-instable.  One method to avoid this is to normalize the <script type="math/tex">\alpha</script>’s at each
+instable.  One method to avoid this is to normalize the <dt-math>\alpha</dt-math>’s at each
 time-step.  The <a href="ftp://ftp.idsia.ch/pub/juergen/icml2006.pdf">original publication</a> has more detail on this
 including the adjustments to the gradient. In practice this works well enough
 for medium length sequences but can still underflow for long sequences.
@@ -914,12 +919,12 @@ A better solution is to compute the loss function in log-space with the
 log-sum-exp trick
 <dt-fn>
 When computing the sum of two probabilities in log space use the identity
-\begin{align}
+<dt-math block>
 \log(e^a + e^b) = \max\{a, b\} + \log(1 + e^{-|a-b|})
-\end{align}
+</dt-math>
 Most programming languages have a stable function to compute
-<script type="math/tex">\log(1 + x)</script> when
-<script type="math/tex">x</script> is close to zero.
+<dt-math>\log(1 + x)</dt-math> when
+<dt-math>x</dt-math> is close to zero.
 </dt-fn>.
 
 Inference should also be done in log-space using the log-sum-exp trick.</p>
@@ -930,20 +935,19 @@ implementing  and using the CTC beam search.</p>
 <p>The correctness of the beam search can be tested as follows.</p>
 <ol>
   <li>Run the beam search algorithm on an arbitrary input.</li>
-  <li>Save the inferred output <script type="math/tex">\bar{Y}</script> and the corresponding score <script type="math/tex">\bar{c}</script>.</li>
-  <li>Compute the actual CTC score <script type="math/tex">c</script> for <script type="math/tex">\bar{Y}</script> using the same input.</li>
-  <li>Check that <script type="math/tex">\bar{c} \approx c</script> with the former being no greater than the later.
-As the beam size increases the inferred output <script type="math/tex">\bar{Y}</script> may change, but the two
+  <li>Save the inferred output <dt-math>\bar{Y}</dt-math> and the corresponding score <dt-math>\bar{c}</dt-math>.</li>
+  <li>Compute the actual CTC score <dt-math>c</dt-math> for <dt-math>\bar{Y}</dt-math> using the same input.</li>
+  <li>Check that <dt-math>\bar{c} \approx c</dt-math> with the former being no greater than the later.
+As the beam size increases the inferred output <dt-math>\bar{Y}</dt-math> may change, but the two
 numbers should grow closer.</li>
 </ol>
 
 <p>A common question when using a beam search decoder is the size of the beam to
 use.  There is a trade-off between accuracy and runtime. We can check if the
 beam size is in a good range. To do this first compute the CTC score for the
-inferred output <script type="math/tex">c_i</script>. Then compute the CTC score for the ground truth output
-<script type="math/tex">c_g</script>. If the two outputs are not the same, we should have <script type="math/tex">c_g \lt c_i</script>.
-If <script type="math/tex">% <![CDATA[
-c_i << c_g %]]></script> then the beam search is performing poorly and a large
+inferred output <dt-math>c_i</dt-math>. Then compute the CTC score for the ground truth output
+<dt-math>c_g</dt-math>. If the two outputs are not the same, we should have <dt-math>c_g \lt c_i</dt-math>.
+If <dt-math>c_i << c_g</dt-math> then the beam search is performing poorly and a large
 increase in the beam size may be warranted.</p>
 
 <hr />
@@ -987,7 +991,6 @@ applications to speech recognition see Rabiner’s canonical tutorial.
 <em>Distill</em> gives an in-depth guide to attention in encoder-decoder
 models.<dt-cite key="Olah2016"></dt-cite></p>
 
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </dt-article>
 
 <dt-appendix class="centered">

@@ -43,7 +43,7 @@ time consuming.</p>
 
 <figure class="l-body" style="height:250px;">
   <div style="width:330px; position:absolute;">
-  <img src="handwriting_recognition.svg" />
+  <img src="assets/handwriting_recognition.svg" />
   <figcaption style="width:280px;">
   <strong>Handwriting recognition:</strong> The input can be
   <dt-math>(x,y)</dt-math> coordinates of a pen stroke or 
@@ -51,7 +51,7 @@ time consuming.</p>
   </figcaption>
   </div>
   <div style="width:280px; position:absolute; left:380px;">
-  <img src="speech_recognition.svg" />
+  <img src="assets/speech_recognition.svg" />
   <figcaption>
   <strong>Speech recognition:</strong> The input can be a spectrogram or some
   other frequency based feature extractor.
@@ -144,7 +144,7 @@ this case, one way to align <dt-math>Y</dt-math> and
   <span style="position:absolute; left: 0; top:110px;">input (<dt-math>X</dt-math>)</span>
   </figcaption>
   <div style="width:200px; position:absolute; left: 80px;">
-  <img src="naive_alignment.svg" />
+  <img src="assets/naive_alignment.svg" />
   </div>
 </figure>
 
@@ -194,7 +194,7 @@ be the set of such alignments. An alignment is in the set
   </div>
   </figcaption>
   <div style="width:400px; position:absolute; left: 100px;">
-  <img src="ctc_alignment_steps.svg" />
+  <img src="assets/ctc_alignment_steps.svg" />
   </div>
 </figure>
 
@@ -227,7 +227,7 @@ This allows us to differentiate between alignments of [c, a, t] and
   </div>
   </figcaption>
   <div style="width:400px; position:absolute; left: 0px; top: 25px;">
-  <img src="valid_invalid_alignments.svg" />
+  <img src="assets/valid_invalid_alignments.svg" />
   </div>
 </figure>
 
@@ -243,9 +243,9 @@ They are optional since they don’t fall between consecutive repeat characters
 in <dt-math>Y</dt-math>.</p>
 
 <figure style="height:350px;width:500px;">
-  <img style="width:350px;" src="alignment_no_epsilon.svg" />
+  <img style="width:350px;" src="assets/alignment_no_epsilon.svg" />
   <div style="width:350px; position:absolute; top:140px;">
-  <img src="alignment_epsilon.svg" />
+  <img src="assets/alignment_epsilon.svg" />
   </div>
   <figcaption style="width:130px;position:absolute; left:350px; top:30px;">
   The alignment matrix without the <dt-math>\epsilon</dt-math>
@@ -315,7 +315,7 @@ input <dt-math>X</dt-math>.</p>
   </div>
   </figcaption>
   <div style="width:300px; position:absolute; left: 230px;">
-  <img src="ctc_distribution.svg" />
+  <img src="assets/ctc_distribution.svg" />
   </div>
 </figure>
 
@@ -348,7 +348,7 @@ after <dt-math>t</dt-math> input steps. We can compute
 
 <div style="height:320px">
 <figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
-  <img src="cost_no_skip.svg" />
+  <img src="assets/cost_no_skip.svg" />
 </figure>
 <p><strong>Case 1 (<dt-math> z_{s} = \epsilon </dt-math>):</strong></p>
 
@@ -383,7 +383,7 @@ some previous input.
 
 <div style="height:220px;">
 <figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
-  <img src="cost_repeat.svg" />
+  <img src="assets/cost_repeat.svg" />
 </figure>
 <p><strong>Case 2 (<dt-math>z_{s} = z_{s-2}</dt-math>):</strong></p>
 
@@ -394,7 +394,7 @@ between repeat characters. The update equation is the same as in Case 1.</p>
 
 <div style="height:260px;">
 <figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
-  <img src="cost_regular.svg" />
+  <img src="assets/cost_regular.svg" />
 </figure>
 <p><strong>Case 3:</strong></p>
 <p>If we aren’t in the first two cases, then we’re in the third case. We have
@@ -430,7 +430,7 @@ algorithm.</p>
 
 <figure class="l-body" style="width:700px;height:350px;margin-top:0px;">
 <div style="width:650px; position:absolute; left:80px; top:30px;">
-<img src="ctc_cost.svg"/>
+<img src="assets/ctc_cost.svg"/>
 <figcaption style="width:350px;">
 Node <dt-math>(s, t)</dt-math> in the diagram represents
 <dt-math>\alpha_{s, t}</dt-math> – the CTC score of 
@@ -513,7 +513,7 @@ extending each hypothesis with all possible output characters.</p>
 
 
 <figure class="l-body" style="width:700px;">
-  <img src="beam_search.svg" />
+  <img src="assets/beam_search.svg" />
   <figcaption style="width:300px;">
   A standard beam search algorithm with an alphabet of
   <dt-math>\{\epsilon, a, b\}</dt-math> and a beam size
@@ -530,7 +530,7 @@ displays steps two, three and four of the algorithm. The dashed lines indicate
 the output prefix that the proposed extension maps to.</p>
 
 <figure class="l-body" style="width:900px;">
-  <embed src="prefix_beam_search.svg"/>
+  <embed src="assets/prefix_beam_search.svg"/>
   <figcaption style="width:300px;">
   The CTC beam search algorithm with an output alphabet
   <dt-math>\{\epsilon, a, b\}</dt-math>
@@ -543,7 +543,7 @@ repeat. This is shown at <dt-math>T=3</dt-math> in the figure above
 where ‘a’ is proposed as an extension to the prefix [a]. Both [a] and [a, a] are
 valid outputs for this proposed extension.</p>
 <figure class="l-body" style="width:900px;">
-  <embed src="prefix_beam_search_single.svg"/>
+  <embed src="assets/prefix_beam_search_single.svg"/>
 </figure>
 
 
@@ -622,7 +622,7 @@ p(Y \mid X) = \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
 
 <div style="height:150px;">
 <figure style="width:200px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
-  <img src="conditional_independence.svg" />
+  <img src="assets/conditional_independence.svg" />
   <figcaption>
   Graphical model for CTC.
   </figcaption>
@@ -813,21 +813,21 @@ left to the right is allowed.</p>
 
 <figure class="l-body" style="width:700px;height:220px;">
   <div style="width: 150px; position: absolute;">
-  <img src="ergodic_hmm.svg" />
+  <img src="assets/ergodic_hmm.svg" />
   <figcaption style="margin-left:30px;">
   <strong>Ergodic HMM:</strong> Any node can be either a starting or
   final state.
   </figcaption>
   </div>
   <div style="width: 150px; position: absolute; left: 180px;">
-  <img style="margin-bottom:30px; margin-top: 30px;" src="linear_hmm.svg" />
+  <img style="margin-bottom:30px; margin-top: 30px;" src="assets/linear_hmm.svg" />
   <figcaption style="margin-left:30px;">
   <strong>Linear HMM:</strong> The first node is the starting state
   and the second node is the final state.
   </figcaption>
   </div>
   <div style="width: 350px; position: absolute; left: 360px;">
-  <img style="margin-bottom:30px; margin-top: 30px;" src="ctc_hmm.svg" />
+  <img style="margin-bottom:30px; margin-top: 30px;" src="assets/ctc_hmm.svg" />
   <figcaption style="margin-left:30px;width:300px;">
   <strong>CTC HMM:</strong> The first two nodes are the starting
   states and the last two nodes are the final states.

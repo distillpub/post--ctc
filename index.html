@@ -4,6 +4,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
   integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0"
   crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
 
 <script type="text/front-matter">
   title: "An In-depth Guide to Connectionist Temporal Classification"
@@ -17,6 +21,23 @@
 <dt-article class="centered">
   <h1>An In-depth Guide to CTC</h1>
   <dt-byline></dt-byline>
+
+<figure style="width:700px;height:200px;">
+  <link rel="stylesheet" type="text/css" href="assets/collapse_ctc.css">
+  <div style="position:absolute;">
+    <div spellcheck="false" autocorrect="off" contenteditable="true"
+      id="alignment"></div>
+    <button id="epsilon">
+      <span>ϵ</span>
+    </button>
+  </div>
+  <figcaption style="position:absolute; left:540px; width:200px;">
+  Try typing a sequence to see how CTC collapsing works. Hit "return" for
+  <dt-math>\epsilon</dt-math>.
+  </figcaption>
+  <div id="collapse_output"></div>
+</figure>
+<script src="assets/collapse_ctc.js"></script>
 
 <h2 id="the-problem">The Problem</h2>
 

@@ -1,0 +1,65 @@
+
+[contenteditable=true]:empty:before{
+    content: "HHHello worrrld"; 
+    display: block;
+    opacity: 0.2;
+}
+
+#alignment {
+  font-size: 34px;
+  border-style: solid;
+  border-width: 1px;
+  height: 50px;
+  width: 472px;
+  outline:none;
+  font-weight: 200;
+  padding-top: 20px;
+  padding-left: 8px;
+  overflow: scroll;
+  white-space: pre;
+}
+
+#epsilon {
+  border-color: #000000;
+  border-width: 1px;
+  border-style: solid;
+  background-color:#f3f3f3;
+  width:40px;
+  height:72px;
+  position:absolute;
+  left:484px;
+  outline:none;
+  top:0px;
+}
+
+#epsilon:active {
+  background-color:#d3d3d3;
+}
+
+#epsilon span {
+  font-size:32px;
+  font-family:STIXGeneral-Italic;
+}
+
+#collapse_output {
+ position:absolute;
+ top: 90px;
+ left: 0px;
+ width: 530px;
+ font-size:30px;
+ height: 135px;
+ overflow: hidden;
+}
+
+#collapse_output div {
+  font-weight: 200;  
+  float: left;
+  background-color: #d3d3d3;
+  padding: 5px;
+  margin-right: 4px;
+  margin-top: 4px;
+  width: 30px;
+  height: 30px;
+  text-align: center
+}
+

@@ -36,7 +36,7 @@ character. There can be stretches of silence. Any rule we devise like "one
 character corresponds to ten inputs" can be broken. People's rates of
 speech change. Sometimes we talk quickly and sometimes slowly.</p>
 
-<p>An alternative is to hand-align each character to it's location in the
+<p>An alternative is to hand-align each character to its location in the 
 audio. From a modeling standpoint this works well. We'd know the ground truth
 for each input. But, for any reasonably sized dataset, this is prohibitively
 time consuming.</p>
@@ -44,7 +44,7 @@ time consuming.</p>
 <figure class="l-body" style="height:250px;">
   <div style="width:330px; position:absolute;">
   <img src="assets/handwriting_recognition.svg" />
-  <figcaption style="width:280px;">
+  <figcaption style="width:280px;margin-left:10px;">
   <strong>Handwriting recognition:</strong> The input can be
   <dt-math>(x,y)</dt-math> coordinates of a pen stroke or 
   pixels in an image.
@@ -52,7 +52,7 @@ time consuming.</p>
   </div>
   <div style="width:280px; position:absolute; left:380px;">
   <img src="assets/speech_recognition.svg" />
-  <figcaption>
+  <figcaption style="margin-left:10px">
   <strong>Speech recognition:</strong> The input can be a spectrogram or some
   other frequency based feature extractor.
   </figcaption>
@@ -60,33 +60,34 @@ time consuming.</p>
 </figure>
 
 <p>Connectionist Temporal Classification (CTC) solves these problems.
-Certain assumptions made by the algorithm make it especially well suited to 
-problems like speech recognition and handwriting recognition. Today,
+Certain assumptions made by the algorithm make it especially well suited for 
+applications like speech recognition and handwriting recognition. Today,
 it’s used in many state-of-the-art models in these domains.</p>
 
 <p>To be a bit more formal, let's consider the problem of mapping input sequences
 <dt-math>X = [x_1, x_2, \ldots, x_T] \in \mathcal{X}</dt-math> to corresponding output
 sequences <dt-math>Y = [y_1, y_2, \ldots, y_U] \in \mathcal{Y}</dt-math>.
 We want to learn a "good" mapping of <dt-math>X</dt-math>s to <dt-math>Y</dt-math>s.
-For example, in speech recognition a "good" mapping is one which takes an audio
+In speech recognition a "good" mapping is one which takes an audio
 input to an accurate transcription.</p>
 
-<p>The "sequence transduction" problem has three properties which make it difficult
-to use traditional supervised learning algorithms.</p>
+<p>The "sequence transduction" problem has three properties which make using
+traditional supervised learning algorithms difficult.</p>
 <ul>
   <li>Both <dt-math>X</dt-math> and <dt-math>Y</dt-math>
     can vary in length.</li>
-  <li>The ratio of the lengths <dt-math>X</dt-math> and <dt-math>Y</dt-math> can vary.</li>
+  <li>The ratio of the lengths of <dt-math>X</dt-math> and <dt-math>Y</dt-math>
+    can vary.</li>
   <li>We don’t have an accurate alignment (correspondence of the elements) of
   <dt-math>X</dt-math> and <dt-math>Y</dt-math>.</li>
 </ul>
 
-<p>In these circumstances, CTC can learn a function to map elements of <dt-math>\mathcal{X}</dt-math>
-to a distribution over members of <dt-math>\mathcal{Y}</dt-math>.
-We can then infer a likely <dt-math>Y</dt-math> from this
-distribution. For such an algorithm to be useful it needs to solve two
-problems: the objective function should be computable and inference should be
-tractable.</p>
+<p>In these circumstances, CTC can learn a function to map elements of
+<dt-math>\mathcal{X}</dt-math> to a distribution over members of
+<dt-math>\mathcal{Y}</dt-math>. We can then infer a likely
+<dt-math>Y</dt-math> from this distribution. For such an algorithm to
+be useful it needs to solve two problems: the objective function should
+be computable and inference should be tractable.</p>
 
 <p><strong>Objective Function:</strong> We should be able to efficiently
 compute a score for how likely any <dt-math>Y</dt-math> is given
@@ -109,17 +110,16 @@ tractably infer a likely <dt-math>Y</dt-math>. This means solving
 Y^* = \text{argmax}_{Y \in \mathcal{Y}} p(Y \mid X).
 </dt-math>
 
-Ideally an optimal <dt-math>Y^*</dt-math> can be found
-efficiently.  With CTC we’ll settle for a close to optimal solution that's not
-too expensive to find.</p>
+Ideally <dt-math>Y^*</dt-math> can be found efficiently. With CTC we’ll
+settle for a close to optimal solution that's not too expensive to find.</p>
 
 <hr />
 <h2 id="the-algorithm">The Algorithm</h2>
 
-<p>The first thing we need to do is compute a score of how likely a <dt-math>Y</dt-math>
+<p>We need to compute a score of how likely a <dt-math>Y</dt-math>
 is given an <dt-math>X</dt-math>. To
 do this, the CTC model allows a set of alignments between <dt-math>X</dt-math>
-and <dt-math>Y</dt-math>. To get around the fact that the alignment is unknown,
+and <dt-math>Y</dt-math>. Since the ground-truth alignment is unknown,
 CTC <em>marginalizes</em> over all possible allowed alignments between the two
 sequences. In this section we’ll cover what these allowed alignments are, how
 to compute the CTC loss function and how to perform inference with a learned
@@ -174,22 +174,23 @@ refer to it here as <dt-math>\epsilon</dt-math>. When an input
 element aligns to <dt-math>\epsilon</dt-math> then no output
 element corresponds to it.</p>
 
-<p>The alignments allowed by CTC are of length <dt-math>T</dt-math>,
-the length of the input. For a given <dt-math>Y</dt-math>,
-let <dt-math>\mathcal{A}</dt-math>
-be the set of such alignments. An alignment is in the set
-<dt-math>\mathcal{A}</dt-math> if it maps to
-<dt-math>Y</dt-math> as follows:</p>
+<p>The alignments allowed by CTC are of length <dt-math>T</dt-math>, the length
+of the input. Let <dt-math>\mathcal{A}_{X,Y}</dt-math> be the set of such
+alignments for a given <dt-math>(X, Y)</dt-math> pair. When it's clear from context,
+we'll drop the subscript on <dt-math>\mathcal{A}</dt-math>. The set
+<dt-math>\mathcal{A}</dt-math> contains all possible alignments which map to
+<dt-math>Y</dt-math> after merging repeats and removing
+<dt-math>\epsilon</dt-math> tokens:</p>
 
 <figure style="width:500px; height:240px; margin-top:0px;">
   <figcaption>
-  <div style="position:absolute; top:30px; width: 150px;">
+  <div style="position:absolute; top:40px; width: 150px;">
     First, merge repeat characters.
   </div>
-  <div style="position:absolute; top:100px; width: 150px;">
+  <div style="position:absolute; top:110px; width: 150px;">
     Then, remove any <dt-math>\epsilon</dt-math> tokens.
   </div>
-  <div style="position:absolute; top:190px; width: 150px;">
+  <div style="position:absolute; top:180px; width: 150px;">
     The remaining characters are the output.
   </div>
   </figcaption>
@@ -198,9 +199,7 @@ be the set of such alignments. An alignment is in the set
   </div>
 </figure>
 
-<p>The set <dt-math>\mathcal{A}</dt-math> contains all possible
-alignments which map to <dt-math>Y</dt-math>. If there are
-consecutive repeat characters in <dt-math>Y</dt-math> then
+<p>If there are consecutive repeat characters in <dt-math>Y</dt-math> then
 the <dt-math>\epsilon</dt-math> between them is required.
 This allows us to differentiate between alignments of [c, a, t] and
 [c, a, a, t].</p>
@@ -465,7 +464,7 @@ minimize the negative log-likelihood
 <dt-math block>
 \sum_{(X, Y) \in \mathcal{D}} -\log p(Y \mid X)
 </dt-math>
-as opposed to maximizing the likelihood directly.</p>
+instead of maximizing the likelihood directly.</p>
 
 <h3 id="inference">Inference</h3>
 
@@ -953,26 +952,26 @@ increase in the beam size may be warranted.</p>
 <p>The CTC algorithm was first published by Graves et al. in 2006.
 <dt-cite key="Graves2006"></dt-cite> The first experiments were on TIMIT,
 a popular phoneme recognition benchmark.<dt-cite key="Lopes2011"></dt-cite>
-Chapter 7 of Graves’ thesis<dt-cite key="Graves2012"></dt-cite> gives a
-more detailed treatment of CTC.</p>
+Chapter 7 of Graves’ thesis<dt-cite key="Graves2012"></dt-cite> also gives a
+detailed treatment of CTC.</p>
 
 <p>One of the first applications of CTC to large vocabulary speech recognition was
-by Graves et al. in 2014 where they used a hybrid HMM and CTC
-trained model to achieve state-of-the-art results.<dt-cite key="Graves2014"></dt-cite>
+by Graves et al. in 2014.<dt-cite key="Graves2014"></dt-cite>
+They used a hybrid HMM and CTC trained model to achieve state-of-the-art results.
 Hannun et al. subsequently demonstrated state-of-the-art CTC based speech
 recognition on larger benchmarks.<dt-cite key="Hannun2014deepspeech"></dt-cite>
-State-of-the-art results on an online handwriting recognition task using the CTC algorithm
-with an RNN were achieved in 2007.<dt-cite key="Liwicki2007"></dt-cite></p>
+A CTC trained model outperformed other methods at an online handwriting
+recognition benchamark in 2007.<dt-cite key="Liwicki2007"></dt-cite></p>
 
-<p>The CTC algorithm has been used successfully in other problems including lip
-reading from video<dt-cite key="Assael2016"></dt-cite>, action labelling from
+<p>CTC has been used successfully in many other problems. These include
+lip-reading from video<dt-cite key="Assael2016"></dt-cite>, action recognition from
 video<dt-cite key="Huang2016"></dt-cite> and keyword detection in audio.
 <dt-cite key="Fernandez2007,Lengerich2016"></dt-cite></p>
 
 <p>Many extensions and improvements to CTC have been proposed. Here are a few.
 The <em>Sequence Transducer</em> discards the conditional independence assumption
-made by CTC.<dt-cite key="Graves2012transducer"></dt-cite> As a consequence the
-model also allows the output to be longer than the input. The <em>Gram-CTC</em> model
+made by CTC.<dt-cite key="Graves2012transducer"></dt-cite> As a consequence, the
+model allows the output to be longer than the input. The <em>Gram-CTC</em> model
 generalizes CTC to marginalize over n-gram output classes.
 <dt-cite key="Liu2017"></dt-cite> Other works have generalized CTC or proposed
 similar algorithms to account for segmental structure in the output.

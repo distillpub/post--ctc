@@ -656,17 +656,16 @@ choose a single alignment by replacing the sum with a max in the objective funct
 p(Y \mid X) = \max_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
 </dt-math></p>
 
-<p>As mentioned before, CTC allows only <em>strictly monotonic</em> alignments. In
+<p>As mentioned before, CTC only allows <em>strictly monotonic</em> alignments. In
 problems such as speech recognition this may be a valid assumption. For other
 problems like machine translation where a future word in a target sentence
 can align to an earlier part of the source sentence, this assumption is a
 deal-breaker. The <em>strictly monotonic</em> property also means the length of
 the output can be no greater than the length of the input.
 <dt-fn>
-  Note that if there are <dt-math>r</dt-math> consecutive
-  repeats in <dt-math>Y</dt-math>, the length
-  <dt-math>U</dt-math> must be less than
-  <dt-math>T</dt-math> by <dt-math>2r - 1</dt-math>.
+  If <dt-math>Y</dt-math> has <dt-math>r</dt-math> consecutive
+  repeats, then the length of <dt-math>Y</dt-math> must be less than
+  the length of <dt-math>X</dt-math> by <dt-math>2r - 1</dt-math>.
 </dt-fn>
 We can't use CTC for problems where this is not the case.</p>
 
@@ -899,17 +898,27 @@ implementation needs to be written in a lower-level programming language.
 Open-source software tools can make getting started with CTC much easier:</p>
 
 <ul>
-  <li>Baidu Research has open-sourced <a href="https://github.com/baidu-research/warp-ctc">warp-ctc</a>. The package is written in C++ and
-CUDA. The CTC loss function runs on either the CPU or the GPU. Bindings are
-available for Torch, TensorFlow and <a href="https://github.com/awni/warp-ctc">PyTorch</a>.</li>
-  <li>TensorFlow has built in <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_loss">CTC loss</a> and <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_beam_search_decoder">CTC beam search</a> functions. The TensorFlow CTC implementation doesn't support the GPU yet.</li>
-  <li>Nvidia also provides a GPU implementation of CTC in <a href="https://developer.nvidia.com/cudnn">cuDNN</a> versions 7 and up.</li>
+  <li>Baidu Research has open-sourced
+    <a href="https://github.com/baidu-research/warp-ctc">warp-ctc</a>. The
+    package is written in C++ and CUDA. The CTC loss function runs on either
+    the CPU or the GPU. Bindings are available for Torch, TensorFlow and
+    <a href="https://github.com/awni/warp-ctc">PyTorch</a>.
+  </li>
+  <li>TensorFlow has built in
+    <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_loss">CTC loss</a>
+    and <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_beam_search_decoder">CTC beam search</a>
+    functions. The TensorFlow CTC implementation doesn't support the GPU yet.
+  </li>
+  <li>Nvidia also provides a GPU implementation of CTC in
+    <a href="https://developer.nvidia.com/cudnn">cuDNN</a> versions 7 and up.
+  </li>
 </ul>
 
-<p><strong>Numerical Stability:</strong> Computing the CTC loss naively is numerically
-instable.  One method to avoid this is to normalize the <dt-math>\alpha</dt-math>’s at each
-time-step.  The <a href="ftp://ftp.idsia.ch/pub/juergen/icml2006.pdf">original publication</a> has more detail on this
-including the adjustments to the gradient. In practice this works well enough
+<p><strong>Numerical Stability:</strong> Computing the CTC loss naively is
+numerically unstable. One method to avoid this is to normalize the
+<dt-math>\alpha</dt-math>’s at each time-step. The original publication
+has more detail on this including the adjustments to the gradient.
+<dt-cite key="Graves2006"></dt-cite> In practice this works well enough
 for medium length sequences but can still underflow for long sequences.
 A better solution is to compute the loss function in log-space with the
 log-sum-exp trick

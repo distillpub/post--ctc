@@ -1,77 +1,62 @@
 var EPS = 'ϵ';
 var LOADED = false;
+var MAX_LEN = 16;
 
 $(document).ready(function() {
-    update();
+    update('hee' + EPS + 'l' + EPS + 'llooo!');
     $("#alignment").blur();
-    LOADED = true;
-});
-
-$("#epsilon").click(function() {
-    insert_epsilon();
-    update();
 });
 
 $("#alignment").mousedown(function(e) {
     e.preventDefault();
-    placeCaretAtEnd();
+    if (LOADED)
+        placeCaretAtEnd();
+    else
+        update("");
 });
-
-function first_focus() {
-    if (LOADED) {
-        var ali = $("#alignment");
-        ali.html("");
-        ali.off("focus", first_focus);
-    }
-    update();
-}
-
-$("#alignment").focus(first_focus);
 
 $("#alignment").keydown(function(e) {
     // Disable movement.
     if (e.keyCode >= 37 && e.keyCode <= 40) {
         e.preventDefault();
     }
-    // Handle holding backspace.
-    if (e.keyCode == 8)
-        update();
-});
-
-$("#alignment").keyup(function(e) {
-    // Handle backspace.
-    if (e.keyCode == 8)
-        update();
+    if (e.keyCode == 8) {
+        e.preventDefault();
+        alignment = $("#alignment").text();
+        alignment = alignment.substr(0, alignment.length - 1);
+        update(alignment);
+    }
 });
 
 $("#alignment").keypress(function(e) {
     e.preventDefault();
-    var alignment = $("#alignment");
+    var alignment = $("#alignment").text();
    
     // Return inputs an epsilon
-    if(e.keyCode == 13) {
-        insert_epsilon();
-    } else {
-        ali_text = alignment.html();
-        ali_text += String.fromCharCode(e.keyCode);
-        alignment.html(ali_text);
+    if (alignment.length >= MAX_LEN) {
+        // Flash red bar to denote end.
+        var div = $("<div>");
+        div.css("width", "4px")
+           .css("position", "absolute")
+           .css("left", "674px")
+           .css("top", "16px")
+           .css("background-color", "red")
+           .css("opacity", 0.2)
+        div.fadeOut(200);
+        $("#alignment").append(div);
+        return;
     }
-    update();
+    if(e.keyCode == 13)
+        alignment += EPS;
+    else
+        alignment += String.fromCharCode(e.keyCode);
+    
+    update(alignment);
 });
 
-function update() {
-    var alignment = $("#alignment");
+function update(alignment) {
+    update_output(alignment);
     placeCaretAtEnd();
-    update_output();
-    var div = alignment.get()[0]
-    alignment.scrollLeft(div.scrollWidth - div.clientWidth);
-    check_empty()
-}
-
-function check_empty() {
-    var alignment = $("#alignment");
-    if (alignment.text().length == 0)
-        alignment.html("");
 }
 
 function insert_epsilon() {
@@ -99,22 +84,15 @@ function add_text(groups) {
 }
 
 function update_alignment(alignment) {
-    var groups = d3.select("#align_g").selectAll("g");
+    var groups = d3.select("#alignment").selectAll("div");
     groups = groups.data(alignment.split(""));
-    groups.exit().remove()
-    groups = groups.enter()
-          .append("g")
-          .attr("transform", function(d, i) {
-             return "translate(" + i * 42 + ",0)";
-           });
-    add_rects(groups);
-    add_text(groups).attr("class", function(d) {
-                  if (d == EPS)
-                      return "align_epsilon";
-                  else
-                      return "align_text";
-               })
-          .text(function(d) { return d;});
+    groups.text(function(d) { return d;})
+          .style("opacity", 1)
+          .attr("class", function(d) {
+             if (d == EPS) return "align_epsilon";
+             else return "align_text";
+          });
+    groups.exit().text("").style("opacity", 0.3);
 }
 
 function update_merged(merged) {
@@ -159,8 +137,7 @@ function update_final(collapsed) {
           .text(function(d) { return d; });
 }
 
-function update_output() {
-    var alignment = $("#alignment").text();
+function update_output(alignment) {
     update_alignment(alignment);
 
     merged = merge(alignment);
@@ -190,17 +167,21 @@ function merge(alignment) {
 
 // https://stackoverflow.com/questions/4233265/contenteditable-set-caret-at-the-end-of-the-text-cross-browser
 function placeCaretAtEnd() {
-    var el = document.getElementById("alignment")
+    var el = document.getElementById("alignment");
+    var len = $("#alignment").text().length;
+
     el.focus();
     if (typeof window.getSelection != "undefined"
         && typeof document.createRange != "undefined") {
         var range = document.createRange();
-        range.selectNodeContents(el);
+        range.setStart(el, len);
+        range.setEnd(el, len)
         range.collapse(false);
         var sel = window.getSelection();
         sel.removeAllRanges();
         sel.addRange(range);
     } else if (typeof document.body.createTextRange != "undefined") {
+        // TODO check if this works on IE (?)
         var textRange = document.body.createTextRange();
         textRange.moveToElementText(el);
         textRange.collapse(false);

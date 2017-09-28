@@ -1,45 +1,35 @@
 
 #alignment {
-  font-size: 34px;
-  border-style: solid;
-  border-width: 1px;
+  font-size: 28px;
+  width: 680px;
   height: 50px;
-  width: 472px;
+  padding-top: 15px;
+  padding-left: 7px;
+  border: 1px solid;
   outline:none;
-  font-weight: 200;
-  padding-top: 20px;
-  padding-left: 8px;
   overflow: scroll;
   white-space: pre;
-  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+
+.end_marker {
+  border-right: 2px solid red !important;
+}
+
+#alignment div {
+    float:left;
+    width:40px;
+    height:40px;
+    line-height: 40px;
+    background-color: #d3d3d3;
+    text-align:center;
+    margin-right:2px;
+    opacity:0.3;
 }
 
 #alignment .eps {
   font-family: STIXGeneral-Italic;
   padding-left: 3px;
   padding-right: 3px;
-}
-
-#epsilon {
-  border-color: #000000;
-  border-width: 1px;
-  border-style: solid;
-  background-color:#f3f3f3;
-  width:40px;
-  height:72px;
-  position:absolute;
-  left:484px;
-  outline:none;
-  top:0px;
-}
-
-#epsilon:active {
-  background-color:#d3d3d3;
-}
-
-#epsilon span {
-  font-size:32px;
-  font-family:STIXGeneral-Italic;
 }
 
 .align_epsilon {

@@ -8,6 +8,7 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 
 <script type="text/front-matter">
   title: "An In-depth Guide to Connectionist Temporal Classification"
@@ -22,11 +23,11 @@
   <h1>An In-depth Guide to CTC</h1>
   <dt-byline></dt-byline>
 
-<figure style="width:700px;height:200px;">
+<figure style="width:700px;height:250px;">
   <link rel="stylesheet" type="text/css" href="assets/collapse_ctc.css">
   <div style="position:absolute;">
     <div spellcheck="false" autocorrect="off" contenteditable="true"
-      id="alignment"></div>
+      id="alignment">heeell<span class="eps">ϵ</span>lll<span class="eps">ϵ</span><span class="eps">ϵ</span><span class="eps">ϵ</span>oo!</div>
     <button id="epsilon">
       <span>ϵ</span>
     </button>
@@ -35,7 +36,34 @@
   Try typing a sequence to see how CTC collapsing works. Hit "return" for
   <dt-math>\epsilon</dt-math>.
   </figcaption>
-  <div id="collapse_output"></div>
+  <div style="position:absolute;top:90px;">
+    <svg id="collapse_output" width="670" height="200">
+      <g id="align_g">
+        <rect fill="#d3d3d3" opacity="0.3" x="0" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="42" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="84" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="126" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="168" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="210" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="252" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="294" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="336" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="378" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="420" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="462" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="504" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="546" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="588" width="40" height="40" />
+        <rect fill="#d3d3d3" opacity="0.3" x="630" width="40" height="40" />
+      </g>
+      <g id="merge_g" transform="translate(0, 50)">
+        <rect fill="#d3d3d3" opacity="0.3" width="670" height="40" />
+      </g>
+      <g id="final_g" transform="translate(0, 100)">
+        <rect fill="#d3d3d3" opacity="0.3" width="670" height="40" />
+      </g>
+    </svg>
+  </div>
 </figure>
 <script src="assets/collapse_ctc.js"></script>
 

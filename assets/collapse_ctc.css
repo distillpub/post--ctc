@@ -1,10 +1,4 @@
 
-[contenteditable=true]:empty:before{
-    content: "HHHello worrrld"; 
-    display: block;
-    opacity: 0.2;
-}
-
 #alignment {
   font-size: 34px;
   border-style: solid;
@@ -17,6 +11,13 @@
   padding-left: 8px;
   overflow: scroll;
   white-space: pre;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+
+#alignment .eps {
+  font-family: STIXGeneral-Italic;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 #epsilon {
@@ -41,25 +42,12 @@
   font-family:STIXGeneral-Italic;
 }
 
-#collapse_output {
- position:absolute;
- top: 90px;
- left: 0px;
- width: 530px;
- font-size:30px;
- height: 135px;
- overflow: hidden;
+.align_epsilon {
+  font-size: 28px;
+  font-family:STIXGeneral-Italic;
 }
 
-#collapse_output div {
-  font-weight: 200;  
-  float: left;
-  background-color: #d3d3d3;
-  padding: 5px;
-  margin-right: 4px;
-  margin-top: 4px;
-  width: 30px;
-  height: 30px;
-  text-align: center
+.align_text {
+  font-size: 28px;
+  font-weight: 200;
 }
-

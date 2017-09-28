@@ -3,12 +3,29 @@
   font-size: 28px;
   width: 680px;
   height: 50px;
-  padding-top: 15px;
-  padding-left: 7px;
-  border: 1px solid;
+  padding-top: 10px;
   outline:none;
   overflow: scroll;
   white-space: pre;
+}
+#epsilon {
+  border-color: #000000;
+  border-width: 1px;
+  border-style: solid;
+  background-color:#f3f3f3;
+  width:40px;
+  height:25px;
+  position:absolute;
+  left: 630px;
+  outline:none;
+  top:0px;
+  font-size:24px;
+  font-family:STIXGeneral-Italic;
+  line-height: 16px;
+}
+
+#epsilon:active {
+  background-color:#d3d3d3;
 }
 
 .end_marker {

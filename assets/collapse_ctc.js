@@ -4,15 +4,23 @@ var MAX_LEN = 16;
 
 $(document).ready(function() {
     update('hee' + EPS + 'l' + EPS + 'llooo!');
-    $("#alignment").blur();
+    place_caret(0);
+});
+
+$("#epsilon").click(function() {
+    var e = jQuery.Event("keypress");
+    e.keyCode = 13;
+    $("#alignment").trigger(e);
 });
 
 $("#alignment").mousedown(function(e) {
     e.preventDefault();
     if (LOADED)
-        placeCaretAtEnd();
-    else
+        place_caret();
+    else {
+        LOADED = true;
         update("");
+    }
 });
 
 $("#alignment").keydown(function(e) {
@@ -30,6 +38,12 @@ $("#alignment").keydown(function(e) {
 
 $("#alignment").keypress(function(e) {
     e.preventDefault();
+
+    if (!LOADED) {
+        update("");
+        LOADED = true;
+    }
+
     var alignment = $("#alignment").text();
    
     // Return inputs an epsilon
@@ -38,8 +52,8 @@ $("#alignment").keypress(function(e) {
         var div = $("<div>");
         div.css("width", "4px")
            .css("position", "absolute")
-           .css("left", "674px")
-           .css("top", "16px")
+           .css("left", "666px")
+           .css("top", "10px")
            .css("background-color", "red")
            .css("opacity", 0.2)
         div.fadeOut(200);
@@ -56,17 +70,7 @@ $("#alignment").keypress(function(e) {
 
 function update(alignment) {
     update_output(alignment);
-    placeCaretAtEnd();
-}
-
-function insert_epsilon() {
-    var alignment = $("#alignment");
-    eps_span = $("<span>");
-    eps_span.html(EPS);
-    eps_span.css("font-family","STIXGeneral-Italic");
-    eps_span.css("padding-left","3px");
-    eps_span.css("padding-right","3px");
-    alignment.append(eps_span);
+    place_caret();
 }
 
 function add_rects(groups) {
@@ -166,16 +170,16 @@ function merge(alignment) {
 }
 
 // https://stackoverflow.com/questions/4233265/contenteditable-set-caret-at-the-end-of-the-text-cross-browser
-function placeCaretAtEnd() {
+function place_caret(pos) {
     var el = document.getElementById("alignment");
-    var len = $("#alignment").text().length;
+    pos = (typeof pos !== 'undefined') ?  pos : $("#alignment").text().length;
 
     el.focus();
     if (typeof window.getSelection != "undefined"
         && typeof document.createRange != "undefined") {
         var range = document.createRange();
-        range.setStart(el, len);
-        range.setEnd(el, len)
+        range.setStart(el, pos);
+        range.setEnd(el, pos)
         range.collapse(false);
         var sel = window.getSelection();
         sel.removeAllRanges();

@@ -92,7 +92,7 @@ function update_alignment(alignment) {
              if (d == EPS) return "align_epsilon";
              else return "align_text";
           });
-    groups.exit().text("").style("opacity", 0.3);
+    groups.exit().text("").style("opacity", 0.2);
 }
 
 function update_merged(merged) {
@@ -110,7 +110,7 @@ function update_merged(merged) {
           })
           .attr("opacity", function(d) {
               var t = d["char"];
-              if (t == EPS) return 0.6;
+              if (t == EPS) return 0.5;
               return 1;
           });
     rects = add_rects(groups);

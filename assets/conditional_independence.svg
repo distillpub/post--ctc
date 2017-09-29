@@ -39,9 +39,9 @@
      inkscape:window-height="722"
      id="namedview24"
      showgrid="false"
-     inkscape:zoom="3.0547013"
-     inkscape:cx="76.055893"
-     inkscape:cy="35.813142"
+     inkscape:zoom="12.218805"
+     inkscape:cx="146.15837"
+     inkscape:cy="28.142521"
      inkscape:window-x="21"
      inkscape:window-y="3"
      inkscape:window-maximized="0"
@@ -53,7 +53,7 @@
      fit-margin-bottom="10"
      fit-margin-right="10">
     <sodipodi:guide
-       position="151.89701,18.659762"
+       position="36.17375,31.754332"
        orientation="0,1"
        id="guide4534"
        inkscape:locked="false" />
@@ -155,18 +155,18 @@
     <path
        inkscape:connector-curvature="0"
        id="path4538"
-       d="M 87.733611,-2.8231659 50.07807,27.621722"
-       style="fill:none;stroke:#000000;stroke-width:1.69557512;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Mend)" />
+       d="M 87.72277,-2.8138528 49.184023,28.633051"
+       style="fill:none;stroke:#000000;stroke-width:1.02817273;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Mend)" />
     <path
        inkscape:connector-curvature="0"
        id="path4822"
-       d="M 112.59745,-2.511545 155.6734,27.621722"
-       style="fill:none;stroke:#000000;stroke-width:1.75659239;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker4832)" />
+       d="m 112.60639,-2.5017321 44.0767,31.0239301"
+       style="fill:none;stroke:#000000;stroke-width:1.02638996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker4832)" />
     <path
        inkscape:connector-curvature="0"
        id="path4858"
-       d="M 95.272039,3.5707092 91.658314,25.509602"
-       style="fill:none;stroke:#000000;stroke-width:1.49174333;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker4868)" />
+       d="M 95.256923,3.5549382 91.665783,26.221015"
+       style="fill:none;stroke:#000000;stroke-width:1.01325667;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker4868)" />
     <text
        style="font-family:STIXGeneral-Italic"
        inkscape:transform-center-y="0.41947012"

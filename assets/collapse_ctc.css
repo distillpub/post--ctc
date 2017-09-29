@@ -4,52 +4,26 @@
   width: 680px;
   height: 50px;
   padding-top: 10px;
+  padding-left: 10px;
   outline:none;
-  overflow: scroll;
   white-space: pre;
-}
-#epsilon {
-  border-color: #000000;
-  border-width: 1px;
-  border-style: solid;
-  background-color:#f3f3f3;
-  width:40px;
-  height:25px;
-  position:absolute;
-  left: 630px;
-  outline:none;
-  top:0px;
-  font-size:24px;
-  font-family:STIXGeneral-Italic;
-  line-height: 16px;
-}
-
-#epsilon:active {
-  background-color:#d3d3d3;
-}
-
-.end_marker {
-  border-right: 2px solid red !important;
+  border: solid 2px #e3e3e3;
+  border-radius: 5px;
+  background-color: #f3f3f3;
+  line-height: 40px;
 }
 
 #alignment div {
-    float:left;
-    width:40px;
-    height:40px;
-    line-height: 40px;
-    background-color: #d3d3d3;
-    text-align:center;
-    margin-right:2px;
-    opacity:0.2;
-}
-
-#alignment .eps {
-  font-family: STIXGeneral-Italic;
-  padding-left: 3px;
-  padding-right: 3px;
+  border-bottom: solid 2px black;
+  float:left;
+  width:40px;
+  height:50px;
+  text-align:center;
+  margin-right:2px;
 }
 
 .align_epsilon {
+  opacity: .5;
   font-size: 28px;
   font-family:STIXGeneral-Italic;
 }

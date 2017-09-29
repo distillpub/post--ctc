@@ -1,25 +1,40 @@
 var EPS = 'ϵ';
 var LOADED = false;
 var MAX_LEN = 16;
+var TIMEOUTS = []
 
 $(document).ready(function() {
-    update('hee' + EPS + 'l' + EPS + 'llooo!');
-    place_caret(0);
+    var t = 300
+    var hello = 'hee' + EPS + 'l' + EPS + 'llooo!';
+    var i;
+    for (i = 0; i <= hello.length; i++) {
+        TIMEOUTS.push(setTimeout(update, i * t, hello.substr(0,i)));
+    }
+    for (var j = hello.length - 1; j > 5; j--) {
+        TIMEOUTS.push(setTimeout(update, i * t, hello.substr(0,j)));
+        i++;
+    } 
+    var hello2 = 'hee' + EPS + 'l' + EPS + EPS + "loo" + EPS + "!";
+    for (var j = 7; j <= hello2.length; j++) {
+        TIMEOUTS.push(setTimeout(update, i * t, hello2.substr(0,j)));
+        i++;
+    }
+    TIMEOUTS.push(setTimeout(place_caret, i * t, 0));
 });
 
-$("#epsilon").click(function() {
-    var e = jQuery.Event("keypress");
-    e.keyCode = 13;
-    $("#alignment").trigger(e);
-});
+function clear_and_load() {
+    for (var i = 0; i < TIMEOUTS.length; i++)
+        clearTimeout(TIMEOUTS[i]);
+    update("");
+    LOADED = true;
+}
 
 $("#alignment").mousedown(function(e) {
     e.preventDefault();
     if (LOADED)
         place_caret();
     else {
-        LOADED = true;
-        update("");
+        clear_and_load();
     }
 });
 
@@ -30,6 +45,10 @@ $("#alignment").keydown(function(e) {
     }
     if (e.keyCode == 8) {
         e.preventDefault();
+        if (!LOADED) {
+            clear_and_load();
+            return;
+        }
         alignment = $("#alignment").text();
         alignment = alignment.substr(0, alignment.length - 1);
         update(alignment);
@@ -40,8 +59,7 @@ $("#alignment").keypress(function(e) {
     e.preventDefault();
 
     if (!LOADED) {
-        update("");
-        LOADED = true;
+        clear_and_load();
     }
 
     var alignment = $("#alignment").text();
@@ -51,8 +69,10 @@ $("#alignment").keypress(function(e) {
         // Flash red bar to denote end.
         var div = $("<div>");
         div.css("width", "4px")
+           .css("height", "40px")
+           .css("border", "none")
            .css("position", "absolute")
-           .css("left", "666px")
+           .css("left", "678px")
            .css("top", "10px")
            .css("background-color", "red")
            .css("opacity", 0.2)
@@ -77,7 +97,7 @@ function add_rects(groups) {
     return groups.append("rect")
           .attr("width", 40)
           .attr("height", 40)
-          .attr("fill", "#d3d3d3");
+          .attr("fill", "#f0f0f0");
 }
 
 function add_text(groups) {
@@ -88,19 +108,56 @@ function add_text(groups) {
 }
 
 function update_alignment(alignment) {
-    var groups = d3.select("#alignment").selectAll("div");
-    groups = groups.data(alignment.split(""));
-    groups.text(function(d) { return d;})
-          .style("opacity", 1)
+    var groups = d3.select("#alignment")
+                   .selectAll("div")
+                   .data(alignment.split(""));
+    groups.enter()
+          .append("div")
+          .text(function(d) { return d;})
           .attr("class", function(d) {
              if (d == EPS) return "align_epsilon";
              else return "align_text";
           });
-    groups.exit().text("").style("opacity", 0.2);
+    groups.exit().remove();
+}
+
+function compute_paths(d, i) {
+    var s = 42 * d["start"];
+    var w = 42 * (d["end"] - d["start"]) - 2;
+    var c1 = (i + 1) * 42 - 2;
+    var path = "M " + s + " 0 ";
+    path += "H " + (s + w);
+    path += " V 80 ";
+    path += " C " + (s + w) + " 89 " + c1 + " 109 " + c1 + " " + 120;
+    path += " V 160 H " + (c1 - 40);
+    path += " V 120";
+    path += " C " +  (c1 - 40) + " 111 " + s + " 91 " + s + " " + 80;
+    path += " Z";
+    return path;
+}
+
+function draw_highlights(merged_eps) {
+    merged = []
+    for (var i = 0; i < merged_eps.length; i++) {
+        if (merged_eps[i]["char"] != EPS)
+            merged.push(merged_eps[i]);
+    }
+
+    var paths = d3.select("#collapse_output")
+                   .select("#paths")
+                   .selectAll("path");
+    paths = paths.data(merged);
+    paths.exit().remove();
+    paths.attr("d", compute_paths)
+    paths.enter()
+         .append("path")
+         .attr("d", compute_paths)
+         .attr("fill", "#4682b4")
+         .attr("opacity", 0.2);
 }
 
 function update_merged(merged) {
-    groups = d3.select("#merge_g").selectAll("g");
+    var groups = d3.select("#merge_g").selectAll("g");
     groups = groups.data(merged);
     groups.exit().remove();
 
@@ -111,11 +168,6 @@ function update_merged(merged) {
           .append("g")
           .attr("transform", function(d) {
               return "translate(" + d["start"] * 42 + ",0)";
-          })
-          .attr("opacity", function(d) {
-              var t = d["char"];
-              if (t == EPS) return 0.5;
-              return 1;
           });
     rects = add_rects(groups);
     rects.attr("width", function(d) { return (d["end"] - d["start"]) * 42 - 2; });
@@ -146,6 +198,7 @@ function update_output(alignment) {
 
     merged = merge(alignment);
     update_merged(merged);
+    draw_highlights(merged);
 
     // The final output.
     collapsed = []

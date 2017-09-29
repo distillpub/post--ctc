@@ -22,25 +22,73 @@
 <dt-article class="centered">
   <h1>An In-depth Guide to CTC</h1>
 
-<figure style="width:670px;height:200px;">
+<figure style="width:800px;height:260px;">
   <link rel="stylesheet" type="text/css" href="assets/collapse_ctc.css">
-  <div style="position:absolute;top:25px;height:80px;">
-    <div spellcheck="false" autocorrect="off" contenteditable="true" id="alignment"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-  </div>
-  <figcaption style="position:absolute;left:0;width:600px;top:8px;">
-  Try typing a sequence in the top row to see how CTC collapsing works. Hit "return" for
-  <dt-math>\epsilon</dt-math>.
+  <figcaption style="color:rgba(0,0,0,1);font-size:16px;position:absolute">
+    How CTC collapsing works
   </figcaption>
-  <button id="epsilon">ϵ</button>
-  <div style="position:absolute;top:100px;">
-    <svg id="collapse_output" width="670" height="200">
-      <g id="merge_g">
-        <rect fill="#d3d3d3" opacity="0.2" width="670" height="40" />
+  <figcaption style="position:absolute;left:460px;top:5px">
+  Use
+  <span style="border:solid 1px #a3a3a3;padding:3px 7px 3px 7px;margin-left:5px;margin-right:5px;border-radius:5px;opacity:.6">return</span>
+  to input a blank token, denoted by <dt-math>\epsilon</dt-math>
+  </figcaption>
+
+  <div style="position:absolute;top:20px;">
+  <figcaption style="position:absolute;top:40px;width:80px;">
+    Input sequence
+  </figcaption>
+  <figcaption style="position:absolute;top:120px;width:80px;">
+  Repeats<br /> are merged, <br/> <dt-math>\epsilon</dt-math> is dropped
+  </figcaption>
+  <figcaption style="position:absolute;top:220px;width:80px;">
+    Final output
+  </figcaption>
+  <div style="position:absolute;left:100px;">
+  <div style="position:absolute;top:25px;height:80px;">
+    <div spellcheck="false" autocorrect="off" contenteditable="true" id="alignment"></div>
+  </div>
+  <div style="position:absolute;top:89px;left:12px">
+    <svg id="collapse_output" width="670" height="170">
+      <g id="merge_g" transform="translate(0, 40)">
+        <rect fill="#f0f0f0" width="40" height="40" />
+        <rect fill="#f0f0f0" x="42" width="40" height="40" />
+        <rect fill="#f0f0f0" x="84" width="40" height="40" />
+        <rect fill="#f0f0f0" x="126" width="40" height="40" />
+        <rect fill="#f0f0f0" x="168" width="40" height="40" />
+        <rect fill="#f0f0f0" x="210" width="40" height="40" />
+        <rect fill="#f0f0f0" x="252" width="40" height="40" />
+        <rect fill="#f0f0f0" x="294" width="40" height="40" />
+        <rect fill="#f0f0f0" x="336" width="40" height="40" />
+        <rect fill="#f0f0f0" x="378" width="40" height="40" />
+        <rect fill="#f0f0f0" x="420" width="40" height="40" />
+        <rect fill="#f0f0f0" x="462" width="40" height="40" />
+        <rect fill="#f0f0f0" x="504" width="40" height="40" />
+        <rect fill="#f0f0f0" x="546" width="40" height="40" />
+        <rect fill="#f0f0f0" x="588" width="40" height="40" />
+        <rect fill="#f0f0f0" x="630" width="40" height="40" />
       </g>
-      <g id="final_g" transform="translate(0, 65)">
-        <rect fill="#d3d3d3" opacity="0.2" width="670" height="40" />
+      <g id="final_g" transform="translate(0, 120)">
+        <rect fill="#f0f0f0" width="40" height="40" />
+        <rect fill="#f0f0f0" x="42" width="40" height="40" />
+        <rect fill="#f0f0f0" x="84" width="40" height="40" />
+        <rect fill="#f0f0f0" x="126" width="40" height="40" />
+        <rect fill="#f0f0f0" x="168" width="40" height="40" />
+        <rect fill="#f0f0f0" x="210" width="40" height="40" />
+        <rect fill="#f0f0f0" x="252" width="40" height="40" />
+        <rect fill="#f0f0f0" x="294" width="40" height="40" />
+        <rect fill="#f0f0f0" x="336" width="40" height="40" />
+        <rect fill="#f0f0f0" x="378" width="40" height="40" />
+        <rect fill="#f0f0f0" x="420" width="40" height="40" />
+        <rect fill="#f0f0f0" x="462" width="40" height="40" />
+        <rect fill="#f0f0f0" x="504" width="40" height="40" />
+        <rect fill="#f0f0f0" x="546" width="40" height="40" />
+        <rect fill="#f0f0f0" x="588" width="40" height="40" />
+        <rect fill="#f0f0f0" x="630" width="40" height="40" />
       </g>
+      <g id="paths"></g>
     </svg>
+  </div>
+  </div>
   </div>
 </figure>
 <script src="assets/collapse_ctc.js"></script>

@@ -2,30 +2,41 @@ var EPS = 'ϵ';
 var LOADED = false;
 var MAX_LEN = 16;
 var TIMEOUTS = []
+var ANIM = null;
 
-$(document).ready(function() {
+function animation() {
     var t = 300
-    var hello = 'hee' + EPS + 'l' + EPS + 'llooo!';
+    var hello = ['hee', EPS, 'l', EPS, 'lloo!'].join("");
+    var world = ['wwo', EPS, 'rrr', EPS, 'lld!'].join("")
     var i;
     for (i = 0; i <= hello.length; i++) {
         TIMEOUTS.push(setTimeout(update, i * t, hello.substr(0,i)));
     }
-    for (var j = hello.length - 1; j > 5; j--) {
+    i += 5;
+    for (var j = hello.length - 1; j >= 0; j--) {
         TIMEOUTS.push(setTimeout(update, i * t, hello.substr(0,j)));
-        i++;
+        i ++;
     } 
-    var hello2 = 'hee' + EPS + 'l' + EPS + EPS + "loo" + EPS + "!";
-    for (var j = 7; j <= hello2.length; j++) {
-        TIMEOUTS.push(setTimeout(update, i * t, hello2.substr(0,j)));
+    for (var j = 0; j <= world.length; j++) {
+        TIMEOUTS.push(setTimeout(update, i * t, world.substr(0,j)));
         i++;
     }
-    TIMEOUTS.push(setTimeout(place_caret, i * t, 0));
+    i += 5
+    for (var j = world.length - 1; j >= 0; j--) {
+        TIMEOUTS.push(setTimeout(update, i * t, world.substr(0,j)));
+        i++;
+    } 
+}
+
+$(document).ready(function() {
+    animation();
+    ANIM = setInterval(animation, 18000);
 });
 
 function clear_and_load() {
+    clearInterval(ANIM);
     for (var i = 0; i < TIMEOUTS.length; i++)
         clearTimeout(TIMEOUTS[i]);
-    update("");
     LOADED = true;
 }
 
@@ -55,6 +66,18 @@ $("#alignment").keydown(function(e) {
     }
 });
 
+$("#alignment").keyup(function(e) {
+    if (e.keyCode != 32) 
+        return;
+
+    // Hack for double space causing period + ' '.
+    last_div = $("#alignment > div").last()
+    var t = last_div.text()
+    if (t == " . ")
+        last_div.text(".");
+    update($("#alignment").text());
+});
+
 $("#alignment").keypress(function(e) {
     e.preventDefault();
 
@@ -68,18 +91,12 @@ $("#alignment").keypress(function(e) {
     if (alignment.length >= MAX_LEN) {
         // Flash red bar to denote end.
         var div = $("<div>");
-        div.css("width", "4px")
-           .css("height", "40px")
-           .css("border", "none")
-           .css("position", "absolute")
-           .css("left", "678px")
-           .css("top", "10px")
-           .css("background-color", "red")
-           .css("opacity", 0.2)
+        div.attr("id", "red_bar_overflow")
         div.fadeOut(200);
         $("#alignment").append(div);
         return;
     }
+    console.log("KeyPress " + e.keyCode);
     if(e.keyCode == 13)
         alignment += EPS;
     else
@@ -108,17 +125,18 @@ function add_text(groups) {
 }
 
 function update_alignment(alignment) {
-    var groups = d3.select("#alignment")
+    var divs = d3.select("#alignment")
                    .selectAll("div")
                    .data(alignment.split(""));
-    groups.enter()
-          .append("div")
-          .text(function(d) { return d;})
-          .attr("class", function(d) {
+    divs.enter()
+        .append("div")
+        .merge(divs)
+        .text(function(d) { return d;})
+        .attr("class", function(d) {
              if (d == EPS) return "align_epsilon";
              else return "align_text";
-          });
-    groups.exit().remove();
+        });
+    divs.exit().remove();
 }
 
 function compute_paths(d, i) {
@@ -137,20 +155,16 @@ function compute_paths(d, i) {
 }
 
 function draw_highlights(merged_eps) {
-    merged = []
-    for (var i = 0; i < merged_eps.length; i++) {
-        if (merged_eps[i]["char"] != EPS)
-            merged.push(merged_eps[i]);
-    }
-
+    var merged = merged_eps.filter(function(d)
+                       { return d["char"] != EPS;});
     var paths = d3.select("#collapse_output")
                    .select("#paths")
-                   .selectAll("path");
-    paths = paths.data(merged);
+                   .selectAll("path")
+                   .data(merged);
     paths.exit().remove();
-    paths.attr("d", compute_paths)
     paths.enter()
          .append("path")
+         .merge(paths)
          .attr("d", compute_paths)
          .attr("fill", "#4682b4")
          .attr("opacity", 0.2);
@@ -161,17 +175,20 @@ function update_merged(merged) {
     groups = groups.data(merged);
     groups.exit().remove();
 
-    groups.select("rect")
-          .attr("width", function(d) { return (d["end"] - d["start"]) * 42 - 2; });
+    var rects = groups.select("rect");
+    var text = groups.select("text");
 
     groups = groups.enter()
           .append("g")
           .attr("transform", function(d) {
               return "translate(" + d["start"] * 42 + ",0)";
           });
-    rects = add_rects(groups);
-    rects.attr("width", function(d) { return (d["end"] - d["start"]) * 42 - 2; });
-    add_text(groups).attr("class", "align_text")
+    add_rects(groups)
+        .merge(rects)
+        .attr("width", function(d) { return (d["end"] - d["start"]) * 42 - 2; });
+    add_text(groups)
+          .merge(text)
+          .attr("class", "align_text")
           .text(function(d) {
               var t = d["char"];
               if (t == EPS) return "";
@@ -182,6 +199,7 @@ function update_merged(merged) {
 function update_final(collapsed) {
     var groups = d3.select("#final_g").selectAll("g");
     groups = groups.data(collapsed)
+    var text = groups.select("text");
     groups.exit().remove()
     groups = groups.enter()
           .append("g")
@@ -189,7 +207,9 @@ function update_final(collapsed) {
               return "translate(" + i * 42 + ",0)";
           })
     add_rects(groups);
-    text = add_text(groups).attr("class", "align_text")
+    add_text(groups)
+          .merge(text)
+          .attr("class", "align_text")
           .text(function(d) { return d; });
 }
 

@@ -4,6 +4,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
   integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0"
   crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 
 <script type="text/front-matter">
   title: "An In-depth Guide to Connectionist Temporal Classification"
@@ -16,8 +21,82 @@
 
 <dt-article class="centered">
   <h1>An In-depth Guide to CTC</h1>
-  <dt-byline></dt-byline>
 
+<figure style="width:900px;height:360px;">
+  <link rel="stylesheet" type="text/css" href="assets/collapse_ctc.css">
+  <figcaption style="color:rgba(0,0,0,1);font-size:16px;position:absolute">
+    How CTC collapsing works
+  </figcaption>
+  <img src="assets/speech.svg" style="width:670px;position:absolute;left:110px;top:60px;"></img>
+  <figcaption style="position:absolute;width:80px;top:70px;">
+    For an input, like speech
+  </figcaption>
+
+  <div style="position:absolute;top:110px;">
+  <figcaption style="position:absolute;top:30px;width:80px;">
+  Predict a sequence of tokens
+  </figcaption>
+  <figcaption style="position:absolute;top:120px;width:80px;">
+  Repeats<br /> are merged, <br/> <dt-math>\epsilon</dt-math> is dropped
+  </figcaption>
+  <figcaption style="position:absolute;top:220px;width:80px;">
+    Final output
+  </figcaption>
+  <figcaption style="position:absolute;left:810px;top:30px;width:110px;line-height:180%;">
+    Use <span id="return_botton">return</span> to input a blank <dt-math>(\epsilon)</dt-math>
+  </figcaption>
+
+  <div style="position:absolute;left:100px;">
+  <div style="position:absolute;top:25px;height:80px;">
+    <div spellcheck="false" autocorrect="off" contenteditable="true" id="alignment"></div>
+  </div>
+  <div style="position:absolute;top:89px;left:12px">
+    <svg id="collapse_output" width="670" height="170">
+      <g id="merge_g" transform="translate(0, 40)">
+        <rect fill="#f0f0f0" width="40" height="40" />
+        <rect fill="#f0f0f0" x="42" width="40" height="40" />
+        <rect fill="#f0f0f0" x="84" width="40" height="40" />
+        <rect fill="#f0f0f0" x="126" width="40" height="40" />
+        <rect fill="#f0f0f0" x="168" width="40" height="40" />
+        <rect fill="#f0f0f0" x="210" width="40" height="40" />
+        <rect fill="#f0f0f0" x="252" width="40" height="40" />
+        <rect fill="#f0f0f0" x="294" width="40" height="40" />
+        <rect fill="#f0f0f0" x="336" width="40" height="40" />
+        <rect fill="#f0f0f0" x="378" width="40" height="40" />
+        <rect fill="#f0f0f0" x="420" width="40" height="40" />
+        <rect fill="#f0f0f0" x="462" width="40" height="40" />
+        <rect fill="#f0f0f0" x="504" width="40" height="40" />
+        <rect fill="#f0f0f0" x="546" width="40" height="40" />
+        <rect fill="#f0f0f0" x="588" width="40" height="40" />
+        <rect fill="#f0f0f0" x="630" width="40" height="40" />
+      </g>
+      <g id="final_g" transform="translate(0, 120)">
+        <rect fill="#f0f0f0" width="40" height="40" />
+        <rect fill="#f0f0f0" x="42" width="40" height="40" />
+        <rect fill="#f0f0f0" x="84" width="40" height="40" />
+        <rect fill="#f0f0f0" x="126" width="40" height="40" />
+        <rect fill="#f0f0f0" x="168" width="40" height="40" />
+        <rect fill="#f0f0f0" x="210" width="40" height="40" />
+        <rect fill="#f0f0f0" x="252" width="40" height="40" />
+        <rect fill="#f0f0f0" x="294" width="40" height="40" />
+        <rect fill="#f0f0f0" x="336" width="40" height="40" />
+        <rect fill="#f0f0f0" x="378" width="40" height="40" />
+        <rect fill="#f0f0f0" x="420" width="40" height="40" />
+        <rect fill="#f0f0f0" x="462" width="40" height="40" />
+        <rect fill="#f0f0f0" x="504" width="40" height="40" />
+        <rect fill="#f0f0f0" x="546" width="40" height="40" />
+        <rect fill="#f0f0f0" x="588" width="40" height="40" />
+        <rect fill="#f0f0f0" x="630" width="40" height="40" />
+      </g>
+      <g id="paths"></g>
+    </svg>
+  </div>
+  </div>
+  </div>
+</figure>
+<script src="assets/collapse_ctc.js"></script>
+
+<dt-byline></dt-byline>
 <h2 id="the-problem">The Problem</h2>
 
 <p>Consider speech recognition. The input is a time series.  It can

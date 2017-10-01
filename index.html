@@ -22,19 +22,19 @@
 <dt-article class="centered">
   <h1>An In-depth Guide to CTC</h1>
 
-<figure style="width:800px;height:260px;">
+<figure style="width:900px;height:360px;">
   <link rel="stylesheet" type="text/css" href="assets/collapse_ctc.css">
   <figcaption style="color:rgba(0,0,0,1);font-size:16px;position:absolute">
     How CTC collapsing works
   </figcaption>
-  <figcaption style="position:absolute;left:460px;top:5px">
-    Use <span id="return_botton">return</span> to input a blank token,
-    denoted by <dt-math>\epsilon</dt-math>
+  <img src="assets/speech.svg" style="width:670px;position:absolute;left:110px;top:60px;"></img>
+  <figcaption style="position:absolute;width:80px;top:70px;">
+    For an input, like speech
   </figcaption>
 
-  <div style="position:absolute;top:20px;">
-  <figcaption style="position:absolute;top:40px;width:80px;">
-    Input sequence
+  <div style="position:absolute;top:110px;">
+  <figcaption style="position:absolute;top:30px;width:80px;">
+  Predict a sequence of tokens
   </figcaption>
   <figcaption style="position:absolute;top:120px;width:80px;">
   Repeats<br /> are merged, <br/> <dt-math>\epsilon</dt-math> is dropped
@@ -42,6 +42,10 @@
   <figcaption style="position:absolute;top:220px;width:80px;">
     Final output
   </figcaption>
+  <figcaption style="position:absolute;left:810px;top:30px;width:110px;line-height:180%;">
+    Use <span id="return_botton">return</span> to input a blank <dt-math>(\epsilon)</dt-math>
+  </figcaption>
+
   <div style="position:absolute;left:100px;">
   <div style="position:absolute;top:25px;height:80px;">
     <div spellcheck="false" autocorrect="off" contenteditable="true" id="alignment"></div>

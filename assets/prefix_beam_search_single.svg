@@ -860,13 +860,13 @@
         <set
            attributeName="stroke-width"
            to="3.0"
-           begin="circle1111.mouseover;g970.mouseover;g977.mouseover;g984.mouseover;g973.mouseover;g980.mouseover;g987.mouseover;g995.mouseover;g991.mouseover;g999.mouseover"
-           end="circle1111.mouseout;g970.mouseout;g977.mouseout;g984.mouseout;g973.mouseout;g980.mouseout;g987.mouseout;g995.mouseout;g991.mouseout;g999.mouseout" />
+           begin="circle1111.mouseover;text1113.mouseover;g970.mouseover;g977.mouseover;g984.mouseover;g973.mouseover;g980.mouseover;g987.mouseover;g995.mouseover;g991.mouseover;g999.mouseover"
+           end="circle1111.mouseout;text1113.mouseout;g970.mouseout;g977.mouseout;g984.mouseout;g973.mouseout;g980.mouseout;g987.mouseout;g995.mouseout;g991.mouseout;g999.mouseout" />
         <set
            attributeName="stroke"
            to="#a3a3a3"
-           begin="circle1111.mouseover;g970.mouseover;g977.mouseover;g984.mouseover;g973.mouseover;g980.mouseover;g987.mouseover;g995.mouseover;g991.mouseover;g999.mouseover"
-           end="circle1111.mouseout;g970.mouseout;g977.mouseout;g984.mouseout;g973.mouseout;g980.mouseout;g987.mouseout;g995.mouseout;g991.mouseout;g999.mouseout" />
+           begin="circle1111.mouseover;text1113.mouseover;g970.mouseover;g977.mouseover;g984.mouseover;g973.mouseover;g980.mouseover;g987.mouseover;g995.mouseover;g991.mouseover;g999.mouseover"
+           end="circle1111.mouseout;text1113.mouseout;g970.mouseout;g977.mouseout;g984.mouseout;g973.mouseout;g980.mouseout;g987.mouseout;g995.mouseout;g991.mouseout;g999.mouseout" />
       </circle>
       <text
          id="text1113"

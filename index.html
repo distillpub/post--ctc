@@ -138,10 +138,9 @@ time consuming.</p>
   </div>
 </figure>
 
-<p>Connectionist Temporal Classification (CTC) solves these problems.
-Certain assumptions made by the algorithm make it especially well suited for 
-applications like speech recognition and handwriting recognition. Today,
-it’s used in many state-of-the-art models in these domains.</p>
+<p>Connectionist Temporal Classification (CTC) solves these problems. Because
+of some assumptions it makes, CTC is especially well suited for applications
+like speech recognition and handwriting recognition.</p>
 
 <p>To be a bit more formal, let's consider the problem of mapping input sequences
 <dt-math>X = [x_1, x_2, \ldots, x_T] \in \mathcal{X}</dt-math> to corresponding output
@@ -164,29 +163,28 @@ traditional supervised learning algorithms difficult.</p>
 <p>In these circumstances, CTC can learn a function to map elements of
 <dt-math>\mathcal{X}</dt-math> to a distribution over members of
 <dt-math>\mathcal{Y}</dt-math>. We can then infer a likely
-<dt-math>Y</dt-math> from this distribution. For such an algorithm to
-be useful it needs to solve two problems: the objective function should
+<dt-math>Y</dt-math> from this distribution. In order to be useful, the
+algorithm has to solve two problems: the objective function should
 be computable and inference should be tractable.</p>
 
-<p><strong>Objective Function:</strong> We should be able to efficiently
+<p><strong>Objective Function:</strong> We need to efficiently
 compute a score for how likely any <dt-math>Y</dt-math> is given
-an <dt-math>X</dt-math>. In our case the score will be a
-conditional probability <dt-math>p(Y \mid X)</dt-math>, though this
-isn’t a strict requirement.  The function <dt-math>p(Y \mid
-X)</dt-math> should be differentiable. This makes optimizing the function
-parameters easier.</p>
+an <dt-math>X</dt-math>. With CTC, the score will be a
+conditional probability <dt-math>p(Y \mid X)</dt-math>. The function
+<dt-math>p(Y \mid X)</dt-math> should be differentiable. This makes
+it easier to optimize.</p>
 
-<p>We need to compute the score for <dt-math>X</dt-math>s and
+<p>The score should be computable for <dt-math>X</dt-math>s and
 <dt-math>Y</dt-math>s of variable and differing lengths. We also want to
 avoid algorithms which require an alignment between <dt-math>X</dt-math>
 and <dt-math>Y</dt-math>.</p>
 
-<p><strong>Inference:</strong> Given a model for <dt-math>p(Y
-\mid X)</dt-math>, for any <dt-math>X</dt-math> we need to
-tractably infer a likely <dt-math>Y</dt-math>. This means solving 
+<p><strong>Inference:</strong> The second problem is to infer a likely <dt-math>Y</dt-math>
+for any <dt-math>X</dt-math> following the model <dt-math>p(Y \mid X)</dt-math>.
+This means solving 
 
 <dt-math block>
-Y^* = \text{argmax}_{Y \in \mathcal{Y}} p(Y \mid X).
+  Y^* \enspace =\enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} \quad p(Y \mid X).
 </dt-math>
 
 Ideally <dt-math>Y^*</dt-math> can be found efficiently. With CTC we’ll
@@ -195,14 +193,13 @@ settle for a close to optimal solution that's not too expensive to find.</p>
 <hr />
 <h2 id="the-algorithm">The Algorithm</h2>
 
-<p>We need to compute a score of how likely a <dt-math>Y</dt-math>
-is given an <dt-math>X</dt-math>. To
-do this, the CTC model allows a set of alignments between <dt-math>X</dt-math>
-and <dt-math>Y</dt-math>. Since the ground-truth alignment is unknown,
-CTC <em>marginalizes</em> over all possible allowed alignments between the two
-sequences. In this section we’ll cover what these allowed alignments are, how
-to compute the CTC loss function and how to perform inference with a learned
-model.</p>
+<p>We'll start with computing the score of how likely a <dt-math>Y</dt-math>
+is given an <dt-math>X</dt-math>. To accomplish this, CTC allows a set of
+alignments between <dt-math>X</dt-math> and <dt-math>Y</dt-math>. The ground-truth alignment
+is unknown, so CTC <em>marginalizes</em> over all the allowed alignments
+between the two sequences. In this section we’ll cover what
+these allowed alignments are, how to compute the CTC loss function and how to
+perform inference with a learned model.</p>
 
 <h3 id="the-alignment">Alignment</h3>
 <p>The CTC algorithm assumes the alignments between the input <dt-math>X</dt-math> and the
@@ -376,19 +373,19 @@ function <dt-math>p_t(a_t \mid X)</dt-math> can be any function which produces a
 for each input time-step <dt-math>t</dt-math> over the output alphabet given the full
 input <dt-math>X</dt-math>.</p>
 
-<figure style="width:550px; height:350px;">
+<figure style="width:550px; height:380px;">
   <figcaption>
-  <div style="position:absolute; top:0px; width: 200px;">
+  <div style="position:absolute; top:10px; width: 200px;">
     The function <dt-math>p_t(a \mid X)</dt-math> 
     is a distribution over the alphabet
     {h, e, l, o, <dt-math>\epsilon</dt-math>} for
     each input step.
   </div>
-  <div style="position:absolute; top:172px; width: 200px;">
+  <div style="position:absolute; top:180px; width: 200px;">
     From the step-by-step distribution over the alphabet, we can compute the
     probability of different sequences. 
   </div>
-  <div style="position:absolute; top:290px; width: 200px;">
+  <div style="position:absolute; top:310px; width: 200px;">
     By marginalizaing over the alignments, we get a distribution over outputs.
   </div>
   </figcaption>
@@ -414,7 +411,7 @@ is recognizing the subproblems.</p>
 
 <p>To simplify the problem, let the sequence
 <dt-math block>
-Z = [z_{1}, \ldots, z_{2U+1}] = [\epsilon, y_1, \epsilon, y_2, \ldots, \epsilon, y_U, \epsilon]
+Z \enspace=\enspace [z_{1}, \ldots, z_{2U+1}] \enspace=\enspace [\epsilon, y_1, \epsilon, y_2, \ldots, \epsilon, y_U, \epsilon]
 </dt-math>
 consist of the elements of <dt-math>Y</dt-math> with an
 <dt-math>\epsilon</dt-math> at the beginning, end, and between
@@ -437,7 +434,7 @@ some previous input.
 
 <figure style="margin-top:0px;">
   <span style="position:absolute; left:40px">
-    <dt-math>\alpha_{s, t} = </dt-math>
+    <dt-math>\alpha_{s, t}\; = </dt-math>
   </span>
   <span style="position:absolute; left:120px">
     <dt-math>(\alpha_{s-1, t-1} + \alpha_{s, t-1})</dt-math>
@@ -479,8 +476,8 @@ between repeat characters. The update equation is the same as in Case 1.</p>
 this case because an <dt-math>\epsilon</dt-math> between unique
 characters of <dt-math>Y</dt-math> is optional.</p>
 <figure style="height:190px;margin-top:60px;">
-  <span style="position:absolute; left:40px">
-    <dt-math>\alpha_{s, t} = (\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</dt-math>
+  <span style="position:absolute; left:30px">
+    <dt-math>\alpha_{s, t}\; = \;(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</dt-math>
   </span>
   <figcaption style="position:absolute; left:110px; top:50px; width:240px;">
   The CTC probability of the three valid subsequences after
@@ -524,7 +521,7 @@ the subsequence <dt-math>Z_{1:s}</dt-math> after
 
 <p>The final probability is the sum of the two output nodes
 <dt-math block>
-p(Y \mid X) = \alpha_{S, T} + \alpha_{S-1, T}
+p(Y \mid X) \; = \; \alpha_{S, T}\; + \; \alpha_{S-1, T}
 </dt-math>
 where <dt-math>S = 2U + 1</dt-math>.</p>
 
@@ -541,7 +538,7 @@ not depend at all on the size of the output alphabet.</p>
 <p>For a training set <dt-math>\mathcal{D}</dt-math>, the parameters of a model are tuned to
 minimize the negative log-likelihood
 <dt-math block>
-\sum_{(X, Y) \in \mathcal{D}} -\log p(Y \mid X)
+\sum_{(X, Y) \in \mathcal{D}} -\log\; p(Y \mid X)
 </dt-math>
 instead of maximizing the likelihood directly.</p>
 
@@ -549,14 +546,14 @@ instead of maximizing the likelihood directly.</p>
 
 <p>We can find the most likely output by solving
 <dt-math block>
-Y^* = \text{argmax}_{Y \in \mathcal{Y}} p(Y \mid X).
+Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} \quad p(Y \mid X).
 </dt-math>
 
 <p>One way to approximate this is to take the most likely output at each
 time-step. This gives us the alignment with the highest probability:
 
 <dt-math block>
-A^* = \text{argmax}_{A \in \mathcal{A}} \prod_{t=1}^{T} p_t(a_t \mid X)
+A^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{A\in\mathcal{A}}} \quad  \prod_{t=1}^{T} \; p_t(a_t \mid X)
 </dt-math>
 
 We can then collapse repeats and remove <dt-math>\epsilon</dt-math>
@@ -644,7 +641,7 @@ repose the inference problem.</p>
 
 <figure style="width:600px;height:80px;margin-top:0px;">
   <span style="position:absolute; left:0px; top:0px">
-    <dt-math>Y^* = \text{argmax}_{Y \in \mathcal{Y}}</dt-math>
+    <dt-math>Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} <dt-math>
   </span>
   <span style="position:absolute; left:190px; top:0px">
     <dt-math>p(Y \mid X)</dt-math>
@@ -692,7 +689,7 @@ into more depth on what these properties are and what trade-offs they offer.</p>
 independence assumption it makes. Recall, the conditional
 output distribution is
 <dt-math block>
-p(Y \mid X) = \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
+p(Y \mid X) \enspace = \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X).
 </dt-math>
 
 <div style="height:150px;">
@@ -732,7 +729,7 @@ them. In some problems CTC ends up allocating most of the probability to a
 single alignment. However, this isn't guaranteed. We can force the model to
 choose a single alignment by replacing the sum with a max in the objective function,
 <dt-math block>
-p(Y \mid X) = \max_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X).
+p(Y \mid X) \enspace = \enspace \max_{A \in \mathcal{A}} \quad \prod_{t=1}^T \; p(a_t \mid X).
 </dt-math></p>
 
 <p>As mentioned before, CTC only allows <em>strictly monotonic</em> alignments. In
@@ -791,7 +788,7 @@ we’re interested in finding a “good” model for <dt-math>p(Y \mid X)</dt-ma
 simplify the modeling problem is to transform this probability with Bayes’ Rule
 and compute
 <dt-math block>
-p(Y \mid X) \propto p(X \mid Y) p(Y).
+p(Y \mid X) \; \propto \; p(X \mid Y) \; p(Y).
 </dt-math>
 The <dt-math>p(Y)</dt-math> term is straight-forward to model with a language model, so let’s focus
 on <dt-math>p(X \mid Y)</dt-math>. Like before we’ll let <dt-math>\mathcal{A}</dt-math> be a set of allowed
@@ -799,7 +796,7 @@ of alignments of <dt-math>Y</dt-math> to <dt-math>X</dt-math>. In this case memb
 Let’s otherwise leave <dt-math>\mathcal{A}</dt-math> unspecified for now. We’ll come back to
 it later. We can marginalize over <dt-math>\mathcal{A}</dt-math> to get
 <dt-math block>
-p(X \mid Y) = \sum_{A \in \mathcal{A}} p(X, A \mid Y).
+p(X \mid Y)\; = \; \sum_{A \in \mathcal{A}} \; p(X, A \mid Y).
 </dt-math>
 To simplify notation, let’s remove the conditioning on <dt-math>Y</dt-math>, it will be
 unchanging in every <dt-math>p(\cdot)</dt-math>. Using the HMM assumptions we can
@@ -810,7 +807,7 @@ write</p>
     <div style="position:absolute; left:10px; top:50px; width:120px;">
       The probability of the <em>input</em> 
     </div>
-    <div style="position:absolute; left:150px; top:50px; width:170px;">
+    <div style="position:absolute; left:180px; top:50px; width:170px;">
       marginalizes over alignments
     </div>
     <div style="position:absolute; left:350px; top:50px; width:120px;">
@@ -820,17 +817,20 @@ write</p>
       and the transition probability. 
     </div>
   </figcaption>
-<span style="position:absolute; left:10px;">
+<span style="position:absolute; left:20px;">
   <dt-math>p(X)</dt-math>
 </span>
-<span style="position:absolute; left:100px;">
+<span style="position:absolute; left:120px;">
   <dt-math>=</dt-math>
 </span>
-<span style="position:absolute; left:150px;">
-  <dt-math>\sum_{A \in \mathcal{A}} \prod_{t=1}^T</dt-math>
+<span style="position:absolute; left:180px;">
+  <dt-math>\sum_{A \in \mathcal{A}} \; \prod_{t=1}^T</dt-math>
 </span>
 <span style="position:absolute; left:350px;">
   <dt-math>p(x_t \mid a_t)</dt-math>
+</span>
+<span style="position:absolute; left:465px;">
+    <dt-math>\cdot</dt-math>
 </span>
 <span style="position:absolute; left:500px;">
   <dt-math>p(a_t \mid a_{t-1})</dt-math>
@@ -843,10 +843,10 @@ The state <dt-math>a_t</dt-math> is conditionally independent of all historical 
 the previous state <dt-math>a_{t-1}</dt-math>. The second is that the observation <dt-math>x_t</dt-math> is
 conditionally independent of everything else given the current state <dt-math>a_t</dt-math>.</p>
 
-<p>Let’s assume that the transition probabilities <dt-math>p(a_t \mid a_{t-1})</dt-math> are
+<p>Let's assume that the transition probabilities <dt-math>p(a_t \mid a_{t-1})</dt-math> are
 uniform. This gives
 <dt-math block>
-p(X) \propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(x_t \mid a_t).
+p(X) \enspace \propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(x_t \mid a_t).
 </dt-math>
 This equation is starting to resemble the CTC loss function from above. In fact
 there are only two differences. The first is that we are learning a model of
@@ -857,15 +857,15 @@ there are only two differences. The first is that we are learning a model of
 To do this, we apply Bayes’ rule and rewrite the model as 
 <dt-math block>
 \begin{aligned}
-p(X) &\propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T \frac{p(a_t \mid x_t)p(x_t)}{p(a_t)} \\
-&\propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T \frac{p(a_t \mid x_t)}{p(a_t)}. 
+p(X) \enspace &\propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)\; p(x_t)}{p(a_t)} \\
+&\propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)}{p(a_t)}. 
 \end{aligned}
 </dt-math></p>
 
 <p>If we assume a uniform prior over the states <dt-math>a</dt-math> and condition on all of
 <dt-math>X</dt-math> instead of a single element at a time, we arrive at 
 <dt-math block>
-p(X) \propto \sum_{A \in \mathcal{A}} \prod_{t=1}^T p(a_t \mid X). 
+p(X) \enspace \propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X). 
 </dt-math></p>
 
 <p>The above equation is essentially the CTC loss function, assuming the set
@@ -936,8 +936,8 @@ distribution over the output space <dt-math>\mathcal{Y}</dt-math>. We can write 
 
 <dt-math block>
 \begin{aligned}
-h &= \textsf{encode}(X) \\
-p(Y \mid X) &= \textsf{decode}(h).
+h\enspace &= \enspace\textsf{encode}(X) \\
+p(Y \mid X)\enspace &= \enspace \textsf{decode}(h).
 \end{aligned}
 </dt-math>
 

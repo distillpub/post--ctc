@@ -340,29 +340,28 @@ of <dt-math>X</dt-math> to <dt-math>Y</dt-math> is many-to-one. Many input eleme
 output element but not vice-versa.</p>
 
 <h3 id="loss-function">Loss Function</h3>
-<p>With the alignment setup, we can write down the CTC objective
+<p style="margin-bottom:0px;">With the alignment setup, we can write down the CTC objective
 function for a single <dt-math>(X, Y)</dt-math> pair.</p>
-
-<figure style="width:600px;height:80px;margin-top:0px;">
-  <span style="position:absolute; left:30px; top:0px">
-    <dt-math>p(Y \mid X)</dt-math>
+<figure style="width:600px;height:120px;margin-top:0px;">
+  <span style="position:absolute; left:30px; top:24px">
+    <dt-math block>p(Y \mid X)</dt-math>
   </span>
-  <figcaption style="position:absolute; left:30px; top:50px; width:150px;">
+  <figcaption style="position:absolute; left:30px; top:100px; width:150px;">
   The CTC conditional <strong>probability</strong>
   </figcaption>
-  <span style="position:absolute; left:170px; top:0px">
-    <dt-math>=</dt-math>
+  <span style="position:absolute; left:170px; top:24px">
+    <dt-math block>=</dt-math>
   </span>
-  <span style="position:absolute; left:220px; top:0px">
-    <dt-math>\sum_{A \in \mathcal{A}}</dt-math>
+  <span style="position:absolute; left:220px; top:18px">
+    <dt-math block>\sum_{A \in \mathcal{A}}</dt-math>
   </span>
-  <figcaption style="position:absolute; left:220px; top:50px; width:150px;">
+  <figcaption style="position:absolute; left:220px; top:100px; width:150px;">
   <strong>marginalizes</strong> over the set of valid alignments 
   </figcaption>
-  <span style="position:absolute; left:420px; top:0px">
-    <dt-math>\prod_{t=1}^T p_t(a_t \mid X)</dt-math>
-  </span>
-  <figcaption style="position:absolute; left:420px; top:50px; width:200px;">
+  <div style="position:absolute; left:420px; top:0px;">
+    <dt-math block>\prod_{t=1}^T p_t(a_t \mid X)</dt-math>
+  </div>
+  <figcaption style="position:absolute; left:420px; top:100px; width:200px;">
   computing the <strong>probability</strong> for a single alignment step-by-step.
   </figcaption>
 </figure>
@@ -375,9 +374,9 @@ input <dt-math>X</dt-math>.</p>
 
 <figure style="width:550px; height:380px;">
   <figcaption>
-  <div style="position:absolute; top:10px; width: 200px;">
+  <div style="position:absolute; top:10px; width: 190px;">
     The function <dt-math>p_t(a \mid X)</dt-math> 
-    is a distribution over the alphabet
+    is a distribution over the outputs 
     {h, e, l, o, <dt-math>\epsilon</dt-math>} for
     each input step.
   </div>
@@ -782,7 +781,7 @@ understand what exactly CTC does that couldn’t be done before. Putting CTC in
 this context will also allow us to understand how it can be changed and
 potentially improved for various use cases.</p>
 
-<p>We’ll use the same notation from before, <dt-math>X</dt-math> is the input sequence and <dt-math>Y</dt-math>
+<p style="margin-bottom:0px">We’ll use the same notation from before, <dt-math>X</dt-math> is the input sequence and <dt-math>Y</dt-math>
 is the output sequence with lengths <dt-math>T</dt-math> and <dt-math>U</dt-math> respectively. Like before
 we’re interested in finding a “good” model for <dt-math>p(Y \mid X)</dt-math>. One way to
 simplify the modeling problem is to transform this probability with Bayes’ Rule
@@ -802,38 +801,38 @@ To simplify notation, let’s remove the conditioning on <dt-math>Y</dt-math>, i
 unchanging in every <dt-math>p(\cdot)</dt-math>. Using the HMM assumptions we can
 write</p>
 
-<figure style="width:650px;height:100px;">
+<figure style="width:650px;height:120px;margin-top:0px;">
   <figcaption>
-    <div style="position:absolute; left:10px; top:50px; width:120px;">
+    <div style="position:absolute; left:10px; top:105px; width:120px;">
       The probability of the <em>input</em> 
     </div>
-    <div style="position:absolute; left:180px; top:50px; width:170px;">
+    <div style="position:absolute; left:180px; top:105px; width:150px;">
       marginalizes over alignments
     </div>
-    <div style="position:absolute; left:350px; top:50px; width:120px;">
+    <div style="position:absolute; left:350px; top:105px; width:120px;">
       the emission probability 
     </div>
-    <div style="position:absolute; left:500px; top:50px; width:150px;">
+    <div style="position:absolute; left:500px; top:105px; width:150px;">
       and the transition probability. 
     </div>
   </figcaption>
-<span style="position:absolute; left:20px;">
-  <dt-math>p(X)</dt-math>
+<span style="position:absolute; left:20px; top:20px;">
+  <dt-math block>p(X)</dt-math>
 </span>
-<span style="position:absolute; left:120px;">
-  <dt-math>=</dt-math>
+<span style="position:absolute; left:120px; top:20px;">
+  <dt-math block>=</dt-math>
 </span>
 <span style="position:absolute; left:180px;">
-  <dt-math>\sum_{A \in \mathcal{A}} \; \prod_{t=1}^T</dt-math>
+  <dt-math block>\sum_{A \in \mathcal{A}} \; \prod_{t=1}^T</dt-math>
 </span>
-<span style="position:absolute; left:350px;">
-  <dt-math>p(x_t \mid a_t)</dt-math>
+<span style="position:absolute; left:350px; top:20px;">
+  <dt-math block>p(x_t \mid a_t)</dt-math>
 </span>
-<span style="position:absolute; left:465px;">
-    <dt-math>\cdot</dt-math>
+<span style="position:absolute; left:465px; top:20px;">
+    <dt-math block>\cdot</dt-math>
 </span>
-<span style="position:absolute; left:500px;">
-  <dt-math>p(a_t \mid a_{t-1})</dt-math>
+<span style="position:absolute; left:500px; top:20px;">
+  <dt-math block>p(a_t \mid a_{t-1})</dt-math>
 </span>
 
 </figure>

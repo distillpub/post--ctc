@@ -340,8 +340,35 @@ of <dt-math>X</dt-math> to <dt-math>Y</dt-math> is many-to-one. Many input eleme
 output element but not vice-versa.</p>
 
 <h3 id="loss-function">Loss Function</h3>
-<p style="margin-bottom:0px;">With the alignment setup, we can write down the CTC objective
-function for a single <dt-math>(X, Y)</dt-math> pair.</p>
+
+<p>The CTC alignments give us a natural way to go from probabilities at each
+time-step to the probability of an output sequence.</p>
+
+<figure style="width:550px; height:380px;">
+  <figcaption>
+  <div style="position:absolute; top:10px; width: 190px;">
+    The function <dt-math>p_t(a \mid X)</dt-math> 
+    is a distribution over the outputs 
+    {h, e, l, o, <dt-math>\epsilon</dt-math>} for
+    each input step.
+  </div>
+  <div style="position:absolute; top:180px; width: 200px;">
+    From the step-by-step distribution over the alphabet, we can compute the
+    probability of different sequences. 
+  </div>
+  <div style="position:absolute; top:310px; width: 200px;">
+    By marginalizaing over the alignments, we get a distribution over outputs.
+  </div>
+  </figcaption>
+  <div style="width:300px; position:absolute; left: 230px;">
+  <img src="assets/ctc_distribution.svg" />
+  </div>
+</figure>
+
+
+<p style="margin-bottom:0px;">To be precise, the CTC objective
+function for a single <dt-math>(X, Y)</dt-math> pair is:</p>
+
 <figure style="width:600px;height:120px;margin-top:0px;">
   <span style="position:absolute; left:30px; top:24px">
     <dt-math block>p(Y \mid X)</dt-math>
@@ -366,47 +393,36 @@ function for a single <dt-math>(X, Y)</dt-math> pair.</p>
   </figcaption>
 </figure>
 
-<p>Recall <dt-math>\mathcal{A}</dt-math> is the set of alignments of <dt-math>Y</dt-math> to <dt-math>X</dt-math> allowed by
-CTC. The element <dt-math>A = [a_1, \ldots, a_T]</dt-math> is a member of <dt-math>\mathcal{A}</dt-math>. The
-function <dt-math>p_t(a_t \mid X)</dt-math> can be any function which produces a distribution
-for each input time-step <dt-math>t</dt-math> over the output alphabet given the full
-input <dt-math>X</dt-math>.</p>
+<p>If we aren't careful, the CTC loss can be very expensive to compute. We
+could try the straighforward approach and compute the score for each alignment
+summing them all up as we go. The problem is there can be a massive number of
+alignments.
+<dt-fn>
+  For a <dt-math>Y</dt-math> of length <dt-math>U</dt-math> without any repeat
+  characters and an <dt-math>X</dt-math> of length <dt-math>T</dt-math> the size
+  of the set is <dt-math>{T + U \choose T - U}</dt-math>. For <dt-math>T=100</dt-math> and
+  <dt-math>U=50</dt-math> this number is almost <dt-math>10^{40}</dt-math>.
+</dt-fn>
+For most practical problems this would be too slow.</p>
 
-<figure style="width:550px; height:380px;">
-  <figcaption>
-  <div style="position:absolute; top:10px; width: 190px;">
-    The function <dt-math>p_t(a \mid X)</dt-math> 
-    is a distribution over the outputs 
-    {h, e, l, o, <dt-math>\epsilon</dt-math>} for
-    each input step.
+<p>Thankfully, we can compute the loss much faster with a dynamic programming
+algorithm. The key insight is that if two alignments have reached the same
+output at the same step then we can merge them.</p>
+
+<figure style="height:140px;width:600px;">
+  <div style="position:absolute;left:30px;">
+  <img src="assets/all_alignments.svg" style="width:250px" />
   </div>
-  <div style="position:absolute; top:180px; width: 200px;">
-    From the step-by-step distribution over the alphabet, we can compute the
-    probability of different sequences. 
+  <div style="position:absolute;left:350px;top:0px;">
+  <img src="assets/shared_alignments.svg" style="width:250px" />
   </div>
-  <div style="position:absolute; top:310px; width: 200px;">
-    By marginalizaing over the alignments, we get a distribution over outputs.
-  </div>
+  <figcaption style="position:absolute;left:30px;top:120px;width:200px;">
+  Summing over all alignments can be very expensive.
   </figcaption>
-  <div style="width:300px; position:absolute; left: 230px;">
-  <img src="assets/ctc_distribution.svg" />
-  </div>
+  <figcaption style="position:absolute;top:120px;left:350px;width:250px;">
+  Dynamic programming merges alignments making things linear. 
+  </figcaption>
 </figure>
-
-<p>The hard part of the CTC loss is not understanding what it is, but computing
-it efficiently. The set <dt-math>\mathcal{A}</dt-math> can be
-<em>very</em> large.<dt-fn>For a <dt-math>Y</dt-math> of length
-<dt-math>U</dt-math> without any repeat characters and an
-<dt-math>X</dt-math> of length <dt-math>T</dt-math> the size of the set is <dt-math>{T +
-U \choose T - U}</dt-math>. For <dt-math>T=100</dt-math> and
-<dt-math>U=50</dt-math> this number is almost
-<dt-math>10^{40}</dt-math>.</dt-fn> For most practical problems, we can’t
-delineate the elements of <dt-math>\mathcal{A}</dt-math> to
-compute the sum above.</p>
-
-<p>Instead, we can compute the CTC loss both exactly and efficiently with a
-dynamic programming algorithm. Like any dynamic programming algorithm, the key
-is recognizing the subproblems.</p>
 
 <p>To simplify the problem, let the sequence
 <dt-math block>
@@ -530,12 +546,12 @@ the entire loss function is differentiable. This is true since computing
 <dt-math>p(Y \mid X)</dt-math> simply consists of sums and
 products of the <dt-math>p_t(z \mid X)</dt-math>.</p>
 
-<p>The time complexity of this dynamic programming algorithm is <dt-math>O(TU)</dt-math> with a
-fairly small constant. Conveniently, the time to compute the loss function does
-not depend at all on the size of the output alphabet.</p>
+<p>The time complexity of the algorithm is <dt-math>O(TU)</dt-math> with a
+fairly small constant. Notice also that this does not depend at all on the size
+of the output alphabet.</p>
 
-<p>For a training set <dt-math>\mathcal{D}</dt-math>, the parameters of a model are tuned to
-minimize the negative log-likelihood
+<p>For a training set <dt-math>\mathcal{D}</dt-math>, the parameters of a model
+are tuned to minimize the negative log-likelihood
 <dt-math block>
 \sum_{(X, Y) \in \mathcal{D}} -\log\; p(Y \mid X)
 </dt-math>
@@ -543,37 +559,37 @@ instead of maximizing the likelihood directly.</p>
 
 <h3 id="inference">Inference</h3>
 
-<p>We can find the most likely output by solving
+<p>With a good model of the conditional distribution, we want
+to find a likely output given an input. More precisely, we need to solve</p>
 <dt-math block>
-Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} \quad p(Y \mid X).
+Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} \enspace p(Y \mid X).
 </dt-math>
 
-<p>One way to approximate this is to take the most likely output at each
-time-step. This gives us the alignment with the highest probability:
+<p>One heuristic is to take the most likely output at each time-step. This
+gives us the alignment with the highest probability:
 
 <dt-math block>
-A^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{A\in\mathcal{A}}} \quad  \prod_{t=1}^{T} \; p_t(a_t \mid X)
+A^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{A\in\mathcal{A}}} \enspace  \prod_{t=1}^{T} \; p_t(a_t \mid X)
 </dt-math>
 
 We can then collapse repeats and remove <dt-math>\epsilon</dt-math>
 tokens to produce <dt-math>Y</dt-math>.</p>
 
-<p>For most applications this simple algorithm works well. This is because 
-most of the probability mass is given to a single alignment. However, this
-method is not guaranteed to find the most likely <dt-math>Y</dt-math>.
-The problem is multiple alignments can map to the same <dt-math>Y</dt-math>.</p>
+<p>For many applications this heuristic works well, especially when 
+most of the probability mass is given to a single alignment. But, we 
+aren't guaranteed to find the most likely output sequence. The problem
+is multiple alignments can collapse to the same <dt-math>Y</dt-math>.</p>
 
-<p>As an example, assume the alignments [a, a, <dt-math>\epsilon</dt-math>]
-and [a, a, a] individually have lower probability than [b, b, b]. However,
-the sum of their probabilities is greater than that of [b, b, b]. The beam
+<p>Here's an example. Assume the alignments [a, a, <dt-math>\epsilon</dt-math>]
+and [a, a, a] individually have lower probability than [b, b, b]. But 
+the sum of their probabilities is actually greater than that of [b, b, b]. The beam
 search will incorrectly propose <dt-math>Y =</dt-math> [b] as
-the most likely hypothesis. It should have chosen
-<dt-math>Y =</dt-math> [a]. The algorithm needs to account for
-the fact that [a, a, a] and [a, a, <dt-math>\epsilon</dt-math>]
-map to the same output.</p>
+the most likely hypothesis. It should have chosen <dt-math>Y =</dt-math> [a].
+The algorithm should account for the fact that [a, a, a] and
+[a, a, <dt-math>\epsilon</dt-math>] collapse to the same output.</p>
 
 <p>We can solve this problem with a modified beam search. Given limited 
-computation, the modified beam search is not guaranteed to find the
+computation, the modified beam search is also not guaranteed to find the
 most likely <dt-math>Y</dt-math>. It does, at least, have
 the desirable property that we can trade-off more computation
 (a larger beam-size) for an asymptotically better solution.</p>
@@ -595,10 +611,8 @@ extending each hypothesis with all possible output characters.</p>
 <p>We can modify the vanilla beam search to handle multiple alignments mapping to
 the same output. In this case instead of keeping a list of alignments in the
 beam, we store the output prefixes after collapsing repeats and removing
-<dt-math>\epsilon</dt-math> characters. At each step of the search we accumulate scores for a
-given prefix based on all the alignments which map to it. The image below
-displays steps two, three and four of the algorithm. The dashed lines indicate
-the output prefix that the proposed extension maps to.</p>
+<dt-math>\epsilon</dt-math> characters. At each step of the search we accumulate
+scores for a given prefix based on all the alignments which map to it.</p>
 
 <figure class="l-body" style="width:900px;">
   <embed src="assets/prefix_beam_search.svg"/>
@@ -613,68 +627,69 @@ the output prefix that the proposed extension maps to.</p>
 repeat. This is shown at <dt-math>T=3</dt-math> in the figure above
 where ‘a’ is proposed as an extension to the prefix [a]. Both [a] and [a, a] are
 valid outputs for this proposed extension.</p>
+
+<p>When we extend [a] to produce [a,a], we only want include the part of the
+previous score for alignments which end in <dt-math>\epsilon</dt-math>. Remember, the
+<dt-math>\epsilon</dt-math> is required between repeat characters. Similarly,
+when we don’t extend the prefix and produce [a], we should only include the part
+of the previous score for alignments which don’t end in <dt-math>\epsilon</dt-math>.</p>
+
+<p>Given this, we have to keep track of two probabilities for each prefix
+in the beam. The probability of all alignments which end in
+<dt-math>\epsilon</dt-math> and the probability of all alignments which don’t
+end in <dt-math>\epsilon</dt-math>. When we rank the hypotheses at
+each step before pruning the beam, we'll use their combined scores.</p>
+
 <figure class="l-body" style="width:900px;">
   <embed src="assets/prefix_beam_search_single.svg"/>
 </figure>
 
-
-<p>For the [a,a] case we should only include the part of the
-score of the previous prefix for alignments which end in <dt-math>\epsilon</dt-math>. This is
-because <dt-math>\epsilon</dt-math> must be between consecutive repeat characters. For the [a]
-case, where we don’t extend the prefix, we should only consider the part of the
-score of the previous prefix for alignments which don’t end in <dt-math>\epsilon</dt-math>.</p>
-
-<p>Given this, it’s necessary to keep track of two probabilities for each prefix
-in the beam. The probability of all alignments which end in <dt-math>\epsilon</dt-math> and
-the probability of all alignments which don’t end in <dt-math>\epsilon</dt-math>. Note that
-when we rank the hypotheses at each step before pruning the beam, we should
-rank by the combined score.</p>
-
-<p>The implementation of this algorithm does not require much code. The code is,
-however, dense and tricky to get right. Refer to this <a href="https://gist.github.com/awni/56369a90d03953e370f3964c826ed4b0">gist</a> for
-an example implementation in Python.</p>
+<p>The implementation of this algorithm doesn't require much code, but it is
+dense and tricky to get right. Checkout this <a href="https://gist.github.com/awni/56369a90d03953e370f3964c826ed4b0">gist</a> for an example implementation in Python.</p>
 
 <p>In some problems, such as speech recognition, incorporating a language model
-over the outputs significantly improves accuracy. To do this, we can
-repose the inference problem.</p>
+over the outputs significantly improves accuracy. We can include the language
+model as a factor in the inference problem.</p>
 
-<figure style="width:600px;height:80px;margin-top:0px;">
-  <span style="position:absolute; left:0px; top:0px">
+<figure style="height:80px;margin-top:0px;">
+  <span style="position:absolute; left:40px; top:0px">
     <dt-math>Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} <dt-math>
   </span>
-  <span style="position:absolute; left:190px; top:0px">
+  <span style="position:absolute; left:230px; top:0px">
     <dt-math>p(Y \mid X)</dt-math>
   </span>
-  <figcaption style="position:absolute; left:190px; top:50px; width:130px">
+  <figcaption style="position:absolute; left:230px; top:50px; width:130px">
   The CTC conditional probability.
   </figcaption>
-  <span style="position:absolute; left:310px; top:0px">
+  <span style="position:absolute; left:350px; top:0px">
     <dt-math>\cdot</dt-math>
   </span>
-  <span style="position:absolute; left:350px; top:0px">
+  <span style="position:absolute; left:390px; top:0px">
     <dt-math>p(Y)^\alpha</dt-math>
   </span>
-  <figcaption style="position:absolute; left:350px; top:50px; width:120px">
+  <figcaption style="position:absolute; left:390px; top:50px; width:120px">
   The language model probability.
   </figcaption>
-  <span style="position:absolute; left:450px; top:0px">
+  <span style="position:absolute; left:490px; top:0px">
     <dt-math>\cdot</dt-math>
   </span>
-  <span style="position:absolute; left:500px; top:0px">
+  <span style="position:absolute; left:540px; top:0px">
     <dt-math>L(Y)^\beta</dt-math>
   </span>
-  <figcaption style="position:absolute; left:500px; top:50px; width:100px">
+  <figcaption style="position:absolute; left:540px; top:50px; width:100px">
   The "word" insertion bonus.
   </figcaption>
 </figure>
 
-<p>The function <dt-math>L(\cdot)</dt-math> computes the length of <dt-math>Y</dt-math> in terms of the language
+<p>The function <dt-math>L(\cdot)</dt-math> computes the length of
+<dt-math>Y</dt-math> in terms of the language
 model tokens and serves as a word insertion bonus. The language model scores
 are only included when a prefix is extended by a character (or word) and not at
 every step of the algorithm. This causes the search to favor shorter prefixes,
-as measured by <dt-math>L(\cdot)</dt-math>, since they do not have many language model
-updates. The insertion bonus helps with this. The parameters <dt-math>\alpha</dt-math> and
-<dt-math>\beta</dt-math> are usually set by cross-validation.</p>
+as measured by <dt-math>L(\cdot)</dt-math>, since they don't include many
+language model updates. The word insertion bonus helps with this. The parameters
+<dt-math>\alpha</dt-math> and <dt-math>\beta</dt-math> are usually set by
+cross-validation.</p>
 
 <hr />
 <h2 id="properties-of-ctc">Properties of CTC</h2>
@@ -728,7 +743,7 @@ them. In some problems CTC ends up allocating most of the probability to a
 single alignment. However, this isn't guaranteed. We can force the model to
 choose a single alignment by replacing the sum with a max in the objective function,
 <dt-math block>
-p(Y \mid X) \enspace = \enspace \max_{A \in \mathcal{A}} \quad \prod_{t=1}^T \; p(a_t \mid X).
+p(Y \mid X) \enspace = \enspace \max_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X).
 </dt-math></p>
 
 <p>As mentioned before, CTC only allows <em>strictly monotonic</em> alignments. In
@@ -856,7 +871,7 @@ there are only two differences. The first is that we are learning a model of
 To do this, we apply Bayes’ rule and rewrite the model as 
 <dt-math block>
 \begin{aligned}
-p(X) \enspace &\propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)\; p(x_t)}{p(a_t)} \\
+p(X) \enspace &\propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)\; p(x_t)}{p(a_t)} \\[1.6em]
 &\propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)}{p(a_t)}. 
 \end{aligned}
 </dt-math></p>
@@ -935,7 +950,7 @@ distribution over the output space <dt-math>\mathcal{Y}</dt-math>. We can write 
 
 <dt-math block>
 \begin{aligned}
-h\enspace &= \enspace\textsf{encode}(X) \\
+h\enspace &= \enspace\textsf{encode}(X) \\[.5em]
 p(Y \mid X)\enspace &= \enspace \textsf{decode}(h).
 \end{aligned}
 </dt-math>
@@ -1070,8 +1085,8 @@ applications to speech recognition see Rabiner’s canonical tutorial.
 <dt-cite key="Rabiner1989"></dt-cite></p>
 
 <p>Encoder-decoder models were developed in 2014.
-<dt-cite key="Cho2014,Sutskever2014"></dt-cite> The online publication
-<em>Distill</em> gives an in-depth guide to attention in encoder-decoder
+<dt-cite key="Cho2014,Sutskever2014"></dt-cite> <em>Distill</em> has an
+in-depth guide to attention in encoder-decoder
 models.<dt-cite key="Olah2016"></dt-cite></p>
 
 </dt-article>

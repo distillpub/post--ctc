@@ -380,7 +380,7 @@ function for a single <dt-math>(X, Y)</dt-math> pair is:</p>
     <dt-math block>=</dt-math>
   </span>
   <span style="position:absolute; left:220px; top:18px">
-    <dt-math block>\sum_{A \in \mathcal{A}}</dt-math>
+    <dt-math block>\sum_{A \in \mathcal{A}_{X,Y}}</dt-math>
   </span>
   <figcaption style="position:absolute; left:220px; top:100px; width:150px;">
   <strong>marginalizes</strong> over the set of valid alignments 
@@ -409,30 +409,30 @@ For most practical problems this would be too slow.</p>
 algorithm. The key insight is that if two alignments have reached the same
 output at the same step then we can merge them.</p>
 
-<figure style="height:140px;width:600px;">
+<figure style="height:200px;width:650px;">
   <div style="position:absolute;left:30px;">
   <img src="assets/all_alignments.svg" style="width:250px" />
   </div>
   <div style="position:absolute;left:350px;top:0px;">
-  <img src="assets/shared_alignments.svg" style="width:250px" />
+  <img src="assets/merged_alignments.svg" style="width:250px" />
   </div>
-  <figcaption style="position:absolute;left:30px;top:120px;width:200px;">
+  <figcaption style="position:absolute;left:30px;top:170px;width:200px;">
   Summing over all alignments can be very expensive.
   </figcaption>
-  <figcaption style="position:absolute;top:120px;left:350px;width:250px;">
-  Dynamic programming merges alignments making things linear. 
+  <figcaption style="position:absolute;top:170px;left:350px;width:250px;">
+  Dynamic programming merges alignments, so it's much faster.
   </figcaption>
 </figure>
 
-<p>To simplify the problem, let the sequence
+<p>To make the CTC algorithm easier to describe, let's work with the sequence
 <dt-math block>
 Z \enspace=\enspace [z_{1}, \ldots, z_{2U+1}] \enspace=\enspace [\epsilon, y_1, \epsilon, y_2, \ldots, \epsilon, y_U, \epsilon]
 </dt-math>
-consist of the elements of <dt-math>Y</dt-math> with an
-<dt-math>\epsilon</dt-math> at the beginning, end, and between
-every character. Let <dt-math>\alpha_{s, t}</dt-math> be the
-CTC score of the subsequence <dt-math>Z_{1:s}</dt-math>
-after <dt-math>t</dt-math> input steps. We can compute
+It's just <dt-math>Y</dt-math> with an <dt-math>\epsilon</dt-math> at
+the beginning, end, and between every character.
+Let <dt-math>\alpha_{s, t}</dt-math> be the CTC score of the subsequence
+<dt-math>Z_{1:s}</dt-math> after <dt-math>t</dt-math> input steps. We can
+compute
 <dt-math>\alpha_{s, t}</dt-math> if we know the values
 <dt-math>\alpha_{\lt s, \lt t}</dt-math>. There are three cases.</p>
 
@@ -487,10 +487,10 @@ between repeat characters. The update equation is the same as in Case 1.</p>
   <img src="assets/cost_regular.svg" />
 </figure>
 <p><strong>Case 3:</strong></p>
-<p>If we aren’t in the first two cases, then we’re in the third case. We have
-this case because an <dt-math>\epsilon</dt-math> between unique
+<p>If we aren’t in the first two cases, then we’re in the third case.
+This case handles the fact that an <dt-math>\epsilon</dt-math> between unique
 characters of <dt-math>Y</dt-math> is optional.</p>
-<figure style="height:190px;margin-top:60px;">
+<figure style="height:90px;margin-top:60px;">
   <span style="position:absolute; left:30px">
     <dt-math>\alpha_{s, t}\; = \;(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</dt-math>
   </span>
@@ -510,7 +510,6 @@ characters of <dt-math>Y</dt-math> is optional.</p>
 </figure>
 </p>
 </div>
-
 
 <p>Below is an example of the computation performed by the dynamic programming
 algorithm.</p>
@@ -540,11 +539,10 @@ p(Y \mid X) \; = \; \alpha_{S, T}\; + \; \alpha_{S-1, T}
 </dt-math>
 where <dt-math>S = 2U + 1</dt-math>.</p>
 
-<p>As long as the individual output model
-<dt-math>p_t(z \mid X)</dt-math> is differentiable then
-the entire loss function is differentiable. This is true since computing
-<dt-math>p(Y \mid X)</dt-math> simply consists of sums and
-products of the <dt-math>p_t(z \mid X)</dt-math>.</p>
+<p>Computing the loss function just requires sums and products of the
+individual output distribution <dt-math>p_t(z \mid X)</dt-math>. So as long as 
+<dt-math>p_t(z \mid X)</dt-math> is differentiable, the entire loss function
+will be differentiable.</p>
 
 <p>The time complexity of the algorithm is <dt-math>O(TU)</dt-math> with a
 fairly small constant. Notice also that this does not depend at all on the size
@@ -789,32 +787,35 @@ algorithms for sequence transduction.</p>
 <p><em>This section requires some familiarity with the HMM and is not critical to
 understanding the CTC algorithm. Feel free to skip it on a first read.</em></p>
 
-<p>At a first glance a Hidden Markov Model (HMM) based sequence transducer does
-not closely resemble a CTC model. However, the two algorithms have many
-similarities. Understanding the relationship between the two models helps to
-understand what exactly CTC does that couldn’t be done before. Putting CTC in
-this context will also allow us to understand how it can be changed and
-potentially improved for various use cases.</p>
+<p>At a first glance a Hidden Markov Model (HMM) doesn't closely resemble CTC.
+But, the two algorithms are actually quite similar. Understanding the
+relationship between them will help us understand what exactly CTC does that
+couldn’t be done before. Putting CTC in this context will also give us insight
+into how it can be changed and potentially improved for various use cases.</p>
 
-<p style="margin-bottom:0px">We’ll use the same notation from before, <dt-math>X</dt-math> is the input sequence and <dt-math>Y</dt-math>
-is the output sequence with lengths <dt-math>T</dt-math> and <dt-math>U</dt-math> respectively. Like before
-we’re interested in finding a “good” model for <dt-math>p(Y \mid X)</dt-math>. One way to
-simplify the modeling problem is to transform this probability with Bayes’ Rule
-and compute
+<p style="margin-bottom:0px">We’ll use the same notation as before,
+<dt-math>X</dt-math> is the input sequence and <dt-math>Y</dt-math>
+is the output sequence with lengths <dt-math>T</dt-math> and
+<dt-math>U</dt-math> respectively. Like before we're interested in learning
+<dt-math>p(Y \mid X)</dt-math>. One way to simplify the problem is to transform
+this probability with Bayes' Rule and compute
 <dt-math block>
 p(Y \mid X) \; \propto \; p(X \mid Y) \; p(Y).
 </dt-math>
-The <dt-math>p(Y)</dt-math> term is straight-forward to model with a language model, so let’s focus
-on <dt-math>p(X \mid Y)</dt-math>. Like before we’ll let <dt-math>\mathcal{A}</dt-math> be a set of allowed
-of alignments of <dt-math>Y</dt-math> to <dt-math>X</dt-math>. In this case members of <dt-math>\mathcal{A}</dt-math> have length <dt-math>T</dt-math>.
-Let’s otherwise leave <dt-math>\mathcal{A}</dt-math> unspecified for now. We’ll come back to
-it later. We can marginalize over <dt-math>\mathcal{A}</dt-math> to get
+
+The <dt-math>p(Y)</dt-math> term is straight-forward to model with a language
+model, so let's focus on <dt-math>p(X \mid Y)</dt-math>. Like before we'll
+let <dt-math>\mathcal{A}</dt-math> be a set of allowed of alignments of
+<dt-math>Y</dt-math> to <dt-math>X</dt-math>. Members of <dt-math>\mathcal{A}</dt-math>
+have length <dt-math>T</dt-math>.
+Let’s otherwise leave <dt-math>\mathcal{A}</dt-math> unspecified for now. We'll
+come back to it later. We can marginalize over <dt-math>\mathcal{A}</dt-math> to get
 <dt-math block>
 p(X \mid Y)\; = \; \sum_{A \in \mathcal{A}} \; p(X, A \mid Y).
 </dt-math>
-To simplify notation, let’s remove the conditioning on <dt-math>Y</dt-math>, it will be
-unchanging in every <dt-math>p(\cdot)</dt-math>. Using the HMM assumptions we can
-write</p>
+To simplify notation, let's remove the conditioning on <dt-math>Y</dt-math>,
+it will be present in every <dt-math>p(\cdot)</dt-math>. Using the HMM
+assumptions we can write</p>
 
 <figure style="width:650px;height:120px;margin-top:0px;">
   <figcaption>
@@ -853,16 +854,24 @@ write</p>
 </figure>
 
 <p>Two assumptions have been made here. The first is the usual Markov property.
-The state <dt-math>a_t</dt-math> is conditionally independent of all historical states given
-the previous state <dt-math>a_{t-1}</dt-math>. The second is that the observation <dt-math>x_t</dt-math> is
-conditionally independent of everything else given the current state <dt-math>a_t</dt-math>.</p>
+The state <dt-math>a_t</dt-math> is conditionally independent of all historical
+states given the previous state <dt-math>a_{t-1}</dt-math>. The second is that
+the observation <dt-math>x_t</dt-math> is conditionally independent of everything
+else given the current state <dt-math>a_t</dt-math>.</p>
+
+<figure style="width:300px;margin-top:0px;margin-bottom:0px;">
+  <img src="assets/hmm.svg" />
+  <figcaption style="text-align:center">
+  Graphical model for an HMM.
+  </figcaption>
+</figure>
 
 <p>Let's assume that the transition probabilities <dt-math>p(a_t \mid a_{t-1})</dt-math> are
 uniform. This gives
 <dt-math block>
 p(X) \enspace \propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(x_t \mid a_t).
 </dt-math>
-This equation is starting to resemble the CTC loss function from above. In fact
+This equation is starting to resemble the CTC loss function. In fact
 there are only two differences. The first is that we are learning a model of
 <dt-math>X</dt-math> given <dt-math>Y</dt-math> as opposed to <dt-math>Y</dt-math> given <dt-math>X</dt-math>. The second is how the set
 <dt-math>\mathcal{A}</dt-math> is produced. Let’s deal with each in turn.</p>

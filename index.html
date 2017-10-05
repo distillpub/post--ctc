@@ -409,17 +409,17 @@ For most practical problems this would be too slow.</p>
 algorithm. The key insight is that if two alignments have reached the same
 output at the same step then we can merge them.</p>
 
-<figure style="height:200px;width:650px;">
+<figure style="height:160px;width:650px;margin-top:0px">
   <div style="position:absolute;left:30px;">
-  <img src="assets/all_alignments.svg" style="width:250px" />
+  <img src="assets/all_alignments.svg" style="width:230px" />
   </div>
-  <div style="position:absolute;left:350px;top:0px;">
-  <img src="assets/merged_alignments.svg" style="width:250px" />
+  <div style="position:absolute;left:320px;top:0px;">
+  <img src="assets/merged_alignments.svg" style="width:230px" />
   </div>
-  <figcaption style="position:absolute;left:30px;top:170px;width:200px;">
+  <figcaption style="position:absolute;left:30px;top:150px;width:200px;">
   Summing over all alignments can be very expensive.
   </figcaption>
-  <figcaption style="position:absolute;top:170px;left:350px;width:250px;">
+  <figcaption style="position:absolute;top:150px;left:320px;width:200px;">
   Dynamic programming merges alignments, so it's much faster.
   </figcaption>
 </figure>
@@ -946,8 +946,12 @@ of the CTC state diagram as a special case HMM which works well for many
 problems of interest. Incorporating the blank as a hidden state in the HMM
 allows us to use the alphabet of <dt-math>Y</dt-math> as the other hidden states. This model
 also gives a set of allowed alignments which may be a good prior for some
-problems. Perhaps most importantly, CTC is discriminative as it models <dt-math>p(Y \mid X)</dt-math> directly. This allows us to train the model “end-to-end” and
-unleashes the capacity of powerful models like the RNN.</p>
+problems.</p>
+
+<p>Perhaps most importantly, CTC is discriminative. It models
+<dt-math>p(Y \mid X)</dt-math> directly. This allows us to train the model
+"end-to-end" and unleash the capacity of powerful learning algorithms
+like the RNN.</p>
 
 <h3 id="encoder-decoder-models">Encoder-Decoder Models</h3>
 

@@ -437,7 +437,7 @@ compute
 <dt-math>\alpha_{\lt s, \lt t}</dt-math>. There are three cases.</p>
 
 <div style="height:320px">
-<figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
+<figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:70px;">
   <img src="assets/cost_no_skip.svg" />
 </figure>
 <p><strong>Case 1 (<dt-math> z_{s} = \epsilon </dt-math>):</strong></p>
@@ -472,7 +472,7 @@ some previous input.
 </div>
 
 <div style="height:200px;">
-<figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
+<figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:70px;">
   <img src="assets/cost_repeat.svg" />
 </figure>
 <p><strong>Case 2 (<dt-math>z_{s} = z_{s-2}</dt-math>):</strong></p>
@@ -483,14 +483,14 @@ between repeat characters. The update equation is the same as in Case 1.</p>
 </div>
 
 <div style="height:300px;">
-<figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
+<figure style="width:130px;float:right;margin-top:0px;margin-bottom:0px; margin-left:70px;">
   <img src="assets/cost_regular.svg" />
 </figure>
 <p><strong>Case 3:</strong></p>
 <p>If we aren’t in the first two cases, then we’re in the third case.
 This case handles the fact that an <dt-math>\epsilon</dt-math> between unique
 characters of <dt-math>Y</dt-math> is optional.</p>
-<figure style="height:90px;margin-top:60px;">
+<figure style="height:90px;margin-top:50px;">
   <span style="position:absolute; left:30px">
     <dt-math>\alpha_{s, t}\; = \;(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</dt-math>
   </span>
@@ -725,8 +725,8 @@ probability. The conditional independence assumption does not allow for this.</p
 <figure style="width:500px;height:150px;margin-top:0px;">
   <img src="assets/triple_a.svg"/>
   <figcaption>
-  If we predict a 'A' as the first letter then the suffix 'AA' should have much
-  higher probability than 'riple A'. If we predict 't' first, the opposite
+  If we predict an 'A' as the first letter then the suffix 'AA' should get much
+  more probability than 'riple A'. If we predict 't' first, the opposite
   should be true.
 </figure>
 

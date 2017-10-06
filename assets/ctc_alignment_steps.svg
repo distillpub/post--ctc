@@ -65,16 +65,6 @@
   </sodipodi:namedview>
   <defs
      id="defs4">
-    <filter
-       inkscape:collect="always"
-       style="color-interpolation-filters:sRGB"
-       id="filter1011">
-      <feBlend
-         inkscape:collect="always"
-         mode="darken"
-         in2="BackgroundImage"
-         id="feBlend1013" />
-    </filter>
   </defs>
   <g
      id="g1077"
@@ -191,8 +181,7 @@
     </g>
     <g
        id="g949"
-       transform="translate(-6,132)"
-       style="filter:url(#filter1011)">
+       transform="translate(-6,132)">
       <g
          id="g867">
         <rect

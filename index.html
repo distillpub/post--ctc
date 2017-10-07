@@ -409,19 +409,19 @@ For most practical problems this would be too slow.</p>
 algorithm. The key insight is that if two alignments have reached the same
 output at the same step then we can merge them.</p>
 
-<figure style="height:160px;width:650px;margin-top:0px">
-  <div style="position:absolute;left:30px;">
-  <img src="assets/all_alignments.svg" style="width:230px" />
-  </div>
-  <div style="position:absolute;left:320px;top:0px;">
-  <img src="assets/merged_alignments.svg" style="width:230px" />
-  </div>
-  <figcaption style="position:absolute;left:30px;top:150px;width:200px;">
+<figure style="height:170px;width:620px;margin-top:0px">
+  <div style="position:absolute;">
+  <img src="assets/all_alignments.svg" style="width:280px" />
+  <figcaption style="position:absolute;top:150px;width:200px;">
   Summing over all alignments can be very expensive.
   </figcaption>
-  <figcaption style="position:absolute;top:150px;left:320px;width:200px;">
+  </div>
+  <div style="position:absolute;left:340px;top:0px;">
+  <img src="assets/merged_alignments.svg" style="width:280px" />
+  <figcaption style="position:absolute;top:150px;width:200px;">
   Dynamic programming merges alignments, so it's much faster.
   </figcaption>
+  </div>
 </figure>
 
 <p>To make the CTC algorithm easier to describe, let's work with the sequence
@@ -916,7 +916,7 @@ same alphabet as before and <dt-math>Y =</dt-math> [a, b]. Another commonly used
 <em>Bakis</em> or left-right HMM. In this model any transition which proceeds from the
 left to the right is allowed.</p>
 
-<figure style="height:190px;margin-top:0px;">
+<figure style="height:190px;width:730px;margin-top:0px;">
   <div style="position:absolute;">
   <img src="assets/ergodic_hmm.svg" style="margin-left:20px;width:110px;" />
   <figcaption style="width:160px;">

@@ -184,7 +184,7 @@ for any <dt-math>X</dt-math> following the model <dt-math>p(Y \mid X)</dt-math>.
 This means solving 
 
 <dt-math block>
-  Y^* \enspace =\enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} \quad p(Y \mid X).
+  Y^* \enspace =\enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} \enspace p(Y \mid X).
 </dt-math>
 
 Ideally <dt-math>Y^*</dt-math> can be found efficiently. With CTC we’ll
@@ -376,19 +376,19 @@ function for a single <dt-math>(X, Y)</dt-math> pair is:</p>
   <figcaption style="position:absolute; left:30px; top:100px; width:150px;">
   The CTC conditional <strong>probability</strong>
   </figcaption>
-  <span style="position:absolute; left:170px; top:24px">
+  <span style="position:absolute; left:160px; top:24px">
     <dt-math block>=</dt-math>
   </span>
-  <span style="position:absolute; left:220px; top:18px">
+  <span style="position:absolute; left:200px; top:18px">
     <dt-math block>\sum_{A \in \mathcal{A}_{X,Y}}</dt-math>
   </span>
-  <figcaption style="position:absolute; left:220px; top:100px; width:150px;">
+  <figcaption style="position:absolute; left:200px; top:100px; width:150px;">
   <strong>marginalizes</strong> over the set of valid alignments 
   </figcaption>
-  <div style="position:absolute; left:420px; top:0px;">
+  <div style="position:absolute; left:390px; top:0px;">
     <dt-math block>\prod_{t=1}^T p_t(a_t \mid X)</dt-math>
   </div>
-  <figcaption style="position:absolute; left:420px; top:100px; width:200px;">
+  <figcaption style="position:absolute; left:390px; top:100px; width:200px;">
   computing the <strong>probability</strong> for a single alignment step-by-step.
   </figcaption>
 </figure>

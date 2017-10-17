@@ -7,8 +7,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   height="130.51682"
-   width="364.51682"
+   height="110.5209"
+   width="344.51682"
    id="svg"
    version="1.1"
    sodipodi:docname="valid_invalid_alignments.svg"
@@ -22,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -40,30 +40,30 @@
      id="namedview11"
      showgrid="false"
      inkscape:zoom="2.38396"
-     inkscape:cx="173.07388"
-     inkscape:cy="50.245228"
+     inkscape:cx="79.179855"
+     inkscape:cy="40.249308"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g1021"
+     inkscape:current-layer="svg"
      showguides="true"
      inkscape:guide-bbox="true"
-     fit-margin-top="10"
-     fit-margin-right="10"
-     fit-margin-bottom="10"
-     fit-margin-left="10">
+     fit-margin-top="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     fit-margin-left="0">
     <sodipodi:guide
-       position="249.37499,83.805282"
+       position="239.37499,73.809362"
        orientation="1,0"
        id="guide908"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="307.88135,24.692796"
+       position="297.88135,14.696876"
        orientation="1,0"
        id="guide1256"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="169.46593,14.681454"
+       position="159.46593,4.6855341"
        orientation="0,1"
        id="guide954"
        inkscape:locked="false" />
@@ -72,7 +72,7 @@
      id="defs4" />
   <g
      id="g1077"
-     transform="translate(6)">
+     transform="translate(-4,-10)">
     <g
        transform="translate(-6,88)"
        id="g1003">

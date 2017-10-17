@@ -285,10 +285,10 @@ This allows us to differentiate between alignments of [c, a, t] and
 
 <figure style="width:500px; height:150px; margin-top:0px;">
   <figcaption>
-  <div style="position:absolute; left: 13px; top:0px; width: 150px;">
+  <div style="position:absolute; top:0px; width: 150px;">
     <strong>Valid Alignments</strong>
   </div>
-  <div style="position:absolute; left: 233px; top:0px; width: 150px;">
+  <div style="position:absolute; left: 235px; top:0px; width: 150px;">
     <strong>Invalid Alignments</strong>
   </div>
   <div style="position:absolute; left: 420px; top:30px; width: 100px;">
@@ -301,33 +301,30 @@ This allows us to differentiate between alignments of [c, a, t] and
     missing the 'a'
   </div>
   </figcaption>
-  <div style="width:400px; position:absolute; left: 0px; top: 25px;">
+  <div style="width:400px; position:absolute; top: 35px;">
   <img src="assets/valid_invalid_alignments.svg" />
   </div>
 </figure>
 
-<p>A convenient way to visualize the alignment between
-<dt-math>X</dt-math> and <dt-math>Y</dt-math>
-is with a 2D alignment matrix. Below is an example for the
-[<dt-math>\epsilon</dt-math>, c, c,
-<dt-math>\epsilon</dt-math>, a, t] alignment. Sometimes it’s
-useful to include the <dt-math>\epsilon</dt-math>’s in the
-alignment matrix. Both are shown here. Note that some of
-the <dt-math>\epsilon</dt-math> tokens are left unaligned.
-They are optional since they don’t fall between consecutive repeat characters
-in <dt-math>Y</dt-math>.</p>
+<p>A convenient way to visualize the alignment between <dt-math>X</dt-math>
+and <dt-math>Y</dt-math> is with a 2D alignment matrix.</p>
 
-<figure style="height:350px;width:500px;">
-  <img style="width:350px;" src="assets/alignment_no_epsilon.svg" />
-  <div style="width:350px; position:absolute; top:140px;">
+<figure style="height:350px;width:600px;margin-top:0px;">
+  <div style="width:350px; position:absolute; left:240px;">
+    <img src="assets/alignment_no_epsilon.svg" />
+  </div>
+  <div style="width:350px; position:absolute; top:140px; left:240px;">
   <img src="assets/alignment_epsilon.svg" />
   </div>
-  <figcaption style="width:130px;position:absolute; left:350px; top:30px;">
-  The alignment matrix without the <dt-math>\epsilon</dt-math>
-  token.
+  <figcaption style="width:170px;position:absolute; top:60px;">
+  An alignment matrix for the [<dt-math>\epsilon</dt-math>, c, c,
+  <dt-math>\epsilon</dt-math>, a, t] alignment.
   </figcaption>
-  <figcaption style="width:150px;position:absolute; left:350px; top:170px;">
-  The alignment matrix including the <dt-math>\epsilon</dt-math> token.
+  <figcaption style="width:200px;position:absolute; top:200px;">
+  The alignment matrix including the <dt-math>\epsilon</dt-math> token. Note
+  that some of the <dt-math>\epsilon</dt-math> tokens are left unaligned. They
+  are optional since they don’t fall between consecutive repeat characters in
+  <dt-math>Y</dt-math>.
   </figcaption>
 </figure>
 
@@ -722,7 +719,7 @@ be “AAA”. If the first letter of the predicted transcription is ‘A’, the
 the next letter should be ‘A’ with high probability and 'r' with low
 probability. The conditional independence assumption does not allow for this.</p>
 
-<figure style="width:500px;height:150px;margin-top:0px;">
+<figure style="width:500px;height:160px;margin-top:0px;">
   <img src="assets/triple_a.svg"/>
   <figcaption>
   If we predict an 'A' as the first letter then the suffix 'AA' should get much
@@ -869,7 +866,7 @@ else given the current state <dt-math>a_t</dt-math>.</p>
 
 <figure style="width:300px;margin-top:0px;margin-bottom:0px;">
   <img src="assets/hmm.svg" />
-  <figcaption style="text-align:center">
+  <figcaption> 
   The graphical model for an HMM.
   </figcaption>
 </figure>

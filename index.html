@@ -97,28 +97,26 @@
 <script src="assets/collapse_ctc.js"></script>
 
 <dt-byline></dt-byline>
-<h2 id="the-problem">The Problem</h2>
 
-<p>Consider speech recognition. The input is a time series.  It can
-have hundreds or even thousands of time-steps.
-<dt-fn>
-In speech it's common to use a frequency based feature extractor on the raw
-audio. A spectrogram computed on a 10 second audio clip with the typical
-parameters has about 1000 time-steps.
-</dt-fn>
-The transcript is generally much
-shorter, say tens of characters in length.</p>
+<p>Consider speech recognition. We have a dataset of audio clips and
+correspoding transcripts. The input audio is a sequence and potentially a very
+long one. It can have hundreds or even thousands of time-steps. The output
+transcript is also sequence, but usually much shorter. We don't know which
+part of the audio each character or word in the transcript aligns to. This
+makes training a speech recognizer harder than it might at first seem.</p>
 
-<p>We can't train a model to predict a character for each input. We don't know
-which character to use as the label. Also, not every input has a corresponding
-character. There can be stretches of silence. Any rule we devise like "one
-character corresponds to ten inputs" can be broken. People's rates of
-speech change. Sometimes we talk quickly and sometimes slowly.</p>
-
-<p>An alternative is to hand-align each character to its location in the 
+<p>Without this alignment, the simple approaches aren't available to us. We
+could devise a rule like "one character corresponds to ten inputs". But,
+people's rates of speech vary so this type of rule can always be broken.
+Another alternative is to hand-align each character to its location in the
 audio. From a modeling standpoint this works well. We'd know the ground truth
-for each input. But, for any reasonably sized dataset, this is prohibitively
-time consuming.</p>
+for each input time-step. The problem is that for any reasonably sized dataset
+this is prohibitively time consuming.</p>
+
+<p>This problem doesn't just turn up in speech recognition. We see it in many
+places. Handwriting recognition from images or sequences of pen strokes is one
+example. We see it in machine translation, in text summarization and in many
+other natural language processing tasks.</p>
 
 <figure style="height:200px;margin-top:0px;">
   <div style="width:320px;position:absolute;">
@@ -138,19 +136,20 @@ time consuming.</p>
   </div>
 </figure>
 
-<p>Connectionist Temporal Classification (CTC) solves these problems. Because
-of some assumptions it makes, CTC is especially well suited for applications
-like speech recognition and handwriting recognition.</p>
+<hr />
 
-<p>To be a bit more formal, let's consider the problem of mapping input sequences
-<dt-math>X = [x_1, x_2, \ldots, x_T] \in \mathcal{X}</dt-math> to corresponding output
-sequences <dt-math>Y = [y_1, y_2, \ldots, y_U] \in \mathcal{Y}</dt-math>.
-We want to learn a "good" mapping of <dt-math>X</dt-math>s to <dt-math>Y</dt-math>s.
-In speech recognition a "good" mapping is one which takes an audio
-input to an accurate transcription.</p>
+<p>Connectionist Temporal Classification (CTC) is a way to get around not
+knowing the alignment between the input and output. As we'll see, it's
+especially well suited for applications like speech recognition and handwriting
+recognition.</p>
 
-<p>The "sequence transduction" problem has three properties which make using
-traditional supervised learning algorithms difficult.</p>
+<p>To be a bit more formal, let's consider mapping input sequences
+<dt-math>X = [x_1, x_2, \ldots, x_T]</dt-math>, such as audio, to corresponding output
+sequences <dt-math>Y = [y_1, y_2, \ldots, y_U]</dt-math>, such as transcripts.
+We want to find an accurate mapping from <dt-math>X</dt-math>s to <dt-math>Y</dt-math>s.</p>
+
+<p>As we saw in speech recognition, there are three challenges which get in the way of us
+using simpler supervised learning algorithms.</p>
 <ul>
   <li>Both <dt-math>X</dt-math> and <dt-math>Y</dt-math>
     can vary in length.</li>
@@ -160,27 +159,22 @@ traditional supervised learning algorithms difficult.</p>
   <dt-math>X</dt-math> and <dt-math>Y</dt-math>.</li>
 </ul>
 
-<p>In these circumstances, CTC can learn a function to map elements of
-<dt-math>\mathcal{X}</dt-math> to a distribution over members of
-<dt-math>\mathcal{Y}</dt-math>. We can then infer a likely
-<dt-math>Y</dt-math> from this distribution. In order to be useful, the
-algorithm has to solve two problems: the objective function should
-be computable and inference should be tractable.</p>
+<p>The CTC algorithm overcomes these challenges. For a given
+<dt-math>X</dt-math> it gives us an output distribution over all possible
+<dt-math>Y</dt-math>s. We can use this distribution to infer a likely output
+and to asses the probability of a given output.</p>
 
-<p><strong>Objective Function:</strong> We need to efficiently
-compute a score for how likely any <dt-math>Y</dt-math> is given
-an <dt-math>X</dt-math>. With CTC, the score will be a
-conditional probability <dt-math>p(Y \mid X)</dt-math>. The function
-<dt-math>p(Y \mid X)</dt-math> should be differentiable. This makes
-it easier to optimize.</p>
+<p>Not all ways of computing the loss function and performing inference are
+tractable. We'll require that CTC do both of these efficiently.</p>
 
-<p>The score should be computable for <dt-math>X</dt-math>s and
-<dt-math>Y</dt-math>s of variable and differing lengths. We also want to
-avoid algorithms which require an alignment between <dt-math>X</dt-math>
-and <dt-math>Y</dt-math>.</p>
+<p><strong>Loss Function:</strong> We'd like to train our model to
+maximize the probability it assigns to the right answer for a given input.  
+To do this, we'll need to efficiently compute the conditional probability
+<dt-math>p(Y \mid X)</dt-math>. The function <dt-math>p(Y \mid X)</dt-math>
+should also be differentiable. This let's us use any gradient-based optimizer.</p>
 
-<p><strong>Inference:</strong> The second problem is to infer a likely <dt-math>Y</dt-math>
-for any <dt-math>X</dt-math> following the model <dt-math>p(Y \mid X)</dt-math>.
+<p><strong>Inference:</strong> Naturally, after we've trained the model, we
+want to use it to infer a likely <dt-math>Y</dt-math> given an <dt-math>X</dt-math>.
 This means solving 
 
 <dt-math block>
@@ -193,15 +187,14 @@ settle for a close to optimal solution that's not too expensive to find.</p>
 <hr />
 <h2 id="the-algorithm">The Algorithm</h2>
 
-<p>We'll start with computing the score of how likely a <dt-math>Y</dt-math>
-is given an <dt-math>X</dt-math>. To accomplish this, CTC allows a set of
-alignments between <dt-math>X</dt-math> and <dt-math>Y</dt-math>. The ground-truth alignment
-is unknown, so CTC <em>marginalizes</em> over all the allowed alignments
-between the two sequences. In this section we’ll cover what
-these allowed alignments are, how to compute the CTC loss function and how to
-perform inference with a learned model.</p>
+<p>The CTC algorithm can assign a probability for any <dt-math>Y</dt-math> given
+an <dt-math>X</dt-math>. This allows us to both train the model and perform
+inference. The alignments that CTC allows between inputs and outputs are key
+to computing these probabilities. We'll start by looking at these alignments and
+then proceed to the loss function and inference.</p>
 
 <h3 id="the-alignment">Alignment</h3>
+
 <p>The CTC algorithm assumes the alignments between the input <dt-math>X</dt-math> and the
 output <dt-math>Y</dt-math> have a specific form. To motivate the CTC alignments, first
 consider a naive approach.</p>

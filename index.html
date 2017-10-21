@@ -115,7 +115,7 @@ this is prohibitively time consuming.</p>
 
 <p>This problem doesn't just turn up in speech recognition. We see it in many
 places. Handwriting recognition from images or sequences of pen strokes is one
-example. We see it in machine translation, in text summarization and in many
+example. We also see it in machine translation, in text summarization and in many
 other natural language processing tasks.</p>
 
 <figure style="height:200px;margin-top:0px;">
@@ -195,16 +195,11 @@ then proceed to the loss function and inference.</p>
 
 <h3 id="the-alignment">Alignment</h3>
 
-<p>The CTC algorithm assumes the alignments between the input <dt-math>X</dt-math> and the
-output <dt-math>Y</dt-math> have a specific form. To motivate the CTC alignments, first
-consider a naive approach.</p>
-
-<p>Let’s use an example. Let the input length <dt-math>T = 6</dt-math>
-and <dt-math>Y =</dt-math> [c, a, t]. In
-this case, one way to align <dt-math>Y</dt-math> and
-<dt-math>X</dt-math> would be to let the elements of
-<dt-math>Y</dt-math> align to multiple elements of
-<dt-math>X</dt-math>. So the alignment could be</p>
+<p>To motivate the CTC alignments, first consider a naive approach. Let’s use
+an example. Assume the input has length <dt-math>T = 6</dt-math> and
+<dt-math>Y =</dt-math> [c, a, t]. One way to align <dt-math>Y</dt-math>
+and <dt-math>X</dt-math> is to let the elements of <dt-math>Y</dt-math>
+align to multiple elements of <dt-math>X</dt-math>. So the alignment could be</p>
 
 <figure style="width:300px; height:130px; margin-top:0px;">
   <figcaption>
@@ -220,20 +215,17 @@ this case, one way to align <dt-math>Y</dt-math> and
 <p>This approach has two problems.</p>
 <ul>
   <li>
-    Some elements of <dt-math>X</dt-math> may not
-    correspond to any element of <dt-math>Y</dt-math>.
-    In this case, we may not want to force every element of
-    <dt-math>X</dt-math> to match with an element of
-    <dt-math>Y</dt-math>.
+    Often, it doesn't make sense to force every input time-step to align to
+    some output. In speech recognition, the input can have stretches
+    of silence with no corresponding output.
   </li>
 
   <li>
-    The sequence <dt-math>Y</dt-math> can have
-    consecutive repeat characters. This means the alignments for a given
-    <dt-math>Y</dt-math> are not unique. We have no way to
-    determine if the alignment [c, c, a, a, a, t] refers to [c, a, t] or
-    [c, a, a, t] among others. Later we’ll need to distinguish between these
-    cases to perform inference with the model.
+    The sequence <dt-math>Y</dt-math> can have consecutive repeats.
+    This means the same alignment can belong to multiple
+    outputs. We can't tell if the alignment [c, c,
+    a, a, a, t] refers to [c, a, t] or [c, a, a, t]. We need to
+    distinguish between these cases to use the model for inference.
   </li>
 </ul>
 
@@ -302,18 +294,18 @@ This allows us to differentiate between alignments of [c, a, t] and
 <p>A convenient way to visualize the alignment between <dt-math>X</dt-math>
 and <dt-math>Y</dt-math> is with a 2D alignment matrix.</p>
 
-<figure style="height:350px;width:600px;margin-top:0px;">
-  <div style="width:350px; position:absolute; left:240px;">
+<figure style="height:400px;width:550px;margin-top:0px;">
+  <div style="width:200px; position:absolute; left:240px;">
     <img src="assets/alignment_no_epsilon.svg" />
   </div>
-  <div style="width:350px; position:absolute; top:140px; left:240px;">
+  <div style="width:200px; position:absolute; top:150px; left:240px;">
   <img src="assets/alignment_epsilon.svg" />
   </div>
   <figcaption style="width:170px;position:absolute; top:60px;">
   An alignment matrix for the [<dt-math>\epsilon</dt-math>, c, c,
   <dt-math>\epsilon</dt-math>, a, t] alignment.
   </figcaption>
-  <figcaption style="width:200px;position:absolute; top:200px;">
+  <figcaption style="width:200px;position:absolute; top:220px;">
   The alignment matrix including the <dt-math>\epsilon</dt-math> token. Note
   that some of the <dt-math>\epsilon</dt-math> tokens are left unaligned. They
   are optional since they don’t fall between consecutive repeat characters in

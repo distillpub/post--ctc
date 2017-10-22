@@ -259,9 +259,9 @@ we'll drop the subscripts on <dt-math>\mathcal{A}</dt-math>. The set
   </div>
 </figure>
 
-<p>If there are consecutive repeat characters in <dt-math>Y</dt-math> then
-the <dt-math>\epsilon</dt-math> between them is required.
-This allows us to differentiate between alignments of [c, a, t] and
+<p>If <dt-math>Y</dt-math> has two of the same character in a row, then
+any alignment must have an <dt-math>\epsilon</dt-math> between them.
+With this rule in place, we can differentiate between alignments of [c, a, t] and
 [c, a, a, t].</p>
 
 <p>Let’s go back to the [c, a, t] example with <dt-math>T =
@@ -290,8 +290,8 @@ This allows us to differentiate between alignments of [c, a, t] and
   </div>
 </figure>
 
-<p>A convenient way to visualize the alignment between <dt-math>X</dt-math>
-and <dt-math>Y</dt-math> is with a 2D alignment matrix.</p>
+<p>Another useful way to visualize the alignment between <dt-math>X</dt-math>
+and <dt-math>Y</dt-math> is with an alignment matrix.</p>
 
 <figure style="height:400px;width:550px;margin-top:0px;">
   <div style="width:200px; position:absolute; left:240px;">
@@ -307,18 +307,18 @@ and <dt-math>Y</dt-math> is with a 2D alignment matrix.</p>
   <figcaption style="width:200px;position:absolute; top:220px;">
   The alignment matrix including the <dt-math>\epsilon</dt-math> token. Note
   that some of the <dt-math>\epsilon</dt-math> tokens are left unaligned. They
-  are optional since they don’t fall between consecutive repeat characters in
-  <dt-math>Y</dt-math>.
+  are optional since they don’t fall between repeats in <dt-math>Y</dt-math>.
   </figcaption>
 </figure>
 
-<p>We can observe several properties about CTC right away. First, the allowed
-alignments between <dt-math>Y</dt-math> and <dt-math>X</dt-math> are strictly monotonic. If the ‘c’ in our
-example aligns to the first input element then the ‘a’ must align to input
-element two or greater. This implies a second property: the length of <dt-math>Y</dt-math> can
-be no longer than the length of <dt-math>X</dt-math>. A third property is that the alignment
-of <dt-math>X</dt-math> to <dt-math>Y</dt-math> is many-to-one. Many input elements can align to a single
-output element but not vice-versa.</p>
+<p>The CTC alignment has a few notable properties. First, the allowed
+alignments between <dt-math>X</dt-math> and <dt-math>Y</dt-math> are monotonic.
+If we advance to the next input, we can keep the corresponding output the
+same or advance to the next one. A second property is that the alignment of
+<dt-math>X</dt-math> to <dt-math>Y</dt-math> is many-to-one. One or more input
+elements can align to a single output element but not vice-versa. This implies
+a third property: the length of <dt-math>Y</dt-math> cannot be greater than the
+length of <dt-math>X</dt-math>.</p>
 
 <h3 id="loss-function">Loss Function</h3>
 
@@ -733,27 +733,31 @@ choose a single alignment by replacing the sum with a max in the objective funct
 p(Y \mid X) \enspace = \enspace \max_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X).
 </dt-math></p>
 
-<p>As mentioned before, CTC only allows <em>strictly monotonic</em> alignments. In
+<p>As mentioned before, CTC only allows <em>monotonic</em> alignments. In
 problems such as speech recognition this may be a valid assumption. For other
 problems like machine translation where a future word in a target sentence
 can align to an earlier part of the source sentence, this assumption is a
-deal-breaker. The <em>strictly monotonic</em> property also means the length of
-the output can be no greater than the length of the input.
+deal-breaker.</p>
+
+<p>Another important property of CTC alignments is that they are
+<em>many-to-one</em>. Multiple inputs can align to at most one output. In some
+cases this may not be desirable. We might want to enforce a strict one-to-one
+correspondence between elements of <dt-math>X</dt-math> and
+<dt-math>Y</dt-math>. Alternatively, we may want to allow multiple output
+elements to align to a single input element. For example, the sound made by
+“th” might align to a single input frame of audio. A character based CTC model
+would not allow that.</p>
+
+<p>The many-to-one property implies that the output can't have more time-steps
+than the input.
 <dt-fn>
   If <dt-math>Y</dt-math> has <dt-math>r</dt-math> consecutive
   repeats, then the length of <dt-math>Y</dt-math> must be less than
   the length of <dt-math>X</dt-math> by <dt-math>2r - 1</dt-math>.
 </dt-fn>
-We can't use CTC for problems where this is not the case.</p>
+For problems where <dt-math>Y</dt-math> is often longer than
+<dt-math>X</dt-math>, CTC just won't work.</p>
 
-<p>A final important property of CTC alignments is that they are
-<em>many-to-one</em>. Multiple inputs can align to at most one output. In some
-cases this may not be desirable. We might want to enforce a strict
-one-to-one correspondence between elements of <dt-math>X</dt-math>
-and <dt-math>Y</dt-math>. Alternatively,
-we may want to allow multiple output elements to align to a single input
-element. For example, the sound made by “th” might align to a single input frame
-of audio. A character based CTC model would not allow that.</p>
 
 <h3 id="input-synchronous-inference">Input Synchronous Inference</h3>
 

@@ -11,10 +11,10 @@
                 <tspan x="0.6143155" y="40.3510986">c</tspan>
             </text>
             <text id="text62" fill="#000000"   >
-                <tspan x="0.0390625" y="66.2850576">a</tspan>
+                <tspan x="0.0390625" y="65.2850576">a</tspan>
             </text>
             <text id="text66" fill="#000000"   >
-                <tspan x="1.8683987" y="92.2190276">t</tspan>
+                <tspan x="1.8683987" y="91.2190276">t</tspan>
             </text>
             <text id="x1" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-style="italic" >
                 <tspan x="22.3265392" y="14.1299316">x</tspan>
@@ -46,18 +46,18 @@
             <rect id="rect102" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="84.2404912" y="24.7078186" width="20" height="22"></rect>
             <rect id="rect104" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="106.674981" y="24.7078186" width="20" height="22"></rect>
             <rect id="rect106" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="129.109491" y="24.7078186" width="20" height="22"></rect>
-            <rect id="rect124" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="16.9369802" y="50.1760076" width="20" height="22"></rect>
-            <rect id="rect126" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="39.3714842" y="50.1760076" width="20" height="22"></rect>
-            <rect id="rect128" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="61.8059812" y="50.1760076" width="20" height="22"></rect>
-            <rect id="rect130" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="84.2404912" y="50.1760076" width="20" height="22"></rect>
-            <rect id="rect132" stroke="#000000" stroke-width="0.7" fill="#6FA8DC" fill-rule="nonzero" x="106.674981" y="50.1760076" width="20" height="22"></rect>
-            <rect id="rect134" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="129.109491" y="50.1760076" width="20" height="22"></rect>
-            <rect id="rect152" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="16.9369802" y="75.6441976" width="20" height="22"></rect>
-            <rect id="rect154" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="39.3714842" y="75.6441976" width="20" height="22"></rect>
-            <rect id="rect156" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="61.8059812" y="75.6441976" width="20" height="22"></rect>
-            <rect id="rect158" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="84.2404912" y="75.6441976" width="20" height="22"></rect>
-            <rect id="rect160" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="106.674981" y="75.6441976" width="20" height="22"></rect>
-            <rect id="rect162" stroke="#000000" stroke-width="0.7" fill="#6FA8DC" fill-rule="nonzero" x="129.109491" y="75.6441976" width="20" height="22"></rect>
+            <rect id="rect124" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="16.9369802" y="49.5" width="20" height="22"></rect>
+            <rect id="rect126" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="39.3714842" y="49.5" width="20" height="22"></rect>
+            <rect id="rect128" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="61.8059812" y="49.5" width="20" height="22"></rect>
+            <rect id="rect130" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="84.2404912" y="49.5" width="20" height="22"></rect>
+            <rect id="rect132" stroke="#000000" stroke-width="0.7" fill="#6FA8DC" fill-rule="nonzero" x="106.674981" y="49.5" width="20" height="22"></rect>
+            <rect id="rect134" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="129.109491" y="49.5" width="20" height="22"></rect>
+            <rect id="rect152" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="16.9369802" y="74.3" width="20" height="22"></rect>
+            <rect id="rect154" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="39.3714842" y="74.3" width="20" height="22"></rect>
+            <rect id="rect156" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="61.8059812" y="74.3" width="20" height="22"></rect>
+            <rect id="rect158" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="84.2404912" y="74.3" width="20" height="22"></rect>
+            <rect id="rect160" stroke="#000000" stroke-width="0.7" fill="#FFFFFF" fill-rule="nonzero" x="106.674981" y="74.3" width="20" height="22"></rect>
+            <rect id="rect162" stroke="#000000" stroke-width="0.7" fill="#6FA8DC" fill-rule="nonzero" x="129.109491" y="74.3" width="20" height="22"></rect>
         </g>
     </g>
 </svg>

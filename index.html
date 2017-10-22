@@ -11,7 +11,7 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 <script type="text/front-matter">
-  title: "An In-depth Guide to Connectionist Temporal Classification"
+  title: "A Guide to Connectionist Temporal Classification"
   description: "This is a guide to Connectionist Temporal Classification (CTC) – a popular algorithm for sequence to sequence mapping with neural networks."
   authors:
   - Awni Hannun : http://stanford.edu/~awni/
@@ -20,7 +20,7 @@
 </script>
 
 <dt-article class="centered">
-  <h1>An In-depth Guide to CTC</h1>
+  <h1>A Guide to Connectionist Temporal Classification</h1>
 
 <figure style="width:900px;height:360px;">
   <link rel="stylesheet" type="text/css" href="assets/collapse_ctc.css">
@@ -216,30 +216,29 @@ align to multiple elements of <dt-math>X</dt-math>. So the alignment could be</p
 <ul>
   <li>
     Often, it doesn't make sense to force every input time-step to align to
-    some output. In speech recognition, the input can have stretches
+    an output. In speech recognition, for example, the input can have stretches
     of silence with no corresponding output.
   </li>
 
   <li>
-    The sequence <dt-math>Y</dt-math> can have consecutive repeats.
-    This means the same alignment can belong to multiple
-    outputs. We can't tell if the alignment [c, c,
-    a, a, a, t] refers to [c, a, t] or [c, a, a, t]. We need to
-    distinguish between these cases to use the model for inference.
+    The same output token can occur multiple times in a row.  This means that
+    different outputs can have identical alignments. For example, we can't tell
+    if the alignment [c, c, a, a, a, t] refers to [c, a, t] or [c, a, a, t].
+    Distinguishing between these cases makes it easier to use the model for inference.
   </li>
 </ul>
 
-<p>To get around these problems, CTC introduces a new token to the set of allowed
-output characters. This new token is sometimes called the “blank” token. We’ll
-refer to it here as <dt-math>\epsilon</dt-math>. When an input
-element aligns to <dt-math>\epsilon</dt-math> then no output
-element corresponds to it.</p>
+<p>To get around these problems, CTC introduces a new token to the set of
+allowed outputs. This new token is sometimes called the “blank”
+token. We’ll refer to it here as <dt-math>\epsilon</dt-math>. If an input
+element aligns to <dt-math>\epsilon</dt-math>, then it doesn't have a
+corresponding output.</p>
 
-<p>The alignments allowed by CTC are of length <dt-math>T</dt-math>, the length
-of the input. Let <dt-math>\mathcal{A}_{X,Y}</dt-math> be the set of such
-alignments for a given <dt-math>(X, Y)</dt-math> pair. When it's clear from context,
-we'll drop the subscript on <dt-math>\mathcal{A}</dt-math>. The set
-<dt-math>\mathcal{A}</dt-math> contains all possible alignments which map to
+<p>The alignments allowed by CTC are the same length as the input. Let
+<dt-math>\mathcal{A}_{X,Y}</dt-math> be the set of alignments for a given
+<dt-math>(X, Y)</dt-math> pair. When it's clear from context,
+we'll drop the subscripts on <dt-math>\mathcal{A}</dt-math>. The set
+<dt-math>\mathcal{A}</dt-math> contains all the alignments which map to
 <dt-math>Y</dt-math> after merging repeats and removing
 <dt-math>\epsilon</dt-math> tokens:</p>
 

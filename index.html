@@ -99,19 +99,19 @@
 <dt-byline></dt-byline>
 
 <p>Consider speech recognition. We have a dataset of audio clips and
-correspoding transcripts. The input audio is a sequence and potentially a very
+corresponding transcripts. The input audio is a sequence and potentially a very
 long one. It can have hundreds or even thousands of time-steps. The output
 transcript is also sequence, but usually much shorter. We don't know which
 part of the audio each character or word in the transcript aligns to. This
 makes training a speech recognizer harder than it might at first seem.</p>
 
 <p>Without this alignment, the simple approaches aren't available to us. We
-could devise a rule like "one character corresponds to ten inputs". But,
-people's rates of speech vary so this type of rule can always be broken.
+could devise a rule like "one character corresponds to ten inputs". But
+people's rates of speech vary, so this type of rule can always be broken.
 Another alternative is to hand-align each character to its location in the
 audio. From a modeling standpoint this works well. We'd know the ground truth
-for each input time-step. The problem is that for any reasonably sized dataset
-this is prohibitively time consuming.</p>
+for each input time-step. However, for any reasonably sized dataset this is
+prohibitively time consuming.</p>
 
 <p>This problem doesn't just turn up in speech recognition. We see it in many
 places. Handwriting recognition from images or sequences of pen strokes is one
@@ -136,12 +136,12 @@ other natural language processing tasks.</p>
   </div>
 </figure>
 
-<hr />
-
 <p>Connectionist Temporal Classification (CTC) is a way to get around not
 knowing the alignment between the input and output. As we'll see, it's
 especially well suited for applications like speech recognition and handwriting
 recognition.</p>
+
+<hr />
 
 <p>To be a bit more formal, let's consider mapping input sequences
 <dt-math>X = [x_1, x_2, \ldots, x_T]</dt-math>, such as audio, to corresponding output
@@ -338,7 +338,7 @@ time-step to the probability of an output sequence.</p>
     probability of different sequences. 
   </div>
   <div style="position:absolute; top:310px; width: 180px;">
-    By marginalizaing over the alignments, we get a distribution over outputs.
+    By marginalizing over the alignments, we get a distribution over outputs.
   </div>
   </figcaption>
   <div style="width:300px; position:absolute; left: 230px;">
@@ -375,7 +375,7 @@ function for a single <dt-math>(X, Y)</dt-math> pair is:</p>
 </figure>
 
 <p>If we aren't careful, the CTC loss can be very expensive to compute. We
-could try the straighforward approach and compute the score for each alignment
+could try the straightforward approach and compute the score for each alignment
 summing them all up as we go. The problem is there can be a massive number of
 alignments.
 <dt-fn>
@@ -470,7 +470,7 @@ between repeat characters. The update equation is the same as in Case 1.</p>
   <img src="assets/cost_regular.svg" />
 </figure>
 <p><strong>Case 3:</strong></p>
-<p>If we aren’t in the first two cases, then we’re in the third case.
+<p>If we aren't in the first two cases, then we’re in the third case.
 This case handles the fact that the <dt-math>\epsilon</dt-math> between unique
 characters is optional.</p>
 <figure style="height:90px;margin-top:50px;">
@@ -570,7 +570,7 @@ the most likely hypothesis. It should have chosen <dt-math>Y =</dt-math> [a].
 To fix this, the algorithm needs to account for the fact that [a, a, a] and [a,
 a, <dt-math>\epsilon</dt-math>] collapse to the same output.</p>
 
-<p>We can solve this with a modified beam search. Given limited
+<p>We can use a modified beam search to solve this. Given limited
 computation, the modified beam search won't necessarily find the
 most likely <dt-math>Y</dt-math>. It does, at least, have
 the nice property that we can trade-off more computation
@@ -716,7 +716,7 @@ probability. The conditional independence assumption does not allow for this.</p
 
 <p>In fact speech recognizers using CTC are not able to learn a language
 model over the output nearly as well as models which do not make this
-assumption.<dt-cite key="Battenberg2017"></dt-cite> However, this isn’t always
+assumption.<dt-cite key="Battenberg2017"></dt-cite> However, this isn't always
 a bad trait. Baking in strong beliefs over output interactions makes the model
 less adaptable to new or altered domains. For example, we might want
 to use a speech recognizer trained on phone conversations between friends
@@ -786,7 +786,7 @@ understanding the CTC algorithm. Feel free to skip it on a first read.</em></p>
 <p>At a first glance a Hidden Markov Model (HMM) doesn't closely resemble CTC.
 But, the two algorithms are actually quite similar. Understanding the
 relationship between them will help us understand what exactly CTC does that
-couldn’t be done before. Putting CTC in this context will also give us insight
+couldn't be done before. Putting CTC in this context will also give us insight
 into how it can be changed and potentially improved for various use cases.</p>
 
 <p style="margin-bottom:0px">We’ll use the same notation as before,
@@ -890,7 +890,7 @@ p(X) \enspace \propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \
 <p>The above equation is essentially the CTC loss function, assuming the set
 <dt-math>\mathcal{A}</dt-math> is the same. In fact, the HMM framework does not specify what
 <dt-math>\mathcal{A}</dt-math> should consist of. This part of the model can be designed on a
-per-problem basis. In many cases the model doesn’t condition on <dt-math>Y</dt-math> and the
+per-problem basis. In many cases the model doesn't condition on <dt-math>Y</dt-math> and the
 set <dt-math>\mathcal{A}</dt-math> consists of all possible length <dt-math>T</dt-math> sequences from the
 output alphabet. In this case, the HMM can be drawn as an  <em>ergodic</em> state
 transition diagram in which every state connects to every other state.  The
@@ -980,8 +980,8 @@ models.</p>
 <p><strong>Encoder:</strong> The encoder of a CTC model can be just about any encoder we find
 in commonly used encoder-decoder models. For example the encoder could be a
 multi-layer bidirectional RNN or a convolutional network. There is a constraint
-on the CTC encoder that doesn’t apply to the others. The input length cannot be
-subsampled so much that <dt-math>\frac{T}{s}</dt-math> is less than <dt-math>U</dt-math>.</p>
+on the CTC encoder that doesn't apply to the others. The input length cannot be
+sub-sampled so much that <dt-math>\frac{T}{s}</dt-math> is less than <dt-math>U</dt-math>.</p>
 
 <p><strong>Decoder:</strong> We can view the decoder of a CTC model as a simple linear
 transformation followed by a softmax normalization. This layer should project
@@ -991,7 +991,7 @@ output alphabet.</p>
 <hr />
 <h2 id="practitioners-guide">Practitioner’s Guide</h2>
 
-<p>So far we’ve mostly developed a conceptual understanding of CTC. Here we’ll go
+<p>So far we've mostly developed a conceptual understanding of CTC. Here we’ll go
 through a few implementation tips for practitioners.</p>
 
 <p><strong>Software:</strong> Even with a solid conceptual understanding of CTC, the
@@ -1072,7 +1072,7 @@ They used a hybrid HMM and CTC trained model to achieve state-of-the-art results
 Hannun et al. subsequently demonstrated state-of-the-art CTC based speech
 recognition on larger benchmarks.<dt-cite key="Hannun2014deepspeech"></dt-cite>
 A CTC trained model outperformed other methods at an online handwriting
-recognition benchamark in 2007.<dt-cite key="Liwicki2007"></dt-cite></p>
+recognition benchmark in 2007.<dt-cite key="Liwicki2007"></dt-cite></p>
 
 <p>CTC has been used successfully in many other problems. These include
 lip-reading from video<dt-cite key="Assael2016"></dt-cite>, action recognition from
@@ -1090,7 +1090,7 @@ similar algorithms to account for segmental structure in the output.
 
 <p>The Hidden Markov Model was developed in the 1960’s with the first application
 to speech recognition in the 1970’s. For an introduction to the HMM and
-applications to speech recognition see Rabiner’s canonical tutorial.
+applications to speech recognition see Rabiner's canonical tutorial.
 <dt-cite key="Rabiner1989"></dt-cite></p>
 
 <p>Encoder-decoder models were developed in 2014.

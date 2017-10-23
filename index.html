@@ -301,7 +301,7 @@ and <dt-math>Y</dt-math> is with an alignment matrix.</p>
   <img src="assets/alignment_epsilon.svg" />
   </div>
   <figcaption style="width:170px;position:absolute; top:60px;">
-  An alignment matrix for the [<dt-math>\epsilon</dt-math>, c, c,
+  An alignment matrix for the [<span class="katex"><span class="mord mathit">ϵ</span></span>, c, c,
   <dt-math>\epsilon</dt-math>, a, t] alignment.
   </figcaption>
   <figcaption style="width:200px;position:absolute; top:220px;">
@@ -327,17 +327,17 @@ time-step to the probability of an output sequence.</p>
 
 <figure style="width:550px; height:380px;">
   <figcaption>
-  <div style="position:absolute; top:10px; width: 190px;">
+  <div style="position:absolute; top:10px; width: 180px;">
     The function <dt-math>p_t(a \mid X)</dt-math> 
     is a distribution over the outputs 
     {h, e, l, o, <dt-math>\epsilon</dt-math>} for
     each input step.
   </div>
-  <div style="position:absolute; top:180px; width: 200px;">
-    From the step-by-step distribution over the alphabet, we can compute the
+  <div style="position:absolute; top:180px; width: 180px;">
+    With the per time-step output distribution, we can compute the
     probability of different sequences. 
   </div>
-  <div style="position:absolute; top:310px; width: 200px;">
+  <div style="position:absolute; top:310px; width: 180px;">
     By marginalizaing over the alignments, we get a distribution over outputs.
   </div>
   </figcaption>
@@ -367,7 +367,7 @@ function for a single <dt-math>(X, Y)</dt-math> pair is:</p>
   <strong>marginalizes</strong> over the set of valid alignments 
   </figcaption>
   <div style="position:absolute; left:390px; top:0px;">
-    <dt-math block>\prod_{t=1}^T p_t(a_t \mid X)</dt-math>
+    <dt-math block>\prod_{t=1}^T \; p_t(a_t \mid X)</dt-math>
   </div>
   <figcaption style="position:absolute; left:390px; top:100px; width:200px;">
   computing the <strong>probability</strong> for a single alignment step-by-step.
@@ -384,7 +384,7 @@ alignments.
   of the set is <dt-math>{T + U \choose T - U}</dt-math>. For <dt-math>T=100</dt-math> and
   <dt-math>U=50</dt-math> this number is almost <dt-math>10^{40}</dt-math>.
 </dt-fn>
-For most practical problems this would be too slow.</p>
+For most problems this would be too slow.</p>
 
 <p>Thankfully, we can compute the loss much faster with a dynamic programming
 algorithm. The key insight is that if two alignments have reached the same
@@ -412,9 +412,8 @@ Z \enspace=\enspace [z_{1}, \ldots, z_{2U+1}] \enspace=\enspace [\epsilon, y_1, 
 It's just <dt-math>Y</dt-math> with an <dt-math>\epsilon</dt-math> at
 the beginning, end, and between every character.
 Let <dt-math>\alpha_{s, t}</dt-math> be the CTC score of the subsequence
-<dt-math>Z_{1:s}</dt-math> after <dt-math>t</dt-math> input steps. We can
-compute
-<dt-math>\alpha_{s, t}</dt-math> if we know the values
+<dt-math>Z_{1:s}</dt-math> after processing <dt-math>t</dt-math> input steps.
+We can compute <dt-math>\alpha_{s, t}</dt-math> if we know the values
 <dt-math>\alpha_{\lt s, \lt t}</dt-math>. There are three cases.</p>
 
 <div style="height:320px">
@@ -423,10 +422,12 @@ compute
 </figure>
 <p><strong>Case 1 (<dt-math> z_{s} = \epsilon </dt-math>):</strong></p>
 
-<p>This case says that we can't skip elements of <dt-math>Y</dt-math>
-for any alignment. If we want to align the current input to
-<dt-math>\epsilon</dt-math>, the previous output must be aligned to
-some previous input.
+<p>Here we're proposing to align an <dt-math>\epsilon</dt-math> to input step
+<dt-math>t</dt-math>. Based on how we constructed <dt-math>Z</dt-math>, if
+<dt-math>z_{s} = \epsilon</dt-math>, then <dt-math>z_{s-1}</dt-math> is a token
+in <dt-math>Y</dt-math>. Valid alignments are those which have already aligned
+<dt-math>z_{s-1}</dt-math>, since we can't leave elements of
+<dt-math>Y</dt-math> unaligned.</p>
 
 <figure style="margin-top:0px;">
   <span style="position:absolute; left:40px">
@@ -458,9 +459,10 @@ some previous input.
 </figure>
 <p><strong>Case 2 (<dt-math>z_{s} = z_{s-2}</dt-math>):</strong></p>
 
-<p>This case handles consecutive repeats in <dt-math>Y</dt-math>.
-Every alignment <em>must</em> have an <dt-math>\epsilon</dt-math>
+<p>This case handles when two of the same character are in
+a row. Every alignment must have an <dt-math>\epsilon</dt-math>
 between repeat characters. The update equation is the same as in Case 1.</p>
+
 </div>
 
 <div style="height:300px;">
@@ -469,8 +471,8 @@ between repeat characters. The update equation is the same as in Case 1.</p>
 </figure>
 <p><strong>Case 3:</strong></p>
 <p>If we aren’t in the first two cases, then we’re in the third case.
-This case handles the fact that an <dt-math>\epsilon</dt-math> between unique
-characters of <dt-math>Y</dt-math> is optional.</p>
+This case handles the fact that the <dt-math>\epsilon</dt-math> between unique
+characters is optional.</p>
 <figure style="height:90px;margin-top:50px;">
   <span style="position:absolute; left:30px">
     <dt-math>\alpha_{s, t}\; = \;(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</dt-math>
@@ -493,7 +495,7 @@ characters of <dt-math>Y</dt-math> is optional.</p>
 </div>
 
 <p>Below is an example of the computation performed by the dynamic programming
-algorithm.</p>
+algorithm. Every valid alignment has a path in this graph.</p>
 
 <figure class="l-body" style="width:700px;height:350px;margin-top:0px;">
 <div style="width:650px; position:absolute; left:80px; top:30px;">
@@ -521,15 +523,15 @@ p(Y \mid X) \; = \; \alpha_{S, T}\; + \; \alpha_{S-1, T}
 where <dt-math>S = 2U + 1</dt-math>.</p>
 
 <p>Computing the loss function just requires sums and products of the
-individual output distribution <dt-math>p_t(z \mid X)</dt-math>. So as long as 
+per time-step output distribution <dt-math>p_t(z \mid X)</dt-math>. As long as
 <dt-math>p_t(z \mid X)</dt-math> is differentiable, the entire loss function
 will be differentiable.</p>
 
 <p>The time complexity of the algorithm is <dt-math>O(TU)</dt-math> with a
-fairly small constant. Notice also that this does not depend at all on the size
-of the output alphabet.</p>
+fairly small constant. Notice also that this part of the computation doesn't
+depend on the size of the output alphabet.</p>
 
-<p>For a training set <dt-math>\mathcal{D}</dt-math>, the parameters of a model
+<p>For a training set <dt-math>\mathcal{D}</dt-math>, the model's parameters
 are tuned to minimize the negative log-likelihood
 <dt-math block>
 \sum_{(X, Y) \in \mathcal{D}} -\log\; p(Y \mid X)
@@ -538,8 +540,8 @@ instead of maximizing the likelihood directly.</p>
 
 <h3 id="inference">Inference</h3>
 
-<p>With a good model of the conditional distribution, we want
-to find a likely output given an input. More precisely, we need to solve</p>
+<p>After we've trained the model, we'd like to use it to find a likely output
+for a given input. More precisely, we need to solve</p>
 <dt-math block>
 Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} \enspace p(Y \mid X).
 </dt-math>
@@ -551,26 +553,27 @@ gives us the alignment with the highest probability:
 A^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{A\in\mathcal{A}}} \enspace  \prod_{t=1}^{T} \; p_t(a_t \mid X)
 </dt-math>
 
-We can then collapse repeats and remove <dt-math>\epsilon</dt-math>
-tokens to produce <dt-math>Y</dt-math>.</p>
+We can then collapse repeats and remove <dt-math>\epsilon</dt-math> tokens to
+get <dt-math>Y</dt-math>.<p>
 
-<p>For many applications this heuristic works well, especially when 
-most of the probability mass is given to a single alignment. But, we 
-aren't guaranteed to find the most likely output sequence. The problem
-is multiple alignments can collapse to the same <dt-math>Y</dt-math>.</p>
+<p>For many applications this heuristic works well, especially when most of the
+probability mass is alloted to a single alignment. However, this approach can
+sometimes miss easy to find outputs with much higher probability. The problem
+is, it doesn't take into account the fact that a single output can have many
+alignments.</p>
 
 <p>Here's an example. Assume the alignments [a, a, <dt-math>\epsilon</dt-math>]
 and [a, a, a] individually have lower probability than [b, b, b]. But 
 the sum of their probabilities is actually greater than that of [b, b, b]. The beam
 search will incorrectly propose <dt-math>Y =</dt-math> [b] as
 the most likely hypothesis. It should have chosen <dt-math>Y =</dt-math> [a].
-The algorithm should account for the fact that [a, a, a] and
-[a, a, <dt-math>\epsilon</dt-math>] collapse to the same output.</p>
+To fix this, the algorithm needs to account for the fact that [a, a, a] and [a,
+a, <dt-math>\epsilon</dt-math>] collapse to the same output.</p>
 
-<p>We can solve this problem with a modified beam search. Given limited 
-computation, the modified beam search is also not guaranteed to find the
+<p>We can solve this with a modified beam search. Given limited
+computation, the modified beam search won't necessarily find the
 most likely <dt-math>Y</dt-math>. It does, at least, have
-the desirable property that we can trade-off more computation
+the nice property that we can trade-off more computation
 (a larger beam-size) for an asymptotically better solution.</p>
 
 <p>A regular beam search computes a new set of hypotheses at each input

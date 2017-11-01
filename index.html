@@ -99,24 +99,21 @@
 <dt-byline></dt-byline>
 
 <p>Consider speech recognition. We have a dataset of audio clips and
-corresponding transcripts. The input audio is a sequence and potentially a very
-long one. It can have hundreds or even thousands of time-steps. The output
-transcript is also sequence, but usually much shorter. We don't know which
-part of the audio each character or word in the transcript aligns to. This
-makes training a speech recognizer harder than it might at first seem.</p>
+corresponding transcripts. Unfortunately, we don't know how the characters in
+the transcript align to the audio. This makes training a speech recognizer
+harder than it might at first seem.</p>
 
 <p>Without this alignment, the simple approaches aren't available to us. We
 could devise a rule like "one character corresponds to ten inputs". But
 people's rates of speech vary, so this type of rule can always be broken.
 Another alternative is to hand-align each character to its location in the
-audio. From a modeling standpoint this works well. We'd know the ground truth
+audio. From a modeling standpoint this works well &mdash; we'd know the ground truth
 for each input time-step. However, for any reasonably sized dataset this is
 prohibitively time consuming.</p>
 
 <p>This problem doesn't just turn up in speech recognition. We see it in many
-places. Handwriting recognition from images or sequences of pen strokes is one
-example. We also see it in machine translation, in text summarization and in many
-other natural language processing tasks.</p>
+other places. Handwriting recognition from images or sequences of pen strokes
+is one example. Action labelling in videos is another.</p>
 
 <figure style="height:200px;margin-top:0px;">
   <div style="width:320px;position:absolute;">
@@ -137,8 +134,8 @@ other natural language processing tasks.</p>
 </figure>
 
 <p>Connectionist Temporal Classification (CTC) is a way to get around not
-knowing the alignment between the input and output. As we'll see, it's
-especially well suited for applications like speech recognition and handwriting
+knowing the alignment between the input and the output. As we'll see, it's
+especially well suited to applications like speech and handwriting
 recognition.</p>
 
 <hr />
@@ -148,8 +145,8 @@ recognition.</p>
 sequences <dt-math>Y = [y_1, y_2, \ldots, y_U]</dt-math>, such as transcripts.
 We want to find an accurate mapping from <dt-math>X</dt-math>s to <dt-math>Y</dt-math>s.</p>
 
-<p>As we saw in speech recognition, there are three challenges which get in the way of us
-using simpler supervised learning algorithms.</p>
+<p>As we saw in speech recognition, there are challenges which get in the way of us
+using simpler supervised learning algorithms. In particular:</p>
 <ul>
   <li>Both <dt-math>X</dt-math> and <dt-math>Y</dt-math>
     can vary in length.</li>
@@ -162,7 +159,7 @@ using simpler supervised learning algorithms.</p>
 <p>The CTC algorithm overcomes these challenges. For a given
 <dt-math>X</dt-math> it gives us an output distribution over all possible
 <dt-math>Y</dt-math>s. We can use this distribution to infer a likely output
-and to asses the probability of a given output.</p>
+and asses the probability of a given output.</p>
 
 <p>Not all ways of computing the loss function and performing inference are
 tractable. We'll require that CTC do both of these efficiently.</p>
@@ -171,14 +168,14 @@ tractable. We'll require that CTC do both of these efficiently.</p>
 maximize the probability it assigns to the right answer for a given input.  
 To do this, we'll need to efficiently compute the conditional probability
 <dt-math>p(Y \mid X)</dt-math>. The function <dt-math>p(Y \mid X)</dt-math>
-should also be differentiable. This let's us use any gradient-based optimizer.</p>
+should also be differentiable so that we can use gradient descent.</p>
 
 <p><strong>Inference:</strong> Naturally, after we've trained the model, we
 want to use it to infer a likely <dt-math>Y</dt-math> given an <dt-math>X</dt-math>.
 This means solving 
 
 <dt-math block>
-  Y^* \enspace =\enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} \enspace p(Y \mid X).
+  Y^* \enspace =\enspace {\mathop{\text{argmax}}\limits_{Y}} \enspace p(Y \mid X).
 </dt-math>
 
 Ideally <dt-math>Y^*</dt-math> can be found efficiently. With CTC we’ll
@@ -187,27 +184,27 @@ settle for a close to optimal solution that's not too expensive to find.</p>
 <hr />
 <h2 id="the-algorithm">The Algorithm</h2>
 
-<p>The CTC algorithm can assign a probability for any <dt-math>Y</dt-math> given
-an <dt-math>X</dt-math>. This allows us to both train the model and perform
-inference. The alignments that CTC allows between inputs and outputs are key
-to computing these probabilities. We'll start by looking at these alignments and
-then proceed to the loss function and inference.</p>
+<p>The CTC algorithm can assign a probability for any <dt-math>Y</dt-math>
+given an <dt-math>X</dt-math>. The key to computing this probability is how CTC
+thinks about alignments between inputs and outputs. We'll start by looking at
+these alignments and then show how to use them to compute the loss function and
+perform inference.</p>
 
 <h3 id="the-alignment">Alignment</h3>
 
 <p>To motivate the CTC alignments, first consider a naive approach. Let’s use
-an example. Assume the input has length <dt-math>T = 6</dt-math> and
-<dt-math>Y =</dt-math> [c, a, t]. One way to align <dt-math>Y</dt-math>
-and <dt-math>X</dt-math> is to let the elements of <dt-math>Y</dt-math>
-align to multiple elements of <dt-math>X</dt-math>. So the alignment could be</p>
+an example. Assume the input has length six and <dt-math>Y =</dt-math> [c, a,
+t]. One way to align <dt-math>X</dt-math> to <dt-math>Y</dt-math> is to
+have a character for each input step and collapse repeats. So the alignment
+could be</p>
 
-<figure style="width:300px; height:130px; margin-top:0px;">
+<figure style="width:300px; height:140px; margin-top:0px;">
   <figcaption>
-  <span style="position:absolute; left: 0; top:15px;">output (<dt-math>Y</dt-math>)</span>
-  <span style="position:absolute; left: 0; top:65px;">alignment</span>
-  <span style="position:absolute; left: 0; top:110px;">input (<dt-math>X</dt-math>)</span>
+  <span style="position:absolute; left: 0; top:5px;">input (<dt-math>X</dt-math>)</span>
+  <span style="position:absolute; left: 0; top:64px;">alignment</span>
+  <span style="position:absolute; left: 0; top:120px;">output (<dt-math>Y</dt-math>)</span>
   </figcaption>
-  <div style="width:200px; position:absolute; left: 80px;">
+  <div style="width:200px; position:absolute; left: 100px;">
   <img src="assets/naive_alignment.svg" />
   </div>
 </figure>
@@ -221,18 +218,17 @@ align to multiple elements of <dt-math>X</dt-math>. So the alignment could be</p
   </li>
 
   <li>
-    The same output token can occur multiple times in a row.  This means that
-    different outputs can have identical alignments. For example, we can't tell
-    if the alignment [c, c, a, a, a, t] refers to [c, a, t] or [c, a, a, t].
-    Distinguishing between these cases makes it easier to use the model for inference.
+    We have no way to produce outputs with multiple characters in a row.
+    Consider the alignment [h, h, e, l, l, l, o]. The naive collapsing will
+    produce "helo" instead of "hello".
   </li>
 </ul>
 
 <p>To get around these problems, CTC introduces a new token to the set of
-allowed outputs. This new token is sometimes called the “blank”
-token. We’ll refer to it here as <dt-math>\epsilon</dt-math>. If an input
-element aligns to <dt-math>\epsilon</dt-math>, then it doesn't have a
-corresponding output.</p>
+allowed outputs. This new token is sometimes called the “blank” token. We’ll
+refer to it here as <dt-math>\epsilon</dt-math>. The
+<dt-math>\epsilon</dt-math> token doesn't correspond to anything and is simply
+removed from the output.</p>
 
 <p>The alignments allowed by CTC are the same length as the input. Let
 <dt-math>\mathcal{A}_{X,Y}</dt-math> be the set of alignments for a given
@@ -264,8 +260,8 @@ any alignment must have an <dt-math>\epsilon</dt-math> between them.
 With this rule in place, we can differentiate between alignments of [c, a, t] and
 [c, a, a, t].</p>
 
-<p>Let’s go back to the [c, a, t] example with <dt-math>T =
-6</dt-math>. Here are a few more examples of valid and invalid alignments.</p>
+<p>Let’s go back to the [c, a, t] with the input of length six. Here are a few
+more examples of valid and invalid alignments.</p>
 
 <figure style="width:500px; height:150px; margin-top:0px;">
   <figcaption>

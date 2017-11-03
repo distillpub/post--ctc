@@ -537,10 +537,11 @@ instead of maximizing the likelihood directly.</p>
 <h3 id="inference">Inference</h3>
 
 <p>After we've trained the model, we'd like to use it to find a likely output
-for a given input. More precisely, we need to solve</p>
+for a given input. More precisely, we need to solve
 <dt-math block>
 Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} \enspace p(Y \mid X).
 </dt-math>
+</p>
 
 <p>One heuristic is to take the most likely output at each time-step. This
 gives us the alignment with the highest probability:
@@ -781,8 +782,8 @@ understanding the CTC algorithm. Feel free to skip it on a first read.</em></p>
 
 <p>At a first glance a Hidden Markov Model (HMM) doesn't closely resemble CTC.
 But, the two algorithms are actually quite similar. Understanding the
-relationship between them will help us understand what exactly CTC does that
-couldn't be done before. Putting CTC in this context will also give us insight
+relationship between them will help us understand what advantages CTC has over
+HMM sequence models. Putting CTC in this context will also give us insight
 into how it can be changed and potentially improved for various use cases.</p>
 
 <p style="margin-bottom:0px">We’ll use the same notation as before,
@@ -1064,13 +1065,13 @@ detailed treatment of CTC.</p>
 
 <p>One of the first applications of CTC to large vocabulary speech recognition was
 by Graves et al. in 2014.<dt-cite key="Graves2014"></dt-cite>
-They used a hybrid HMM and CTC trained model to achieve state-of-the-art results.
+They combined a hybrid DNN-HMM and a CTC trained model to achieve state-of-the-art results.
 Hannun et al. subsequently demonstrated state-of-the-art CTC based speech
 recognition on larger benchmarks.<dt-cite key="Hannun2014deepspeech"></dt-cite>
-A CTC trained model outperformed other methods at an online handwriting
+A CTC model outperformed other methods on an online handwriting
 recognition benchmark in 2007.<dt-cite key="Liwicki2007"></dt-cite></p>
 
-<p>CTC has been used successfully in many other problems. These include
+<p>CTC has been used successfully in many other problems. Some examples are
 lip-reading from video<dt-cite key="Assael2016"></dt-cite>, action recognition from
 video<dt-cite key="Huang2016"></dt-cite> and keyword detection in audio.
 <dt-cite key="Fernandez2007,Lengerich2016"></dt-cite></p>

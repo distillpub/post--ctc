@@ -42,11 +42,11 @@ function clear_and_load() {
 
 $("#alignment").mousedown(function(e) {
     e.preventDefault();
-    if (LOADED)
-        place_caret();
-    else {
+    if (!LOADED) {
         clear_and_load();
+        update($("#alignment").text());
     }
+    place_caret();
 });
 
 $("#alignment").keydown(function(e) {
@@ -96,7 +96,7 @@ $("#alignment").keypress(function(e) {
         $("#alignment").append(div);
         return;
     }
-    console.log("KeyPress " + e.keyCode);
+
     if(e.keyCode == 13)
         alignment += EPS;
     else
@@ -107,7 +107,12 @@ $("#alignment").keypress(function(e) {
 
 function update(alignment) {
     update_output(alignment);
-    place_caret();
+
+    // Only place the cursor if we have focus
+    var ali = document.getElementById('alignment');
+    var is_focused = (document.activeElement == ali);
+    if (is_focused)
+        place_caret();
 }
 
 function add_rects(groups) {
@@ -137,6 +142,15 @@ function update_alignment(alignment) {
              else return "align_text";
         });
     divs.exit().remove();
+
+    if (!LOADED){
+        var last_div = d3.select("#alignment").select("div:last-child").nodes();
+        if (last_div.length > 0) {
+            var last_letter = alignment[alignment.length - 1];
+            var span = "<span style=\"border-right:1px solid\">";
+            last_div[0].innerHTML = span + last_letter + "</span>";
+        }
+    }
 }
 
 function compute_paths(d, i) {

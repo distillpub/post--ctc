@@ -7,8 +7,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   height="220.71178"
-   width="175.11739"
+   height="220.12633"
+   width="234.42639"
    id="svg"
    version="1.1"
    sodipodi:docname="cost_no_skip.svg"
@@ -38,9 +38,9 @@
      inkscape:window-height="774"
      id="namedview213"
      showgrid="false"
-     inkscape:zoom="2.1953488"
-     inkscape:cx="120.66449"
-     inkscape:cy="93.051195"
+     inkscape:zoom="3.104692"
+     inkscape:cx="30.198378"
+     inkscape:cy="87.547751"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
@@ -52,24 +52,24 @@
      showguides="true"
      inkscape:guide-bbox="true">
     <sodipodi:guide
-       position="15.03178,-2.7330509"
+       position="-56.793049,219.66752"
        orientation="1,0"
        id="guide834"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="276.0126,275.20241"
+       position="335.32161,275.20241"
        orientation="0,1"
        id="guide835"
        inkscape:locked="false" />
     <inkscape:grid
        type="xygrid"
        id="grid840"
-       originx="-21.601459"
-       originy="70.995363" />
+       originx="37.707551"
+       originy="70.995367" />
     <sodipodi:guide
-       position="-25.052967,170.81568"
+       position="12.605504,27.700014"
        orientation="0,1"
-       id="guide2838"
+       id="guide964"
        inkscape:locked="false" />
   </sodipodi:namedview>
   <defs
@@ -295,7 +295,7 @@
   </defs>
   <g
      id="g861"
-     transform="translate(-25.732319,-6.1013794)">
+     transform="translate(33.576691,-6.6868267)">
     <text
        style="font-family:STIXGeneral-Italic"
        id="text26"
@@ -374,5 +374,25 @@
        style="font-family:STIXGeneral-Italic"
        inkscape:transform-center-x="-108.2233"
        inkscape:transform-center-y="-102.42562">ϵ</text>
+    <text
+       id="text947"
+       y="58.10186"
+       x="-24.297394">a</text>
+    <text
+       x="-24.177624"
+       y="198.85655"
+       id="text949">a</text>
+    <text
+       id="text951"
+       y="127.76917"
+       x="-23.024469"
+       style="font-family:STIXGeneral-Italic"
+       inkscape:transform-center-x="-108.2233"
+       inkscape:transform-center-y="-102.42562">ϵ</text>
+    <text
+       x="-4.6497126"
+       y="128.38559"
+       id="text962"
+       style="font-size:20px;opacity:0.6">OR</text>
   </g>
 </svg>

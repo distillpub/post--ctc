@@ -402,15 +402,15 @@ output at the same step then we can merge them.</p>
 </figure>
 
 <p>Since we can have an <dt-math>\epsilon</dt-math> before or after any token in
-<dt-math>Y</dt-math>, it's easier to describe the CTC algorithm
-with a sequence that includes them. We'll work with the sequence
+<dt-math>Y</dt-math>, it's easier to describe the algorithm
+using a sequence which includes them. We'll work with the sequence
 <dt-math block>
 Z \enspace =\enspace [\epsilon, ~y_1, ~\epsilon, ~y_2,~ \ldots, ~\epsilon, ~y_U, ~\epsilon]
 </dt-math>
 which is <dt-math>Y</dt-math> with an <dt-math>\epsilon</dt-math> at
 the beginning, end, and between every character.</p>
 
-<p>We'll let <dt-math>\alpha</dt-math> be the score of all the merged
+<p>Let's let <dt-math>\alpha</dt-math> be the score of the merged
 alignments at a given node. More precisely, <dt-math>\alpha_{s, t}</dt-math> is
 the CTC score of the subsequence <dt-math>Z_{1:s}</dt-math> after
 <dt-math>t</dt-math> input steps.  As long as we know the values of
@@ -420,23 +420,22 @@ we can compute <dt-math>\alpha_{s, t}</dt-math>. There are two cases.</p>
 <p><strong>Case 1:</strong></p>
 
 <div>
-<figure style="width:180px;float:right;margin-top:0px;margin-bottom:0px; margin-left:40px;">
+<figure style="width:180px;float:right;margin-top:10px;margin-bottom:10px; margin-left:40px;">
   <img src="assets/cost_no_skip.svg" />
 </figure>
 
 <p>In this case, we can't jump over <dt-math>z_{s-1}</dt-math>, the previous
 token in <dt-math>Z</dt-math>. The first reason is that the previous token can
-be an element of <dt-math>Y</dt-math>.  We have to align all the elements of
-<dt-math>Y</dt-math> if we wan't to recover the full sequence after collapsing.
-Since every <dt-math>y</dt-math> in <dt-math>Z</dt-math> is followed by an
-<dt-math>\epsilon</dt-math>, we can identify this when <dt-math> z_{s} =
-\epsilon</dt-math>. The second reason is that we must have an
-<dt-math>\epsilon</dt-math> between repeat characters in <dt-math>Y</dt-math>.
-We can identify this when <dt-math>z_s = z_{s-2}</dt-math> and
-<dt-math>z_s \ne \epsilon</dt-math>.</p>
+be an element of <dt-math>Y</dt-math>, and we can't skip elements of
+<dt-math>Y</dt-math>.  Since every element of <dt-math>Y</dt-math> in
+<dt-math>Z</dt-math> is followed by an <dt-math>\epsilon</dt-math>, we can
+identify this when <dt-math> z_{s} = \epsilon</dt-math>. The second reason is
+that we must have an <dt-math>\epsilon</dt-math> between repeat characters in
+<dt-math>Y</dt-math>.  We can identify this when
+<dt-math>z_s = z_{s-2}</dt-math>.</p>
 </div>
 
-<p>To ensure we don't skip <dt-math>z_{s-1}</dt-math>, either we can be there
+<p>To ensure we don't skip <dt-math>z_{s-1}</dt-math>, we can either be there
 at the previous time-step or have already passed through at some earlier
 time-step. As a result there are two positions we can transition from.</p>
 
@@ -514,7 +513,7 @@ the subsequence <dt-math>Z_{1:s}</dt-math> after
 </figcaption>
 </figure>
 
-<p>There are two valid starting nodes and final nodes since the
+<p>There are two valid starting nodes and two valid final nodes since the
 <dt-math>\epsilon</dt-math> at the beginning and end of the sequence is
 optional. The complete probability is the sum of the two final nodes.</p>
 
@@ -952,38 +951,39 @@ like the RNN.</p>
 sequence transduction. This class of models consists of an encoder and a
 decoder. The encoder maps the input sequence <dt-math>X</dt-math> into a hidden
 representation. The decoder consumes the hidden representation and produces a
-distribution over the output space <dt-math>\mathcal{Y}</dt-math>. We can write this as
+distribution over the outputs. We can write this as
 
 <dt-math block>
 \begin{aligned}
-h\enspace &= \enspace\textsf{encode}(X) \\[.5em]
-p(Y \mid X)\enspace &= \enspace \textsf{decode}(h).
+H\enspace &= \enspace\textsf{encode}(X) \\[.5em]
+p(Y \mid X)\enspace &= \enspace \textsf{decode}(H).
 \end{aligned}
 </dt-math>
 
-The <dt-math>\textsf{encode}(\cdot)</dt-math> and <dt-math>\textsf{decode}(\cdot)</dt-math> functions are typically RNNs.
-The decoder can optionally be equipped with an attention mechanism. The hidden
-state <dt-math>h</dt-math> usually has dimensions
-<dt-math>T \times d</dt-math> where <dt-math>d</dt-math> is
-a hyperparameter. Sometimes the encoder subsamples the input. If the encoder
-subsamples the input by a factor <dt-math>s</dt-math> then the
-inner dimension of <dt-math>h</dt-math> will be <dt-math>\frac{T}{s}</dt-math>.</p>
+The <dt-math>\textsf{encode}(\cdot)</dt-math> and
+<dt-math>\textsf{decode}(\cdot)</dt-math> functions are typically RNNs.  The
+decoder can optionally be equipped with an attention mechanism. The hidden
+state sequence <dt-math>H</dt-math> has the same number of time-steps as the
+input, <dt-math>T</dt-math>. Sometimes the encoder subsamples the input. If the
+encoder subsamples the input by a factor <dt-math>s</dt-math> then
+<dt-math>H</dt-math> will have <dt-math>\frac{T}{s}</dt-math> time-steps.</p>
 
 <p>We can interpret CTC in the encoder-decoder framework. This is helpful to
 understand the developments in encoder-decoder models that are applicable to
 CTC. Also, it’s useful to develop a common language for the properties of these
 models.</p>
 
-<p><strong>Encoder:</strong> The encoder of a CTC model can be just about any encoder we find
-in commonly used encoder-decoder models. For example the encoder could be a
-multi-layer bidirectional RNN or a convolutional network. There is a constraint
-on the CTC encoder that doesn't apply to the others. The input length cannot be
-sub-sampled so much that <dt-math>\frac{T}{s}</dt-math> is less than <dt-math>U</dt-math>.</p>
+<p><strong>Encoder:</strong> The encoder of a CTC model can be just about any
+encoder we find in commonly used encoder-decoder models. For example the
+encoder could be a multi-layer bidirectional RNN or a convolutional network.
+There is a constraint on the CTC encoder that doesn't apply to the others. The
+input length cannot be sub-sampled so much that <dt-math>\frac{T}{s}</dt-math>
+is less than <dt-math>U</dt-math>.</p>
 
-<p><strong>Decoder:</strong> We can view the decoder of a CTC model as a simple linear
-transformation followed by a softmax normalization. This layer should project
-all <dt-math>T</dt-math> components of the encoder output <dt-math>h</dt-math> into the dimensionality of the
-output alphabet.</p>
+<p><strong>Decoder:</strong> We can view the decoder of a CTC model as a simple
+linear transformation followed by a softmax normalization. This layer should
+project all <dt-math>T</dt-math> steps of the encoder output
+<dt-math>H</dt-math> into the dimensionality of the output alphabet.</p>
 
 <hr />
 <h2 id="practitioners-guide">Practitioner’s Guide</h2>

@@ -17,7 +17,7 @@
             <path d="M110.666667,58.5 L110.666667,29" id="Line" stroke="#888888" stroke-width="2" fill="#888888" stroke-linecap="square"></path>
             <path id="Line-decoration-1" d="M110.666667,27 L107.666667,37.8 L113.666667,37.8 L110.666667,27 Z" stroke="#888888" stroke-width="2" fill="#888888" stroke-linecap="square"></path>
             <text id="jumped-over-the-lazy" fill="#000000" opacity="0.6" letter-spacing="2">
-                <tspan x="6" y="15">jumped over the lazy dog</tspan>
+                <tspan x="14" y="15">jumps over the lazy dog</tspan>
             </text>
         </g>
     </g>

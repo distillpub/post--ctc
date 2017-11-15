@@ -198,8 +198,8 @@ This means solving
   Y^* \enspace =\enspace {\mathop{\text{argmax}}\limits_{Y}} \enspace p(Y \mid X).
 </d-math>
 
-Ideally <d-math>Y^*</d-math> can be found efficiently. With CTC we’ll
-settle for a close to optimal solution that's not too expensive to find.</p>
+Ideally <d-math>Y^*</d-math> can be found efficiently. With CTC we'll settle
+for a close to optimal solution that's not too expensive to find.</p>
 
 <hr />
 
@@ -276,13 +276,13 @@ we'll drop the subscripts on <d-math>\mathcal{A}</d-math>. The set
   </div>
 </figure>
 
-<p>If <d-math>Y</d-math> has two of the same character in a row, then
-any alignment must have an <d-math>\epsilon</d-math> between them.
-With this rule in place, we can differentiate between alignments of [c, a, t] and
-[c, a, a, t].</p>
+<p>If <d-math>Y</d-math> has two of the same character in a row, then any
+alignment must have an <d-math>\epsilon</d-math> between them. With this rule
+in place, we can differentiate between alignments of [h, e, l, l, o] and
+[h, e, l, o].</p>
 
-<p>Let’s go back to the [c, a, t] with the input of length six. Here are a few
-more examples of valid and invalid alignments.</p>
+<p>Let's go back to the output [c, a, t] with an input of length six. Here are
+a few more examples of valid and invalid alignments.</p>
 
 <figure style="width:500px; height:150px; margin-top:0px;">
   <figcaption>
@@ -550,14 +550,12 @@ the subsequence <d-math>Z_{1:s}</d-math> after
 <d-math>\epsilon</d-math> at the beginning and end of the sequence is
 optional. The complete probability is the sum of the two final nodes.</p>
 
-<p>Computing the loss function just requires sums and products of the per
-time-step output distribution. As long as this output distribution,
-<d-math>p_t(z \mid X)</d-math>, is differentiable, the entire loss function
-will be differentiable.</p>
-
-<p>The time complexity of the algorithm is <d-math>O(TU)</d-math> with a
-fairly small constant. Notice also that this part of the computation doesn't
-depend on the size of the output alphabet.</p>
+<p>Now that we can efficiently compute the loss function, the next step is to
+compute a gradient and train the model. The CTC loss function is differentiable
+with respect to the per time-step output probabilities since it's just sums and
+products of them. Given this, we can analytically compute the gradient of the
+loss function with respect to the (unnormalized) output probabilities and from
+there run backpropagation as usual.</p>
 
 <p>For a training set <d-math>\mathcal{D}</d-math>, the model's parameters
 are tuned to minimize the negative log-likelihood
@@ -743,24 +741,29 @@ probability. The conditional independence assumption does not allow for this.</p
   should be true.
 </figure>
 
-<p>In fact speech recognizers using CTC are not able to learn a language
-model over the output nearly as well as models which do not make this
-assumption.<d-cite key="Battenberg2017"></d-cite> However, this isn't always
-a bad trait. Baking in strong beliefs over output interactions makes the model
-less adaptable to new or altered domains. For example, we might want
-to use a speech recognizer trained on phone conversations between friends
-for customer support calls.</p>
+<p>In fact speech recognizers using CTC don't learn a language model over the
+output nearly as well as models which are conditionally dependent.
+<dt-cite key="Battenberg2017"></dt-cite> An auxiliary language model can be
+used to incorporate the dependencies between outputs and usually gives a good
+boost to accuracy.</p>
+
+<p>The conditional independence assumption made by CTC isn't always a bad
+thing. Baking in strong beliefs over output interactions makes the model less
+adaptable to new or altered domains. For example, we might want to use a speech
+recognizer trained on phone conversations between friends for customer support
+calls. The language in the two domains can be quite different even if the
+acoustic model is similar. With a CTC acoustic model, we can easily swap in a
+new language model as we change domains.</p>
 
 <h3 id="alignment-properties">Alignment Properties</h3>
 
-<p>The CTC algorithm is <em>alignment-free</em>. The objective function marginalizes over all 
-alignments. While CTC does make strong assumptions about the form of
-alignments between <d-math>X</d-math> and
-<d-math>Y</d-math>, the model is agnostic as to how probability
-is distributed amongst
-them. In some problems CTC ends up allocating most of the probability to a
-single alignment. However, this isn't guaranteed. We can force the model to
-choose a single alignment by replacing the sum with a max in the objective function,
+<p>The CTC algorithm is <em>alignment-free</em>. The objective function
+marginalizes over all alignments. While CTC does make strong assumptions about
+the form of alignments between <d-math>X</d-math> and <d-math>Y</d-math>, the
+model is agnostic as to how probability is distributed amongst them. In some
+problems CTC ends up allocating most of the probability to a single alignment.
+However, this isn't guaranteed. We can force the model to choose a single
+alignment by replacing the sum with a max in the objective function,
 <d-math block>
 p(Y \mid X) \enspace = \enspace \max_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X).
 </d-math></p>
@@ -787,8 +790,10 @@ than the input.
   repeats, then the length of <d-math>Y</d-math> must be less than
   the length of <d-math>X</d-math> by <d-math>2r - 1</d-math>.
 </d-footnote>
-For problems where <d-math>Y</d-math> is often longer than
-<d-math>X</d-math>, CTC just won't work.</p>
+This is usually not a problem for speech and handwriting recognition since the
+input is much longer than the output. However, for other problems where
+<dt-math>Y</dt-math> is often longer than <dt-math>X</dt-math>, CTC just won't
+work.</p>
 
 
 <h3 id="input-synchronous-inference">Input Synchronous Inference</h3>

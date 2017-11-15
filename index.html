@@ -1,26 +1,46 @@
 <!doctype html>
-<meta charset="utf-8">
-<script src="https://distill.pub/template.v1.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
-  integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0"
-  crossorigin="anonymous">
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-
-<script type="text/front-matter">
-  title: "A Guide to Connectionist Temporal Classification"
-  description: "This is a guide to Connectionist Temporal Classification (CTC) – a popular algorithm for sequence to sequence mapping with neural networks."
-  authors:
-  - Awni Hannun : http://stanford.edu/~awni/
-  affiliations:
-  - Stanford University : http://cs.stanford.edu/ 
+<head>
+  <meta charset="utf-8">
+  <script src="https://distill.pub/template.v2.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+    integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0"
+    crossorigin="anonymous">
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <style>
+    figure {
+      margin-left: auto;
+      margin-right: auto;
+      width: 704px;
+    }
+    .figure-math {
+      margin-left: 1em;
+    }
+  </style>
 </script>
+</head>
 
-<dt-article class="centered">
-  <h1>A Guide to Connectionist Temporal Classification</h1>
+</body>
+<distill-header></distill-header>
+<d-front-matter>
+  <script id="distill-front-matter" type="text/json">{
+    "title": "A Guide to Connectionist Temporal Classification",
+    "description": "This is a guide to Connectionist Temporal Classification (CTC) – a popular algorithm for sequence to sequence mapping with neural networks.",
+    "authors": [
+      {"author" : "Awni Hannun",
+       "authorURL" : "http://stanford.edu/~awni/",
+       "affiliation": "Stanford University",
+       "affiliationURL" : "http://cs.stanford.edu/"}
+    ]
+  }</script>
+</d-front-matter>
+
+<d-title>
+    <h1>A Guide to Connectionist Temporal Classification</h1>
+</d-title>
 
 <figure style="width:900px;height:360px;">
   <link rel="stylesheet" type="text/css" href="assets/collapse_ctc.css">
@@ -37,13 +57,13 @@
   Predict a sequence of tokens
   </figcaption>
   <figcaption style="position:absolute;top:120px;width:80px;">
-  Repeats<br /> are merged, <br/> <dt-math>\epsilon</dt-math> is dropped
+  Repeats<br /> are merged, <br/> $\epsilon$ is dropped
   </figcaption>
   <figcaption style="position:absolute;top:220px;width:80px;">
     Final output
   </figcaption>
   <figcaption style="position:absolute;left:810px;top:30px;width:110px;line-height:180%;">
-    Use <span id="return_botton">return</span> to input a blank <dt-math>(\epsilon)</dt-math>
+  Use <span id="return_botton">return</span> to input a blank <d-math>(\epsilon)</d-math>
   </figcaption>
 
   <div style="position:absolute;left:100px;">
@@ -96,8 +116,7 @@
 </figure>
 <script src="assets/collapse_ctc.js"></script>
 
-<dt-byline></dt-byline>
-
+<d-article>
 <p>Consider speech recognition. We have a dataset of audio clips and
 corresponding transcripts. Unfortunately, we don't know how the characters in
 the transcript align to the audio. This makes training a speech recognizer
@@ -115,12 +134,13 @@ prohibitively time consuming.</p>
 other places. Handwriting recognition from images or sequences of pen strokes
 is one example. Action labelling in videos is another.</p>
 
-<figure style="height:200px;margin-top:0px;">
+
+<figure style="width:630px;height:200px;margin-top:0px;">
   <div style="width:320px;position:absolute;">
   <img src="assets/handwriting_recognition.svg" />
   <figcaption style="width:280px;">
   <strong>Handwriting recognition:</strong> The input can be
-  <dt-math>(x,y)</dt-math> coordinates of a pen stroke or 
+  <d-math>(x,y)</d-math> coordinates of a pen stroke or 
   pixels in an image.
   </figcaption>
   </div>
@@ -141,24 +161,24 @@ recognition.</p>
 <hr />
 
 <p>To be a bit more formal, let's consider mapping input sequences
-<dt-math>X = [x_1, x_2, \ldots, x_T]</dt-math>, such as audio, to corresponding output
-sequences <dt-math>Y = [y_1, y_2, \ldots, y_U]</dt-math>, such as transcripts.
-We want to find an accurate mapping from <dt-math>X</dt-math>s to <dt-math>Y</dt-math>s.</p>
+<d-math>X = [x_1, x_2, \ldots, x_T]</d-math>, such as audio, to corresponding output
+sequences <d-math>Y = [y_1, y_2, \ldots, y_U]</d-math>, such as transcripts.
+We want to find an accurate mapping from <d-math>X</d-math>s to <d-math>Y</d-math>s.</p>
 
 <p>As we saw in speech recognition, there are challenges which get in the way of us
 using simpler supervised learning algorithms. In particular:</p>
 <ul>
-  <li>Both <dt-math>X</dt-math> and <dt-math>Y</dt-math>
+  <li>Both <d-math>X</d-math> and <d-math>Y</d-math>
     can vary in length.</li>
-  <li>The ratio of the lengths of <dt-math>X</dt-math> and <dt-math>Y</dt-math>
+  <li>The ratio of the lengths of <d-math>X</d-math> and <d-math>Y</d-math>
     can vary.</li>
   <li>We don’t have an accurate alignment (correspondence of the elements) of
-  <dt-math>X</dt-math> and <dt-math>Y</dt-math>.</li>
+  <d-math>X</d-math> and <d-math>Y</d-math>.</li>
 </ul>
 
 <p>The CTC algorithm overcomes these challenges. For a given
-<dt-math>X</dt-math> it gives us an output distribution over all possible
-<dt-math>Y</dt-math>s. We can use this distribution to infer a likely output
+<d-math>X</d-math> it gives us an output distribution over all possible
+<d-math>Y</d-math>s. We can use this distribution to infer a likely output
 and asses the probability of a given output.</p>
 
 <p>Not all ways of computing the loss function and performing inference are
@@ -167,25 +187,26 @@ tractable. We'll require that CTC do both of these efficiently.</p>
 <p><strong>Loss Function:</strong> We'd like to train our model to
 maximize the probability it assigns to the right answer for a given input.  
 To do this, we'll need to efficiently compute the conditional probability
-<dt-math>p(Y \mid X)</dt-math>. The function <dt-math>p(Y \mid X)</dt-math>
+<d-math>p(Y \mid X)</d-math>. The function <d-math>p(Y \mid X)</d-math>
 should also be differentiable so that we can use gradient descent.</p>
 
 <p><strong>Inference:</strong> Naturally, after we've trained the model, we
-want to use it to infer a likely <dt-math>Y</dt-math> given an <dt-math>X</dt-math>.
+want to use it to infer a likely <d-math>Y</d-math> given an <d-math>X</d-math>.
 This means solving 
 
-<dt-math block>
+<d-math block>
   Y^* \enspace =\enspace {\mathop{\text{argmax}}\limits_{Y}} \enspace p(Y \mid X).
-</dt-math>
+</d-math>
 
-Ideally <dt-math>Y^*</dt-math> can be found efficiently. With CTC we’ll
+Ideally <d-math>Y^*</d-math> can be found efficiently. With CTC we’ll
 settle for a close to optimal solution that's not too expensive to find.</p>
 
 <hr />
+
 <h2 id="the-algorithm">The Algorithm</h2>
 
-<p>The CTC algorithm can assign a probability for any <dt-math>Y</dt-math>
-given an <dt-math>X</dt-math>. The key to computing this probability is how CTC
+<p>The CTC algorithm can assign a probability for any <d-math>Y</d-math>
+given an <d-math>X</d-math>. The key to computing this probability is how CTC
 thinks about alignments between inputs and outputs. We'll start by looking at
 these alignments and then show how to use them to compute the loss function and
 perform inference.</p>
@@ -193,16 +214,16 @@ perform inference.</p>
 <h3 id="the-alignment">Alignment</h3>
 
 <p>To motivate the CTC alignments, first consider a naive approach. Let’s use
-an example. Assume the input has length six and <dt-math>Y =</dt-math> [c, a,
-t]. One way to align <dt-math>X</dt-math> to <dt-math>Y</dt-math> is to
+an example. Assume the input has length six and <d-math>Y =</d-math> [c, a,
+t]. One way to align <d-math>X</d-math> to <d-math>Y</d-math> is to
 have a character for each input step and collapse repeats. So the alignment
 could be</p>
 
 <figure style="width:300px; height:140px; margin-top:0px;">
   <figcaption>
-  <span style="position:absolute; left: 0; top:5px;">input (<dt-math>X</dt-math>)</span>
+  <span style="position:absolute; left: 0; top:5px;">input (<d-math>X</d-math>)</span>
   <span style="position:absolute; left: 0; top:64px;">alignment</span>
-  <span style="position:absolute; left: 0; top:120px;">output (<dt-math>Y</dt-math>)</span>
+  <span style="position:absolute; left: 0; top:120px;">output (<d-math>Y</d-math>)</span>
   </figcaption>
   <div style="width:200px; position:absolute; left: 100px;">
   <img src="assets/naive_alignment.svg" />
@@ -226,17 +247,17 @@ could be</p>
 
 <p>To get around these problems, CTC introduces a new token to the set of
 allowed outputs. This new token is sometimes called the “blank” token. We’ll
-refer to it here as <dt-math>\epsilon</dt-math>. The
-<dt-math>\epsilon</dt-math> token doesn't correspond to anything and is simply
+refer to it here as <d-math>\epsilon</d-math>. The
+<d-math>\epsilon</d-math> token doesn't correspond to anything and is simply
 removed from the output.</p>
 
 <p>The alignments allowed by CTC are the same length as the input. Let
-<dt-math>\mathcal{A}_{X,Y}</dt-math> be the set of alignments for a given
-<dt-math>(X, Y)</dt-math> pair. When it's clear from context,
-we'll drop the subscripts on <dt-math>\mathcal{A}</dt-math>. The set
-<dt-math>\mathcal{A}</dt-math> contains all the alignments which map to
-<dt-math>Y</dt-math> after merging repeats and removing
-<dt-math>\epsilon</dt-math> tokens:</p>
+<d-math>\mathcal{A}_{X,Y}</d-math> be the set of alignments for a given
+<d-math>(X, Y)</d-math> pair. When it's clear from context,
+we'll drop the subscripts on <d-math>\mathcal{A}</d-math>. The set
+<d-math>\mathcal{A}</d-math> contains all the alignments which map to
+<d-math>Y</d-math> after merging repeats and removing
+<d-math>\epsilon</d-math> tokens:</p>
 
 <figure style="width:500px; height:240px; margin-top:0px;">
   <figcaption>
@@ -244,7 +265,7 @@ we'll drop the subscripts on <dt-math>\mathcal{A}</dt-math>. The set
     First, merge repeat characters.
   </div>
   <div style="position:absolute; top:110px; width: 150px;">
-    Then, remove any <dt-math>\epsilon</dt-math> tokens.
+    Then, remove any <d-math>\epsilon</d-math> tokens.
   </div>
   <div style="position:absolute; top:180px; width: 130px;">
     The remaining characters are the output.
@@ -255,8 +276,8 @@ we'll drop the subscripts on <dt-math>\mathcal{A}</dt-math>. The set
   </div>
 </figure>
 
-<p>If <dt-math>Y</dt-math> has two of the same character in a row, then
-any alignment must have an <dt-math>\epsilon</dt-math> between them.
+<p>If <d-math>Y</d-math> has two of the same character in a row, then
+any alignment must have an <d-math>\epsilon</d-math> between them.
 With this rule in place, we can differentiate between alignments of [c, a, t] and
 [c, a, a, t].</p>
 
@@ -272,7 +293,7 @@ more examples of valid and invalid alignments.</p>
     <strong>Invalid Alignments</strong>
   </div>
   <div style="position:absolute; left: 420px; top:30px; width: 100px;">
-    corresponds to <dt-math>Y =</dt-math> [c, c, a, t]
+    corresponds to <d-math>Y =</d-math> [c, c, a, t]
   </div>
   <div style="position:absolute; left: 420px; top:90px; width: 100px;">
     has length 5
@@ -286,8 +307,8 @@ more examples of valid and invalid alignments.</p>
   </div>
 </figure>
 
-<p>Another useful way to visualize the alignment between <dt-math>X</dt-math>
-and <dt-math>Y</dt-math> is with an alignment matrix.</p>
+<p>Another useful way to visualize the alignment between <d-math>X</d-math>
+and <d-math>Y</d-math> is with an alignment matrix.</p>
 
 <figure style="height:400px;width:550px;margin-top:0px;">
   <div style="width:200px; position:absolute; left:240px;">
@@ -298,23 +319,23 @@ and <dt-math>Y</dt-math> is with an alignment matrix.</p>
   </div>
   <figcaption style="width:170px;position:absolute; top:60px;">
   An alignment matrix for the [<span class="katex"><span class="mord mathit">ϵ</span></span>, c, c,
-  <dt-math>\epsilon</dt-math>, a, t] alignment.
+  <d-math>\epsilon</d-math>, a, t] alignment.
   </figcaption>
   <figcaption style="width:200px;position:absolute; top:220px;">
-  The alignment matrix including the <dt-math>\epsilon</dt-math> token. Note
-  that some of the <dt-math>\epsilon</dt-math> tokens are left unaligned. They
-  are optional since they don’t fall between repeats in <dt-math>Y</dt-math>.
+  The alignment matrix including the <d-math>\epsilon</d-math> token. Note
+  that some of the <d-math>\epsilon</d-math> tokens are left unaligned. They
+  are optional since they don’t fall between repeats in <d-math>Y</d-math>.
   </figcaption>
 </figure>
 
 <p>The CTC alignment has a few notable properties. First, the allowed
-alignments between <dt-math>X</dt-math> and <dt-math>Y</dt-math> are monotonic.
+alignments between <d-math>X</d-math> and <d-math>Y</d-math> are monotonic.
 If we advance to the next input, we can keep the corresponding output the
 same or advance to the next one. A second property is that the alignment of
-<dt-math>X</dt-math> to <dt-math>Y</dt-math> is many-to-one. One or more input
+<d-math>X</d-math> to <d-math>Y</d-math> is many-to-one. One or more input
 elements can align to a single output element but not vice-versa. This implies
-a third property: the length of <dt-math>Y</dt-math> cannot be greater than the
-length of <dt-math>X</dt-math>.</p>
+a third property: the length of <d-math>Y</d-math> cannot be greater than the
+length of <d-math>X</d-math>.</p>
 
 <h3 id="loss-function">Loss Function</h3>
 
@@ -324,9 +345,9 @@ time-step to the probability of an output sequence.</p>
 <figure style="width:550px; height:380px;">
   <figcaption>
   <div style="position:absolute; top:10px; width: 180px;">
-    The function <dt-math>p_t(a \mid X)</dt-math> 
+    The function <d-math>p_t(a \mid X)</d-math> 
     is a distribution over the outputs 
-    {h, e, l, o, <dt-math>\epsilon</dt-math>} for
+    {h, e, l, o, <d-math>\epsilon</d-math>} for
     each input step.
   </div>
   <div style="position:absolute; top:180px; width: 180px;">
@@ -344,28 +365,28 @@ time-step to the probability of an output sequence.</p>
 
 
 <p style="margin-bottom:0px;">To be precise, the CTC objective
-for a single <dt-math>(X, Y)</dt-math> pair is:</p>
+for a single <d-math>(X, Y)</d-math> pair is:</p>
 
-<figure style="width:600px;height:120px;margin-top:0px;">
-  <span style="position:absolute; left:30px; top:24px">
-    <dt-math block>p(Y \mid X)</dt-math>
+<figure class="figure-math" style="height:120px;margin-top:0px;">
+  <span style="position:absolute; top:24px">
+    <d-math block>p(Y \mid X)</d-math>
   </span>
-  <figcaption style="position:absolute; left:30px; top:100px; width:150px;">
+  <figcaption style="position:absolute; top:100px; width:150px;">
   The CTC conditional <strong>probability</strong>
   </figcaption>
-  <span style="position:absolute; left:160px; top:24px">
-    <dt-math block>=</dt-math>
+  <span style="position:absolute; left:130px; top:24px">
+    <d-math block>=</d-math>
   </span>
-  <span style="position:absolute; left:200px; top:18px">
-    <dt-math block>\sum_{A \in \mathcal{A}_{X,Y}}</dt-math>
+  <span style="position:absolute; left:170px; top:18px">
+    <d-math block>\sum_{A \in \mathcal{A}_{X,Y}}</d-math>
   </span>
-  <figcaption style="position:absolute; left:200px; top:100px; width:150px;">
+  <figcaption style="position:absolute; left:170px; top:100px; width:150px;">
   <strong>marginalizes</strong> over the set of valid alignments 
   </figcaption>
-  <div style="position:absolute; left:390px; top:0px;">
-    <dt-math block>\prod_{t=1}^T \; p_t(a_t \mid X)</dt-math>
+  <div style="position:absolute; left:360px; top:0px;">
+    <d-math block>\prod_{t=1}^T \; p_t(a_t \mid X)</d-math>
   </div>
-  <figcaption style="position:absolute; left:390px; top:100px; width:200px;">
+  <figcaption style="position:absolute; left:360px; top:100px; width:200px;">
   computing the <strong>probability</strong> for a single alignment step-by-step.
   </figcaption>
 </figure>
@@ -374,12 +395,12 @@ for a single <dt-math>(X, Y)</dt-math> pair is:</p>
 could try the straightforward approach and compute the score for each alignment
 summing them all up as we go. The problem is there can be a massive number of
 alignments.
-<dt-fn>
-  For a <dt-math>Y</dt-math> of length <dt-math>U</dt-math> without any repeat
-  characters and an <dt-math>X</dt-math> of length <dt-math>T</dt-math> the size
-  of the set is <dt-math>{T + U \choose T - U}</dt-math>. For <dt-math>T=100</dt-math> and
-  <dt-math>U=50</dt-math> this number is almost <dt-math>10^{40}</dt-math>.
-</dt-fn>
+<d-footnote>
+  For a <d-math>Y</d-math> of length <d-math>U</d-math> without any repeat
+  characters and an <d-math>X</d-math> of length <d-math>T</d-math> the size
+  of the set is <d-math>{T + U \choose T - U}</d-math>. For <d-math>T=100</d-math> and
+  <d-math>U=50</d-math> this number is almost <d-math>10^{40}</d-math>.
+</d-footnote>
 For most problems this would be too slow.</p>
 
 <p>Thankfully, we can compute the loss much faster with a dynamic programming
@@ -401,156 +422,168 @@ output at the same step then we can merge them.</p>
   </div>
 </figure>
 
-<p>Since we can have an <dt-math>\epsilon</dt-math> before or after any token in
-<dt-math>Y</dt-math>, it's easier to describe the algorithm
+<p>Since we can have an <d-math>\epsilon</d-math> before or after any token in
+<d-math>Y</d-math>, it's easier to describe the algorithm
 using a sequence which includes them. We'll work with the sequence
-<dt-math block>
+<d-math block>
 Z \enspace =\enspace [\epsilon, ~y_1, ~\epsilon, ~y_2,~ \ldots, ~\epsilon, ~y_U, ~\epsilon]
-</dt-math>
-which is <dt-math>Y</dt-math> with an <dt-math>\epsilon</dt-math> at
+</d-math>
+which is <d-math>Y</d-math> with an <d-math>\epsilon</d-math> at
 the beginning, end, and between every character.</p>
 
-<p>Let's let <dt-math>\alpha</dt-math> be the score of the merged
-alignments at a given node. More precisely, <dt-math>\alpha_{s, t}</dt-math> is
-the CTC score of the subsequence <dt-math>Z_{1:s}</dt-math> after
-<dt-math>t</dt-math> input steps.  As long as we know the values of
-<dt-math>\alpha</dt-math> at the previous time-step,
-we can compute <dt-math>\alpha_{s, t}</dt-math>. There are two cases.</p> 
+<p>Let's let <d-math>\alpha</d-math> be the score of the merged
+alignments at a given node. More precisely, <d-math>\alpha_{s, t}</d-math> is
+the CTC score of the subsequence <d-math>Z_{1:s}</d-math> after
+<d-math>t</d-math> input steps.  As long as we know the values of
+<d-math>\alpha</d-math> at the previous time-step,
+we can compute <d-math>\alpha_{s, t}</d-math>. There are two cases.</p> 
 
 <p><strong>Case 1:</strong></p>
 
 <div>
-<figure style="width:180px;float:right;margin-top:10px;margin-bottom:10px; margin-left:40px;">
+<figure style="width:180px;float:right;margin-top:0px;margin-bottom:10px; margin-left:40px;">
   <img src="assets/cost_no_skip.svg" />
 </figure>
 
-<p>In this case, we can't jump over <dt-math>z_{s-1}</dt-math>, the previous
-token in <dt-math>Z</dt-math>. The first reason is that the previous token can
-be an element of <dt-math>Y</dt-math>, and we can't skip elements of
-<dt-math>Y</dt-math>.  Since every element of <dt-math>Y</dt-math> in
-<dt-math>Z</dt-math> is followed by an <dt-math>\epsilon</dt-math>, we can
-identify this when <dt-math> z_{s} = \epsilon</dt-math>. The second reason is
-that we must have an <dt-math>\epsilon</dt-math> between repeat characters in
-<dt-math>Y</dt-math>.  We can identify this when
-<dt-math>z_s = z_{s-2}</dt-math>.</p>
+<p>In this case, we can't jump over <d-math>z_{s-1}</d-math>, the previous
+token in <d-math>Z</d-math>. The first reason is that the previous token can
+be an element of <d-math>Y</d-math>, and we can't skip elements of
+<d-math>Y</d-math>.  Since every element of <d-math>Y</d-math> in
+<d-math>Z</d-math> is followed by an <d-math>\epsilon</d-math>, we can
+identify this when <d-math> z_{s} = \epsilon</d-math>. The second reason is
+that we must have an <d-math>\epsilon</d-math> between repeat characters in
+<d-math>Y</d-math>.  We can identify this when
+<d-math>z_s = z_{s-2}</d-math>.</p>
 </div>
 
-<p>To ensure we don't skip <dt-math>z_{s-1}</dt-math>, we can either be there
+<p>To ensure we don't skip <d-math>z_{s-1}</d-math>, we can either be there
 at the previous time-step or have already passed through at some earlier
 time-step. As a result there are two positions we can transition from.</p>
 
-<figure style="margin-top:0px;height:70px;">
-  <span style="margin-left:40px">
-    <dt-math>\alpha_{s, t}\; = \; (\alpha_{s-1, t-1} + \alpha_{s, t-1})</dt-math>
-  </span>
-  <figcaption style="position:absolute; left:115px; top:50px; width:240px;">
-  The CTC probability of the two valid subsequences after
-  <dt-math>t-1</dt-math> input steps.
-  </figcaption>
-  <span style="position:absolute; margin-left:60px">
-    <dt-math>\cdot</dt-math>
-  </span>
-  <span style="position:absolute; margin-left:110px">
-    <dt-math>p_t(z_{s} \mid X)</dt-math>
-    <figcaption style="position:absolute; top:50px; width:200px;">
-    The probability of the current character at input step <dt-math>t</dt-math>.
+<figure class="figure-math" style="margin-top:0px;height:70px;">
+  <div style="position:absolute;">
+    <d-math>\alpha_{s, t}</d-math>
+  </div>
+  <div style="position:absolute;left:50px;">
+    <d-math>=</d-math>
+  </div>
+  <div style="position:absolute;left:85px;">
+    <d-math>(\alpha_{s-1, t-1} + \alpha_{s, t-1})</d-math>
+    <figcaption style="position:absolute;top:50px;width:240px;">
+    The CTC probability of the two valid subsequences after
+    <d-math>t-1</d-math> input steps.
     </figcaption>
-  </span>
+  </div>
+  <div style="position:absolute; left:295px">
+    <d-math>\cdot</d-math>
+  </div>
+  <div style="position:absolute; left:360px">
+    <d-math>p_t(z_{s} \mid X)</d-math>
+    <figcaption style="position:absolute; top:50px; width:200px;">
+    The probability of the current character at input step <d-math>t</d-math>.
+    </figcaption>
+  </div>
 </figure>
 
 <p><strong>Case 2:</strong></p>
 
 <div>
-<figure style="width:135px;float:right;margin-top:0px;margin-bottom:0px; margin-left:40px;">
+<figure style="width:135px;float:right;margin-top:0px;margin-bottom:0px; margin-left:90px;">
   <img src="assets/cost_regular.svg" />
 </figure>
 
 <p>In the second case, we're allowed to skip the previous token in
-<dt-math>Z</dt-math>. We have this case whenever <dt-math>z_{s-1}</dt-math> is
-an <dt-math>\epsilon</dt-math> between unique characters. As a result there are
+<d-math>Z</d-math>. We have this case whenever <d-math>z_{s-1}</d-math> is
+an <d-math>\epsilon</d-math> between unique characters. As a result there are
 three positions we could have come from at the previous step.</p>
-</p>
 </div>
 
-<figure style="height:90px;margin-top:60px;">
-  <span style="margin-left:30px">
-    <dt-math>\alpha_{s, t}\; = \;(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</dt-math>
-  </span>
-  <figcaption style="position:absolute; left:110px; top:50px; width:240px;">
-  The CTC probability of the three valid subsequences after
-  <dt-math>t-1</dt-math> input steps.
-  </figcaption>
-  <span style="position:absolute; margin-left:15px">
-    <dt-math>\cdot</dt-math>
-  </span>
-  <span style="position:absolute; margin-left:35px">
-    <dt-math>p_t(z_{s} \mid X)</dt-math>
-    <figcaption style="position:absolute; top:50px; width:200px;">
-    The probability of the current character at input step <dt-math>t</dt-math>.
+<figure class="figure-math" style="height:80px;margin-top:0px;">
+  <div style="position:absolute;">
+    <d-math>\alpha_{s, t}</d-math>
+  </div>
+  <div style="position:absolute;left:50px">
+    <d-math>=</d-math>
+  </div>
+  <div style="position:absolute;left:85px">
+    <d-math>(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</d-math>
+    <figcaption style="position:absolute;top:50px;width:240px;">
+    The CTC probability of the three valid subsequences after
+    <d-math>t-1</d-math> input steps.
     </figcaption>
-  </span>
+  </div>
+  <div style="position:absolute;left:270px">
+   <!-- Hack to stay centered when font-size changes.-->
+   <d-math>\quad\quad\quad\quad \cdot</d-math>
+  </div>
+  <div style="position:absolute;left:380px">
+    <d-math>p_t(z_{s} \mid X)</d-math>
+    <figcaption style="position:absolute; top:50px; width:200px;">
+    The probability of the current character at input step <d-math>t</d-math>.
+    </figcaption>
+  </div>
 </figure>
 
 <p>Below is an example of the computation performed by the dynamic programming
 algorithm. Every valid alignment has a path in this graph.</p>
 
-<figure class="l-body" style="width:700px;height:350px;margin-top:0px;">
+<figure style="height:350px;margin-top:0px;">
 <div style="width:650px; position:absolute; left:80px; top:30px;">
 <img src="assets/ctc_cost.svg"/>
 <figcaption style="width:350px;">
-Node <dt-math>(s, t)</dt-math> in the diagram represents
-<dt-math>\alpha_{s, t}</dt-math> – the CTC score of 
-the subsequence <dt-math>Z_{1:s}</dt-math> after
-<dt-math>t</dt-math> input steps.
+Node <d-math>(s, t)</d-math> in the diagram represents
+<d-math>\alpha_{s, t}</d-math> – the CTC score of 
+the subsequence <d-math>Z_{1:s}</d-math> after
+<d-math>t</d-math> input steps.
 </figcaption>
 </div>
 <figcaption style="position:absolute; top: 100px; width: 100px;">
 <span style="position:absolute;">output</span>
-<span style="position:absolute; top:25px;"><dt-math>Y =</dt-math> [a, b]</span>
+<span style="position:absolute; top:25px;"><d-math>Y =</d-math> [a, b]</span>
 </figcaption>
 <figcaption style="position:absolute; left:170px; top: 0px;">
-  input, <dt-math>X</dt-math>
+  input, <d-math>X</d-math>
 </figcaption>
 </figure>
 
 <p>There are two valid starting nodes and two valid final nodes since the
-<dt-math>\epsilon</dt-math> at the beginning and end of the sequence is
+<d-math>\epsilon</d-math> at the beginning and end of the sequence is
 optional. The complete probability is the sum of the two final nodes.</p>
 
 <p>Computing the loss function just requires sums and products of the per
 time-step output distribution. As long as this output distribution,
-<dt-math>p_t(z \mid X)</dt-math>, is differentiable, the entire loss function
+<d-math>p_t(z \mid X)</d-math>, is differentiable, the entire loss function
 will be differentiable.</p>
 
-<p>The time complexity of the algorithm is <dt-math>O(TU)</dt-math> with a
+<p>The time complexity of the algorithm is <d-math>O(TU)</d-math> with a
 fairly small constant. Notice also that this part of the computation doesn't
 depend on the size of the output alphabet.</p>
 
-<p>For a training set <dt-math>\mathcal{D}</dt-math>, the model's parameters
+<p>For a training set <d-math>\mathcal{D}</d-math>, the model's parameters
 are tuned to minimize the negative log-likelihood
-<dt-math block>
+<d-math block>
 \sum_{(X, Y) \in \mathcal{D}} -\log\; p(Y \mid X)
-</dt-math>
+</d-math>
 instead of maximizing the likelihood directly.</p>
 
 <h3 id="inference">Inference</h3>
 
 <p>After we've trained the model, we'd like to use it to find a likely output
 for a given input. More precisely, we need to solve
-<dt-math block>
+<d-math block>
 Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} \enspace p(Y \mid X).
-</dt-math>
+</d-math>
 </p>
 
 <p>One heuristic is to take the most likely output at each time-step. This
-gives us the alignment with the highest probability:
+gives us the alignment with the highest probability:</p>
 
-<dt-math block>
+<d-math block>
 A^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{A\in\mathcal{A}}} \enspace  \prod_{t=1}^{T} \; p_t(a_t \mid X)
-</dt-math>
+</d-math>
 
-We can then collapse repeats and remove <dt-math>\epsilon</dt-math> tokens to
-get <dt-math>Y</dt-math>.<p>
+<p>We can then collapse repeats and remove <d-math>\epsilon</d-math> tokens to
+get <d-math>Y</d-math>.</p>
 
 <p>For many applications this heuristic works well, especially when most of the
 probability mass is alloted to a single alignment. However, this approach can
@@ -558,17 +591,17 @@ sometimes miss easy to find outputs with much higher probability. The problem
 is, it doesn't take into account the fact that a single output can have many
 alignments.</p>
 
-<p>Here's an example. Assume the alignments [a, a, <dt-math>\epsilon</dt-math>]
+<p>Here's an example. Assume the alignments [a, a, <d-math>\epsilon</d-math>]
 and [a, a, a] individually have lower probability than [b, b, b]. But 
 the sum of their probabilities is actually greater than that of [b, b, b]. The beam
-search will incorrectly propose <dt-math>Y =</dt-math> [b] as
-the most likely hypothesis. It should have chosen <dt-math>Y =</dt-math> [a].
+search will incorrectly propose <d-math>Y =</d-math> [b] as
+the most likely hypothesis. It should have chosen <d-math>Y =</d-math> [a].
 To fix this, the algorithm needs to account for the fact that [a, a, a] and [a,
-a, <dt-math>\epsilon</dt-math>] collapse to the same output.</p>
+a, <d-math>\epsilon</d-math>] collapse to the same output.</p>
 
 <p>We can use a modified beam search to solve this. Given limited
 computation, the modified beam search won't necessarily find the
-most likely <dt-math>Y</dt-math>. It does, at least, have
+most likely <d-math>Y</d-math>. It does, at least, have
 the nice property that we can trade-off more computation
 (a larger beam-size) for an asymptotically better solution.</p>
 
@@ -577,11 +610,11 @@ step. The new set of hypotheses is generated from the previous set by
 extending each hypothesis with all possible output characters.</p>
 
 
-<figure class="l-body" style="width:700px;">
+<figure style="grid-column:page; width:700px;">
   <img src="assets/beam_search.svg" />
   <figcaption style="width:300px;">
   A standard beam search algorithm with an alphabet of
-  <dt-math>\{\epsilon, a, b\}</dt-math> and a beam size
+  <d-math>\{\epsilon, a, b\}</d-math> and a beam size
   of three.
   </figcaption>
 </figure>
@@ -589,36 +622,36 @@ extending each hypothesis with all possible output characters.</p>
 <p>We can modify the vanilla beam search to handle multiple alignments mapping to
 the same output. In this case instead of keeping a list of alignments in the
 beam, we store the output prefixes after collapsing repeats and removing
-<dt-math>\epsilon</dt-math> characters. At each step of the search we accumulate
+<d-math>\epsilon</d-math> characters. At each step of the search we accumulate
 scores for a given prefix based on all the alignments which map to it.</p>
 
-<figure class="l-body" style="width:900px;">
+<figure style="grid-column:page; width:900px;">
   <embed src="assets/prefix_beam_search.svg"/>
   <figcaption style="width:300px;">
   The CTC beam search algorithm with an output alphabet
-  <dt-math>\{\epsilon, a, b\}</dt-math>
+  <d-math>\{\epsilon, a, b\}</d-math>
   and a beam size of three.
   </figcaption>
 </figure>
 
 <p>A proposed extension can map to two output prefixes if the character is a
-repeat. This is shown at <dt-math>T=3</dt-math> in the figure above
+repeat. This is shown at <d-math>T=3</d-math> in the figure above
 where ‘a’ is proposed as an extension to the prefix [a]. Both [a] and [a, a] are
 valid outputs for this proposed extension.</p>
 
 <p>When we extend [a] to produce [a,a], we only want include the part of the
-previous score for alignments which end in <dt-math>\epsilon</dt-math>. Remember, the
-<dt-math>\epsilon</dt-math> is required between repeat characters. Similarly,
+previous score for alignments which end in <d-math>\epsilon</d-math>. Remember, the
+<d-math>\epsilon</d-math> is required between repeat characters. Similarly,
 when we don’t extend the prefix and produce [a], we should only include the part
-of the previous score for alignments which don’t end in <dt-math>\epsilon</dt-math>.</p>
+of the previous score for alignments which don’t end in <d-math>\epsilon</d-math>.</p>
 
 <p>Given this, we have to keep track of two probabilities for each prefix
 in the beam. The probability of all alignments which end in
-<dt-math>\epsilon</dt-math> and the probability of all alignments which don’t
-end in <dt-math>\epsilon</dt-math>. When we rank the hypotheses at
+<d-math>\epsilon</d-math> and the probability of all alignments which don’t
+end in <d-math>\epsilon</d-math>. When we rank the hypotheses at
 each step before pruning the beam, we'll use their combined scores.</p>
 
-<figure class="l-body" style="width:900px;">
+<figure style="grid-column:page; width:900px;">
   <embed src="assets/prefix_beam_search_single.svg"/>
 </figure>
 
@@ -629,44 +662,44 @@ dense and tricky to get right. Checkout this <a href="https://gist.github.com/aw
 over the outputs significantly improves accuracy. We can include the language
 model as a factor in the inference problem.</p>
 
-<figure style="height:80px;margin-top:0px;">
-  <span style="position:absolute; left:40px; top:0px">
-    <dt-math>Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} <dt-math>
+<figure class="figure-math" style="height:80px;margin-top:0px;">
+  <span style="position:absolute;top:0px">
+    <d-math>Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} <d-math>
   </span>
-  <span style="position:absolute; left:230px; top:0px">
-    <dt-math>p(Y \mid X)</dt-math>
+  <span style="position:absolute; left:170px; top:0px">
+    <d-math>p(Y \mid X)</d-math>
+    <figcaption style="position:absolute; top:50px; width:130px">
+    The CTC conditional probability.
+    </figcaption>
   </span>
-  <figcaption style="position:absolute; left:230px; top:50px; width:130px">
-  The CTC conditional probability.
-  </figcaption>
-  <span style="position:absolute; left:350px; top:0px">
-    <dt-math>\cdot</dt-math>
+  <span style="position:absolute; left:290px; top:0px">
+    <d-math>\cdot</d-math>
   </span>
-  <span style="position:absolute; left:390px; top:0px">
-    <dt-math>p(Y)^\alpha</dt-math>
+  <span style="position:absolute; left:330px; top:0px">
+    <d-math>p(Y)^\alpha</d-math>
+    <figcaption style="position:absolute; top:50px; width:120px">
+    The language model probability.
+    </figcaption>
   </span>
-  <figcaption style="position:absolute; left:390px; top:50px; width:120px">
-  The language model probability.
-  </figcaption>
-  <span style="position:absolute; left:490px; top:0px">
-    <dt-math>\cdot</dt-math>
+  <span style="position:absolute; left:430px; top:0px">
+    <d-math>\cdot</d-math>
   </span>
-  <span style="position:absolute; left:540px; top:0px">
-    <dt-math>L(Y)^\beta</dt-math>
+  <span style="position:absolute; left:470px; top:0px">
+    <d-math>L(Y)^\beta</d-math>
+    <figcaption style="position:absolute;top:50px; width:100px">
+    The "word" insertion bonus.
+    </figcaption>
   </span>
-  <figcaption style="position:absolute; left:540px; top:50px; width:100px">
-  The "word" insertion bonus.
-  </figcaption>
 </figure>
 
-<p>The function <dt-math>L(\cdot)</dt-math> computes the length of
-<dt-math>Y</dt-math> in terms of the language
+<p>The function <d-math>L(\cdot)</d-math> computes the length of
+<d-math>Y</d-math> in terms of the language
 model tokens and serves as a word insertion bonus. The language model scores
 are only included when a prefix is extended by a character (or word) and not at
 every step of the algorithm. This causes the search to favor shorter prefixes,
-as measured by <dt-math>L(\cdot)</dt-math>, since they don't include many
+as measured by <d-math>L(\cdot)</d-math>, since they don't include many
 language model updates. The word insertion bonus helps with this. The parameters
-<dt-math>\alpha</dt-math> and <dt-math>\beta</dt-math> are usually set by
+<d-math>\alpha</d-math> and <d-math>\beta</d-math> are usually set by
 cross-validation.</p>
 
 <hr />
@@ -680,9 +713,9 @@ into more depth on what these properties are and what trade-offs they offer.</p>
 <p>One of the most commonly cited shortcomings of CTC is the conditional
 independence assumption it makes. Recall, the conditional
 output distribution is
-<dt-math block>
+<d-math block>
 p(Y \mid X) \enspace = \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X).
-</dt-math>
+</d-math>
 
 <div style="height:150px;">
 <figure style="width:200px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
@@ -697,7 +730,7 @@ sequence to sequence problems.</p>
 </div>
 
 <p>Say we had an audio clip of someone saying “triple A”.
-<dt-cite key="Chan2016las"></dt-cite> Another valid transcription could
+<d-cite key="Chan2016las"></d-cite> Another valid transcription could
 be “AAA”. If the first letter of the predicted transcription is ‘A’, then
 the next letter should be ‘A’ with high probability and 'r' with low
 probability. The conditional independence assumption does not allow for this.</p>
@@ -712,7 +745,7 @@ probability. The conditional independence assumption does not allow for this.</p
 
 <p>In fact speech recognizers using CTC are not able to learn a language
 model over the output nearly as well as models which do not make this
-assumption.<dt-cite key="Battenberg2017"></dt-cite> However, this isn't always
+assumption.<d-cite key="Battenberg2017"></d-cite> However, this isn't always
 a bad trait. Baking in strong beliefs over output interactions makes the model
 less adaptable to new or altered domains. For example, we might want
 to use a speech recognizer trained on phone conversations between friends
@@ -722,15 +755,15 @@ for customer support calls.</p>
 
 <p>The CTC algorithm is <em>alignment-free</em>. The objective function marginalizes over all 
 alignments. While CTC does make strong assumptions about the form of
-alignments between <dt-math>X</dt-math> and
-<dt-math>Y</dt-math>, the model is agnostic as to how probability
+alignments between <d-math>X</d-math> and
+<d-math>Y</d-math>, the model is agnostic as to how probability
 is distributed amongst
 them. In some problems CTC ends up allocating most of the probability to a
 single alignment. However, this isn't guaranteed. We can force the model to
 choose a single alignment by replacing the sum with a max in the objective function,
-<dt-math block>
+<d-math block>
 p(Y \mid X) \enspace = \enspace \max_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X).
-</dt-math></p>
+</d-math></p>
 
 <p>As mentioned before, CTC only allows <em>monotonic</em> alignments. In
 problems such as speech recognition this may be a valid assumption. For other
@@ -741,21 +774,21 @@ deal-breaker.</p>
 <p>Another important property of CTC alignments is that they are
 <em>many-to-one</em>. Multiple inputs can align to at most one output. In some
 cases this may not be desirable. We might want to enforce a strict one-to-one
-correspondence between elements of <dt-math>X</dt-math> and
-<dt-math>Y</dt-math>. Alternatively, we may want to allow multiple output
+correspondence between elements of <d-math>X</d-math> and
+<d-math>Y</d-math>. Alternatively, we may want to allow multiple output
 elements to align to a single input element. For example, the sound made by
 “th” might align to a single input frame of audio. A character based CTC model
 would not allow that.</p>
 
 <p>The many-to-one property implies that the output can't have more time-steps
 than the input.
-<dt-fn>
-  If <dt-math>Y</dt-math> has <dt-math>r</dt-math> consecutive
-  repeats, then the length of <dt-math>Y</dt-math> must be less than
-  the length of <dt-math>X</dt-math> by <dt-math>2r - 1</dt-math>.
-</dt-fn>
-For problems where <dt-math>Y</dt-math> is often longer than
-<dt-math>X</dt-math>, CTC just won't work.</p>
+<d-footnote>
+  If <d-math>Y</d-math> has <d-math>r</d-math> consecutive
+  repeats, then the length of <d-math>Y</d-math> must be less than
+  the length of <d-math>X</d-math> by <d-math>2r - 1</d-math>.
+</d-footnote>
+For problems where <d-math>Y</d-math> is often longer than
+<d-math>X</d-math>, CTC just won't work.</p>
 
 
 <h3 id="input-synchronous-inference">Input Synchronous Inference</h3>
@@ -786,70 +819,70 @@ HMM sequence models. Putting CTC in this context will also give us insight
 into how it can be changed and potentially improved for various use cases.</p>
 
 <p style="margin-bottom:0px">We’ll use the same notation as before,
-<dt-math>X</dt-math> is the input sequence and <dt-math>Y</dt-math>
-is the output sequence with lengths <dt-math>T</dt-math> and
-<dt-math>U</dt-math> respectively. Like before we're interested in learning
-<dt-math>p(Y \mid X)</dt-math>. One way to simplify the problem is to transform
+<d-math>X</d-math> is the input sequence and <d-math>Y</d-math>
+is the output sequence with lengths <d-math>T</d-math> and
+<d-math>U</d-math> respectively. Like before we're interested in learning
+<d-math>p(Y \mid X)</d-math>. One way to simplify the problem is to transform
 this probability with Bayes' Rule and compute
-<dt-math block>
+<d-math block>
 p(Y \mid X) \; \propto \; p(X \mid Y) \; p(Y).
-</dt-math>
+</d-math>
 
-The <dt-math>p(Y)</dt-math> term is straight-forward to model with a language
-model, so let's focus on <dt-math>p(X \mid Y)</dt-math>. Like before we'll
-let <dt-math>\mathcal{A}</dt-math> be a set of allowed of alignments of
-<dt-math>Y</dt-math> to <dt-math>X</dt-math>. Members of <dt-math>\mathcal{A}</dt-math>
-have length <dt-math>T</dt-math>.
-Let’s otherwise leave <dt-math>\mathcal{A}</dt-math> unspecified for now. We'll
-come back to it later. We can marginalize over <dt-math>\mathcal{A}</dt-math> to get
-<dt-math block>
+The <d-math>p(Y)</d-math> term is straight-forward to model with a language
+model, so let's focus on <d-math>p(X \mid Y)</d-math>. Like before we'll
+let <d-math>\mathcal{A}</d-math> be a set of allowed of alignments of
+<d-math>Y</d-math> to <d-math>X</d-math>. Members of <d-math>\mathcal{A}</d-math>
+have length <d-math>T</d-math>.
+Let’s otherwise leave <d-math>\mathcal{A}</d-math> unspecified for now. We'll
+come back to it later. We can marginalize over <d-math>\mathcal{A}</d-math> to get
+<d-math block>
 p(X \mid Y)\; = \; \sum_{A \in \mathcal{A}} \; p(X, A \mid Y).
-</dt-math>
-To simplify notation, let's remove the conditioning on <dt-math>Y</dt-math>,
-it will be present in every <dt-math>p(\cdot)</dt-math>. Using the HMM
+</d-math>
+To simplify notation, let's remove the conditioning on <d-math>Y</d-math>,
+it will be present in every <d-math>p(\cdot)</d-math>. Using the HMM
 assumptions we can write</p>
 
-<figure style="width:650px;height:120px;margin-top:0px;">
+<figure class="figure-math" style="height:120px;margin-top:0px;">
   <figcaption>
-    <div style="position:absolute; left:10px; top:105px; width:120px;">
+    <div style="position:absolute; top:105px; width:120px;">
       The probability of the <em>input</em> 
     </div>
-    <div style="position:absolute; left:180px; top:105px; width:150px;">
+    <div style="position:absolute; left:145px; top:105px; width:150px;">
       marginalizes over alignments
     </div>
-    <div style="position:absolute; left:350px; top:105px; width:120px;">
+    <div style="position:absolute; left:300px; top:105px; width:120px;">
       the emission probability 
     </div>
-    <div style="position:absolute; left:500px; top:105px; width:150px;">
+    <div style="position:absolute; left:430px; top:105px; width:150px;">
       and the transition probability. 
     </div>
   </figcaption>
-<span style="position:absolute; left:20px; top:20px;">
-  <dt-math block>p(X)</dt-math>
-</span>
-<span style="position:absolute; left:120px; top:20px;">
-  <dt-math block>=</dt-math>
-</span>
-<span style="position:absolute; left:180px;">
-  <dt-math block>\sum_{A \in \mathcal{A}} \; \prod_{t=1}^T</dt-math>
-</span>
-<span style="position:absolute; left:350px; top:20px;">
-  <dt-math block>p(x_t \mid a_t)</dt-math>
-</span>
-<span style="position:absolute; left:465px; top:20px;">
-    <dt-math block>\cdot</dt-math>
-</span>
-<span style="position:absolute; left:500px; top:20px;">
-  <dt-math block>p(a_t \mid a_{t-1})</dt-math>
-</span>
+  <span style="position:absolute; top:35px;">
+    <d-math>p(X)</d-math>
+  </span>
+  <span style="position:absolute; left:90px; top:35px;">
+    <d-math>=</d-math>
+  </span>
+  <span style="position:absolute; left:130px;">
+    <d-math block>\sum_{A \in \mathcal{A}} \; \prod_{t=1}^T</d-math>
+  </span>
+  <span style="position:absolute; left:300px; top:35px;">
+    <d-math>p(x_t \mid a_t)</d-math>
+  </span>
+  <span style="position:absolute; left:400px; top:35px;">
+      <d-math>\cdot</d-math>
+  </span>
+  <span style="position:absolute; left:430px; top:35px;">
+    <d-math>p(a_t \mid a_{t-1})</d-math>
+  </span>
 
 </figure>
 
 <p>Two assumptions have been made here. The first is the usual Markov property.
-The state <dt-math>a_t</dt-math> is conditionally independent of all historical
-states given the previous state <dt-math>a_{t-1}</dt-math>. The second is that
-the observation <dt-math>x_t</dt-math> is conditionally independent of everything
-else given the current state <dt-math>a_t</dt-math>.</p>
+The state <d-math>a_t</d-math> is conditionally independent of all historical
+states given the previous state <d-math>a_{t-1}</d-math>. The second is that
+the observation <d-math>x_t</d-math> is conditionally independent of everything
+else given the current state <d-math>a_t</d-math>.</p>
 
 <figure style="width:300px;margin-top:0px;margin-bottom:0px;">
   <img src="assets/hmm.svg" />
@@ -858,49 +891,50 @@ else given the current state <dt-math>a_t</dt-math>.</p>
   </figcaption>
 </figure>
 
-<p>Let's assume that the transition probabilities <dt-math>p(a_t \mid a_{t-1})</dt-math> are
+<p>Let's assume that the transition probabilities <d-math>p(a_t \mid a_{t-1})</d-math> are
 uniform. This gives
-<dt-math block>
+<d-math block>
 p(X) \enspace \propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(x_t \mid a_t).
-</dt-math>
+</d-math>
 This equation is starting to resemble the CTC loss function. In fact
 there are only two differences. The first is that we are learning a model of
-<dt-math>X</dt-math> given <dt-math>Y</dt-math> as opposed to <dt-math>Y</dt-math> given <dt-math>X</dt-math>. The second is how the set
-<dt-math>\mathcal{A}</dt-math> is produced. Let’s deal with each in turn.</p>
+<d-math>X</d-math> given <d-math>Y</d-math> as opposed to <d-math>Y</d-math> given <d-math>X</d-math>. The second is how the set
+<d-math>\mathcal{A}</d-math> is produced. Let’s deal with each in turn.</p>
 
-<p>The HMM can be used with discriminative models which estimate <dt-math>p(a \mid x)</dt-math>.
+<p>The HMM can be used with discriminative models which estimate <d-math>p(a \mid x)</d-math>.
 To do this, we apply Bayes’ rule and rewrite the model as 
-<dt-math block>
-\begin{aligned}
-p(X) \enspace &\propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)\; p(x_t)}{p(a_t)} \\[1.6em]
-&\propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)}{p(a_t)}. 
-\end{aligned}
-</dt-math></p>
+<d-math block>
+p(X) \enspace \propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)\; p(x_t)}{p(a_t)}
+</d-math>
+<d-math block> <!-- For some reason second line fraction bar doesn't show up in aligned environment... -->
+\quad\quad\quad\propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)}{p(a_t)}. 
+</d-math>
+</p>
 
-<p>If we assume a uniform prior over the states <dt-math>a</dt-math> and condition on all of
-<dt-math>X</dt-math> instead of a single element at a time, we arrive at 
-<dt-math block>
+<p>If we assume a uniform prior over the states <d-math>a</d-math> and condition on all of
+<d-math>X</d-math> instead of a single element at a time, we arrive at 
+<d-math block>
 p(X) \enspace \propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X). 
-</dt-math></p>
+</d-math></p>
 
 <p>The above equation is essentially the CTC loss function, assuming the set
-<dt-math>\mathcal{A}</dt-math> is the same. In fact, the HMM framework does not specify what
-<dt-math>\mathcal{A}</dt-math> should consist of. This part of the model can be designed on a
-per-problem basis. In many cases the model doesn't condition on <dt-math>Y</dt-math> and the
-set <dt-math>\mathcal{A}</dt-math> consists of all possible length <dt-math>T</dt-math> sequences from the
+<d-math>\mathcal{A}</d-math> is the same. In fact, the HMM framework does not specify what
+<d-math>\mathcal{A}</d-math> should consist of. This part of the model can be designed on a
+per-problem basis. In many cases the model doesn't condition on <d-math>Y</d-math> and the
+set <d-math>\mathcal{A}</d-math> consists of all possible length <d-math>T</d-math> sequences from the
 output alphabet. In this case, the HMM can be drawn as an  <em>ergodic</em> state
 transition diagram in which every state connects to every other state.  The
 figure below shows this model with the alphabet or set of unique hidden states
-as <dt-math>\{a, b, c\}</dt-math>.</p>
+as <d-math>\{a, b, c\}</d-math>.</p>
 
-<p>In our case the hidden states of the model (the elements of <dt-math>A</dt-math>) are strongly
-related to <dt-math>Y</dt-math>. We want the HMM to reflect this. One possible model could be
+<p>In our case the hidden states of the model (the elements of <d-math>A</d-math>) are strongly
+related to <d-math>Y</d-math>. We want the HMM to reflect this. One possible model could be
 a simple linear state transition diagram. The figure below shows this with the
-same alphabet as before and <dt-math>Y =</dt-math> [a, b]. Another commonly used model is the
+same alphabet as before and <d-math>Y =</d-math> [a, b]. Another commonly used model is the
 <em>Bakis</em> or left-right HMM. In this model any transition which proceeds from the
 left to the right is allowed.</p>
 
-<figure style="height:190px;width:730px;margin-top:0px;">
+<figure style="height:190px;margin-top:0px;">
   <div style="position:absolute;">
   <img src="assets/ergodic_hmm.svg" style="margin-left:20px;width:110px;" />
   <figcaption style="width:160px;">
@@ -915,7 +949,7 @@ left to the right is allowed.</p>
   and the second node is the final state.
   </figcaption>
   </div>
-  <div style="width:350px; position: absolute; left:380px;">
+  <div style="width:350px;position:absolute;left:370px;">
   <img style="margin-bottom:30px; margin-top:30px;" src="assets/ctc_hmm.svg" />
   <figcaption style="margin-left:40px;width:250px;">
   <strong>CTC HMM:</strong> The first two nodes are the starting
@@ -924,24 +958,24 @@ left to the right is allowed.</p>
   </div>
 </figure>
 
-<p>In CTC we augment the alphabet with <dt-math>\epsilon</dt-math> and the HMM model allows a
+<p>In CTC we augment the alphabet with <d-math>\epsilon</d-math> and the HMM model allows a
 subset of the left-right transitions. The CTC HMM has two start
 states and two accepting states.</p>
 
 <p>One possible source of confusion is that the HMM model differs for any unique
-<dt-math>Y</dt-math>. This is in fact standard in applications such as speech recognition. The
-state diagram changes based on the output <dt-math>Y</dt-math>. However, the functions which
+<d-math>Y</d-math>. This is in fact standard in applications such as speech recognition. The
+state diagram changes based on the output <d-math>Y</d-math>. However, the functions which
 estimate the observation and transition probabilities are shared.</p>
 
 <p>Let’s discuss how CTC improves on the original HMM model. First, we can think
 of the CTC state diagram as a special case HMM which works well for many
 problems of interest. Incorporating the blank as a hidden state in the HMM
-allows us to use the alphabet of <dt-math>Y</dt-math> as the other hidden states. This model
+allows us to use the alphabet of <d-math>Y</d-math> as the other hidden states. This model
 also gives a set of allowed alignments which may be a good prior for some
 problems.</p>
 
 <p>Perhaps most importantly, CTC is discriminative. It models
-<dt-math>p(Y \mid X)</dt-math> directly. This allows us to train the model
+<d-math>p(Y \mid X)</d-math> directly. This allows us to train the model
 "end-to-end" and unleash the capacity of powerful learning algorithms
 like the RNN.</p>
 
@@ -949,24 +983,24 @@ like the RNN.</p>
 
 <p>The neural encoder-decoder is perhaps the most commonly used framework for
 sequence transduction. This class of models consists of an encoder and a
-decoder. The encoder maps the input sequence <dt-math>X</dt-math> into a hidden
+decoder. The encoder maps the input sequence <d-math>X</d-math> into a hidden
 representation. The decoder consumes the hidden representation and produces a
 distribution over the outputs. We can write this as
 
-<dt-math block>
+<d-math block>
 \begin{aligned}
 H\enspace &= \enspace\textsf{encode}(X) \\[.5em]
 p(Y \mid X)\enspace &= \enspace \textsf{decode}(H).
 \end{aligned}
-</dt-math>
+</d-math>
 
-The <dt-math>\textsf{encode}(\cdot)</dt-math> and
-<dt-math>\textsf{decode}(\cdot)</dt-math> functions are typically RNNs.  The
+The <d-math>\textsf{encode}(\cdot)</d-math> and
+<d-math>\textsf{decode}(\cdot)</d-math> functions are typically RNNs.  The
 decoder can optionally be equipped with an attention mechanism. The hidden
-state sequence <dt-math>H</dt-math> has the same number of time-steps as the
-input, <dt-math>T</dt-math>. Sometimes the encoder subsamples the input. If the
-encoder subsamples the input by a factor <dt-math>s</dt-math> then
-<dt-math>H</dt-math> will have <dt-math>\frac{T}{s}</dt-math> time-steps.</p>
+state sequence <d-math>H</d-math> has the same number of time-steps as the
+input, <d-math>T</d-math>. Sometimes the encoder subsamples the input. If the
+encoder subsamples the input by a factor <d-math>s</d-math> then
+<d-math>H</d-math> will have <d-math>\frac{T}{s}</d-math> time-steps.</p>
 
 <p>We can interpret CTC in the encoder-decoder framework. This is helpful to
 understand the developments in encoder-decoder models that are applicable to
@@ -977,13 +1011,13 @@ models.</p>
 encoder we find in commonly used encoder-decoder models. For example the
 encoder could be a multi-layer bidirectional RNN or a convolutional network.
 There is a constraint on the CTC encoder that doesn't apply to the others. The
-input length cannot be sub-sampled so much that <dt-math>\frac{T}{s}</dt-math>
-is less than <dt-math>U</dt-math>.</p>
+input length cannot be sub-sampled so much that <d-math>\frac{T}{s}</d-math>
+is less than <d-math>U</d-math>.</p>
 
 <p><strong>Decoder:</strong> We can view the decoder of a CTC model as a simple
 linear transformation followed by a softmax normalization. This layer should
-project all <dt-math>T</dt-math> steps of the encoder output
-<dt-math>H</dt-math> into the dimensionality of the output alphabet.</p>
+project all <d-math>T</d-math> steps of the encoder output
+<d-math>H</d-math> into the dimensionality of the output alphabet.</p>
 
 <hr />
 <h2 id="practitioners-guide">Practitioner’s Guide</h2>
@@ -1015,21 +1049,21 @@ Open-source software tools can make getting started with CTC much easier:</p>
 
 <p><strong>Numerical Stability:</strong> Computing the CTC loss naively is
 numerically unstable. One method to avoid this is to normalize the
-<dt-math>\alpha</dt-math>’s at each time-step. The original publication
+<d-math>\alpha</d-math>’s at each time-step. The original publication
 has more detail on this including the adjustments to the gradient.
-<dt-cite key="Graves2006"></dt-cite> In practice this works well enough
+<d-cite key="Graves2006"></d-cite> In practice this works well enough
 for medium length sequences but can still underflow for long sequences.
 A better solution is to compute the loss function in log-space with the
 log-sum-exp trick
-<dt-fn>
+<d-footnote>
 When computing the sum of two probabilities in log space use the identity
-<dt-math block>
+<d-math block>
 \log(e^a + e^b) = \max\{a, b\} + \log(1 + e^{-|a-b|})
-</dt-math>
+</d-math>
 Most programming languages have a stable function to compute
-<dt-math>\log(1 + x)</dt-math> when
-<dt-math>x</dt-math> is close to zero.
-</dt-fn>.
+<d-math>\log(1 + x)</d-math> when
+<d-math>x</d-math> is close to zero.
+</d-footnote>.
 
 Inference should also be done in log-space using the log-sum-exp trick.</p>
 
@@ -1039,299 +1073,304 @@ implementing  and using the CTC beam search.</p>
 <p>The correctness of the beam search can be tested as follows.</p>
 <ol>
   <li>Run the beam search algorithm on an arbitrary input.</li>
-  <li>Save the inferred output <dt-math>\bar{Y}</dt-math> and the corresponding score <dt-math>\bar{c}</dt-math>.</li>
-  <li>Compute the actual CTC score <dt-math>c</dt-math> for <dt-math>\bar{Y}</dt-math> using the same input.</li>
-  <li>Check that <dt-math>\bar{c} \approx c</dt-math> with the former being no greater than the later.
-As the beam size increases the inferred output <dt-math>\bar{Y}</dt-math> may change, but the two
+  <li>Save the inferred output <d-math>\bar{Y}</d-math> and the corresponding score <d-math>\bar{c}</d-math>.</li>
+  <li>Compute the actual CTC score <d-math>c</d-math> for <d-math>\bar{Y}</d-math> using the same input.</li>
+  <li>Check that <d-math>\bar{c} \approx c</d-math> with the former being no greater than the later.
+As the beam size increases the inferred output <d-math>\bar{Y}</d-math> may change, but the two
 numbers should grow closer.</li>
 </ol>
 
 <p>A common question when using a beam search decoder is the size of the beam to
 use.  There is a trade-off between accuracy and runtime. We can check if the
 beam size is in a good range. To do this first compute the CTC score for the
-inferred output <dt-math>c_i</dt-math>. Then compute the CTC score for the ground truth output
-<dt-math>c_g</dt-math>. If the two outputs are not the same, we should have <dt-math>c_g \lt c_i</dt-math>.
-If <dt-math>c_i << c_g</dt-math> then the beam search is performing poorly and a large
+inferred output <d-math>c_i</d-math>. Then compute the CTC score for the ground truth output
+<d-math>c_g</d-math>. If the two outputs are not the same, we should have <d-math>c_g \lt c_i</d-math>.
+If <d-math>c_i << c_g</d-math> then the beam search is performing poorly and a large
 increase in the beam size may be warranted.</p>
 
 <hr />
 <h2 class="no_toc" id="bibliographic-notes">Bibliographic Notes</h2>
 
 <p>The CTC algorithm was first published by Graves et al. in 2006.
-<dt-cite key="Graves2006"></dt-cite> The first experiments were on TIMIT,
-a popular phoneme recognition benchmark.<dt-cite key="Lopes2011"></dt-cite>
-Chapter 7 of Graves’ thesis<dt-cite key="Graves2012"></dt-cite> also gives a
+<d-cite key="Graves2006"></d-cite> The first experiments were on TIMIT,
+a popular phoneme recognition benchmark.<d-cite key="Lopes2011"></d-cite>
+Chapter 7 of Graves’ thesis<d-cite key="Graves2012"></d-cite> also gives a
 detailed treatment of CTC.</p>
 
 <p>One of the first applications of CTC to large vocabulary speech recognition was
-by Graves et al. in 2014.<dt-cite key="Graves2014"></dt-cite>
+by Graves et al. in 2014.<d-cite key="Graves2014"></d-cite>
 They combined a hybrid DNN-HMM and a CTC trained model to achieve state-of-the-art results.
 Hannun et al. subsequently demonstrated state-of-the-art CTC based speech
-recognition on larger benchmarks.<dt-cite key="Hannun2014deepspeech"></dt-cite>
+recognition on larger benchmarks.<d-cite key="Hannun2014deepspeech"></d-cite>
 A CTC model outperformed other methods on an online handwriting
-recognition benchmark in 2007.<dt-cite key="Liwicki2007"></dt-cite></p>
+recognition benchmark in 2007.<d-cite key="Liwicki2007"></d-cite></p>
 
 <p>CTC has been used successfully in many other problems. Some examples are
-lip-reading from video<dt-cite key="Assael2016"></dt-cite>, action recognition from
-video<dt-cite key="Huang2016"></dt-cite> and keyword detection in audio.
-<dt-cite key="Fernandez2007,Lengerich2016"></dt-cite></p>
+lip-reading from video<d-cite key="Assael2016"></d-cite>, action recognition from
+video<d-cite key="Huang2016"></d-cite> and keyword detection in audio.
+<d-cite key="Fernandez2007,Lengerich2016"></d-cite></p>
 
 <p>Many extensions and improvements to CTC have been proposed. Here are a few.
 The <em>Sequence Transducer</em> discards the conditional independence assumption
-made by CTC.<dt-cite key="Graves2012transducer"></dt-cite> As a consequence, the
+made by CTC.<d-cite key="Graves2012transducer"></d-cite> As a consequence, the
 model allows the output to be longer than the input. The <em>Gram-CTC</em> model
 generalizes CTC to marginalize over n-gram output classes.
-<dt-cite key="Liu2017"></dt-cite> Other works have generalized CTC or proposed
+<d-cite key="Liu2017"></d-cite> Other works have generalized CTC or proposed
 similar algorithms to account for segmental structure in the output.
-<dt-cite key="Wang2017,Kong2016"></dt-cite></p>
+<d-cite key="Wang2017,Kong2016"></d-cite></p>
 
 <p>The Hidden Markov Model was developed in the 1960’s with the first application
 to speech recognition in the 1970’s. For an introduction to the HMM and
 applications to speech recognition see Rabiner's canonical tutorial.
-<dt-cite key="Rabiner1989"></dt-cite></p>
+<d-cite key="Rabiner1989"></d-cite></p>
 
 <p>Encoder-decoder models were developed in 2014.
-<dt-cite key="Cho2014,Sutskever2014"></dt-cite> <em>Distill</em> has an
+<d-cite key="Cho2014,Sutskever2014"></d-cite> <em>Distill</em> has an
 in-depth guide to attention in encoder-decoder
-models.<dt-cite key="Olah2016"></dt-cite></p>
+models.<d-cite key="Olah2016"></d-cite></p>
 
-</dt-article>
-
-<dt-appendix class="centered">
-</dt-appendix>
-
-<script type="text/bibliography">
-@article{Battenberg2017,
-archivePrefix = {arXiv},
-arxivId = {1707.07413},
-author = {Battenberg, Eric and Chen, Jitong and Child, Rewon and Coates, Adam and Gaur, Yashesh and Li, Yi and Liu, Hairong and Satheesh, Sanjeev and Seetapun, David and Sriram, Anuroop and Zhu, Zhenyao},
-eprint = {1707.07413},
-month = {jul},
-title = {Exploring Neural Transducers for End-to-End Speech Recognition},
-url = {http://arxiv.org/abs/1707.07413},
-year = {2017}
-}
-@article{Olah2016,
-author = {Olah, C and Carter, S},
-journal = {Distill},
-title = {Attention and augmented recurrent neural networks},
-url = {http://distill.pub/2016/augmented-rnns/},
-year = {2016}
-}
-@article{Sutskever2014,
-archivePrefix = {arXiv},
-arxivId = {1409.3215},
-author = {Sutskever, Ilya and Vinyals, Oriol and Le, Quoc V.},
-eprint = {1409.3215},
-journal = {Advances in neural information processing systems},
-month = {sep},
-title = {Sequence to Sequence Learning with Neural Networks},
-url = {http://arxiv.org/abs/1409.3215},
-year = {2014}
-}
-@article{Cho2014,
-archivePrefix = {arXiv},
-arxivId = {1406.1078},
-author = {Cho, Kyunghyun and van Merrienboer, Bart and Gulcehre, Caglar and Bahdanau, Dzmitry and Bougares, Fethi and Schwenk, Holger and Bengio, Yoshua},
-doi = {10.3115/v1/D14-1179},
-eprint = {1406.1078},
-isbn = {9781937284961},
-issn = {09205691},
-journal = {EMNLP},
-pmid = {2079951},
-title = {Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation},
-url = {https://arxiv.org/abs/1406.1078},
-year = {2014}
-}
-@article{Rabiner1989,
-author = {Rabiner, L.R. R.},
-doi = {10.1109/5.18626},
-isbn = {0018-9219},
-issn = {00189219},
-journal = {Proceedings of the IEEE},
-number = {2},
-pages = {p257--286},
-title = {Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition},
-url = {http://ieeexplore.ieee.org/abstract/document/18626/},
-volume = {77},
-year = {1989}
-}
-@inproceedings{Liwicki2007,
-author = {Liwicki, Marcus and Graves, Alex and Bunke, Horst and Schmidhuber, Jürgen},
-booktitle = {Proceedings - 9th Int. Conf. on Document Analysis and Recognition},
-doi = {10.1.1.139.5852},
-pages = {367--371},
-title = {A novel approach to on-line handwriting recognition based on bidirectional long short-term memory networks},
-url = {https://www.cs.toronto.edu/~graves/icdar_2007.pdf},
-volume = {1},
-year = {2007}
-}
-@book{Graves2012,
-archivePrefix = {arXiv},
-arxivId = {arXiv:1308.0850v1},
-author = {Graves, Alex},
-booktitle = {Springer},
-doi = {10.1007/978-3-642-24797-2},
-eprint = {arXiv:1308.0850v1},
-isbn = {978-3-642-24796-5},
-issn = {01406736},
-pmid = {7491034},
-title = {Supervised Sequence Labelling with Recurrent Neural Networks},
-url = {http://link.springer.com/10.1007/978-3-642-24797-2},
-volume = {385},
-year = {2012}
-}
-@article{Lopes2011,
-author = {Lopes, Carla and Perdigão, Fernando},
-doi = {10.5772/17600},
-isbn = {978-953-307-996-7},
-issn = {9789533070865},
-journal = {Speech Technologies},
-pages = {285--302},
-title = {Phone recognition on the TIMIT database},
-url = {https://www.intechopen.com/books/speech-technologies/phoneme-recognition-on-the-timit-database/},
-volume = {1},
-year = {2011}
-}
-@article{Graves2014,
-archivePrefix = {arXiv},
-arxivId = {1512.02595},
-author = {Graves, Alex and Jaitly, Navdeep},
-doi = {10.1145/1143844.1143891},
-eprint = {1512.02595},
-isbn = {1595933832},
-issn = {10987576},
-journal = {Proceedings of the 31st International Conference on Machine Learning (ICML-14)},
-month = {jan},
-number = {1},
-pages = {1764--1772},
-pmid = {1000285842},
-title = {Towards End-To-End Speech Recognition with Recurrent Neural Networks},
-url = {http://jmlr.org/proceedings/papers/v32/graves14.pdf},
-volume = {32},
-year = {2014}
-}
-@article{Graves2006,
-archivePrefix = {arXiv},
-arxivId = {1512.02595},
-author = {Graves, Alex and Fernandez, Santiago and Gomez, Faustino and Schmidhuber, Jürgen},
-doi = {10.1145/1143844.1143891},
-eprint = {1512.02595},
-isbn = {1595933832},
-issn = {10987576},
-journal = {Proceedings of the 23rd international conference on Machine Learning},
-pages = {369--376},
-pmid = {1000285842},
-title = {Connectionist Temporal Classification : Labelling Unsegmented Sequence Data with Recurrent Neural Networks},
-url = {ftp://ftp.idsia.ch/pub/juergen/icml2006.pdf},
-year = {2006}
-}
-@inproceedings{Chan2016las,
-author = {Chan, William and Jaitly, Navdeep and Le, Quoc V and Vinyals, Oriol},
-booktitle = {ICASSP},
-title = {Listen, Attend and Spell: A Neural Network for Large Vocabulary Conversational Speech Recognition},
-url = {https://arxiv.org/abs/1508.01211},
-year = {2016}
-}
-@article{Hannun2014deepspeech,
-author = {Hannun, Awni Y and Case, Carl and Casper, Jared and Catanzaro, Bryan and Diamos, Greg and Elsen, Erich and Prenger, Ryan and Satheesh, Sanjeev and Sengupta, Shubho and Coates, Adam and Ng, Andrew Y},
-title = {Deep Speech: Scaling up end-to-end speech recognition},
-url = {http://arxiv.org/abs/1412.5567},
-volume = {abs/1412.5},
-year = {2014}
-}
-@article{Huang2016,
-archivePrefix = {arXiv},
-arxivId = {1607.08584},
-author = {Huang, De-An and Fei-Fei, Li and Niebles, Juan Carlos},
-doi = {10.1007/978-3-319-46493-0},
-eprint = {1607.08584},
-isbn = {9783319464930},
-issn = {0302-9743},
-journal = {European Conference on Computer Vision},
-month = {jul},
-pages = {137----153},
-pmid = {10463930},
-title = {Connectionist Temporal Modeling for Weakly Supervised Action Labeling},
-url = {http://arxiv.org/abs/1607.08584},
-year = {2016}
-}
-@article{Assael2016,
-archivePrefix = {arXiv},
-arxivId = {1611.01599},
-author = {Assael, Yannis M. and Shillingford, Brendan and Whiteson, Shimon and de Freitas, Nando},
-eprint = {1611.01599},
-month = {nov},
-title = {LipNet: End-to-End Sentence-level Lipreading},
-url = {http://arxiv.org/abs/1611.01599},
-year = {2016}
-}
-@article{Lengerich2016,
-archivePrefix = {arXiv},
-arxivId = {1611.09405},
-author = {Lengerich, Chris and Hannun, Awni},
-eprint = {1611.09405},
-journal = {NIPS 2016 End-to-End Learning for Speech and Audio Processing Workshop},
-month = {nov},
-title = {An End-to-End Architecture for Keyword Spotting and Voice Activity Detection},
-url = {http://arxiv.org/abs/1611.09405},
-year = {2016}
-}
-@article{Fernandez2007,
-author = {Fernández, Santiago and Graves, Alex and Schmidhuber, Jürgen},
-doi = {10.1007/978-3-540-74695-9_23},
-isbn = {9783540746935},
-issn = {03029743},
-journal = {The 17th international conference on Artificial neural networks},
-pages = {220--229},
-title = {An application of recurrent neural networks to discriminative keyword spotting},
-url = {http://link.springer.com/10.1007/978-3-540-74695-9_23},
-year = {2007}
-}
-@article{Graves2012transducer,
-archivePrefix = {arXiv},
-arxivId = {1211.3711},
-author = {Graves, Alex},
-doi = {10.1145/2661829.2661935},
-eprint = {1211.3711},
-isbn = {2000201075},
-issn = {18792782},
-pmid = {23459267},
-title = {Sequence Transduction with Recurrent Neural Networks},
-url = {https://arxiv.org/pdf/1211.3711.pdf http://arxiv.org/abs/1211.3711},
-year = {2012}
-}
-@article{Liu2017,
-archivePrefix = {arXiv},
-arxivId = {1703.00096},
-author = {Liu, Hairong and Zhu, Zhenyao and Li, Xiangang and Satheesh, Sanjeev},
-eprint = {1703.00096},
-journal = {Proceedings of the 34th International Conference on Machine Learning},
-month = {feb},
-title = {Gram-CTC: Automatic Unit Selection and Target Decomposition for Sequence Labelling},
-url = {http://arxiv.org/abs/1703.00096},
-year = {2017}
-}
-@article{Wang2017,
-archivePrefix = {arXiv},
-arxivId = {1702.07463},
-author = {Wang, Chong and Wang, Yining and Huang, Po-Sen and Mohamed, Abdelrahman and Zhou, Dengyong and Deng, Li},
-eprint = {1702.07463},
-month = {feb},
-title = {Sequence Modeling via Segmentations},
-url = {http://arxiv.org/abs/1702.07463},
-year = {2017}
-}
-@article{Kong2016,
-archivePrefix = {arXiv},
-arxivId = {1511.06018},
-author = {Kong, Lingpeng and Dyer, Chris and Smith, Noah A.},
-doi = {10.21437/Interspeech.2016-40},
-eprint = {1511.06018},
-journal = {ICLR},
-month = {nov},
-title = {Segmental Recurrent Neural Networks},
-url = {http://arxiv.org/abs/1511.06018},
-year = {2016}
-}
-</script>
+</d-article>
+<d-appendix>
+  <h3 id="acknowledgements">Acknowledgments</h3>
+  <p>TODO, acknowledgements go here!</p>
+  <d-footnote-list></d-footnote-list>
+  <d-bibliography>
+    <script type="text/bibtex">
+      @article{Battenberg2017,
+      archivePrefix = {arXiv},
+      arxivId = {1707.07413},
+      author = {Battenberg, Eric and Chen, Jitong and Child, Rewon and Coates, Adam and Gaur, Yashesh and Li, Yi and Liu, Hairong and Satheesh, Sanjeev and Seetapun, David and Sriram, Anuroop and Zhu, Zhenyao},
+      eprint = {1707.07413},
+      month = {jul},
+      title = {Exploring Neural Transducers for End-to-End Speech Recognition},
+      url = {http://arxiv.org/abs/1707.07413},
+      year = {2017}
+      }
+      @article{Olah2016,
+      author = {Olah, C and Carter, S},
+      journal = {Distill},
+      title = {Attention and augmented recurrent neural networks},
+      url = {http://distill.pub/2016/augmented-rnns/},
+      year = {2016}
+      }
+      @article{Sutskever2014,
+      archivePrefix = {arXiv},
+      arxivId = {1409.3215},
+      author = {Sutskever, Ilya and Vinyals, Oriol and Le, Quoc V.},
+      eprint = {1409.3215},
+      journal = {Advances in neural information processing systems},
+      month = {sep},
+      title = {Sequence to Sequence Learning with Neural Networks},
+      url = {http://arxiv.org/abs/1409.3215},
+      year = {2014}
+      }
+      @article{Cho2014,
+      archivePrefix = {arXiv},
+      arxivId = {1406.1078},
+      author = {Cho, Kyunghyun and van Merrienboer, Bart and Gulcehre, Caglar and Bahdanau, Dzmitry and Bougares, Fethi and Schwenk, Holger and Bengio, Yoshua},
+      doi = {10.3115/v1/D14-1179},
+      eprint = {1406.1078},
+      isbn = {9781937284961},
+      issn = {09205691},
+      journal = {EMNLP},
+      pmid = {2079951},
+      title = {Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation},
+      url = {https://arxiv.org/abs/1406.1078},
+      year = {2014}
+      }
+      @article{Rabiner1989,
+      author = {Rabiner, L.R. R.},
+      doi = {10.1109/5.18626},
+      isbn = {0018-9219},
+      issn = {00189219},
+      journal = {Proceedings of the IEEE},
+      number = {2},
+      pages = {p257--286},
+      title = {Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition},
+      url = {http://ieeexplore.ieee.org/abstract/document/18626/},
+      volume = {77},
+      year = {1989}
+      }
+      @inproceedings{Liwicki2007,
+      author = {Liwicki, Marcus and Graves, Alex and Bunke, Horst and Schmidhuber, Jürgen},
+      booktitle = {Proceedings - 9th Int. Conf. on Document Analysis and Recognition},
+      doi = {10.1.1.139.5852},
+      pages = {367--371},
+      title = {A novel approach to on-line handwriting recognition based on bidirectional long short-term memory networks},
+      url = {https://www.cs.toronto.edu/~graves/icdar_2007.pdf},
+      volume = {1},
+      year = {2007}
+      }
+      @book{Graves2012,
+      archivePrefix = {arXiv},
+      arxivId = {arXiv:1308.0850v1},
+      author = {Graves, Alex},
+      booktitle = {Springer},
+      doi = {10.1007/978-3-642-24797-2},
+      eprint = {arXiv:1308.0850v1},
+      isbn = {978-3-642-24796-5},
+      issn = {01406736},
+      pmid = {7491034},
+      title = {Supervised Sequence Labelling with Recurrent Neural Networks},
+      url = {http://link.springer.com/10.1007/978-3-642-24797-2},
+      volume = {385},
+      year = {2012}
+      }
+      @article{Lopes2011,
+      author = {Lopes, Carla and Perdigão, Fernando},
+      doi = {10.5772/17600},
+      isbn = {978-953-307-996-7},
+      issn = {9789533070865},
+      journal = {Speech Technologies},
+      pages = {285--302},
+      title = {Phone recognition on the TIMIT database},
+      url = {https://www.intechopen.com/books/speech-technologies/phoneme-recognition-on-the-timit-database/},
+      volume = {1},
+      year = {2011}
+      }
+      @article{Graves2014,
+      archivePrefix = {arXiv},
+      arxivId = {1512.02595},
+      author = {Graves, Alex and Jaitly, Navdeep},
+      doi = {10.1145/1143844.1143891},
+      eprint = {1512.02595},
+      isbn = {1595933832},
+      issn = {10987576},
+      journal = {Proceedings of the 31st International Conference on Machine Learning (ICML-14)},
+      month = {jan},
+      number = {1},
+      pages = {1764--1772},
+      pmid = {1000285842},
+      title = {Towards End-To-End Speech Recognition with Recurrent Neural Networks},
+      url = {http://jmlr.org/proceedings/papers/v32/graves14.pdf},
+      volume = {32},
+      year = {2014}
+      }
+      @article{Graves2006,
+      archivePrefix = {arXiv},
+      arxivId = {1512.02595},
+      author = {Graves, Alex and Fernandez, Santiago and Gomez, Faustino and Schmidhuber, Jürgen},
+      doi = {10.1145/1143844.1143891},
+      eprint = {1512.02595},
+      isbn = {1595933832},
+      issn = {10987576},
+      journal = {Proceedings of the 23rd international conference on Machine Learning},
+      pages = {369--376},
+      pmid = {1000285842},
+      title = {Connectionist Temporal Classification : Labelling Unsegmented Sequence Data with Recurrent Neural Networks},
+      url = {ftp://ftp.idsia.ch/pub/juergen/icml2006.pdf},
+      year = {2006}
+      }
+      @inproceedings{Chan2016las,
+      author = {Chan, William and Jaitly, Navdeep and Le, Quoc V and Vinyals, Oriol},
+      booktitle = {ICASSP},
+      title = {Listen, Attend and Spell: A Neural Network for Large Vocabulary Conversational Speech Recognition},
+      url = {https://arxiv.org/abs/1508.01211},
+      year = {2016}
+      }
+      @article{Hannun2014deepspeech,
+      author = {Hannun, Awni Y and Case, Carl and Casper, Jared and Catanzaro, Bryan and Diamos, Greg and Elsen, Erich and Prenger, Ryan and Satheesh, Sanjeev and Sengupta, Shubho and Coates, Adam and Ng, Andrew Y},
+      title = {Deep Speech: Scaling up end-to-end speech recognition},
+      url = {http://arxiv.org/abs/1412.5567},
+      volume = {abs/1412.5},
+      year = {2014}
+      }
+      @article{Huang2016,
+      archivePrefix = {arXiv},
+      arxivId = {1607.08584},
+      author = {Huang, De-An and Fei-Fei, Li and Niebles, Juan Carlos},
+      doi = {10.1007/978-3-319-46493-0},
+      eprint = {1607.08584},
+      isbn = {9783319464930},
+      issn = {0302-9743},
+      journal = {European Conference on Computer Vision},
+      month = {jul},
+      pages = {137----153},
+      pmid = {10463930},
+      title = {Connectionist Temporal Modeling for Weakly Supervised Action Labeling},
+      url = {http://arxiv.org/abs/1607.08584},
+      year = {2016}
+      }
+      @article{Assael2016,
+      archivePrefix = {arXiv},
+      arxivId = {1611.01599},
+      author = {Assael, Yannis M. and Shillingford, Brendan and Whiteson, Shimon and de Freitas, Nando},
+      eprint = {1611.01599},
+      month = {nov},
+      title = {LipNet: End-to-End Sentence-level Lipreading},
+      url = {http://arxiv.org/abs/1611.01599},
+      year = {2016}
+      }
+      @article{Lengerich2016,
+      archivePrefix = {arXiv},
+      arxivId = {1611.09405},
+      author = {Lengerich, Chris and Hannun, Awni},
+      eprint = {1611.09405},
+      journal = {NIPS 2016 End-to-End Learning for Speech and Audio Processing Workshop},
+      month = {nov},
+      title = {An End-to-End Architecture for Keyword Spotting and Voice Activity Detection},
+      url = {http://arxiv.org/abs/1611.09405},
+      year = {2016}
+      }
+      @article{Fernandez2007,
+      author = {Fernández, Santiago and Graves, Alex and Schmidhuber, Jürgen},
+      doi = {10.1007/978-3-540-74695-9_23},
+      isbn = {9783540746935},
+      issn = {03029743},
+      journal = {The 17th international conference on Artificial neural networks},
+      pages = {220--229},
+      title = {An application of recurrent neural networks to discriminative keyword spotting},
+      url = {http://link.springer.com/10.1007/978-3-540-74695-9_23},
+      year = {2007}
+      }
+      @article{Graves2012transducer,
+      archivePrefix = {arXiv},
+      arxivId = {1211.3711},
+      author = {Graves, Alex},
+      doi = {10.1145/2661829.2661935},
+      eprint = {1211.3711},
+      isbn = {2000201075},
+      issn = {18792782},
+      pmid = {23459267},
+      title = {Sequence Transduction with Recurrent Neural Networks},
+      url = {https://arxiv.org/pdf/1211.3711.pdf http://arxiv.org/abs/1211.3711},
+      year = {2012}
+      }
+      @article{Liu2017,
+      archivePrefix = {arXiv},
+      arxivId = {1703.00096},
+      author = {Liu, Hairong and Zhu, Zhenyao and Li, Xiangang and Satheesh, Sanjeev},
+      eprint = {1703.00096},
+      journal = {Proceedings of the 34th International Conference on Machine Learning},
+      month = {feb},
+      title = {Gram-CTC: Automatic Unit Selection and Target Decomposition for Sequence Labelling},
+      url = {http://arxiv.org/abs/1703.00096},
+      year = {2017}
+      }
+      @article{Wang2017,
+      archivePrefix = {arXiv},
+      arxivId = {1702.07463},
+      author = {Wang, Chong and Wang, Yining and Huang, Po-Sen and Mohamed, Abdelrahman and Zhou, Dengyong and Deng, Li},
+      eprint = {1702.07463},
+      month = {feb},
+      title = {Sequence Modeling via Segmentations},
+      url = {http://arxiv.org/abs/1702.07463},
+      year = {2017}
+      }
+      @article{Kong2016,
+      archivePrefix = {arXiv},
+      arxivId = {1511.06018},
+      author = {Kong, Lingpeng and Dyer, Chris and Smith, Noah A.},
+      doi = {10.21437/Interspeech.2016-40},
+      eprint = {1511.06018},
+      journal = {ICLR},
+      month = {nov},
+      title = {Segmental Recurrent Neural Networks},
+      url = {http://arxiv.org/abs/1511.06018},
+      year = {2016}
+      }
+    </script>
+  </d-bibliography>
+</d-appendix>
+<distill-footer></distill-footer>
+</body>

@@ -753,8 +753,8 @@ probability. The conditional independence assumption does not allow for this.</p
 
 <p>In fact speech recognizers using CTC don't learn a language model over the
 output nearly as well as models which are conditionally dependent.
-<dt-cite key="Battenberg2017"></dt-cite> An auxiliary language model can be
-used to incorporate the dependencies between outputs and usually gives a good
+<d-cite key="Battenberg2017"></d-cite> A separate language model can be used
+to model the dependencies between outputs and usually gives a good
 boost to accuracy.</p>
 
 <p>The conditional independence assumption made by CTC isn't always a bad
@@ -802,7 +802,7 @@ than the input.
 </d-footnote>
 This is usually not a problem for speech and handwriting recognition since the
 input is much longer than the output. However, for other problems where
-<dt-math>Y</dt-math> is often longer than <dt-math>X</dt-math>, CTC just won't
+<d-math>Y</d-math> is often longer than <d-math>X</d-math>, CTC just won't
 work.</p>
 
 <hr />

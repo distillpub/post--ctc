@@ -1,6 +1,7 @@
 <!doctype html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
   <script src="https://distill.pub/template.v2.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
     integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0"
@@ -39,10 +40,8 @@
 </d-front-matter>
 
 <d-title>
-    <h1>A Guide to Connectionist Temporal Classification</h1>
-</d-title>
-
-<figure style="width:900px;height:360px;">
+<h1>A Guide to Connectionist Temporal Classification</h1>
+<figure style="grid-column:page;width:900px;height:360px;">
   <link rel="stylesheet" type="text/css" href="assets/collapse_ctc.css">
   <figcaption style="color:rgba(0,0,0,1);font-size:16px;position:absolute">
     How CTC collapsing works
@@ -115,6 +114,7 @@
   </div>
 </figure>
 <script src="assets/collapse_ctc.js"></script>
+</d-title>
 
 <d-article>
 <p>Consider speech recognition. We have a dataset of audio clips and
@@ -464,20 +464,20 @@ time-step. As a result there are two positions we can transition from.</p>
   <div style="position:absolute;">
     <d-math>\alpha_{s, t}</d-math>
   </div>
-  <div style="position:absolute;left:50px;">
+  <div style="position:absolute;left:45px;">
     <d-math>=</d-math>
   </div>
-  <div style="position:absolute;left:85px;">
+  <div style="position:absolute;left:75px;">
     <d-math>(\alpha_{s-1, t-1} + \alpha_{s, t-1})</d-math>
     <figcaption style="position:absolute;top:50px;width:240px;">
     The CTC probability of the two valid subsequences after
     <d-math>t-1</d-math> input steps.
     </figcaption>
   </div>
-  <div style="position:absolute; left:295px">
+  <div style="position:absolute; left:285px">
     <d-math>\cdot</d-math>
   </div>
-  <div style="position:absolute; left:360px">
+  <div style="position:absolute; left:350px">
     <d-math>p_t(z_{s} \mid X)</d-math>
     <figcaption style="position:absolute; top:50px; width:200px;">
     The probability of the current character at input step <d-math>t</d-math>.
@@ -485,44 +485,47 @@ time-step. As a result there are two positions we can transition from.</p>
   </div>
 </figure>
 
-<p><strong>Case 2:</strong></p>
 
 <div>
-<figure style="width:135px;float:right;margin-top:0px;margin-bottom:0px; margin-left:90px;">
+
+<figure style="width:135px;float:right;margin-top:20px;margin-bottom:0px;margin-left:90px;">
   <img src="assets/cost_regular.svg" />
 </figure>
+
+<p><strong>Case 2:</strong></p>
 
 <p>In the second case, we're allowed to skip the previous token in
 <d-math>Z</d-math>. We have this case whenever <d-math>z_{s-1}</d-math> is
 an <d-math>\epsilon</d-math> between unique characters. As a result there are
 three positions we could have come from at the previous step.</p>
-</div>
 
-<figure class="figure-math" style="height:80px;margin-top:0px;">
+<figure class="figure-math" style="height:80px;margin-top:40px;">
   <div style="position:absolute;">
     <d-math>\alpha_{s, t}</d-math>
   </div>
-  <div style="position:absolute;left:50px">
+  <div style="position:absolute;left:45px">
     <d-math>=</d-math>
   </div>
-  <div style="position:absolute;left:85px">
+  <div style="position:absolute;left:75px">
     <d-math>(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</d-math>
     <figcaption style="position:absolute;top:50px;width:240px;">
     The CTC probability of the three valid subsequences after
     <d-math>t-1</d-math> input steps.
     </figcaption>
   </div>
-  <div style="position:absolute;left:270px">
+  <div style="position:absolute;left:260px">
    <!-- Hack to stay centered when font-size changes.-->
    <d-math>\quad\quad\quad\quad \cdot</d-math>
   </div>
-  <div style="position:absolute;left:380px">
+  <div style="position:absolute;left:370px">
     <d-math>p_t(z_{s} \mid X)</d-math>
     <figcaption style="position:absolute; top:50px; width:200px;">
     The probability of the current character at input step <d-math>t</d-math>.
     </figcaption>
   </div>
 </figure>
+
+</div>
 
 <p>Below is an example of the computation performed by the dynamic programming
 algorithm. Every valid alignment has a path in this graph.</p>

@@ -28,7 +28,7 @@
 <distill-header></distill-header>
 <d-front-matter>
   <script id="distill-front-matter" type="text/json">{
-    "title": "A Guide to Connectionist Temporal Classification",
+    "title": "A Guide to CTC",
     "description": "This is a guide to Connectionist Temporal Classification (CTC) – a popular algorithm for sequence to sequence mapping with neural networks.",
     "authors": [
       {"author" : "Awni Hannun",
@@ -40,8 +40,11 @@
 </d-front-matter>
 
 <d-title>
-<h1>A Guide to Connectionist Temporal Classification</h1>
-<figure style="grid-column:page;width:900px;height:360px;">
+<h1>A Guide to CTC</h1>
+<p>A visual guide to Connectionist Temporal Classification (CTC) &mdash; a
+popular algorithm for training deep neural networks in speech recognition,
+handwriting recognition and other sequence problems.</p>
+<figure class="figure-centered" style="grid-column:page;width:900px;height:360px;">
   <link rel="stylesheet" type="text/css" href="assets/collapse_ctc.css">
   <figcaption style="color:rgba(0,0,0,1);font-size:16px;position:absolute">
     How CTC collapsing works
@@ -133,7 +136,6 @@ prohibitively time consuming.</p>
 <p>This problem doesn't just turn up in speech recognition. We see it in many
 other places. Handwriting recognition from images or sequences of pen strokes
 is one example. Action labelling in videos is another.</p>
-
 
 <figure style="width:630px;height:200px;margin-top:0px;">
   <div style="width:320px;position:absolute;">
@@ -611,8 +613,8 @@ step. The new set of hypotheses is generated from the previous set by
 extending each hypothesis with all possible output characters.</p>
 
 
-<figure style="grid-column:page; width:700px;">
-  <img src="assets/beam_search.svg" />
+<figure style="grid-column:page; width:100%; max-width:704px; margin-top:0px; margin-bottom:10px;">
+  <img src="assets/beam_search.svg" style="width:100%" />
   <figcaption style="width:300px;">
   A standard beam search algorithm with an alphabet of
   <d-math>\{\epsilon, a, b\}</d-math> and a beam size
@@ -626,8 +628,8 @@ beam, we store the output prefixes after collapsing repeats and removing
 <d-math>\epsilon</d-math> characters. At each step of the search we accumulate
 scores for a given prefix based on all the alignments which map to it.</p>
 
-<figure style="grid-column:page; width:900px;">
-  <embed src="assets/prefix_beam_search.svg"/>
+<figure style="grid-column:page; width:100%; max-width:900px; margin-top:0px; margin-bottom:10px;">
+  <object data="assets/prefix_beam_search.svg" type="image/svg+xml" style="width:100%"></object>
   <figcaption style="width:300px;">
   The CTC beam search algorithm with an output alphabet
   <d-math>\{\epsilon, a, b\}</d-math>
@@ -652,8 +654,8 @@ in the beam. The probability of all alignments which end in
 end in <d-math>\epsilon</d-math>. When we rank the hypotheses at
 each step before pruning the beam, we'll use their combined scores.</p>
 
-<figure style="grid-column:page; width:900px;">
-  <embed src="assets/prefix_beam_search_single.svg"/>
+<figure style="grid-column:page; width:100%; max-width:900px; margin-top:0px; margin-bottom:0px;">
+  <object data="assets/prefix_beam_search_single.svg" type="image/svg+xml" style="width:100%"></object>
 </figure>
 
 <p>The implementation of this algorithm doesn't require much code, but it is
@@ -724,9 +726,8 @@ output distribution is
 <d-math block>
 p(Y \mid X) \enspace = \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X).
 </d-math>
-
-<div style="height:150px;">
-<figure style="width:200px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
+<div style="height:140px;">
+<figure style="width:200px;float:right;margin-top:0px;margin-bottom:0px;margin-left:50px;margin-right:60px;">
   <img src="assets/conditional_independence.svg" />
   <figcaption>
   Graphical model for CTC.

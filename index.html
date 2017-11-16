@@ -349,24 +349,30 @@ length of <d-math>X</d-math>.</p>
 <p>The CTC alignments give us a natural way to go from probabilities at each
 time-step to the probability of an output sequence.</p>
 
-<figure style="width:550px; height:380px;">
+<figure style="width:580px; height:590px;">
   <figcaption>
-  <div style="position:absolute; top:10px; width: 180px;">
-    The function <d-math>p_t(a \mid X)</d-math> 
-    is a distribution over the outputs 
+  <div style="position:absolute; top:0px; width: 200px;">
+    We start with an input sequence like a spectrogram of audio.
+  </div>
+  <div style="position:absolute; top:80px; width: 200px;">
+    The input is fed into a recurrent neural network, for example.
+  </div>
+  <div style="position:absolute; top:170px; width: 190px;">
+    The network gives <d-math>p_t(a \mid X)</d-math>,
+    a distribution over the outputs
     {h, e, l, o, <d-math>\epsilon</d-math>} for
     each input step.
   </div>
-  <div style="position:absolute; top:180px; width: 180px;">
+  <div style="position:absolute; top:360px; width: 190px;">
     With the per time-step output distribution, we can compute the
     probability of different sequences. 
   </div>
-  <div style="position:absolute; top:310px; width: 180px;">
+  <div style="position:absolute; top:500px; width: 190px;">
     By marginalizing over the alignments, we get a distribution over outputs.
   </div>
   </figcaption>
-  <div style="width:300px; position:absolute; left: 230px;">
-  <img src="assets/ctc_distribution.svg" />
+  <div style="width:330px; position:absolute; left: 250px;">
+  <img src="assets/full_collapse_from_audio.svg" />
   </div>
 </figure>
 
@@ -543,7 +549,7 @@ algorithm. Every valid alignment has a path in this graph.</p>
 <img src="assets/ctc_cost.svg"/>
 <figcaption style="width:350px;">
 Node <d-math>(s, t)</d-math> in the diagram represents
-<d-math>\alpha_{s, t}</d-math> – the CTC score of 
+<d-math>\alpha_{s, t}</d-math> – the CTC score of
 the subsequence <d-math>Z_{1:s}</d-math> after
 <d-math>t</d-math> input steps.
 </figcaption>

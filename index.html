@@ -373,7 +373,7 @@ time-step to the probability of an output sequence.</p>
     We start with an input sequence like a spectrogram of audio.
   </div>
   <div style="position:absolute; top:80px; width: 200px;">
-    The input is fed into a recurrent neural network, for example.
+    The input is fed into an RNN, for example.
   </div>
   <div style="position:absolute; top:170px; width: 190px;">
     The network gives <d-math>p_t(a \mid X)</d-math>,
@@ -421,6 +421,12 @@ for a single <d-math>(X, Y)</d-math> pair is:</p>
   computing the <strong>probability</strong> for a single alignment step-by-step.
   </figcaption>
 </figure>
+
+<p>Models trained with CTC typically use a recurrent neural network (RNN) to
+estimate the per time-step probabilities, <d-math>p_t(a_t \mid X)</d-math>.
+The RNN works well here since it accounts for context in the input, but we're
+free to use any learning algorithm which produces a distribution over output
+classes given a fixed-size slice of the input.</p>
 
 <p>If we aren't careful, the CTC loss can be very expensive to compute. We
 could try the straightforward approach and compute the score for each alignment
@@ -961,7 +967,7 @@ transition diagram in which every state connects to every other state.  The
 figure below shows this model with the alphabet or set of unique hidden states
 as <d-math>\{a, b, c\}</d-math>.</p>
 
-<p>In our case the hidden states of the model (the elements of <d-math>A</d-math>) are strongly
+<p>In our case the hidden states of the model (the elements of <d-math>\mathcal{A}</d-math>) are strongly
 related to <d-math>Y</d-math>. We want the HMM to reflect this. One possible model could be
 a simple linear state transition diagram. The figure below shows this with the
 same alphabet as before and <d-math>Y =</d-math> [a, b]. Another commonly used model is the
@@ -1008,17 +1014,17 @@ also gives a set of allowed alignments which may be a good prior for some
 problems.</p>
 
 <p>Perhaps most importantly, CTC is discriminative. It models
-<d-math>p(Y \mid X)</d-math> directly. This allows us to train the model
-"end-to-end" and unleash the capacity of powerful learning algorithms
-like the RNN.</p>
+<d-math>p(Y \mid X)</d-math> directly. This allows us to unleash the capacity
+of powerful learning algorithms like the RNN directly
+towards solving the problem we care about.</p>
 
 <h3 id="encoder-decoder-models">Encoder-Decoder Models</h3>
 
-<p>The neural encoder-decoder is perhaps the most commonly used framework for
-sequence transduction. This class of models consists of an encoder and a
-decoder. The encoder maps the input sequence <d-math>X</d-math> into a hidden
-representation. The decoder consumes the hidden representation and produces a
-distribution over the outputs. We can write this as
+<p>The encoder-decoder is perhaps the most commonly used framework for sequence
+transduction with neural networks. This class of models consists of an encoder
+and a decoder. The encoder maps the input sequence <d-math>X</d-math> into a
+hidden representation. The decoder consumes the hidden representation and
+produces a distribution over the outputs. We can write this as
 
 <d-math block>
 \begin{aligned}
@@ -1051,6 +1057,13 @@ is less than <d-math>U</d-math>.</p>
 linear transformation followed by a softmax normalization. This layer should
 project all <d-math>T</d-math> steps of the encoder output
 <d-math>H</d-math> into the dimensionality of the output alphabet.</p>
+
+We mentioned earlier that CTC makes a conditional independence assumption over
+the characters in the output sequence. This is one of the big advantages that
+other encoder-decoder models have over CTC &mdash; they can model the
+dependence over the outputs. However in practice, CTC is still more commonly
+used in tasks like Speech Recognition as we can partially overcome the
+conditional independence assumption by including an external language model.
 
 <hr />
 <h2 id="practitioners-guide">Practitioner’s Guide</h2>

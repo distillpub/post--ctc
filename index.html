@@ -12,7 +12,23 @@
     crossorigin="anonymous"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <style>
-    figure {
+   .two-column-captioned {
+      width:100%;
+      margin-top:0px;
+      margin-bottom:20px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      grid-column-gap:30px;
+   }
+   .hmm-grid {
+      display: grid;
+      grid-template-columns: 18% 18% 55%;
+      grid-column: page;
+      grid-column-gap: 5%;
+      max-width: 750px;
+      margin-bottom:20px;
+   }
+   figure {
       margin-left: auto;
       margin-right: auto;
       width: 704px;
@@ -28,7 +44,7 @@
 <distill-header></distill-header>
 <d-front-matter>
   <script id="distill-front-matter" type="text/json">{
-    "title": "A Guide to Connectionist Temporal Classification",
+    "title": "A Guide to CTC",
     "description": "This is a guide to Connectionist Temporal Classification (CTC) – a popular algorithm for sequence to sequence mapping with neural networks.",
     "authors": [
       {"author" : "Awni Hannun",
@@ -40,8 +56,11 @@
 </d-front-matter>
 
 <d-title>
-<h1>A Guide to Connectionist Temporal Classification</h1>
-<figure style="grid-column:page;width:900px;height:360px;">
+<h1>A Guide to CTC</h1>
+<p>A visual guide to Connectionist Temporal Classification (CTC) &mdash; a
+popular algorithm for training deep neural networks in speech recognition,
+handwriting recognition and other sequence problems.</p>
+<figure class="figure-centered" style="grid-column:page;width:900px;height:360px;">
   <link rel="stylesheet" type="text/css" href="assets/collapse_ctc.css">
   <figcaption style="color:rgba(0,0,0,1);font-size:16px;position:absolute">
     How CTC collapsing works
@@ -134,22 +153,21 @@ prohibitively time consuming.</p>
 other places. Handwriting recognition from images or sequences of pen strokes
 is one example. Action labelling in videos is another.</p>
 
-
-<figure style="width:630px;height:200px;margin-top:0px;">
-  <div style="width:320px;position:absolute;">
-  <img src="assets/handwriting_recognition.svg" />
-  <figcaption style="width:280px;">
-  <strong>Handwriting recognition:</strong> The input can be
-  <d-math>(x,y)</d-math> coordinates of a pen stroke or 
-  pixels in an image.
-  </figcaption>
+<figure class="two-column-captioned">
+  <div>
+    <img src="assets/handwriting_recognition.svg" />
+    <figcaption style="max-width:280px;">
+    <strong>Handwriting recognition:</strong> The input can be
+    <d-math>(x,y)</d-math> coordinates of a pen stroke or 
+    pixels in an image.
+    </figcaption>
   </div>
-  <div style="width:270px; position:absolute; left:350px;">
-  <img src="assets/speech_recognition.svg" />
-  <figcaption style="margin-left:10px">
-  <strong>Speech recognition:</strong> The input can be a spectrogram or some
-  other frequency based feature extractor.
-  </figcaption>
+  <div>
+    <img src="assets/speech_recognition.svg" />
+    <figcaption style="margin-left:30px;max-width:250px;">
+    <strong>Speech recognition:</strong> The input can be a spectrogram or some
+    other frequency based feature extractor.
+    </figcaption>
   </div>
 </figure>
 
@@ -420,18 +438,18 @@ For most problems this would be too slow.</p>
 algorithm. The key insight is that if two alignments have reached the same
 output at the same step then we can merge them.</p>
 
-<figure style="height:170px;width:620px;margin-top:0px">
-  <div style="position:absolute;">
-  <img src="assets/all_alignments.svg" style="width:280px" />
-  <figcaption style="position:absolute;top:150px;width:200px;">
-  Summing over all alignments can be very expensive.
-  </figcaption>
+<figure class="two-column-captioned">
+  <div>
+    <img src="assets/all_alignments.svg"/>
+    <figcaption style="max-width:200px;">
+    Summing over all alignments can be very expensive.
+    </figcaption>
   </div>
-  <div style="position:absolute;left:340px;top:0px;">
-  <img src="assets/merged_alignments.svg" style="width:280px" />
-  <figcaption style="position:absolute;top:150px;width:200px;">
-  Dynamic programming merges alignments, so it's much faster.
-  </figcaption>
+  <div>
+    <img src="assets/merged_alignments.svg"/>
+    <figcaption style="max-width:200px;">
+    Dynamic programming merges alignments, so it's much faster.
+    </figcaption>
   </div>
 </figure>
 
@@ -544,23 +562,23 @@ three positions we could have come from at the previous step.</p>
 <p>Below is an example of the computation performed by the dynamic programming
 algorithm. Every valid alignment has a path in this graph.</p>
 
-<figure style="height:350px;margin-top:0px;">
-<div style="width:650px; position:absolute; left:80px; top:30px;">
-<img src="assets/ctc_cost.svg"/>
-<figcaption style="width:350px;">
+<figure style="width:100%;margin-top:0px;">
+<figcaption style="position:absolute; left:0px; top:100px;">
+  output<br />
+  <d-math>Y =</d-math> [a, b]
+</figcaption>
+<figcaption style="position:absolute; left:170px; top: 0px;">
+  input, <d-math>X</d-math>
+</figcaption>
+<div style="position:relative;left:80px;top:30px;" >
+<img src="assets/ctc_cost.svg" style="width:85%"/>
+<figcaption style="max-width:350px;width:85%;">
 Node <d-math>(s, t)</d-math> in the diagram represents
 <d-math>\alpha_{s, t}</d-math> – the CTC score of
 the subsequence <d-math>Z_{1:s}</d-math> after
 <d-math>t</d-math> input steps.
 </figcaption>
 </div>
-<figcaption style="position:absolute; top: 100px; width: 100px;">
-<span style="position:absolute;">output</span>
-<span style="position:absolute; top:25px;"><d-math>Y =</d-math> [a, b]</span>
-</figcaption>
-<figcaption style="position:absolute; left:170px; top: 0px;">
-  input, <d-math>X</d-math>
-</figcaption>
 </figure>
 
 <p>There are two valid starting nodes and two valid final nodes since the
@@ -625,8 +643,8 @@ step. The new set of hypotheses is generated from the previous set by
 extending each hypothesis with all possible output characters.</p>
 
 
-<figure style="grid-column:page; width:700px;">
-  <img src="assets/beam_search.svg" />
+<figure style="grid-column:page; width:100%; max-width:704px; margin-top:0px; margin-bottom:10px;">
+  <img src="assets/beam_search.svg" style="width:100%" />
   <figcaption style="width:300px;">
   A standard beam search algorithm with an alphabet of
   <d-math>\{\epsilon, a, b\}</d-math> and a beam size
@@ -640,8 +658,8 @@ beam, we store the output prefixes after collapsing repeats and removing
 <d-math>\epsilon</d-math> characters. At each step of the search we accumulate
 scores for a given prefix based on all the alignments which map to it.</p>
 
-<figure style="grid-column:page; width:900px;">
-  <embed src="assets/prefix_beam_search.svg"/>
+<figure style="grid-column:page; width:100%; max-width:900px; margin-top:0px; margin-bottom:10px;">
+  <object data="assets/prefix_beam_search.svg" type="image/svg+xml" style="width:100%"></object>
   <figcaption style="width:300px;">
   The CTC beam search algorithm with an output alphabet
   <d-math>\{\epsilon, a, b\}</d-math>
@@ -666,8 +684,8 @@ in the beam. The probability of all alignments which end in
 end in <d-math>\epsilon</d-math>. When we rank the hypotheses at
 each step before pruning the beam, we'll use their combined scores.</p>
 
-<figure style="grid-column:page; width:900px;">
-  <embed src="assets/prefix_beam_search_single.svg"/>
+<figure style="grid-column:page; width:100%; max-width:900px; margin-top:0px; margin-bottom:0px;">
+  <object data="assets/prefix_beam_search_single.svg" type="image/svg+xml" style="width:100%"></object>
 </figure>
 
 <p>The implementation of this algorithm doesn't require much code, but it is
@@ -738,9 +756,8 @@ output distribution is
 <d-math block>
 p(Y \mid X) \enspace = \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X).
 </d-math>
-
-<div style="height:150px;">
-<figure style="width:200px;float:right;margin-top:0px;margin-bottom:0px; margin-left:50px;">
+<div>
+<figure style="width:200px;float:right;margin-top:0px;margin-bottom:0px;margin-left:50px;margin-right:60px;">
   <img src="assets/conditional_independence.svg" />
   <figcaption>
   Graphical model for CTC.
@@ -951,27 +968,26 @@ same alphabet as before and <d-math>Y =</d-math> [a, b]. Another commonly used m
 <em>Bakis</em> or left-right HMM. In this model any transition which proceeds from the
 left to the right is allowed.</p>
 
-<figure style="height:190px;margin-top:0px;">
-  <div style="position:absolute;">
-  <img src="assets/ergodic_hmm.svg" style="margin-left:20px;width:110px;" />
-  <figcaption style="width:160px;">
-  <strong>Ergodic HMM:</strong> Any node can be either a starting or
-  final state.
-  </figcaption>
+<figure class="hmm-grid" style="width:100%;margin-top:0px;">
+  <div>
+    <img src="assets/ergodic_hmm.svg"/>
+    <figcaption>
+    <strong>Ergodic HMM:</strong> Any node can be either a starting or
+    final state.
+    </figcaption>
   </div>
-  <div style="position:absolute; left:180px;">
-  <img style="margin-bottom:30px;margin-left:10px;margin-top:30px;width:150px;" src="assets/linear_hmm.svg" />
-  <figcaption style="margin-left:10px;width:185px;">
-  <strong>Linear HMM:</strong> The first node is the starting state
-  and the second node is the final state.
-  </figcaption>
+  <div>
+    <img src="assets/linear_hmm.svg"/>
+    <figcaption>
+    <strong>Linear HMM:</strong> Start on the left, end on the right. 
+    </figcaption>
   </div>
-  <div style="width:350px;position:absolute;left:370px;">
-  <img style="margin-bottom:30px; margin-top:30px;" src="assets/ctc_hmm.svg" />
-  <figcaption style="margin-left:40px;width:250px;">
-  <strong>CTC HMM:</strong> The first two nodes are the starting
-  states and the last two nodes are the final states.
-  </figcaption>
+  <div>
+    <img src="assets/ctc_hmm.svg" />
+    <figcaption style="max-width:250px;">
+    <strong>CTC HMM:</strong> The first two nodes are the starting
+    states and the last two nodes are the final states.
+    </figcaption>
   </div>
 </figure>
 

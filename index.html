@@ -163,7 +163,7 @@ recognition.</p>
 <p>To be a bit more formal, let's consider mapping input sequences
 <d-math>X = [x_1, x_2, \ldots, x_T]</d-math>, such as audio, to corresponding output
 sequences <d-math>Y = [y_1, y_2, \ldots, y_U]</d-math>, such as transcripts.
-We want to find an accurate mapping from <d-math>X</d-math>s to <d-math>Y</d-math>s.</p>
+We want to find an accurate mapping from <d-math>X</d-math>'s to <d-math>Y</d-math>'s.</p>
 
 <p>As we saw in speech recognition, there are challenges which get in the way of us
 using simpler supervised learning algorithms. In particular:</p>
@@ -178,7 +178,7 @@ using simpler supervised learning algorithms. In particular:</p>
 
 <p>The CTC algorithm overcomes these challenges. For a given
 <d-math>X</d-math> it gives us an output distribution over all possible
-<d-math>Y</d-math>s. We can use this distribution to infer a likely output
+<d-math>Y</d-math>'s. We can use this distribution to infer a likely output
 and asses the probability of a given output.</p>
 
 <p>Not all ways of computing the loss function and performing inference are
@@ -213,11 +213,18 @@ perform inference.</p>
 
 <h3 id="the-alignment">Alignment</h3>
 
-<p>To motivate the CTC alignments, first consider a naive approach. Let’s use
-an example. Assume the input has length six and <d-math>Y =</d-math> [c, a,
-t]. One way to align <d-math>X</d-math> to <d-math>Y</d-math> is to
-have a character for each input step and collapse repeats. So the alignment
-could be</p>
+<p>The CTC algorithm is <em>alignment-free</em> &mdash; it doesn't require an
+alignment between the input and the output. However, to get the probability of
+an output given an input, CTC works by summing over the probability of all
+possible alignments between the two. We need to understand what these
+alignments are in order to understand how the loss function is ultimately
+calculated.</p>
+
+<p>To motivate the specific form of the CTC alignments, first consider a naive
+approach. Let’s use an example. Assume the input has length six and <d-math>Y
+=</d-math> [c, a, t]. One way to align <d-math>X</d-math> to <d-math>Y</d-math>
+is to have a character for each input step and collapse repeats. So the
+alignment could be</p>
 
 <figure style="width:300px; height:140px; margin-top:0px;">
   <figcaption>
@@ -431,12 +438,13 @@ Z \enspace =\enspace [\epsilon, ~y_1, ~\epsilon, ~y_2,~ \ldots, ~\epsilon, ~y_U,
 which is <d-math>Y</d-math> with an <d-math>\epsilon</d-math> at
 the beginning, end, and between every character.</p>
 
-<p>Let's let <d-math>\alpha</d-math> be the score of the merged
-alignments at a given node. More precisely, <d-math>\alpha_{s, t}</d-math> is
-the CTC score of the subsequence <d-math>Z_{1:s}</d-math> after
-<d-math>t</d-math> input steps.  As long as we know the values of
-<d-math>\alpha</d-math> at the previous time-step,
-we can compute <d-math>\alpha_{s, t}</d-math>. There are two cases.</p> 
+<p>Let's let <d-math>\alpha</d-math> be the score of the merged alignments at a
+given node. More precisely, <d-math>\alpha_{s, t}</d-math> is the CTC score of
+the subsequence <d-math>Z_{1:s}</d-math> after <d-math>t</d-math> input steps.
+As we'll see, we'll compute the final CTC score, <d-math>P(Y \mid X)</d-math>,
+from the <d-math>\alpha</d-math>'s at the last time-step. As long as we know
+the values of <d-math>\alpha</d-math> at the previous time-step, we can compute
+<d-math>\alpha_{s, t}</d-math>. There are two cases.</p>
 
 <p><strong>Case 1:</strong></p>
 
@@ -594,8 +602,8 @@ alignments.</p>
 
 <p>Here's an example. Assume the alignments [a, a, <d-math>\epsilon</d-math>]
 and [a, a, a] individually have lower probability than [b, b, b]. But 
-the sum of their probabilities is actually greater than that of [b, b, b]. The beam
-search will incorrectly propose <d-math>Y =</d-math> [b] as
+the sum of their probabilities is actually greater than that of [b, b, b]. The
+naive heuristic will incorrectly propose <d-math>Y =</d-math> [b] as
 the most likely hypothesis. It should have chosen <d-math>Y =</d-math> [a].
 To fix this, the algorithm needs to account for the fact that [a, a, a] and [a,
 a, <d-math>\epsilon</d-math>] collapse to the same output.</p>

@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="249px" height="450px" viewBox="0 0 249 450" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>full_collapse_from_audio</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+    <style
+       type="text/css"
+       id="style2">
+      svg {
+        font: 200 16px -apple-system, BlinkMacSystemFont, &quot;Roboto&quot;, Helvetica, sans-serif;
+      }
+    </style>
+
+        <path d="M5,2.92675414e-17 L244,1.42825602e-15 L244,1.77635684e-15 C246.761424,1.26909153e-15 249,2.23857625 249,5 L249,27 L249,27 C249,29.7614237 246.761424,32 244,32 L5,32 L5,32 C2.23857625,32 2.79081386e-15,29.7614237 0,27 L0,5 L0,5 C-3.38176876e-16,2.23857625 2.23857625,5.07265313e-16 5,0 Z" id="path-1"></path>
+        <rect id="path-2" x="5" y="9" width="15" height="15" rx="3"></rect>
+        <rect id="path-3" x="30" y="9" width="15" height="15" rx="3"></rect>
+        <rect id="path-4" x="55" y="9" width="15" height="15" rx="3"></rect>
+        <rect id="path-5" x="80" y="9" width="15" height="15" rx="3"></rect>
+        <rect id="path-6" x="105" y="9" width="15" height="15" rx="3"></rect>
+        <rect id="path-7" x="130" y="9" width="15" height="15" rx="3"></rect>
+        <rect id="path-8" x="155" y="9" width="15" height="15" rx="3"></rect>
+        <rect id="path-9" x="180" y="9" width="15" height="15" rx="3"></rect>
+        <rect id="path-10" x="205" y="9" width="15" height="15" rx="3"></rect>
+        <rect id="path-11" x="230" y="9" width="15" height="15" rx="3"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="full_collapse_from_audio">
+            <g id="ctc_distribution" transform="translate(0.000000, 120.000000)">
+                <g id="g03" transform="translate(0.000000, 137.000000)">
+                    <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30287589" x="225" y="64" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect10" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30287589" x="199.88742" y="64" width="22.741989" height="22.516821"></rect>
+                    <rect id="rect12" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30287589" x="175" y="64" width="22.516821" height="22.516821"></rect>
+                    <g id="text841" transform="translate(185.000000, 67.000000)"   fill="#000000" >
+                        <g id="tspan845">
+                            <text id="tspan14">
+                                <tspan x="0.41947001" y="13.74159">l</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <rect id="rect18" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30287589" x="150" y="64" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect20" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30287589" x="125" y="64" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect22" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30287589" x="100" y="64" width="22.516821" height="22.516821"></rect>
+                    <g id="g28" transform="translate(109.000000, 67.000000)"   fill="#000000" >
+                        <g id="text26">
+                            <text id="tspan24">
+                                <tspan x="0.41947001" y="13.74159">l</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <rect id="rect30" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30287589" x="75" y="64" width="22.516821" height="22.516821"></rect>
+                    <g id="g36" transform="translate(84.000000, 67.000000)"   fill="#000000" >
+                        <g id="text34">
+                            <text id="tspan32">
+                                <tspan x="0.41947001" y="13.74159">l</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <rect id="rect38" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30287589" x="50" y="64" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect40" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30287589" x="25" y="64" width="22.516821" height="22.516821"></rect>
+                    <g id="g45" transform="translate(32.000000, 66.000000)"   fill="#000000" >
+                        <g id="e">
+                            <text id="tspan42">
+                                <tspan x="0" y="13">e</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <rect id="rect47" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30287589" x="0" y="64" width="22.516821" height="22.516821"></rect>
+                    <g id="g52" transform="translate(232.000000, 67.000000)"   fill="#000000" >
+                        <g id="o">
+                            <text id="tspan49">
+                                <tspan x="0" y="13">o</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979845" x="225" y="35" width="22.516821" height="22.516821"></rect>
+                    <g id="text58" transform="translate(232.000000, 38.000000)"   fill="#000000" >
+                        <text id="tspan56">
+                            <tspan x="0" y="13">o</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect60" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979845" x="200" y="35" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect62" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979845" x="175" y="35" width="22.516821" height="22.516821"></rect>
+                    <g id="l" transform="translate(185.000000, 38.000000)"   fill="#000000" >
+                        <text id="tspan64">
+                            <tspan x="0" y="13">l</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect67" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979845" x="150" y="35" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect69" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979845" x="125" y="35" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect71" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979845" x="100" y="35" width="22.516821" height="22.516821"></rect>
+                    <g id="text75" transform="translate(109.000000, 38.000000)"   fill="#000000" >
+                        <text id="tspan73">
+                            <tspan x="0" y="13">l</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect77" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979845" x="75" y="35" width="22.516821" height="22.516821"></rect>
+                    <g id="text81" transform="translate(85.000000, 38.000000)"   fill="#000000" >
+                        <text id="tspan79">
+                            <tspan x="0" y="13">l</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect83" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979845" x="50" y="35" width="22.516821" height="22.516821"></rect>
+                    <g id="text823" transform="translate(57.000000, 38.000000)"   fill="#000000" >
+                        <text id="tspan85">
+                            <tspan x="0" y="13">e</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect88" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979845" x="25" y="35" width="22.516821" height="22.516821"></rect>
+                    <g id="h" transform="translate(32.000000, 38.000000)"   fill="#000000" >
+                        <text id="tspan90">
+                            <tspan x="0" y="13">h</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect93" fill="#D3D3D3" fill-rule="nonzero" opacity="0.53979845" x="0" y="35" width="22.516821" height="22.516821"></rect>
+                    <g id="text97" transform="translate(6.000000, 38.000000)"   fill="#000000" >
+                        <text id="tspan95">
+                            <tspan x="0" y="13">h</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="100" y="6" width="22.516821" height="22.516821"></rect>
+                    <g id="text102" transform="translate(109.000000, 9.000000)"   fill="#000000" >
+                        <text id="tspan100">
+                            <tspan x="0.39327" y="13.58053">l</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect104" fill="#D3D3D3" fill-rule="nonzero" x="75" y="6" width="22.516821" height="22.516821"></rect>
+                    <g id="text108" transform="translate(85.000000, 9.000000)"   fill="#000000" >
+                        <text id="tspan106">
+                            <tspan x="0.393272" y="13.58053">l</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect110" fill="#D3D3D3" fill-rule="nonzero" x="50" y="6" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect112" fill="#D3D3D3" fill-rule="nonzero" x="25" y="6" width="22.516821" height="22.516821"></rect>
+                    <g id="text116" transform="translate(32.000000, 8.000000)"   fill="#000000" >
+                        <text id="tspan114">
+                            <tspan x="0" y="13.58053">e</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect118" fill="#D3D3D3" fill-rule="nonzero" x="0" y="6" width="22.516821" height="22.516821"></rect>
+                    <g id="text122" transform="translate(6.000000, 8.000000)"   fill="#000000" >
+                        <text id="tspan120">
+                            <tspan x="0" y="13.58053">h</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect124" fill="#D3D3D3" fill-rule="nonzero" x="200" y="6" width="22.516821" height="22.516821"></rect>
+                    <g id="text128" transform="translate(207.000000, 8.000000)"   fill="#000000" >
+                        <text id="tspan126">
+                            <tspan x="0" y="13.58053">o</tspan>
+                        </text>
+                    </g>
+                    <g id="text132" transform="translate(208.000000, 67.000000)"   fill="#000000" >
+                        <text id="tspan130">
+                            <tspan x="0" y="13">o</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect134" fill="#D3D3D3" fill-rule="nonzero" x="175" y="6" width="22.516821" height="22.516821"></rect>
+                    <g id="text138" transform="translate(185.000000, 10.000000)"   fill="#000000" >
+                        <text id="tspan136">
+                            <tspan x="0" y="13">l</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect140" fill="#D3D3D3" fill-rule="nonzero" x="150" y="6" width="22.516821" height="22.516821"></rect>
+                    <g id="text144" transform="translate(160.000000, 9.000000)"   fill="#000000" >
+                        <text id="tspan142">
+                            <tspan x="0.39326" y="13.58053">l</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect146" fill="#D3D3D3" fill-rule="nonzero" x="125" y="6" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect148" fill="#D3D3D3" fill-rule="nonzero" x="225" y="6" width="22.516821" height="22.516821"></rect>
+                    <g id="text152" transform="translate(232.000000, 8.000000)"   fill="#000000" >
+                        <text id="tspan150">
+                            <tspan x="0" y="13.58053">o</tspan>
+                        </text>
+                    </g>
+                    <g id="text17" transform="translate(57.000000, 0.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <text id="tspan154">
+                            <tspan x="0" y="21">ϵ</tspan>
+                        </text>
+                    </g>
+                    <g id="text159" transform="translate(57.000000, 59.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <text id="tspan157">
+                            <tspan x="0" y="21">ϵ</tspan>
+                        </text>
+                    </g>
+                    <g id="text163" transform="translate(6.000000, 59.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <text id="tspan161">
+                            <tspan x="0" y="21">ϵ</tspan>
+                        </text>
+                    </g>
+                    <g id="text167" transform="translate(132.000000, 0.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <text id="tspan165">
+                            <tspan x="0" y="21">ϵ</tspan>
+                        </text>
+                    </g>
+                    <g id="text171" transform="translate(132.000000, 30.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <text id="tspan169">
+                            <tspan x="0" y="21">ϵ</tspan>
+                        </text>
+                    </g>
+                    <g id="text175" transform="translate(157.000000, 29.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <text id="tspan173">
+                            <tspan x="0" y="21">ϵ</tspan>
+                        </text>
+                    </g>
+                    <g id="text179" transform="translate(132.000000, 59.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <text id="tspan177">
+                            <tspan x="0" y="21">ϵ</tspan>
+                        </text>
+                    </g>
+                    <g id="text183" transform="translate(157.000000, 59.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <text id="tspan181">
+                            <tspan x="0" y="21">ϵ</tspan>
+                        </text>
+                    </g>
+                    <g id="text187" transform="translate(207.000000, 30.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <text id="tspan185">
+                            <tspan x="0" y="21">ϵ</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="g02" transform="translate(1.000000, 249.000000)">
+                    <rect id="rect190" fill="#D3D3D3" fill-rule="nonzero" opacity="0.1967278" x="75" y="58" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect192" fill="#D3D3D3" fill-rule="nonzero" opacity="0.1967278" x="50" y="58" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect194" fill="#D3D3D3" fill-rule="nonzero" opacity="0.1967278" x="25" y="58" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect196" fill="#D3D3D3" fill-rule="nonzero" opacity="0.1967278" x="0" y="58" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect198" fill="#D3D3D3" fill-rule="nonzero" opacity="0.44740714" x="75" y="29" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect200" fill="#D3D3D3" fill-rule="nonzero" opacity="0.44740714" x="50" y="29" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect202" fill="#D3D3D3" fill-rule="nonzero" opacity="0.44740714" x="25" y="29" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect204" fill="#D3D3D3" fill-rule="nonzero" opacity="0.44740714" x="0" y="29" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect206" fill="#D3D3D3" fill-rule="nonzero" x="100" y="0" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect208" fill="#D3D3D3" fill-rule="nonzero" x="75" y="0" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect210" fill="#D3D3D3" fill-rule="nonzero" x="50" y="0" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect212" fill="#D3D3D3" fill-rule="nonzero" x="25" y="0" width="22.516821" height="22.516821"></rect>
+                    <rect id="rect214" fill="#D3D3D3" fill-rule="nonzero" x="0" y="0" width="22.516821" height="22.516821"></rect>
+                    <g id="g220" transform="translate(32.000000, 60.000000)"   fill="#000000" >
+                        <g id="text218">
+                            <text id="tspan216">
+                                <tspan x="0" y="13">e</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <g id="text224" transform="translate(60.000000, 32.000000)"   fill="#000000" >
+                        <text id="tspan222">
+                            <tspan x="0" y="13">l</tspan>
+                        </text>
+                    </g>
+                    <g id="text228" transform="translate(60.000000, 61.000000)"   fill="#000000" >
+                        <text id="tspan226">
+                            <tspan x="0" y="13">l</tspan>
+                        </text>
+                    </g>
+                    <g id="text232" transform="translate(35.000000, 32.000000)"   fill="#000000" >
+                        <text id="tspan230">
+                            <tspan x="0" y="13">l</tspan>
+                        </text>
+                    </g>
+                    <g id="text236" transform="translate(7.000000, 32.000000)"   fill="#000000" >
+                        <text id="tspan234">
+                            <tspan x="0" y="13">e</tspan>
+                        </text>
+                    </g>
+                    <g id="text240" transform="translate(107.000000, 2.000000)"   fill="#000000" >
+                        <text id="tspan238">
+                            <tspan x="0.39327" y="13.58053">o</tspan>
+                        </text>
+                    </g>
+                    <g id="text244" transform="translate(82.000000, 31.000000)"   fill="#000000" >
+                        <text id="tspan242">
+                            <tspan x="0.393272" y="13.580528">o</tspan>
+                        </text>
+                    </g>
+                    <g id="text248" transform="translate(82.000000, 60.000000)"   fill="#000000" >
+                        <text id="tspan246">
+                            <tspan x="0.393272" y="13.580528">o</tspan>
+                        </text>
+                    </g>
+                    <g id="text252" transform="translate(85.000000, 3.000000)"   fill="#000000" >
+                        <text id="tspan250">
+                            <tspan x="0.393272" y="13.58053">l</tspan>
+                        </text>
+                    </g>
+                    <g id="text256" transform="translate(60.000000, 3.000000)"   fill="#000000" >
+                        <text id="tspan254">
+                            <tspan x="0" y="13.58053">l</tspan>
+                        </text>
+                    </g>
+                    <g id="text260" transform="translate(32.000000, 2.000000)"   fill="#000000" >
+                        <text id="tspan258">
+                            <tspan x="0" y="13.58053">e</tspan>
+                        </text>
+                    </g>
+                    <g id="text264" transform="translate(6.000000, 2.000000)"   fill="#000000" >
+                        <text id="tspan262">
+                            <tspan x="0" y="13.58053">h</tspan>
+                        </text>
+                    </g>
+                    <g id="text268" transform="translate(6.000000, 59.000000)"   fill="#000000" >
+                        <text id="tspan266">
+                            <tspan x="0" y="13.580528">h</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="g01" transform="translate(1.000000, 0.000000)">
+                    <g id="g10" transform="translate(225.000000, 0.000000)">
+                        <rect id="rect271" fill="#D3D3D3" fill-rule="nonzero" opacity="0.22356208" x="0" y="0" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect878" fill="#D3D3D3" fill-rule="nonzero" opacity="0.22356208" x="0" y="92" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect886" fill="#D3D3D3" fill-rule="nonzero" x="0" y="69" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect275" fill="#D3D3D3" fill-rule="nonzero" opacity="0.22356208" x="0" y="23" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect277" fill="#D3D3D3" fill-rule="nonzero" opacity="0.22356208" x="0" y="46" width="22.516821" height="22.516821"></rect>
+                        <g id="text8" transform="translate(7.000000, 2.000000)"   fill="#000000" >
+                            <text id="tspan279">
+                                <tspan x="0.3932719" y="13.58053">h</tspan>
+                            </text>
+                        </g>
+                        <g id="text284" transform="translate(7.000000, 25.000000)"   fill="#000000" >
+                            <text id="tspan282">
+                                <tspan x="0" y="13">e</tspan>
+                            </text>
+                        </g>
+                        <g id="text288" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                            <text id="tspan286">
+                                <tspan x="0" y="21">ϵ</tspan>
+                            </text>
+                        </g>
+                        <g id="g294" transform="translate(9.000000, 49.000000)"   fill="#000000" >
+                            <g id="text292">
+                                <text id="tspan290">
+                                    <tspan x="0.41947001" y="13.74159">l</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="text914" transform="translate(7.000000, 71.000000)"   fill="#000000" >
+                            <g id="tspan912">
+                                <text id="tspan296">
+                                    <tspan x="0.41947001" y="13.74159">o</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="g9" transform="translate(200.000000, 0.000000)">
+                        <rect id="rect301" fill="#D3D3D3" fill-rule="nonzero" opacity="0.20414405" x="0" y="0" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect303" fill="#D3D3D3" fill-rule="nonzero" opacity="0.50073595" x="0" y="92" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect305" fill="#D3D3D3" fill-rule="nonzero" opacity="0.70216256" x="0" y="69" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect307" fill="#D3D3D3" fill-rule="nonzero" opacity="0.20414405" x="0" y="23" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect309" fill="#D3D3D3" fill-rule="nonzero" opacity="0.20414405" x="0" y="46" width="22.516821" height="22.516821"></rect>
+                        <g id="text313" transform="translate(7.000000, 2.000000)"   fill="#000000" >
+                            <text id="tspan311">
+                                <tspan x="0.3932719" y="13.58053">h</tspan>
+                            </text>
+                        </g>
+                        <g id="text317" transform="translate(7.000000, 25.000000)"   fill="#000000" >
+                            <text id="tspan315">
+                                <tspan x="0" y="13">e</tspan>
+                            </text>
+                        </g>
+                        <g id="text321" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                            <text id="tspan319">
+                                <tspan x="0" y="21">ϵ</tspan>
+                            </text>
+                        </g>
+                        <g id="g327" transform="translate(9.000000, 49.000000)"   fill="#000000" >
+                            <g id="text325">
+                                <text id="tspan323">
+                                    <tspan x="0.41947001" y="13.74159">l</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="g333" transform="translate(7.000000, 71.000000)"   fill="#000000" >
+                            <g id="text331">
+                                <text id="tspan329">
+                                    <tspan x="0.41947001" y="13.74159">o</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="g8" transform="translate(175.000000, 0.000000)">
+                        <rect id="rect336" fill="#D3D3D3" fill-rule="nonzero" opacity="0.26115262" x="0" y="0" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect338" fill="#D3D3D3" fill-rule="nonzero" opacity="0.26115262" x="0" y="92" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect340" fill="#D3D3D3" fill-rule="nonzero" opacity="0.26115262" x="0" y="69" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect342" fill="#D3D3D3" fill-rule="nonzero" opacity="0.26115262" x="0" y="23" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect344" fill="#D3D3D3" fill-rule="nonzero" x="0" y="46" width="22.516821" height="22.516821"></rect>
+                        <g id="text348" transform="translate(7.000000, 2.000000)"   fill="#000000" >
+                            <text id="tspan346">
+                                <tspan x="0.3932719" y="13.58053">h</tspan>
+                            </text>
+                        </g>
+                        <g id="text352" transform="translate(7.000000, 25.000000)"   fill="#000000" >
+                            <text id="tspan350">
+                                <tspan x="0" y="13">e</tspan>
+                            </text>
+                        </g>
+                        <g id="text356" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                            <text id="tspan354">
+                                <tspan x="0" y="21">ϵ</tspan>
+                            </text>
+                        </g>
+                        <g id="g362" transform="translate(9.000000, 49.000000)"   fill="#000000" >
+                            <g id="text360">
+                                <text id="tspan358">
+                                    <tspan x="0.41947001" y="13.74159">l</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="g368" transform="translate(7.000000, 71.000000)"   fill="#000000" >
+                            <g id="text366">
+                                <text id="tspan364">
+                                    <tspan x="0.41947001" y="13.74159">o</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="g7" transform="translate(150.000000, 0.000000)">
+                        <rect id="rect371" fill="#D3D3D3" fill-rule="nonzero" opacity="0.14838089" x="0" y="0" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect373" fill="#D3D3D3" fill-rule="nonzero" opacity="0.79823369" x="0" y="92" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect375" fill="#D3D3D3" fill-rule="nonzero" opacity="0.14838089" x="0" y="69" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect377" fill="#D3D3D3" fill-rule="nonzero" opacity="0.14838089" x="0" y="23" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect379" fill="#D3D3D3" fill-rule="nonzero" opacity="0.79783744" x="0" y="46" width="22.516821" height="22.516821"></rect>
+                        <g id="text383" transform="translate(7.000000, 2.000000)"   fill="#000000" >
+                            <text id="tspan381">
+                                <tspan x="0.3932719" y="13.58053">h</tspan>
+                            </text>
+                        </g>
+                        <g id="text387" transform="translate(7.000000, 25.000000)"   fill="#000000" >
+                            <text id="tspan385">
+                                <tspan x="0" y="13">e</tspan>
+                            </text>
+                        </g>
+                        <g id="text391" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                            <text id="tspan389">
+                                <tspan x="0" y="21">ϵ</tspan>
+                            </text>
+                        </g>
+                        <g id="g397" transform="translate(9.000000, 49.000000)"   fill="#000000" >
+                            <g id="text395">
+                                <text id="tspan393">
+                                    <tspan x="0.41947001" y="13.74159">l</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="g403" transform="translate(7.000000, 71.000000)"   fill="#000000" >
+                            <g id="text401">
+                                <text id="tspan399">
+                                    <tspan x="0.41947001" y="13.74159">o</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="g6" transform="translate(125.000000, 0.000000)">
+                        <rect id="rect406" fill="#D3D3D3" fill-rule="nonzero" opacity="0.15183423" x="0" y="0" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect408" fill="#D3D3D3" fill-rule="nonzero" x="0" y="92" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect410" fill="#D3D3D3" fill-rule="nonzero" opacity="0.15183423" x="0" y="69" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect412" fill="#D3D3D3" fill-rule="nonzero" opacity="0.15183423" x="0" y="23" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect414" fill="#D3D3D3" fill-rule="nonzero" opacity="0.3952106" x="0" y="46" width="22.516821" height="22.516821"></rect>
+                        <g id="text418" transform="translate(7.000000, 2.000000)"   fill="#000000" >
+                            <text id="tspan416">
+                                <tspan x="0.3932719" y="13.58053">h</tspan>
+                            </text>
+                        </g>
+                        <g id="text422" transform="translate(7.000000, 25.000000)"   fill="#000000" >
+                            <text id="tspan420">
+                                <tspan x="0" y="13">e</tspan>
+                            </text>
+                        </g>
+                        <g id="text426" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                            <text id="tspan424">
+                                <tspan x="0" y="21">ϵ</tspan>
+                            </text>
+                        </g>
+                        <g id="g432" transform="translate(9.000000, 49.000000)"   fill="#000000" >
+                            <g id="text430">
+                                <text id="tspan428">
+                                    <tspan x="0.41947001" y="13.74159">l</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="g438" transform="translate(7.000000, 71.000000)"   fill="#000000" >
+                            <g id="text436">
+                                <text id="tspan434">
+                                    <tspan x="0.41947001" y="13.74159">o</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="g5" transform="translate(100.000000, 0.000000)">
+                        <rect id="rect441" fill="#D3D3D3" fill-rule="nonzero" opacity="0.19916214" x="0" y="0" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect443" fill="#D3D3D3" fill-rule="nonzero" opacity="0.59997738" x="0" y="92" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect445" fill="#D3D3D3" fill-rule="nonzero" opacity="0.19916214" x="0" y="69" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect447" fill="#D3D3D3" fill-rule="nonzero" opacity="0.19916214" x="0" y="23" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect449" fill="#D3D3D3" fill-rule="nonzero" x="0" y="46" width="22.516821" height="22.516821"></rect>
+                        <g id="text453" transform="translate(7.000000, 2.000000)"   fill="#000000" >
+                            <text id="tspan451">
+                                <tspan x="0.3932719" y="13.58053">h</tspan>
+                            </text>
+                        </g>
+                        <g id="text457" transform="translate(7.000000, 25.000000)"   fill="#000000" >
+                            <text id="tspan455">
+                                <tspan x="0" y="13">e</tspan>
+                            </text>
+                        </g>
+                        <g id="text461" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                            <text id="tspan459">
+                                <tspan x="0" y="21">ϵ</tspan>
+                            </text>
+                        </g>
+                        <g id="g467" transform="translate(9.000000, 49.000000)"   fill="#000000" >
+                            <g id="text465">
+                                <text id="tspan463">
+                                    <tspan x="0.41947001" y="13.74159">l</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="g473" transform="translate(7.000000, 71.000000)"   fill="#000000" >
+                            <g id="text471">
+                                <text id="tspan469">
+                                    <tspan x="0.41947001" y="13.74159">o</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="g4" transform="translate(75.000000, 0.000000)">
+                        <rect id="rect476" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30157381" x="0" y="0" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect478" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30157381" x="0" y="92" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect480" fill="#D3D3D3" fill-rule="nonzero" opacity="0.06827446" x="0" y="69" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect482" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30157381" x="0" y="23" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect484" fill="#D3D3D3" fill-rule="nonzero" x="0" y="46" width="22.516821" height="22.516821"></rect>
+                        <g id="text488" transform="translate(7.000000, 2.000000)"   fill="#000000" >
+                            <text id="tspan486">
+                                <tspan x="0.3932719" y="13.58053">h</tspan>
+                            </text>
+                        </g>
+                        <g id="text492" transform="translate(7.000000, 25.000000)"   fill="#000000" >
+                            <text id="tspan490">
+                                <tspan x="0" y="13">e</tspan>
+                            </text>
+                        </g>
+                        <g id="text496" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                            <text id="tspan494">
+                                <tspan x="0" y="21">ϵ</tspan>
+                            </text>
+                        </g>
+                        <g id="g502" transform="translate(9.000000, 49.000000)"   fill="#000000" >
+                            <g id="text500">
+                                <text id="tspan498">
+                                    <tspan x="0.41947001" y="13.74159">l</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="g508" transform="translate(7.000000, 71.000000)"   fill="#000000" >
+                            <g id="text506">
+                                <text id="tspan504">
+                                    <tspan x="0.41947001" y="13.74159">o</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="g3" transform="translate(50.000000, 0.000000)">
+                        <rect id="rect511" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30208333" x="0" y="0" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect513" fill="#D3D3D3" fill-rule="nonzero" x="0" y="92" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect515" fill="#D3D3D3" fill-rule="nonzero" opacity="0.15268345" x="0" y="69" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect517" fill="#D3D3D3" fill-rule="nonzero" opacity="0.59924137" x="0" y="23" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect519" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30208333" x="0" y="46" width="22.516821" height="22.516821"></rect>
+                        <g id="text523" transform="translate(7.000000, 2.000000)"   fill="#000000" >
+                            <text id="tspan521">
+                                <tspan x="0.3932719" y="13.58053">h</tspan>
+                            </text>
+                        </g>
+                        <g id="text527" transform="translate(7.000000, 25.000000)"   fill="#000000" >
+                            <text id="tspan525">
+                                <tspan x="0" y="13">e</tspan>
+                            </text>
+                        </g>
+                        <g id="text531" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                            <text id="tspan529">
+                                <tspan x="0" y="21">ϵ</tspan>
+                            </text>
+                        </g>
+                        <g id="g537" transform="translate(9.000000, 49.000000)"   fill="#000000" >
+                            <g id="text535">
+                                <text id="tspan533">
+                                    <tspan x="0.41947001" y="13.74159">l</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="g543" transform="translate(7.000000, 71.000000)"   fill="#000000" >
+                            <g id="text541">
+                                <text id="tspan539">
+                                    <tspan x="0.41947001" y="13.74159">o</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="g2" transform="translate(25.000000, 0.000000)">
+                        <rect id="rect546" fill="#D3D3D3" fill-rule="nonzero" opacity="0.64934333" x="0" y="0" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect548" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30157381" x="0" y="92" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect550" fill="#D3D3D3" fill-rule="nonzero" opacity="0.10756339" x="0" y="69" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect552" fill="#D3D3D3" fill-rule="nonzero" x="0" y="23" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect554" fill="#D3D3D3" fill-rule="nonzero" opacity="0.30157381" x="0" y="46" width="22.516821" height="22.516821"></rect>
+                        <g id="text558" transform="translate(7.000000, 2.000000)"   fill="#000000" >
+                            <text id="tspan556">
+                                <tspan x="0.3932719" y="13.58053">h</tspan>
+                            </text>
+                        </g>
+                        <g id="text562" transform="translate(7.000000, 25.000000)"   fill="#000000" >
+                            <text id="tspan560">
+                                <tspan x="0" y="13">e</tspan>
+                            </text>
+                        </g>
+                        <g id="text566" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                            <text id="tspan564">
+                                <tspan x="0" y="21">ϵ</tspan>
+                            </text>
+                        </g>
+                        <g id="g572" transform="translate(9.000000, 49.000000)"   fill="#000000" >
+                            <g id="text570">
+                                <text id="tspan568">
+                                    <tspan x="0.41947001" y="13.74159">l</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="g578" transform="translate(7.000000, 71.000000)"   fill="#000000" >
+                            <g id="text576">
+                                <text id="tspan574">
+                                    <tspan x="0.41947001" y="13.74159">o</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="g1">
+                        <rect id="rect581" fill="#D3D3D3" fill-rule="nonzero" opacity="0.90336274" x="0" y="0" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect583" fill="#D3D3D3" fill-rule="nonzero" opacity="0.49581071" x="0" y="92" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect585" fill="#D3D3D3" fill-rule="nonzero" opacity="0.15443839" x="0" y="69" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect587" fill="#D3D3D3" fill-rule="nonzero" opacity="0.29953577" x="0" y="23" width="22.516821" height="22.516821"></rect>
+                        <rect id="rect589" fill="#D3D3D3" fill-rule="nonzero" opacity="0.15443839" x="0" y="46" width="22.516821" height="22.516821"></rect>
+                        <text id="tspan591" fill="#000000"   >
+                            <tspan x="7.3932719" y="15.58053">h</tspan>
+                        </text>
+                        <text id="e" fill="#000000"   >
+                            <tspan x="7" y="38">e</tspan>
+                        </text>
+                        <text id="tspan599" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
+                            <tspan x="7" y="108">ϵ</tspan>
+                        </text>
+                        <g id="g607" transform="translate(9.000000, 49.000000)"   fill="#000000" >
+                            <g id="text605">
+                                <text id="tspan603">
+                                    <tspan x="0.41947001" y="13.74159">l</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="g613" transform="translate(7.000000, 71.000000)"   fill="#000000" >
+                            <g id="text611">
+                                <text id="tspan609">
+                                    <tspan x="0.41947001" y="13.74159">o</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="rnn" transform="translate(0.000000, 58.000000)">
+                <g id="Rectangle-2">
+                    <use fill-opacity="0.2" fill="#4682B4" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <path stroke="#979797" stroke-width="0.5" d="M5,0.25 C2.37664744,0.25 0.25,2.37664744 0.25,5 L0.25,27 C0.25,29.6233526 2.37664744,31.75 5,31.75 L244,31.75 C246.623353,31.75 248.75,29.6233526 248.75,27 L248.75,5 C248.75,2.37664744 246.623353,0.25 244,0.25 L5,0.25 Z"></path>
+                </g>
+                <g id="Rectangle">
+                    <use fill="#EFEFEF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <rect stroke="#979797" stroke-width="0.5" x="5.25" y="9.25" width="14.5" height="14.5" rx="3"></rect>
+                </g>
+                <g id="Rectangle">
+                    <use fill="#EFEFEF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <rect stroke="#979797" stroke-width="0.5" x="30.25" y="9.25" width="14.5" height="14.5" rx="3"></rect>
+                </g>
+                <g id="Rectangle">
+                    <use fill="#EFEFEF" fill-rule="evenodd" xlink:href="#path-4"></use>
+                    <rect stroke="#979797" stroke-width="0.5" x="55.25" y="9.25" width="14.5" height="14.5" rx="3"></rect>
+                </g>
+                <g id="Rectangle">
+                    <use fill="#EFEFEF" fill-rule="evenodd" xlink:href="#path-5"></use>
+                    <rect stroke="#979797" stroke-width="0.5" x="80.25" y="9.25" width="14.5" height="14.5" rx="3"></rect>
+                </g>
+                <g id="Rectangle">
+                    <use fill="#EFEFEF" fill-rule="evenodd" xlink:href="#path-6"></use>
+                    <rect stroke="#979797" stroke-width="0.5" x="105.25" y="9.25" width="14.5" height="14.5" rx="3"></rect>
+                </g>
+                <g id="Rectangle">
+                    <use fill="#EFEFEF" fill-rule="evenodd" xlink:href="#path-7"></use>
+                    <rect stroke="#979797" stroke-width="0.5" x="130.25" y="9.25" width="14.5" height="14.5" rx="3"></rect>
+                </g>
+                <g id="Rectangle">
+                    <use fill="#EFEFEF" fill-rule="evenodd" xlink:href="#path-8"></use>
+                    <rect stroke="#979797" stroke-width="0.5" x="155.25" y="9.25" width="14.5" height="14.5" rx="3"></rect>
+                </g>
+                <g id="Rectangle">
+                    <use fill="#EFEFEF" fill-rule="evenodd" xlink:href="#path-9"></use>
+                    <rect stroke="#979797" stroke-width="0.5" x="180.25" y="9.25" width="14.5" height="14.5" rx="3"></rect>
+                </g>
+                <g id="Rectangle">
+                    <use fill="#EFEFEF" fill-rule="evenodd" xlink:href="#path-10"></use>
+                    <rect stroke="#979797" stroke-width="0.5" x="205.25" y="9.25" width="14.5" height="14.5" rx="3"></rect>
+                </g>
+                <g id="Rectangle">
+                    <use fill="#EFEFEF" fill-rule="evenodd" xlink:href="#path-11"></use>
+                    <rect stroke="#979797" stroke-width="0.5" x="230.25" y="9.25" width="14.5" height="14.5" rx="3"></rect>
+                </g>
+                <g id="arrow" transform="translate(20.000000, 15.000000)" stroke="#979797">
+                    <polygon id="Triangle" fill="#979797" transform="translate(8.000000, 1.500000) rotate(90.000000) translate(-8.000000, -1.500000) " points="8 0.5 9 2.5 7 2.5"></polygon>
+                    <path d="M0.5,1.5 L6.32299805,1.5" id="Line-2" stroke-linecap="square"></path>
+                </g>
+                <g id="arrow" transform="translate(45.000000, 15.000000)" stroke="#979797">
+                    <polygon id="Triangle" fill="#979797" transform="translate(8.000000, 1.500000) rotate(90.000000) translate(-8.000000, -1.500000) " points="8 0.5 9 2.5 7 2.5"></polygon>
+                    <path d="M0.5,1.5 L6.32299805,1.5" id="Line-2" stroke-linecap="square"></path>
+                </g>
+                <g id="arrow" transform="translate(70.000000, 15.000000)" stroke="#979797">
+                    <polygon id="Triangle" fill="#979797" transform="translate(8.000000, 1.500000) rotate(90.000000) translate(-8.000000, -1.500000) " points="8 0.5 9 2.5 7 2.5"></polygon>
+                    <path d="M0.5,1.5 L6.32299805,1.5" id="Line-2" stroke-linecap="square"></path>
+                </g>
+                <g id="arrow" transform="translate(95.000000, 15.000000)" stroke="#979797">
+                    <polygon id="Triangle" fill="#979797" transform="translate(8.000000, 1.500000) rotate(90.000000) translate(-8.000000, -1.500000) " points="8 0.5 9 2.5 7 2.5"></polygon>
+                    <path d="M0.5,1.5 L6.32299805,1.5" id="Line-2" stroke-linecap="square"></path>
+                </g>
+                <g id="arrow" transform="translate(120.000000, 15.000000)" stroke="#979797">
+                    <polygon id="Triangle" fill="#979797" transform="translate(8.000000, 1.500000) rotate(90.000000) translate(-8.000000, -1.500000) " points="8 0.5 9 2.5 7 2.5"></polygon>
+                    <path d="M0.5,1.5 L6.32299805,1.5" id="Line-2" stroke-linecap="square"></path>
+                </g>
+                <g id="arrow" transform="translate(145.000000, 15.000000)" stroke="#979797">
+                    <polygon id="Triangle" fill="#979797" transform="translate(8.000000, 1.500000) rotate(90.000000) translate(-8.000000, -1.500000) " points="8 0.5 9 2.5 7 2.5"></polygon>
+                    <path d="M0.5,1.5 L6.32299805,1.5" id="Line-2" stroke-linecap="square"></path>
+                </g>
+                <g id="arrow" transform="translate(170.000000, 15.000000)" stroke="#979797">
+                    <polygon id="Triangle" fill="#979797" transform="translate(8.000000, 1.500000) rotate(90.000000) translate(-8.000000, -1.500000) " points="8 0.5 9 2.5 7 2.5"></polygon>
+                    <path d="M0.5,1.5 L6.32299805,1.5" id="Line-2" stroke-linecap="square"></path>
+                </g>
+                <g id="arrow" transform="translate(195.000000, 15.000000)" stroke="#979797">
+                    <polygon id="Triangle" fill="#979797" transform="translate(8.000000, 1.500000) rotate(90.000000) translate(-8.000000, -1.500000) " points="8 0.5 9 2.5 7 2.5"></polygon>
+                    <path d="M0.5,1.5 L6.32299805,1.5" id="Line-2" stroke-linecap="square"></path>
+                </g>
+                <g id="arrow" transform="translate(220.000000, 15.000000)" stroke="#979797">
+                    <polygon id="Triangle" fill="#979797" transform="translate(8.000000, 1.500000) rotate(90.000000) translate(-8.000000, -1.500000) " points="8 0.5 9 2.5 7 2.5"></polygon>
+                    <path d="M0.5,1.5 L6.32299805,1.5" id="Line-2" stroke-linecap="square"></path>
+                </g>
+                <g id="out_arrows" transform="translate(11.000000, 32.000000)" stroke="#979797">
+                    <g id="arrow" transform="translate(1.500000, 9.000000) rotate(90.000000) translate(-1.500000, -9.000000) translate(-7.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(26.500000, 9.000000) rotate(90.000000) translate(-26.500000, -9.000000) translate(17.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(51.500000, 9.000000) rotate(90.000000) translate(-51.500000, -9.000000) translate(42.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(76.500000, 9.000000) rotate(90.000000) translate(-76.500000, -9.000000) translate(67.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(101.500000, 9.000000) rotate(90.000000) translate(-101.500000, -9.000000) translate(92.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(126.500000, 9.000000) rotate(90.000000) translate(-126.500000, -9.000000) translate(117.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(151.500000, 9.000000) rotate(90.000000) translate(-151.500000, -9.000000) translate(142.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(176.500000, 9.000000) rotate(90.000000) translate(-176.500000, -9.000000) translate(167.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(201.500000, 9.000000) rotate(90.000000) translate(-201.500000, -9.000000) translate(192.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(226.500000, 9.000000) rotate(90.000000) translate(-226.500000, -9.000000) translate(217.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                </g>
+            </g>
+            <g id="specgram">
+                <image opacity="0.5" id="image6bdab7d737" x="0" y="0" width="249" height="39" xlink:href="data:image/png;base64,
+
+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"></image>
+                <rect id="Rectangle-3" stroke="#777777" stroke-width="0.4" x="0.25" y="0.25" width="248.5" height="38.5" rx="5"></rect>
+                <path d="M24.5,0.5 L24.5,38.5" id="Line" stroke="#777777" stroke-width="0.7" stroke-linecap="square"></path>
+                <path d="M49,0.5 L49,38.5" id="Line" stroke="#777777" stroke-width="0.7" stroke-linecap="square"></path>
+                <path d="M74,0.5 L74,38.5" id="Line" stroke="#777777" stroke-width="0.7" stroke-linecap="square"></path>
+                <path d="M99,0.5 L99,38.5" id="Line" stroke="#777777" stroke-width="0.7" stroke-linecap="square"></path>
+                <path d="M124,0.5 L124,38.5" id="Line" stroke="#777777" stroke-width="0.7" stroke-linecap="square"></path>
+                <path d="M149,0.5 L149,38.5" id="Line" stroke="#777777" stroke-width="0.7" stroke-linecap="square"></path>
+                <path d="M174,0.5 L174,38.5" id="Line" stroke="#777777" stroke-width="0.7" stroke-linecap="square"></path>
+                <path d="M199,0.5 L199,38.5" id="Line" stroke="#777777" stroke-width="0.7" stroke-linecap="square"></path>
+                <path d="M225,0.5 L225,38.5" id="Line" stroke="#777777" stroke-width="0.7" stroke-linecap="square"></path>
+                <g id="specgram_arrows" transform="translate(11.000000, 39.000000)" stroke="#979797">
+                    <g id="arrow" transform="translate(1.500000, 9.000000) rotate(90.000000) translate(-1.500000, -9.000000) translate(-7.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(26.500000, 9.000000) rotate(90.000000) translate(-26.500000, -9.000000) translate(17.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(51.500000, 9.000000) rotate(90.000000) translate(-51.500000, -9.000000) translate(42.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(76.500000, 9.000000) rotate(90.000000) translate(-76.500000, -9.000000) translate(67.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(101.500000, 9.000000) rotate(90.000000) translate(-101.500000, -9.000000) translate(92.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(126.500000, 9.000000) rotate(90.000000) translate(-126.500000, -9.000000) translate(117.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(151.500000, 9.000000) rotate(90.000000) translate(-151.500000, -9.000000) translate(142.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(176.500000, 9.000000) rotate(90.000000) translate(-176.500000, -9.000000) translate(167.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(201.500000, 9.000000) rotate(90.000000) translate(-201.500000, -9.000000) translate(192.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                    <g id="arrow" transform="translate(226.500000, 9.000000) rotate(90.000000) translate(-226.500000, -9.000000) translate(217.500000, 7.500000)">
+                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
+                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

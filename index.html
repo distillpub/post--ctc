@@ -181,7 +181,7 @@ recognition.</p>
 <p>To be a bit more formal, let's consider mapping input sequences
 <d-math>X = [x_1, x_2, \ldots, x_T]</d-math>, such as audio, to corresponding output
 sequences <d-math>Y = [y_1, y_2, \ldots, y_U]</d-math>, such as transcripts.
-We want to find an accurate mapping from <d-math>X</d-math>s to <d-math>Y</d-math>s.</p>
+We want to find an accurate mapping from <d-math>X</d-math>'s to <d-math>Y</d-math>'s.</p>
 
 <p>As we saw in speech recognition, there are challenges which get in the way of us
 using simpler supervised learning algorithms. In particular:</p>
@@ -196,7 +196,7 @@ using simpler supervised learning algorithms. In particular:</p>
 
 <p>The CTC algorithm overcomes these challenges. For a given
 <d-math>X</d-math> it gives us an output distribution over all possible
-<d-math>Y</d-math>s. We can use this distribution to infer a likely output
+<d-math>Y</d-math>'s. We can use this distribution to infer a likely output
 and asses the probability of a given output.</p>
 
 <p>Not all ways of computing the loss function and performing inference are
@@ -231,11 +231,18 @@ perform inference.</p>
 
 <h3 id="the-alignment">Alignment</h3>
 
-<p>To motivate the CTC alignments, first consider a naive approach. Let’s use
-an example. Assume the input has length six and <d-math>Y =</d-math> [c, a,
-t]. One way to align <d-math>X</d-math> to <d-math>Y</d-math> is to
-have a character for each input step and collapse repeats. So the alignment
-could be</p>
+<p>The CTC algorithm is <em>alignment-free</em> &mdash; it doesn't require an
+alignment between the input and the output. However, to get the probability of
+an output given an input, CTC works by summing over the probability of all
+possible alignments between the two. We need to understand what these
+alignments are in order to understand how the loss function is ultimately
+calculated.</p>
+
+<p>To motivate the specific form of the CTC alignments, first consider a naive
+approach. Let’s use an example. Assume the input has length six and <d-math>Y
+=</d-math> [c, a, t]. One way to align <d-math>X</d-math> to <d-math>Y</d-math>
+is to have a character for each input step and collapse repeats. So the
+alignment could be</p>
 
 <figure style="width:300px; height:140px; margin-top:0px;">
   <figcaption>
@@ -360,24 +367,30 @@ length of <d-math>X</d-math>.</p>
 <p>The CTC alignments give us a natural way to go from probabilities at each
 time-step to the probability of an output sequence.</p>
 
-<figure style="width:550px; height:380px;">
+<figure style="width:580px; height:590px;">
   <figcaption>
-  <div style="position:absolute; top:10px; width: 180px;">
-    The function <d-math>p_t(a \mid X)</d-math> 
-    is a distribution over the outputs 
+  <div style="position:absolute; top:0px; width: 200px;">
+    We start with an input sequence like a spectrogram of audio.
+  </div>
+  <div style="position:absolute; top:80px; width: 200px;">
+    The input is fed into an RNN, for example.
+  </div>
+  <div style="position:absolute; top:170px; width: 190px;">
+    The network gives <d-math>p_t(a \mid X)</d-math>,
+    a distribution over the outputs
     {h, e, l, o, <d-math>\epsilon</d-math>} for
     each input step.
   </div>
-  <div style="position:absolute; top:180px; width: 180px;">
+  <div style="position:absolute; top:360px; width: 190px;">
     With the per time-step output distribution, we can compute the
     probability of different sequences. 
   </div>
-  <div style="position:absolute; top:310px; width: 180px;">
+  <div style="position:absolute; top:500px; width: 190px;">
     By marginalizing over the alignments, we get a distribution over outputs.
   </div>
   </figcaption>
-  <div style="width:300px; position:absolute; left: 230px;">
-  <img src="assets/ctc_distribution.svg" />
+  <div style="width:330px; position:absolute; left: 250px;">
+  <img src="assets/full_collapse_from_audio.svg" />
   </div>
 </figure>
 
@@ -408,6 +421,12 @@ for a single <d-math>(X, Y)</d-math> pair is:</p>
   computing the <strong>probability</strong> for a single alignment step-by-step.
   </figcaption>
 </figure>
+
+<p>Models trained with CTC typically use a recurrent neural network (RNN) to
+estimate the per time-step probabilities, <d-math>p_t(a_t \mid X)</d-math>.
+The RNN works well here since it accounts for context in the input, but we're
+free to use any learning algorithm which produces a distribution over output
+classes given a fixed-size slice of the input.</p>
 
 <p>If we aren't careful, the CTC loss can be very expensive to compute. We
 could try the straightforward approach and compute the score for each alignment
@@ -449,12 +468,13 @@ Z \enspace =\enspace [\epsilon, ~y_1, ~\epsilon, ~y_2,~ \ldots, ~\epsilon, ~y_U,
 which is <d-math>Y</d-math> with an <d-math>\epsilon</d-math> at
 the beginning, end, and between every character.</p>
 
-<p>Let's let <d-math>\alpha</d-math> be the score of the merged
-alignments at a given node. More precisely, <d-math>\alpha_{s, t}</d-math> is
-the CTC score of the subsequence <d-math>Z_{1:s}</d-math> after
-<d-math>t</d-math> input steps.  As long as we know the values of
-<d-math>\alpha</d-math> at the previous time-step,
-we can compute <d-math>\alpha_{s, t}</d-math>. There are two cases.</p> 
+<p>Let's let <d-math>\alpha</d-math> be the score of the merged alignments at a
+given node. More precisely, <d-math>\alpha_{s, t}</d-math> is the CTC score of
+the subsequence <d-math>Z_{1:s}</d-math> after <d-math>t</d-math> input steps.
+As we'll see, we'll compute the final CTC score, <d-math>P(Y \mid X)</d-math>,
+from the <d-math>\alpha</d-math>'s at the last time-step. As long as we know
+the values of <d-math>\alpha</d-math> at the previous time-step, we can compute
+<d-math>\alpha_{s, t}</d-math>. There are two cases.</p>
 
 <p><strong>Case 1:</strong></p>
 
@@ -560,7 +580,7 @@ algorithm. Every valid alignment has a path in this graph.</p>
 <img src="assets/ctc_cost.svg" style="width:85%"/>
 <figcaption style="max-width:350px;width:85%;">
 Node <d-math>(s, t)</d-math> in the diagram represents
-<d-math>\alpha_{s, t}</d-math> – the CTC score of 
+<d-math>\alpha_{s, t}</d-math> – the CTC score of
 the subsequence <d-math>Z_{1:s}</d-math> after
 <d-math>t</d-math> input steps.
 </figcaption>
@@ -612,8 +632,8 @@ alignments.</p>
 
 <p>Here's an example. Assume the alignments [a, a, <d-math>\epsilon</d-math>]
 and [a, a, a] individually have lower probability than [b, b, b]. But 
-the sum of their probabilities is actually greater than that of [b, b, b]. The beam
-search will incorrectly propose <d-math>Y =</d-math> [b] as
+the sum of their probabilities is actually greater than that of [b, b, b]. The
+naive heuristic will incorrectly propose <d-math>Y =</d-math> [b] as
 the most likely hypothesis. It should have chosen <d-math>Y =</d-math> [a].
 To fix this, the algorithm needs to account for the fact that [a, a, a] and [a,
 a, <d-math>\epsilon</d-math>] collapse to the same output.</p>
@@ -947,7 +967,7 @@ transition diagram in which every state connects to every other state.  The
 figure below shows this model with the alphabet or set of unique hidden states
 as <d-math>\{a, b, c\}</d-math>.</p>
 
-<p>In our case the hidden states of the model (the elements of <d-math>A</d-math>) are strongly
+<p>In our case the hidden states of the model (the elements of <d-math>\mathcal{A}</d-math>) are strongly
 related to <d-math>Y</d-math>. We want the HMM to reflect this. One possible model could be
 a simple linear state transition diagram. The figure below shows this with the
 same alphabet as before and <d-math>Y =</d-math> [a, b]. Another commonly used model is the
@@ -994,17 +1014,17 @@ also gives a set of allowed alignments which may be a good prior for some
 problems.</p>
 
 <p>Perhaps most importantly, CTC is discriminative. It models
-<d-math>p(Y \mid X)</d-math> directly. This allows us to train the model
-"end-to-end" and unleash the capacity of powerful learning algorithms
-like the RNN.</p>
+<d-math>p(Y \mid X)</d-math> directly. This allows us to unleash the capacity
+of powerful learning algorithms like the RNN directly
+towards solving the problem we care about.</p>
 
 <h3 id="encoder-decoder-models">Encoder-Decoder Models</h3>
 
-<p>The neural encoder-decoder is perhaps the most commonly used framework for
-sequence transduction. This class of models consists of an encoder and a
-decoder. The encoder maps the input sequence <d-math>X</d-math> into a hidden
-representation. The decoder consumes the hidden representation and produces a
-distribution over the outputs. We can write this as
+<p>The encoder-decoder is perhaps the most commonly used framework for sequence
+transduction with neural networks. This class of models consists of an encoder
+and a decoder. The encoder maps the input sequence <d-math>X</d-math> into a
+hidden representation. The decoder consumes the hidden representation and
+produces a distribution over the outputs. We can write this as
 
 <d-math block>
 \begin{aligned}
@@ -1037,6 +1057,13 @@ is less than <d-math>U</d-math>.</p>
 linear transformation followed by a softmax normalization. This layer should
 project all <d-math>T</d-math> steps of the encoder output
 <d-math>H</d-math> into the dimensionality of the output alphabet.</p>
+
+We mentioned earlier that CTC makes a conditional independence assumption over
+the characters in the output sequence. This is one of the big advantages that
+other encoder-decoder models have over CTC &mdash; they can model the
+dependence over the outputs. However in practice, CTC is still more commonly
+used in tasks like Speech Recognition as we can partially overcome the
+conditional independence assumption by including an external language model.
 
 <hr />
 <h2 id="practitioners-guide">Practitioner’s Guide</h2>

@@ -1059,12 +1059,12 @@ linear transformation followed by a softmax normalization. This layer should
 project all <d-math>T</d-math> steps of the encoder output
 <d-math>H</d-math> into the dimensionality of the output alphabet.</p>
 
-We mentioned earlier that CTC makes a conditional independence assumption over
+<p>We mentioned earlier that CTC makes a conditional independence assumption over
 the characters in the output sequence. This is one of the big advantages that
 other encoder-decoder models have over CTC &mdash; they can model the
 dependence over the outputs. However in practice, CTC is still more commonly
 used in tasks like Speech Recognition as we can partially overcome the
-conditional independence assumption by including an external language model.
+conditional independence assumption by including an external language model.</p>
 
 <hr />
 <h2 id="practitioners-guide">Practitioner’s Guide</h2>

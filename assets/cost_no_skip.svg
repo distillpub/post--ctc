@@ -13,67 +13,16 @@
    version="1.1"
    sodipodi:docname="cost_no_skip.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06">
-  <metadata
-     id="metadata215">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1440"
-     inkscape:window-height="774"
-     id="namedview213"
-     showgrid="false"
-     inkscape:zoom="3.104692"
-     inkscape:cx="30.198378"
-     inkscape:cy="87.547751"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="g861"
-     fit-margin-left="10"
-     fit-margin-top="10"
-     fit-margin-bottom="10"
-     fit-margin-right="10"
-     showguides="true"
-     inkscape:guide-bbox="true">
-    <sodipodi:guide
-       position="-56.793049,219.66752"
-       orientation="1,0"
-       id="guide834"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="335.32161,275.20241"
-       orientation="0,1"
-       id="guide835"
-       inkscape:locked="false" />
-    <inkscape:grid
-       type="xygrid"
-       id="grid840"
-       originx="37.707551"
-       originy="70.995367" />
-    <sodipodi:guide
-       position="12.605504,27.700014"
-       orientation="0,1"
-       id="guide964"
-       inkscape:locked="false" />
-  </sodipodi:namedview>
   <defs
      id="defs4">
+    <style>
+     .math-font {
+        font-family:"Times New Roman",Times,serif;
+        font-style:italic;
+     }
+    </style>
+
+
     <marker
        inkscape:stockid="Arrow2Mend"
        orient="auto"
@@ -297,12 +246,12 @@
      id="g861"
      transform="translate(33.576691,-6.6868267)">
     <text
-       style="font-family:STIXGeneral-Italic"
+       class="math-font"
        id="text26"
        y="25.434874"
        x="62.602345">t - 1</text>
     <text
-       style="font-family:STIXGeneral-Italic"
+       class="math-font"
        id="text28"
        y="25.218567"
        x="167.46283">t</text>
@@ -359,7 +308,7 @@
     <text
        inkscape:transform-center-y="-102.42562"
        inkscape:transform-center-x="-108.2233"
-       style="font-family:STIXGeneral-Italic"
+       class="math-font"
        x="36.286007"
        y="198.95175"
        id="text2836">ϵ</text>
@@ -371,7 +320,7 @@
        id="text2842"
        y="58.65514"
        x="35.830498"
-       style="font-family:STIXGeneral-Italic"
+       class="math-font"
        inkscape:transform-center-x="-108.2233"
        inkscape:transform-center-y="-102.42562">ϵ</text>
     <text
@@ -386,7 +335,7 @@
        id="text951"
        y="127.76917"
        x="-23.024469"
-       style="font-family:STIXGeneral-Italic"
+       class="math-font"
        inkscape:transform-center-x="-108.2233"
        inkscape:transform-center-y="-102.42562">ϵ</text>
     <text

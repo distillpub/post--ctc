@@ -10,6 +10,11 @@
       svg {
         font: 200 16px -apple-system, BlinkMacSystemFont, &quot;Roboto&quot;, Helvetica, sans-serif;
       }
+     .math-font {
+        font-family:"Times New Roman",Times,serif;
+        font-style:italic;
+     }
+
     </style>
 
         <path d="M5,2.92675414e-17 L244,1.42825602e-15 L244,1.77635684e-15 C246.761424,1.26909153e-15 249,2.23857625 249,5 L249,27 L249,27 C249,29.7614237 246.761424,32 244,32 L5,32 L5,32 C2.23857625,32 2.79081386e-15,29.7614237 0,27 L0,5 L0,5 C-3.38176876e-16,2.23857625 2.23857625,5.07265313e-16 5,0 Z" id="path-1"></path>
@@ -173,47 +178,47 @@
                             <tspan x="0" y="13.58053">o</tspan>
                         </text>
                     </g>
-                    <g id="text17" transform="translate(57.000000, 0.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                    <g id="text17" transform="translate(57.000000, 0.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                         <text id="tspan154">
                             <tspan x="0" y="21">ϵ</tspan>
                         </text>
                     </g>
-                    <g id="text159" transform="translate(57.000000, 59.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                    <g id="text159" transform="translate(57.000000, 59.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                         <text id="tspan157">
                             <tspan x="0" y="21">ϵ</tspan>
                         </text>
                     </g>
-                    <g id="text163" transform="translate(6.000000, 59.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                    <g id="text163" transform="translate(6.000000, 59.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                         <text id="tspan161">
                             <tspan x="0" y="21">ϵ</tspan>
                         </text>
                     </g>
-                    <g id="text167" transform="translate(132.000000, 0.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                    <g id="text167" transform="translate(132.000000, 0.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                         <text id="tspan165">
                             <tspan x="0" y="21">ϵ</tspan>
                         </text>
                     </g>
-                    <g id="text171" transform="translate(132.000000, 30.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                    <g id="text171" transform="translate(132.000000, 30.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                         <text id="tspan169">
                             <tspan x="0" y="21">ϵ</tspan>
                         </text>
                     </g>
-                    <g id="text175" transform="translate(157.000000, 29.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                    <g id="text175" transform="translate(157.000000, 29.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                         <text id="tspan173">
                             <tspan x="0" y="21">ϵ</tspan>
                         </text>
                     </g>
-                    <g id="text179" transform="translate(132.000000, 59.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                    <g id="text179" transform="translate(132.000000, 59.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                         <text id="tspan177">
                             <tspan x="0" y="21">ϵ</tspan>
                         </text>
                     </g>
-                    <g id="text183" transform="translate(157.000000, 59.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                    <g id="text183" transform="translate(157.000000, 59.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                         <text id="tspan181">
                             <tspan x="0" y="21">ϵ</tspan>
                         </text>
                     </g>
-                    <g id="text187" transform="translate(207.000000, 30.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                    <g id="text187" transform="translate(207.000000, 30.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                         <text id="tspan185">
                             <tspan x="0" y="21">ϵ</tspan>
                         </text>
@@ -318,7 +323,7 @@
                                 <tspan x="0" y="13">e</tspan>
                             </text>
                         </g>
-                        <g id="text288" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <g id="text288" transform="translate(7.000000, 87.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                             <text id="tspan286">
                                 <tspan x="0" y="21">ϵ</tspan>
                             </text>
@@ -354,7 +359,7 @@
                                 <tspan x="0" y="13">e</tspan>
                             </text>
                         </g>
-                        <g id="text321" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <g id="text321" transform="translate(7.000000, 87.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                             <text id="tspan319">
                                 <tspan x="0" y="21">ϵ</tspan>
                             </text>
@@ -390,7 +395,7 @@
                                 <tspan x="0" y="13">e</tspan>
                             </text>
                         </g>
-                        <g id="text356" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <g id="text356" transform="translate(7.000000, 87.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                             <text id="tspan354">
                                 <tspan x="0" y="21">ϵ</tspan>
                             </text>
@@ -426,7 +431,7 @@
                                 <tspan x="0" y="13">e</tspan>
                             </text>
                         </g>
-                        <g id="text391" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <g id="text391" transform="translate(7.000000, 87.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                             <text id="tspan389">
                                 <tspan x="0" y="21">ϵ</tspan>
                             </text>
@@ -462,7 +467,7 @@
                                 <tspan x="0" y="13">e</tspan>
                             </text>
                         </g>
-                        <g id="text426" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <g id="text426" transform="translate(7.000000, 87.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                             <text id="tspan424">
                                 <tspan x="0" y="21">ϵ</tspan>
                             </text>
@@ -498,7 +503,7 @@
                                 <tspan x="0" y="13">e</tspan>
                             </text>
                         </g>
-                        <g id="text461" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <g id="text461" transform="translate(7.000000, 87.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                             <text id="tspan459">
                                 <tspan x="0" y="21">ϵ</tspan>
                             </text>
@@ -534,7 +539,7 @@
                                 <tspan x="0" y="13">e</tspan>
                             </text>
                         </g>
-                        <g id="text496" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <g id="text496" transform="translate(7.000000, 87.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                             <text id="tspan494">
                                 <tspan x="0" y="21">ϵ</tspan>
                             </text>
@@ -570,7 +575,7 @@
                                 <tspan x="0" y="13">e</tspan>
                             </text>
                         </g>
-                        <g id="text531" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <g id="text531" transform="translate(7.000000, 87.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                             <text id="tspan529">
                                 <tspan x="0" y="21">ϵ</tspan>
                             </text>
@@ -606,7 +611,7 @@
                                 <tspan x="0" y="13">e</tspan>
                             </text>
                         </g>
-                        <g id="text566" transform="translate(7.000000, 87.000000)"  font-size="20" font-family="STIXGeneral-Italic, STIXGeneral" fill="#000000" font-style="italic">
+                        <g id="text566" transform="translate(7.000000, 87.000000)"  font-size="20" class="math-font" fill="#000000" font-style="italic">
                             <text id="tspan564">
                                 <tspan x="0" y="21">ϵ</tspan>
                             </text>
@@ -638,7 +643,7 @@
                         <text id="e" fill="#000000"   >
                             <tspan x="7" y="38">e</tspan>
                         </text>
-                        <text id="tspan599" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
+                        <text id="tspan599" fill="#000000" class="math-font" font-size="20" font-style="italic" >
                             <tspan x="7" y="108">ϵ</tspan>
                         </text>
                         <g id="g607" transform="translate(9.000000, 49.000000)"   fill="#000000" >

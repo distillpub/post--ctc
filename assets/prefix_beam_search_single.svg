@@ -14,18 +14,6 @@
    version="1.1"
    sodipodi:docname="prefix_beam_search_single.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06">
-  <metadata
-     id="metadata201">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
   <defs
      id="defs199">
     <style
@@ -37,60 +25,13 @@
       font-size: 12px;
       fill: rgba(0,0,0,0.6);
     }
+     .math-font {
+        font-family:"Times New Roman",Times,serif;
+        font-style:italic;
+     }
+
   </style>
   </defs>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1440"
-     inkscape:window-height="765"
-     id="namedview197"
-     showgrid="false"
-     showguides="true"
-     inkscape:guide-bbox="true"
-     fit-margin-left="10"
-     fit-margin-top="10"
-     fit-margin-bottom="10"
-     fit-margin-right="10"
-     inkscape:zoom="1.1781818"
-     inkscape:cx="380.0109"
-     inkscape:cy="169.77295"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="g1034">
-    <sodipodi:guide
-       position="656.94445,232.81624"
-       orientation="0,1"
-       id="guide1285"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="1089.7275,374.56735"
-       orientation="1,0"
-       id="guide1287"
-       inkscape:locked="false" />
-    <inkscape:grid
-       type="xygrid"
-       id="grid1289"
-       originx="-1.2003458"
-       originy="-100.99878" />
-    <sodipodi:guide
-       position="1089.7275,349.10439"
-       orientation="1,0"
-       id="guide934"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="695.05163,151.33475"
-       orientation="1,0"
-       id="guide1023"
-       inkscape:locked="false" />
-  </sodipodi:namedview>
   <g
      id="g1283"
      transform="translate(256.79966,32.633477)">
@@ -450,7 +391,8 @@
            end="g970.mouseout" />
       </circle>
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic;opacity:0.3"
+         style="font-size:18px;opacity:0.3"
+         class="math-font"
          x="355"
          y="35"
          font-size="18px"
@@ -497,7 +439,8 @@
          r="12"
          id="circle82" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic;opacity:0.1"
+         style="font-size:18px;;opacity:0.1"
+         class="math-font"
          x="355"
          y="150"
          font-size="18px"
@@ -618,7 +561,7 @@
            font-size="18px"
            y="70"
            x="45"
-           style="font-size:18px;font-family:STIXGeneral-Italic">λ</text>
+           class="math-font">λ</text>
       </g>
       <g
          id="g995">
@@ -653,7 +596,8 @@
          r="12"
          id="circle14" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic;opacity:0.1"
+         style="font-size:18px;opacity:0.1"
+         class="math-font"
          x="125"
          y="35"
          font-size="18px"
@@ -711,7 +655,7 @@
            end="g977.mouseout;g973.mouseout" />
       </circle>
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="125"
          y="150"
          font-size="18px"
@@ -874,7 +818,7 @@
          font-size="18px"
          y="70"
          x="45"
-         style="font-size:18px;font-family:STIXGeneral-Italic">λ</text>
+         class="math-font">λ</text>
       <circle
          id="circle1123"
          r="12"
@@ -897,7 +841,7 @@
          font-size="18px"
          y="35"
          x="125"
-         style="font-size:18px;font-family:STIXGeneral-Italic">ϵ</text>
+         class="math-font">ϵ</text>
       <circle
          id="circle1127"
          r="12"
@@ -1027,7 +971,8 @@
          id="circle1010">
       </circle>
       <text
-         style="font-size:12.60000038px;font-family:STIXGeneral-Italic;stroke-width:0.69999999"
+         style="font-size:12.60000038px;stroke-width:0.69999999"
+         class="math-font"
          x="316.9447"
          y="90.648018"
          font-size="18px"
@@ -1099,7 +1044,7 @@
          id="tspan1159"
          x="168.82742"
          y="244.6787">hypothesis was extended by <tspan
-   style="font-family:STIXGeneral-Italic"
+    class="math-font"
    id="tspan113">ϵ</tspan>
  to</tspan>
       <tspan
@@ -1107,10 +1052,10 @@
          id="tspan1161"
          x="168.82742"
          y="260.00946">distinguish &quot;a<tspan
-   style="font-family:STIXGeneral-Italic"
+   class="math-font"
    id="tspan116">ϵ</tspan>
 &quot; from &quot;aa&quot; and &quot;<tspan
-   style="font-family:STIXGeneral-Italic"
+   class="math-font"
    id="tspan118">ϵ</tspan>a&quot;.</tspan>
     </text>
     <path

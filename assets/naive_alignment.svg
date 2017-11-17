@@ -1,50 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="143px" height="105px" viewBox="0 0 143 105" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:16px;line-height:normal;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;">
-    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
     <title>naive_alignment</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
+    <defs>
+    <style>
+        .math-font {
+           font-family:"Times New Roman",Times,serif;
+           font-style:italic;
+        }
+   </style>
+    </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="naive_alignment" transform="translate(-1.000000, -9.000000)">
             <g id="g1117" transform="translate(1.000000, 0.000000)">
                 <g id="g1115" transform="translate(120.000000, 0.000000)">
                     <rect id="rect1109" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="9" width="22.516821" height="22.516821"></rect>
-                    <text id="x6" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
+                    <text id="x6" fill="#000000" class="math-font" font-size="20" font-style="italic" >
                         <tspan x="4.41947" y="22.273445">x</tspan>
                         <tspan x="13.29947" y="27" font-size="12">6</tspan>
                     </text>
                 </g>
                 <g id="g874" transform="translate(96.000000, 0.000000)">
                     <rect id="rect868" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="9" width="22.516821" height="22.516821"></rect>
-                    <text id="x5" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
+                    <text id="x5" fill="#000000" class="math-font" font-size="20" font-style="italic" >
                         <tspan x="5.41947" y="22.273445">x</tspan>
                         <tspan x="14.29947" y="27" font-size="12">5</tspan>
                     </text>
                 </g>
                 <g id="g882" transform="translate(72.000000, 0.000000)">
                     <rect id="rect876" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="9" width="22.516821" height="22.516821"></rect>
-                    <text id="x4" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
+                    <text id="x4" fill="#000000" class="math-font" font-size="20" font-style="italic" >
                         <tspan x="4.41947" y="22.273445">x</tspan>
                         <tspan x="13.29947" y="27" font-size="12">4</tspan>
                     </text>
                 </g>
                 <g id="g891" transform="translate(48.000000, 0.000000)">
                     <rect id="rect884" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="9" width="22.516821" height="22.516821"></rect>
-                    <text id="x3" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
+                    <text id="x3" fill="#000000" class="math-font" font-size="20" font-style="italic" >
                         <tspan x="5.41947" y="22.273445">x</tspan>
                         <tspan x="14.29947" y="27" font-size="12">3</tspan>
                     </text>
                 </g>
                 <g id="g899" transform="translate(24.000000, 0.000000)">
                     <rect id="rect893" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="9" width="22.516821" height="22.516821"></rect>
-                    <text id="x2" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
+                    <text id="x2" fill="#000000" class="math-font" font-size="20" font-style="italic" >
                         <tspan x="5.41947" y="22.273445">x</tspan>
                         <tspan x="14.29947" y="27" font-size="12">2</tspan>
                     </text>
                 </g>
                 <g id="g907">
                     <rect id="rect901" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="9" width="22.516821" height="22.516821"></rect>
-                    <text id="x1" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" >
+                    <text id="x1" fill="#000000" class="math-font" font-size="20" font-style="italic" >
                         <tspan x="5.41947" y="22.273445">x</tspan>
                         <tspan x="14.29947" y="27" font-size="12">1</tspan>
                     </text>

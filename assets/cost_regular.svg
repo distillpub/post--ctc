@@ -13,72 +13,14 @@
    version="1.1"
    sodipodi:docname="cost_regular.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06">
-  <metadata
-     id="metadata215">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1440"
-     inkscape:window-height="774"
-     id="namedview213"
-     showgrid="false"
-     inkscape:zoom="4.3906976"
-     inkscape:cx="15.213252"
-     inkscape:cy="41.674145"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="g861"
-     fit-margin-left="10"
-     fit-margin-top="10"
-     fit-margin-bottom="10"
-     fit-margin-right="10"
-     showguides="true"
-     inkscape:guide-bbox="true">
-    <sodipodi:guide
-       position="304.3568,224.3117"
-       orientation="1,0"
-       id="guide834"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="276.0126,275.20241"
-       orientation="0,1"
-       id="guide835"
-       inkscape:locked="false" />
-    <inkscape:grid
-       type="xygrid"
-       id="grid840"
-       originx="-21.601459"
-       originy="70.995363" />
-    <sodipodi:guide
-       position="13.893009,12.754238"
-       orientation="1,0"
-       id="guide1646"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="27.558263,31.885594"
-       orientation="0,1"
-       id="guide1648"
-       inkscape:locked="false" />
-  </sodipodi:namedview>
   <defs
      id="defs4">
+    <style>
+     .math-font {
+        font-family:"Times New Roman",Times,serif;
+        font-style:italic;
+     }
+    </style>
     <marker
        inkscape:isstock="true"
        style="overflow:visible"
@@ -325,16 +267,16 @@
        id="text16"
        y="128.29074"
        x="36.286007"
-       style="font-family:STIXGeneral-Italic"
+       class="math-font"
        inkscape:transform-center-x="-108.2233"
        inkscape:transform-center-y="-102.42562">ϵ</text>
     <text
-       style="font-family:STIXGeneral-Italic"
+       class="math-font"
        id="text26"
        y="25.434874"
        x="62.602345">t - 1</text>
     <text
-       style="font-family:STIXGeneral-Italic"
+       class="math-font"
        id="text28"
        y="25.218567"
        x="167.46283">t</text>

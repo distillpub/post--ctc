@@ -1,53 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="150px" height="191px" viewBox="0 -5 150 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:16px;line-height:normal;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;enable-background:new">
-    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
     <title>alignment_epsilon</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
+    <defs>
+    <style>
+        .math-font {
+           font-family:"Times New Roman",Times,serif;
+           font-style:italic;
+        }
+    </style>
+    </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="alignment_epsilon" transform="translate(0.000000, -9.000000)">
             <text id="text56" fill="#000000"   >
-                <tspan x="0.4693732" font-family="STIXGeneral-Italic, STIXGeneral" y="39.3841186">ϵ</tspan>
+                <tspan x="0.4693732" class="math-font" y="39.3841186">ϵ</tspan>
             </text>
             <text id="text58" fill="#000000"   >
                 <tspan x="0.6143155" y="64.3510986">c</tspan>
             </text>
             <text id="text60" fill="#000000"   >
-                <tspan x="0.4615522" font-family="STIXGeneral-Italic, STIXGeneral" y="89.3180786">ϵ</tspan>
+                <tspan x="0.4615522" class="math-font" y="89.3180786">ϵ</tspan>
             </text>
             <text id="text62" fill="#000000"   >
                 <tspan x="0.0390625" y="114.285058">a</tspan>
             </text>
             <text id="text64" fill="#000000"   >
-                <tspan x="0.5885897" font-family="STIXGeneral-Italic, STIXGeneral" y="187.483708">ϵ</tspan>
+                <tspan x="0.5885897" class="math-font" y="187.483708">ϵ</tspan>
             </text>
             <text id="text66" fill="#000000"   >
                 <tspan x="1.8683987" y="164.219028">t</tspan>
             </text>
             <text id="text68" fill="#000000"   >
-                <tspan x="0.0133557" font-family="STIXGeneral-Italic, STIXGeneral"  y="138">ϵ</tspan>
+                <tspan x="0.0133557" class="math-font"  y="138">ϵ</tspan>
             </text>
-            <text id="x1" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-style="italic" >
+            <text id="x1" fill="#000000" class="math-font" font-style="italic" >
                 <tspan x="22.3265392" y="14.1299316">x</tspan>
                 <tspan x="29" y="17" font-size="9">1</tspan>
             </text>
-            <text id="x2" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-style="italic" >
+            <text id="x2" fill="#000000" class="math-font" font-style="italic" >
                 <tspan x="44.3265392" y="14.1299316">x</tspan>
                 <tspan x="51" y="17" font-size="9">2</tspan>
             </text>
-            <text id="x3" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-style="italic" >
+            <text id="x3" fill="#000000" class="math-font" font-style="italic" >
                 <tspan x="67.3265392" y="14.1299316">x</tspan>
                 <tspan x="74" y="17" font-size="9">3</tspan>
             </text>
-            <text id="x4" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-style="italic" >
+            <text id="x4" fill="#000000" class="math-font" font-style="italic" >
                 <tspan x="89.3265392" y="14.1299316">x</tspan>
                 <tspan x="96" y="17" font-size="9">4</tspan>
             </text>
-            <text id="x5" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-style="italic" >
+            <text id="x5" fill="#000000" class="math-font" font-style="italic" >
                 <tspan x="111.326539" y="14.1299316">x</tspan>
                 <tspan x="118" y="17" font-size="9">5</tspan>
             </text>
-            <text id="x6" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-style="italic" >
+            <text id="x6" fill="#000000" class="math-font" font-style="italic" >
                 <tspan x="134.326539" y="14.1299316">x</tspan>
                 <tspan x="141" y="17" font-size="9">6</tspan>
             </text>

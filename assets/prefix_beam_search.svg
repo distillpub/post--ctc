@@ -14,18 +14,6 @@
    version="1.1"
    sodipodi:docname="prefix_beam_search.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06">
-  <metadata
-     id="metadata201">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
   <defs
      id="defs199">
     <style
@@ -37,55 +25,12 @@
       font-size: 12px;
       fill: rgba(0,0,0,0.6);
     }
+    .math-font {
+       font-family:"Times New Roman",Times,serif;
+       font-style:italic;
+    }
   </style>
   </defs>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1440"
-     inkscape:window-height="765"
-     id="namedview197"
-     showgrid="false"
-     showguides="true"
-     inkscape:guide-bbox="true"
-     fit-margin-left="10"
-     fit-margin-top="10"
-     fit-margin-bottom="10"
-     fit-margin-right="10"
-     inkscape:zoom="3.3324014"
-     inkscape:cx="393.33113"
-     inkscape:cy="81.605761"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="g1283">
-    <sodipodi:guide
-       position="238.35387,369.38968"
-       orientation="0,1"
-       id="guide1285"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="836.12099,327.14289"
-       orientation="1,0"
-       id="guide1287"
-       inkscape:locked="false" />
-    <inkscape:grid
-       type="xygrid"
-       id="grid1289"
-       originx="-1.1130829"
-       originy="-5.3500748" />
-    <sodipodi:guide
-       position="657.08445,274.99271"
-       orientation="1,0"
-       id="guide934"
-       inkscape:locked="false" />
-  </sodipodi:namedview>
   <g
      id="g1283"
      transform="translate(256.88692,60.325706)">
@@ -642,7 +587,7 @@
            end="g970.mouseout" />
       </circle>
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="355"
          y="35"
          font-size="18px"
@@ -689,7 +634,7 @@
          r="12"
          id="circle82" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="355"
          y="150"
          font-size="18px"
@@ -736,7 +681,7 @@
            end="g984.mouseout;" />
       </circle>
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="355"
          y="265"
          font-size="18px"
@@ -911,7 +856,7 @@
            font-size="18px"
            y="70"
            x="45"
-           style="font-size:18px;font-family:STIXGeneral-Italic">λ</text>
+           class="math-font">λ</text>
       </g>
       <g
          id="g995">
@@ -972,7 +917,7 @@
          r="12"
          id="circle14" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="125"
          y="35"
          font-size="18px"
@@ -1030,7 +975,7 @@
            end="g977.mouseout;g973.mouseout" />
       </circle>
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="125"
          y="150"
          font-size="18px"
@@ -1088,7 +1033,7 @@
          r="12"
          id="circle38" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="125"
          y="265"
          font-size="18px"
@@ -1272,7 +1217,7 @@
          font-size="18px"
          y="70"
          x="45"
-         style="font-size:18px;font-family:STIXGeneral-Italic">λ</text>
+         class="math-font">λ</text>
       <circle
          id="circle1123"
          r="12"
@@ -1295,7 +1240,7 @@
          font-size="18px"
          y="35"
          x="125"
-         style="font-size:18px;font-family:STIXGeneral-Italic">ϵ</text>
+         class="math-font">ϵ</text>
       <circle
          id="circle1127"
          r="12"

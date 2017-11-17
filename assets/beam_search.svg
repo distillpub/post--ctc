@@ -13,18 +13,6 @@
    version="1.1"
    sodipodi:docname="beam_search.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06">
-  <metadata
-     id="metadata161">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
   <defs
      id="defs159">
   <style id="style3">
@@ -35,55 +23,13 @@
       font-size: 12px;
       fill: rgba(0,0,0,0.6);
     }
+    .math-font {
+       font-family:"Times New Roman",Times,serif;
+       font-style:italic;
+    }
+
   </style>
   </defs>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1421"
-     inkscape:window-height="767"
-     id="namedview157"
-     showgrid="false"
-     showguides="true"
-     inkscape:guide-bbox="true"
-     fit-margin-top="10"
-     fit-margin-left="10"
-     fit-margin-right="10"
-     fit-margin-bottom="10"
-     inkscape:zoom="1.711561"
-     inkscape:cx="-27.399449"
-     inkscape:cy="247.00252"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="g5051">
-    <inkscape:grid
-       type="xygrid"
-       id="grid3923"
-       originx="225.28862"
-       originy="-47.500007" />
-    <sodipodi:guide
-       position="525.24932,379.77027"
-       orientation="0,1"
-       id="guide3925"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="654.13191,358.73684"
-       orientation="1,0"
-       id="guide954"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="263.84492,251.23264"
-       orientation="1,0"
-       id="guide928"
-       inkscape:locked="false" />
-  </sodipodi:namedview>
   <g
      id="g5051"
      transform="translate(225.28862,65.239997)">
@@ -127,7 +73,7 @@
          r="12"
          id="circle50" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="225"
          y="70"
          font-size="18px"
@@ -163,7 +109,7 @@
          r="12"
          id="circle62" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="275"
          y="185"
          font-size="18px"
@@ -199,7 +145,7 @@
          r="12"
          id="circle74" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="355"
          y="35"
          font-size="18px"
@@ -235,7 +181,7 @@
          r="12"
          id="circle86" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="355"
          y="150"
          font-size="18px"
@@ -271,7 +217,7 @@
          r="12"
          id="circle98" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="355"
          y="265"
          font-size="18px"
@@ -395,7 +341,7 @@
          r="12"
          id="circle2" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="45"
          y="70"
          font-size="18px"
@@ -431,7 +377,7 @@
          r="12"
          id="circle14" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="125"
          y="35"
          font-size="18px"
@@ -467,7 +413,7 @@
          r="12"
          id="circle26" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="125"
          y="150"
          font-size="18px"
@@ -503,7 +449,7 @@
          r="12"
          id="circle38" />
       <text
-         style="font-size:18px;font-family:STIXGeneral-Italic"
+         class="math-font"
          x="125"
          y="265"
          font-size="18px"
@@ -612,7 +558,7 @@
          font-size="18px"
          y="154.61838"
          x="-118.88583"
-         style="font-size:18px;font-family:STIXGeneral-Italic">λ</text>
+         class="math-font">λ</text>
       <circle
          id="circle3856"
          r="12"
@@ -624,7 +570,7 @@
          font-size="18px"
          y="119.61838"
          x="-38.885822"
-         style="font-size:18px;font-family:STIXGeneral-Italic">ϵ</text>
+         class="math-font">ϵ</text>
       <circle
          inkscape:label="circle3860"
          id="circle3860"

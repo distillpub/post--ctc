@@ -14,57 +14,14 @@
    sodipodi:docname="ctc_alignment_steps.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
    style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:20px;line-height:normal;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;enable-background:new">
-  <metadata
-     id="metadata13">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1429"
-     inkscape:window-height="766"
-     id="namedview11"
-     showgrid="false"
-     inkscape:zoom="3.3714286"
-     inkscape:cx="200.18987"
-     inkscape:cy="172.5929"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="g916"
-     showguides="true"
-     inkscape:guide-bbox="true"
-     fit-margin-top="10"
-     fit-margin-right="10"
-     fit-margin-bottom="10"
-     fit-margin-left="10">
-    <sodipodi:guide
-       position="309.3644,113.60169"
-       orientation="1,0"
-       id="guide908"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="299.57627,212.37288"
-       orientation="0,1"
-       id="guide924"
-       inkscape:locked="false" />
-  </sodipodi:namedview>
   <defs
      id="defs4">
+    <style>
+        .math-font {
+           font-family:"Times New Roman",Times,serif;
+           font-style:italic;
+        }
+    </style>
   </defs>
   <g
      id="g1077"
@@ -363,9 +320,8 @@
            id="text965"
            y="26.58053"
            x="3.7415895"
-           style="font-size:20px;font-family:STIXGeneral-Italic"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">ϵ</text>
+           class="math-font"
+           style="font-size:20px;">ϵ</text>
       </g>
       <g
          transform="translate(144)"
@@ -403,12 +359,11 @@
            x="10"
            style="fill:#d3d3d3;stroke-width:1.12584102" />
         <text
-           style="font-size:20px;font-family:STIXGeneral-Italic"
+           class="math-font"
+           style="font-size:20px;"
            id="text981"
            y="27.74159"
-           x="17.41947"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           x="17.41947">
           <tspan
              y="27.74159"
              x="17.41947"
@@ -537,10 +492,8 @@
            width="22.516821"
            id="rect827" />
         <text
-           style="font-size:20px;font-family:STIXGeneral-Italic"
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
-           font-size="20px"
+           class="math-font"
+           style="font-size:20px;"
            x="15.74159"
            y="26.58053"
            id="text17">ϵ</text>
@@ -559,9 +512,8 @@
            id="text835"
            y="26.58053"
            x="15.74159"
-           style="font-size:20px;font-family:STIXGeneral-Italic"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">ϵ</text>
+           class="math-font"
+           style="font-size:20px;">ϵ</text>
       </g>
       <g
          id="g843"
@@ -649,12 +601,11 @@
            x="10"
            style="fill:#d3d3d3;stroke-width:1.12584102" />
         <text
-           style="font-size:20px;font-family:STIXGeneral-Italic"
+           class="math-font"
+           style="font-size:20px;"
            id="text890"
            y="27.74159"
-           x="17.41947"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           x="17.41947">
           <tspan
              y="27.74159"
              x="17.41947"

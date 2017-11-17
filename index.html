@@ -1013,10 +1013,11 @@ allows us to use the alphabet of <d-math>Y</d-math> as the other hidden states. 
 also gives a set of allowed alignments which may be a good prior for some
 problems.</p>
 
-<p>Perhaps most importantly, CTC is discriminative. It models
-<d-math>p(Y \mid X)</d-math> directly. This allows us to unleash the capacity
-of powerful learning algorithms like the RNN directly
-towards solving the problem we care about.</p>
+<p>Perhaps most importantly, CTC is discriminative. It models <d-math>p(Y \mid
+  X)</d-math> directly, an idea that's been important in the past with other
+discriminative improvements to HMMs.<d-cite key="Woodland2002"></d-cite>
+Discriminative training let's us apply powerful learning algorithms like the
+RNN directly towards solving the problem we care about.</p>
 
 <h3 id="encoder-decoder-models">Encoder-Decoder Models</h3>
 
@@ -1414,6 +1415,20 @@ models.<d-cite key="Olah2016"></d-cite></p>
       title = {Segmental Recurrent Neural Networks},
       url = {http://arxiv.org/abs/1511.06018},
       year = {2016}
+      }
+      @article{Woodland2002,
+      author = {Woodland, P.C. and Povey, D.},
+      doi = {10.1006/csla.2001.0182},
+      issn = {08852308},
+      journal = {Computer Speech & Language},
+      month = {jan},
+      number = {1},
+      pages = {25--47},
+      publisher = {Academic Press},
+      title = {Large scale discriminative training of hidden Markov models for speech recognition}}
+      url = {https://www.sciencedirect.com/science/article/pii/S0885230801901822},
+      volume = {16},
+      year = {2002}
       }
     </script>
   </d-bibliography>

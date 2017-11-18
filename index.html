@@ -60,76 +60,76 @@
 <p>A visual guide to Connectionist Temporal Classification (CTC) &mdash; a
 popular algorithm for training deep neural networks in speech recognition,
 handwriting recognition and other sequence problems.</p>
-<figure class="figure-centered" style="grid-column:page;width:900px;height:360px;">
+<figure style="width:100%;grid-column:page;display:grid;grid-auto-flow:row">
   <link rel="stylesheet" type="text/css" href="assets/collapse_ctc.css">
-  <figcaption style="color:rgba(0,0,0,1);font-size:16px;position:absolute">
-    How CTC collapsing works
-  </figcaption>
-  <img src="assets/speech.svg" style="width:670px;position:absolute;left:110px;top:60px;"></img>
-  <figcaption style="position:absolute;width:80px;top:70px;">
-    For an input, like speech
-  </figcaption>
-
-  <div style="position:absolute;top:110px;">
-  <figcaption style="position:absolute;top:30px;width:80px;">
-  Predict a sequence of tokens
-  </figcaption>
-  <figcaption style="position:absolute;top:120px;width:80px;">
-  Repeats<br /> are merged, <br/> <d-math>\epsilon</d-math> is dropped
-  </figcaption>
-  <figcaption style="position:absolute;top:220px;width:80px;">
-    Final output
-  </figcaption>
-  <figcaption style="position:absolute;left:810px;top:30px;width:110px;line-height:180%;">
-  Use <span id="return_botton">return</span> to input a blank <d-math>(\epsilon)</d-math>
-  </figcaption>
-
-  <div style="position:absolute;left:100px;">
-  <div style="position:absolute;top:25px;height:80px;">
+  <div style="padding-bottom:3%">
+  How CTC collapsing works
+  </div>
+  <div style="display:grid;grid-template-columns:12% 76% 12%;margin-bottom:1%;">
+    <figcaption style="font-size:1vw;padding-top:10%;">
+    For an input,<br/> like speech
+    </figcaption>
+    <img src="assets/speech.svg" style="width:98%"/>
+  </div>
+  <div style="display:grid;grid-template-columns:12% 76% 12%">
+    <div>
+    <figcaption style="font-size:1vw;padding-top:3%;">
+    Predict a <br/>sequence of <br/>tokens
+    </figcaption>
+    </div>
     <div spellcheck="false" autocorrect="off" contenteditable="true" id="alignment"></div>
+    <div>
+    <figcaption style="line-height:180%;font-size:.8vw;padding-top:12%">
+    Use <span id="return_botton">return</span> to<br/> input a blank <d-math>(\epsilon)</d-math>
+    </figcaption>
+    </div>
   </div>
-  <div style="position:absolute;top:89px;left:12px">
-    <svg id="collapse_output" width="670" height="170">
-      <g id="merge_g" transform="translate(0, 40)">
-        <rect fill="#f0f0f0" width="40" height="40" />
-        <rect fill="#f0f0f0" x="42" width="40" height="40" />
-        <rect fill="#f0f0f0" x="84" width="40" height="40" />
-        <rect fill="#f0f0f0" x="126" width="40" height="40" />
-        <rect fill="#f0f0f0" x="168" width="40" height="40" />
-        <rect fill="#f0f0f0" x="210" width="40" height="40" />
-        <rect fill="#f0f0f0" x="252" width="40" height="40" />
-        <rect fill="#f0f0f0" x="294" width="40" height="40" />
-        <rect fill="#f0f0f0" x="336" width="40" height="40" />
-        <rect fill="#f0f0f0" x="378" width="40" height="40" />
-        <rect fill="#f0f0f0" x="420" width="40" height="40" />
-        <rect fill="#f0f0f0" x="462" width="40" height="40" />
-        <rect fill="#f0f0f0" x="504" width="40" height="40" />
-        <rect fill="#f0f0f0" x="546" width="40" height="40" />
-        <rect fill="#f0f0f0" x="588" width="40" height="40" />
-        <rect fill="#f0f0f0" x="630" width="40" height="40" />
-      </g>
-      <g id="final_g" transform="translate(0, 120)">
-        <rect fill="#f0f0f0" width="40" height="40" />
-        <rect fill="#f0f0f0" x="42" width="40" height="40" />
-        <rect fill="#f0f0f0" x="84" width="40" height="40" />
-        <rect fill="#f0f0f0" x="126" width="40" height="40" />
-        <rect fill="#f0f0f0" x="168" width="40" height="40" />
-        <rect fill="#f0f0f0" x="210" width="40" height="40" />
-        <rect fill="#f0f0f0" x="252" width="40" height="40" />
-        <rect fill="#f0f0f0" x="294" width="40" height="40" />
-        <rect fill="#f0f0f0" x="336" width="40" height="40" />
-        <rect fill="#f0f0f0" x="378" width="40" height="40" />
-        <rect fill="#f0f0f0" x="420" width="40" height="40" />
-        <rect fill="#f0f0f0" x="462" width="40" height="40" />
-        <rect fill="#f0f0f0" x="504" width="40" height="40" />
-        <rect fill="#f0f0f0" x="546" width="40" height="40" />
-        <rect fill="#f0f0f0" x="588" width="40" height="40" />
-        <rect fill="#f0f0f0" x="630" width="40" height="40" />
-      </g>
-      <g id="paths"></g>
-    </svg>
-  </div>
-  </div>
+  <div style="display:grid;grid-template-columns:12% 76% 12%">
+    <div>
+      <figcaption style="padding-top:35%;font-size:1vw">Merge repeats,<br />drop <d-math>\epsilon</d-math></figcaption>
+      <figcaption style="padding-top:47%;font-size:1vw">Final output</figcaption>
+    </div>
+    <div>
+   <svg id="collapse_output" style="width:94.5%;padding-left:1.15vw" viewBox="0 0 670 170">
+    <g id="merge_g" transform="translate(0, 40)">
+      <rect fill="#f0f0f0" width="40" height="40" />
+      <rect fill="#f0f0f0" x="42" width="40" height="40" />
+      <rect fill="#f0f0f0" x="84" width="40" height="40" />
+      <rect fill="#f0f0f0" x="126" width="40" height="40" />
+      <rect fill="#f0f0f0" x="168" width="40" height="40" />
+      <rect fill="#f0f0f0" x="210" width="40" height="40" />
+      <rect fill="#f0f0f0" x="252" width="40" height="40" />
+      <rect fill="#f0f0f0" x="294" width="40" height="40" />
+      <rect fill="#f0f0f0" x="336" width="40" height="40" />
+      <rect fill="#f0f0f0" x="378" width="40" height="40" />
+      <rect fill="#f0f0f0" x="420" width="40" height="40" />
+      <rect fill="#f0f0f0" x="462" width="40" height="40" />
+      <rect fill="#f0f0f0" x="504" width="40" height="40" />
+      <rect fill="#f0f0f0" x="546" width="40" height="40" />
+      <rect fill="#f0f0f0" x="588" width="40" height="40" />
+      <rect fill="#f0f0f0" x="630" width="40" height="40" />
+    </g>
+    <g id="final_g" transform="translate(0, 120)">
+      <rect fill="#f0f0f0" width="40" height="40" />
+      <rect fill="#f0f0f0" x="42" width="40" height="40" />
+      <rect fill="#f0f0f0" x="84" width="40" height="40" />
+      <rect fill="#f0f0f0" x="126" width="40" height="40" />
+      <rect fill="#f0f0f0" x="168" width="40" height="40" />
+      <rect fill="#f0f0f0" x="210" width="40" height="40" />
+      <rect fill="#f0f0f0" x="252" width="40" height="40" />
+      <rect fill="#f0f0f0" x="294" width="40" height="40" />
+      <rect fill="#f0f0f0" x="336" width="40" height="40" />
+      <rect fill="#f0f0f0" x="378" width="40" height="40" />
+      <rect fill="#f0f0f0" x="420" width="40" height="40" />
+      <rect fill="#f0f0f0" x="462" width="40" height="40" />
+      <rect fill="#f0f0f0" x="504" width="40" height="40" />
+      <rect fill="#f0f0f0" x="546" width="40" height="40" />
+      <rect fill="#f0f0f0" x="588" width="40" height="40" />
+      <rect fill="#f0f0f0" x="630" width="40" height="40" />
+    </g>
+    <g id="paths"></g>
+  </svg>
+    </div>
   </div>
 </figure>
 <script src="assets/collapse_ctc.js"></script>
@@ -244,14 +244,16 @@ approach. Let’s use an example. Assume the input has length six and <d-math>Y
 is to have a character for each input step and collapse repeats. So the
 alignment could be</p>
 
-<figure style="width:300px; height:140px; margin-top:0px;">
+<figure style="width:100%;margin-top:0px;margin-bottom:20px;">
+  <div style="display:grid;grid-template-columns:25% 75%;max-width:350px;margin-left:auto;margin-right:auto">
   <figcaption>
-  <span style="position:absolute; left: 0; top:5px;">input (<d-math>X</d-math>)</span>
-  <span style="position:absolute; left: 0; top:64px;">alignment</span>
-  <span style="position:absolute; left: 0; top:120px;">output (<d-math>Y</d-math>)</span>
+    <div style="padding-top:10%;">input (<d-math>X</d-math>)</div>
+    <div style="padding-top:45%;">alignment</div>
+    <div style="padding-top:45%;">output (<d-math>Y</d-math>)</div>
   </figcaption>
-  <div style="width:200px; position:absolute; left: 100px;">
-  <img src="assets/naive_alignment.svg" />
+  <div style="padding-left:20%;">
+    <img src="assets/naive_alignment.svg" style="width:100%" />
+  </div>
   </div>
 </figure>
 
@@ -284,20 +286,20 @@ we'll drop the subscripts on <d-math>\mathcal{A}</d-math>. The set
 <d-math>Y</d-math> after merging repeats and removing
 <d-math>\epsilon</d-math> tokens:</p>
 
-<figure style="width:500px; height:240px; margin-top:0px;">
-  <figcaption>
-  <div style="position:absolute; top:40px; width: 150px;">
-    First, merge repeat characters.
-  </div>
-  <div style="position:absolute; top:110px; width: 150px;">
-    Then, remove any <d-math>\epsilon</d-math> tokens.
-  </div>
-  <div style="position:absolute; top:180px; width: 130px;">
-    The remaining characters are the output.
-  </div>
-  </figcaption>
-  <div style="width:400px; position:absolute; left: 100px;">
-  <img src="assets/ctc_alignment_steps.svg" />
+<figure style="width:100%;margin-top:0px;">
+  <div style="margin-left:auto;margin-right:auto;max-width:500px;display:grid;grid-template-columns:30% 70%">
+    <figcaption>
+    <div style="padding-top:20%;">
+      First, merge repeat characters.
+    </div>
+    <div style="padding-top:15%;">
+      Then, remove any <d-math>\epsilon</d-math> tokens.
+    </div>
+    <div style="padding-top:15%;">
+      The remaining characters are the output.
+    </div>
+    </figcaption>
+    <img src="assets/ctc_alignment_steps.svg" />
   </div>
 </figure>
 
@@ -309,48 +311,39 @@ in place, we can differentiate between alignments of [h, e, l, l, o] and
 <p>Let's go back to the output [c, a, t] with an input of length six. Here are
 a few more examples of valid and invalid alignments.</p>
 
-<figure style="width:500px; height:150px; margin-top:0px;">
-  <figcaption>
-  <div style="position:absolute; top:0px; width: 150px;">
-    <strong>Valid Alignments</strong>
-  </div>
-  <div style="position:absolute; left: 235px; top:0px; width: 150px;">
-    <strong>Invalid Alignments</strong>
-  </div>
-  <div style="position:absolute; left: 420px; top:30px; width: 100px;">
-    corresponds to <d-math>Y =</d-math> [c, c, a, t]
-  </div>
-  <div style="position:absolute; left: 420px; top:90px; width: 100px;">
-    has length 5
-  </div>
-  <div style="position:absolute; left: 420px; top:140px; width: 100px;">
-    missing the 'a'
-  </div>
-  </figcaption>
-  <div style="width:400px; position:absolute; top: 35px;">
-  <img src="assets/valid_invalid_alignments.svg" />
+<figure style="width:100%;margin-top:0px;">
+  <div style="margin-left:auto;margin-right:auto;max-width:550px">
+    <img src="assets/valid_invalid_alignments.svg" />
   </div>
 </figure>
 
 <p>Another useful way to visualize the alignment between <d-math>X</d-math>
 and <d-math>Y</d-math> is with an alignment matrix.</p>
 
-<figure style="height:400px;width:550px;margin-top:0px;">
-  <div style="width:200px; position:absolute; left:240px;">
-    <img src="assets/alignment_no_epsilon.svg" />
+<figure style="width:100%;margin-top:0px;">
+  <div style="margin-left:auto;margin-right:auto;max-width:500px;display:grid;grid-template-columns:50% 40%;">
+    <div style="padding-right:15%">
+    <figcaption style="padding-top:15%">
+    An alignment matrix for the <br />
+    [<span class="katex"><span class="mord mathit">ϵ</span></span>, c, c,
+    <d-math>\epsilon</d-math>, a, t] alignment.
+    </figcaption>
+    <figcaption style="padding-top:60%;max-width:220px;">
+    The alignment matrix including <d-math>\epsilon</d-math>. Some of the
+    <d-math>\epsilon</d-math>'s are left unaligned. They're
+    optional since they don't fall between repeats in <d-math>Y</d-math>.
+    </figcaption>
+    </div>
+
+    <div>
+    <div>
+      <img src="assets/alignment_no_epsilon.svg" />
+    </div>
+    <div style="padding-top:10%">
+      <img src="assets/alignment_epsilon.svg" />
+    </div>
+    </div>
   </div>
-  <div style="width:200px; position:absolute; top:150px; left:240px;">
-  <img src="assets/alignment_epsilon.svg" />
-  </div>
-  <figcaption style="width:170px;position:absolute; top:60px;">
-  An alignment matrix for the [<span class="katex"><span class="mord mathit">ϵ</span></span>, c, c,
-  <d-math>\epsilon</d-math>, a, t] alignment.
-  </figcaption>
-  <figcaption style="width:200px;position:absolute; top:220px;">
-  The alignment matrix including the <d-math>\epsilon</d-math> token. Note
-  that some of the <d-math>\epsilon</d-math> tokens are left unaligned. They
-  are optional since they don’t fall between repeats in <d-math>Y</d-math>.
-  </figcaption>
 </figure>
 
 <p>The CTC alignment has a few notable properties. First, the allowed
@@ -367,30 +360,9 @@ length of <d-math>X</d-math>.</p>
 <p>The CTC alignments give us a natural way to go from probabilities at each
 time-step to the probability of an output sequence.</p>
 
-<figure style="width:580px; height:590px;">
-  <figcaption>
-  <div style="position:absolute; top:0px; width: 200px;">
-    We start with an input sequence like a spectrogram of audio.
-  </div>
-  <div style="position:absolute; top:80px; width: 200px;">
-    The input is fed into an RNN, for example.
-  </div>
-  <div style="position:absolute; top:170px; width: 190px;">
-    The network gives <d-math>p_t(a \mid X)</d-math>,
-    a distribution over the outputs
-    {h, e, l, o, <d-math>\epsilon</d-math>} for
-    each input step.
-  </div>
-  <div style="position:absolute; top:360px; width: 190px;">
-    With the per time-step output distribution, we can compute the
-    probability of different sequences. 
-  </div>
-  <div style="position:absolute; top:500px; width: 190px;">
-    By marginalizing over the alignments, we get a distribution over outputs.
-  </div>
-  </figcaption>
-  <div style="width:330px; position:absolute; left: 250px;">
-  <img src="assets/full_collapse_from_audio.svg" />
+<figure style="width:100%;">
+  <div style="margin-left:auto;margin-right:auto;max-width:600px">
+    <img src="assets/full_collapse_from_audio.svg" />
   </div>
 </figure>
 
@@ -780,12 +752,15 @@ be “AAA”. If the first letter of the predicted transcription is ‘A’, the
 the next letter should be ‘A’ with high probability and 'r' with low
 probability. The conditional independence assumption does not allow for this.</p>
 
-<figure style="width:500px;height:160px;margin-top:0px;">
-  <img src="assets/triple_a.svg"/>
-  <figcaption>
+<figure style="width:100%;margin-top:0px;margin-bottom:20px;">
+  <div style="max-width:600px;margin-left:auto;margin-right:auto;">
+  <img src="assets/triple_a.svg" style="width:100%;"/>
+  <figcaption style="max-width:500px">
   If we predict an 'A' as the first letter then the suffix 'AA' should get much
   more probability than 'riple A'. If we predict 't' first, the opposite
   should be true.
+  </figcaption>
+  </div>
 </figure>
 
 <p>In fact speech recognizers using CTC don't learn a language model over the

@@ -67,6 +67,14 @@ $("#alignment").keydown(function(e) {
 });
 
 $("#alignment").keyup(function(e) {
+
+    // Hack for Android
+    if (e.keyCode == 229) {
+      var text = $("#alignment").text();
+      $("#alignment").text("");
+      update(text);
+    }
+
     if (e.keyCode != 32) 
         return;
 
@@ -90,7 +98,7 @@ $("#alignment").keypress(function(e) {
     // Return inputs an epsilon
     if (alignment.length >= MAX_LEN) {
         // Flash red bar to denote end.
-        var div = $("<div>");
+        var div = $("<span>");
         div.attr("id", "red_bar_overflow")
         div.fadeOut(200);
         $("#alignment").append(div);
@@ -202,7 +210,6 @@ function update_merged(merged) {
         .attr("width", function(d) { return (d["end"] - d["start"]) * 42 - 2; });
     add_text(groups)
           .merge(text)
-          .attr("class", "align_text")
           .text(function(d) {
               var t = d["char"];
               if (t == EPS) return "";
@@ -223,7 +230,6 @@ function update_final(collapsed) {
     add_rects(groups);
     add_text(groups)
           .merge(text)
-          .attr("class", "align_text")
           .text(function(d) { return d; });
 }
 

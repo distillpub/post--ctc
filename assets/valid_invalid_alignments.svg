@@ -7,8 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   height="110.5209"
-   width="344.51682"
+   height="110"
+   width="350"
+   viewBox="50 -40 370 150"
    id="svg"
    version="1.1"
    sodipodi:docname="valid_invalid_alignments.svg"
@@ -881,5 +882,11 @@
        id="path1254"
        d="m 104.96251,10 -0.0964,22.516614 v 0"
        style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:20px;line-height:normal;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;fill:none;stroke:#dd2826;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;enable-background:new" />
+    <text x="5" y="-10" style="font-size:14px;font-weight:bold" opacity="0.6">Valid Alignments</text>
+    <text x="205" y="-10" style="font-size:14px;font-weight:bold" opacity="0.6">Invalid Alignments</text>
+    <text x="375" y="15" style="font-size:12px;font-weight:normal" opacity="0.6">corresponds to </text>
+    <text x="375" y="32" style="font-size:12px;font-weight:normal" opacity="0.6"><tspan class="math-font">Y =</tspan> [c, c, a, t]</text>
+    <text x="375" y="70" style="font-size:12px;font-weight:normal" opacity="0.6">has length 5</text>
+    <text x="375" y="113" style="font-size:12px;font-weight:normal" opacity="0.6">missing the 'a'</text>
   </g>
 </svg>

@@ -1,55 +1,65 @@
 
 #alignment {
-  font-size: 28px;
-  width: 680px;
-  height: 50px;
-  padding-top: 10px;
-  padding-left: 10px;
-  outline:none;
+  font-size: 2vw;
+  width: 96%;
+  height: 4vw;
+  padding-top: .8vw;
+  padding-left: 1vw;
+  outline: none;
   white-space: pre;
-  border: solid 2px #e3e3e3;
-  border-radius: 5px;
+  border: solid .15vw #e3e3e3;
+  border-radius: .5vw;
   background-color: #f3f3f3;
-  line-height: 40px;
+  line-height: 4vw;
 }
 
 #alignment #red_bar_overflow {
-  width: 4px; 
-  height: 40px;
+  width: .2vw; 
+  height: 2.8vw;
   border: none;
-  position: absolute;
-  left: 678px;
-  top: 10px;
+  float: left;
+  margin-top:.5vw;
   background-color: red;
   opacity: 0.2 !important;
 }
 
 #alignment div {
-  border-bottom: solid 2px black;
-  float:left;
-  width:40px;
-  height:50px;
-  text-align:center;
-  margin-right:2px;
+  border-bottom: solid .15vw black;
+  float: left;
+  width: 5.87%;
+  height: 4vw;
+  text-align: center;
+  margin-right: .3%;
 }
 
 #return_botton {
-  border: solid 1px #a3a3a3;
-  padding:3px 7px 3px 7px;
-  margin-left:5px;
-  margin-right:5px;
-  border-radius:5px;
+  border: solid .1vw #a3a3a3;
+  padding: 2% 2% 2% 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: .4vw;
   opacity:.6;
 }
 
 .align_epsilon {
   opacity: .4;
-  font-size: 28px;
+  font-size: 2vw;
   font-family: KaTeX_Math;
   font-style: italic;
 }
 
 .align_text {
+  font-size: 2vw;
+  font-weight: 200;
+}
+
+#collapse_output {
   font-size: 28px;
   font-weight: 200;
+}
+
+.caption_text {
+  letter-spacing: .5px;
+  font-size: 13px;
+  font-weight: normal;
 }

@@ -383,13 +383,13 @@ for a single <d-math>(X, Y)</d-math> pair is:</p>
 <figure class="figure-math" style="width:100%;margin-top:0px;">
   <div style="display:grid;grid-template-rows:50% 50%">
   <div style="display:grid;grid-template-columns:20% 20% 30%;grid-column-gap:5%">
-    <div style="padding-top:2vw;min-width:125px;">
+    <div style="line-height:75px;min-width:125px;">
       <d-math block>p(Y \mid X) \;\; =</d-math>
     </div>
-    <div style="padding-top:1.2vw">
+    <div style="line-height:75px;">
       <d-math block>\sum_{A \in \mathcal{A}_{X,Y}}</d-math>
     </div>
-    <div>
+    <div style="line-height:75px;">
       <d-math block>\prod_{t=1}^T \; p_t(a_t \mid X)</d-math>
     </div>
   </div>
@@ -486,7 +486,7 @@ time-step. As a result there are two positions we can transition from.</p>
 <figure class="figure-math" style="width:100%;margin-top:10px;margin-bottom:15px;">
   <div style="max-width:590px;display:grid;grid-template-columns:10% 40% 40%;grid-column-gap:5%">
   <div>
-    <d-math>\alpha_{s, t} \quad =</d-math>
+    <d-math>\alpha_{s, t} \; =</d-math>
   </div>
   <div>
     <d-math>(\alpha_{s-1, t-1} + \alpha_{s, t-1}) \quad\quad \cdot</d-math>
@@ -521,7 +521,7 @@ three positions we could have come from at the previous step.</p>
 <figure class="figure-math" style="width:100%;margin-top:10px;margin-bottom:15px;">
   <div style="max-width:600px;display:grid;grid-template-columns:10% 50% 30%;grid-column-gap:5%">
   <div>
-    <d-math>\alpha_{s, t} \quad =</d-math>
+    <d-math>\alpha_{s, t} \; =</d-math>
   </div>
   <div>
     <d-math>(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1}) \quad\quad \cdot</d-math>

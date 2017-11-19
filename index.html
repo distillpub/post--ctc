@@ -12,14 +12,24 @@
     crossorigin="anonymous"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <style>
-   .two-column-captioned {
-      width:100%;
-      margin-top:0px;
-      margin-bottom:20px;
+   .column-to-row-captioned {
+      width: 100%;
+      margin-top: 0px;
+      margin-bottom: 20px;
       display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-auto-rows: min-content;
       grid-column-gap:30px;
+      grid-row-gap: 30px;
+      grid-auto-flow: row;
    }
+
+   @media(min-width: 512px) {
+     .column-to-row-captioned {
+        grid-auto-columns: 1fr;
+        grid-auto-flow: column;
+      }
+   }
+
    .hmm-grid {
       display: grid;
       grid-template-columns: 18% 18% 55%;
@@ -153,10 +163,10 @@ prohibitively time consuming.</p>
 other places. Handwriting recognition from images or sequences of pen strokes
 is one example. Action labelling in videos is another.</p>
 
-<figure class="two-column-captioned">
+<figure class="column-to-row-captioned">
   <div>
     <img src="assets/handwriting_recognition.svg" />
-    <figcaption style="max-width:280px;">
+    <figcaption>
     <strong>Handwriting recognition:</strong> The input can be
     <d-math>(x,y)</d-math> coordinates of a pen stroke or 
     pixels in an image.
@@ -164,7 +174,7 @@ is one example. Action labelling in videos is another.</p>
   </div>
   <div>
     <img src="assets/speech_recognition.svg" />
-    <figcaption style="margin-left:30px;max-width:250px;">
+    <figcaption>
     <strong>Speech recognition:</strong> The input can be a spectrogram or some
     other frequency based feature extractor.
     </figcaption>
@@ -370,28 +380,31 @@ time-step to the probability of an output sequence.</p>
 <p style="margin-bottom:0px;">To be precise, the CTC objective
 for a single <d-math>(X, Y)</d-math> pair is:</p>
 
-<figure class="figure-math" style="height:120px;margin-top:0px;">
-  <span style="position:absolute; top:24px">
-    <d-math block>p(Y \mid X)</d-math>
-  </span>
-  <figcaption style="position:absolute; top:100px; width:150px;">
-  The CTC conditional <strong>probability</strong>
-  </figcaption>
-  <span style="position:absolute; left:130px; top:24px">
-    <d-math block>=</d-math>
-  </span>
-  <span style="position:absolute; left:170px; top:18px">
-    <d-math block>\sum_{A \in \mathcal{A}_{X,Y}}</d-math>
-  </span>
-  <figcaption style="position:absolute; left:170px; top:100px; width:150px;">
-  <strong>marginalizes</strong> over the set of valid alignments 
-  </figcaption>
-  <div style="position:absolute; left:360px; top:0px;">
-    <d-math block>\prod_{t=1}^T \; p_t(a_t \mid X)</d-math>
+<figure class="figure-math" style="width:100%;margin-top:0px;">
+  <div style="display:grid;grid-template-rows:50% 50%">
+  <div style="display:grid;grid-template-columns:20% 20% 30%;grid-column-gap:5%">
+    <div style="padding-top:2vw;min-width:125px;">
+      <d-math block>p(Y \mid X) \;\; =</d-math>
+    </div>
+    <div style="padding-top:1.2vw">
+      <d-math block>\sum_{A \in \mathcal{A}_{X,Y}}</d-math>
+    </div>
+    <div>
+      <d-math block>\prod_{t=1}^T \; p_t(a_t \mid X)</d-math>
+    </div>
   </div>
-  <figcaption style="position:absolute; left:360px; top:100px; width:200px;">
-  computing the <strong>probability</strong> for a single alignment step-by-step.
-  </figcaption>
+  <div style="display:grid;grid-template-columns:20% 20% 30%;grid-column-gap:5%">
+    <figcaption>
+    The CTC conditional <strong>probability</strong>
+    </figcaption>
+    <figcaption>
+    <strong>marginalizes</strong> over the set of valid alignments 
+    </figcaption>
+    <figcaption>
+    computing the <strong>probability</strong> for a single alignment step-by-step.
+    </figcaption>
+  </div>
+  </div>
 </figure>
 
 <p>Models trained with CTC typically use a recurrent neural network (RNN) to
@@ -416,16 +429,16 @@ For most problems this would be too slow.</p>
 algorithm. The key insight is that if two alignments have reached the same
 output at the same step then we can merge them.</p>
 
-<figure class="two-column-captioned">
+<figure class="column-to-row-captioned">
   <div>
-    <img src="assets/all_alignments.svg"/>
-    <figcaption style="max-width:200px;">
+    <img style="max-width:350px;" src="assets/all_alignments.svg"/>
+    <figcaption>
     Summing over all alignments can be very expensive.
     </figcaption>
   </div>
   <div>
-    <img src="assets/merged_alignments.svg"/>
-    <figcaption style="max-width:200px;">
+    <img style="max-width:350px;" src="assets/merged_alignments.svg"/>
+    <figcaption>
     Dynamic programming merges alignments, so it's much faster.
     </figcaption>
   </div>
@@ -470,26 +483,21 @@ that we must have an <d-math>\epsilon</d-math> between repeat characters in
 at the previous time-step or have already passed through at some earlier
 time-step. As a result there are two positions we can transition from.</p>
 
-<figure class="figure-math" style="margin-top:0px;height:70px;">
-  <div style="position:absolute;">
-    <d-math>\alpha_{s, t}</d-math>
+<figure class="figure-math" style="width:100%;margin-top:10px;margin-bottom:15px;">
+  <div style="max-width:590px;display:grid;grid-template-columns:10% 40% 40%;grid-column-gap:5%">
+  <div>
+    <d-math>\alpha_{s, t} \quad =</d-math>
   </div>
-  <div style="position:absolute;left:45px;">
-    <d-math>=</d-math>
-  </div>
-  <div style="position:absolute;left:75px;">
-    <d-math>(\alpha_{s-1, t-1} + \alpha_{s, t-1})</d-math>
-    <figcaption style="position:absolute;top:50px;width:240px;">
+  <div>
+    <d-math>(\alpha_{s-1, t-1} + \alpha_{s, t-1}) \quad\quad \cdot</d-math>
+    <figcaption style="padding-top:10px">
     The CTC probability of the two valid subsequences after
     <d-math>t-1</d-math> input steps.
     </figcaption>
   </div>
-  <div style="position:absolute; left:285px">
-    <d-math>\cdot</d-math>
-  </div>
-  <div style="position:absolute; left:350px">
+  <div>
     <d-math>p_t(z_{s} \mid X)</d-math>
-    <figcaption style="position:absolute; top:50px; width:200px;">
+    <figcaption style="padding-top:10px">
     The probability of the current character at input step <d-math>t</d-math>.
     </figcaption>
   </div>
@@ -508,39 +516,33 @@ time-step. As a result there are two positions we can transition from.</p>
 <d-math>Z</d-math>. We have this case whenever <d-math>z_{s-1}</d-math> is
 an <d-math>\epsilon</d-math> between unique characters. As a result there are
 three positions we could have come from at the previous step.</p>
+</div>
 
-<figure class="figure-math" style="height:80px;margin-top:40px;">
-  <div style="position:absolute;">
-    <d-math>\alpha_{s, t}</d-math>
+<figure class="figure-math" style="width:100%;margin-top:10px;margin-bottom:15px;">
+  <div style="max-width:600px;display:grid;grid-template-columns:10% 50% 30%;grid-column-gap:5%">
+  <div>
+    <d-math>\alpha_{s, t} \quad =</d-math>
   </div>
-  <div style="position:absolute;left:45px">
-    <d-math>=</d-math>
-  </div>
-  <div style="position:absolute;left:75px">
-    <d-math>(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1})</d-math>
-    <figcaption style="position:absolute;top:50px;width:240px;">
+  <div>
+    <d-math>(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1}) \quad\quad \cdot</d-math>
+    <figcaption style="padding-top:10px">
     The CTC probability of the three valid subsequences after
     <d-math>t-1</d-math> input steps.
     </figcaption>
   </div>
-  <div style="position:absolute;left:260px">
-   <!-- Hack to stay centered when font-size changes.-->
-   <d-math>\quad\quad\quad\quad \cdot</d-math>
-  </div>
-  <div style="position:absolute;left:370px">
+  <div>
     <d-math>p_t(z_{s} \mid X)</d-math>
-    <figcaption style="position:absolute; top:50px; width:200px;">
+    <figcaption style="padding-top:10px">
     The probability of the current character at input step <d-math>t</d-math>.
     </figcaption>
   </div>
 </figure>
 
-</div>
 
 <p>Below is an example of the computation performed by the dynamic programming
 algorithm. Every valid alignment has a path in this graph.</p>
 
-<figure style="width:100%;margin-top:0px;">
+<figure style="width:100%;margin-top:0px;margin-bottom:50px;">
 <figcaption style="position:absolute; left:0px; top:100px;">
   output<br />
   <d-math>Y =</d-math> [a, b]
@@ -673,34 +675,30 @@ dense and tricky to get right. Checkout this <a href="https://gist.github.com/aw
 over the outputs significantly improves accuracy. We can include the language
 model as a factor in the inference problem.</p>
 
-<figure class="figure-math" style="height:80px;margin-top:0px;">
-  <span style="position:absolute;top:0px">
-    <d-math>Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} <d-math>
-  </span>
-  <span style="position:absolute; left:170px; top:0px">
-    <d-math>p(Y \mid X)</d-math>
-    <figcaption style="position:absolute; top:50px; width:130px">
-    The CTC conditional probability.
-    </figcaption>
-  </span>
-  <span style="position:absolute; left:290px; top:0px">
-    <d-math>\cdot</d-math>
-  </span>
-  <span style="position:absolute; left:330px; top:0px">
-    <d-math>p(Y)^\alpha</d-math>
-    <figcaption style="position:absolute; top:50px; width:120px">
-    The language model probability.
-    </figcaption>
-  </span>
-  <span style="position:absolute; left:430px; top:0px">
-    <d-math>\cdot</d-math>
-  </span>
-  <span style="position:absolute; left:470px; top:0px">
-    <d-math>L(Y)^\beta</d-math>
-    <figcaption style="position:absolute;top:50px; width:100px">
-    The "word" insertion bonus.
-    </figcaption>
-  </span>
+<figure class="figure-math" style="width:100%;margin-top:0px;margin-bottom:15px;">
+  <div style="max-width:570px;display:grid;grid-auto-flow:column;grid-auto-columns:auto;grid-column-gap:5%">
+    <div>
+      <d-math>Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} <d-math>
+    </div>
+    <div>
+      <d-math>p(Y \mid X) \quad \cdot</d-math>
+      <figcaption style="padding-top:1vw">
+      The&nbsp;CTC conditional probability.
+      </figcaption>
+    </div>
+    <div>
+      <d-math>p(Y)^\alpha \quad \cdot</d-math>
+      <figcaption style="padding-top:1vw;">
+      The&nbsp;language model probability.
+      </figcaption>
+    </div>
+    <div>
+      <d-math>L(Y)^\beta</d-math>
+      <figcaption style="padding-top:1vw">
+      The&nbsp;"word" insertion bonus.
+      </figcaption>
+    </div>
+  </div>
 </figure>
 
 <p>The function <d-math>L(\cdot)</d-math> computes the length of
@@ -735,7 +733,7 @@ output distribution is
 p(Y \mid X) \enspace = \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X).
 </d-math>
 <div>
-<figure style="width:200px;float:right;margin-top:0px;margin-bottom:0px;margin-left:50px;margin-right:60px;">
+<figure style="width:200px;float:right;margin-top:0px;margin-bottom:10px;margin-left:50px;margin-right:60px;">
   <img src="assets/conditional_independence.svg" />
   <figcaption>
   Graphical model for CTC.
@@ -857,40 +855,33 @@ To simplify notation, let's remove the conditioning on <d-math>Y</d-math>,
 it will be present in every <d-math>p(\cdot)</d-math>. Using the HMM
 assumptions we can write</p>
 
-<figure class="figure-math" style="height:120px;margin-top:0px;">
-  <figcaption>
-    <div style="position:absolute; top:105px; width:120px;">
-      The probability of the <em>input</em> 
+<figure class="figure-math" style="width:100%;margin-top:10px;margin-bottom:15px;">
+  <div style="max-width:530px;display:grid;grid-auto-flow:column;grid-auto-columns:auto;grid-column-gap:5%">
+    <div>
+      <d-math>p(X) \quad =</d-math>
+      <figcaption style="padding-top:10px">
+        The probability of the <em>input</em>
+      </figcaption>
     </div>
-    <div style="position:absolute; left:145px; top:105px; width:150px;">
-      marginalizes over alignments
+    <div>
+      <d-math>\sum_{A \in \mathcal{A}} \; \prod_{t=1}^T</d-math>
+      <figcaption style="padding-top:10px">
+        marginalizes over alignments
+      </figcaption>
     </div>
-    <div style="position:absolute; left:300px; top:105px; width:120px;">
-      the emission probability 
+    <div>
+      <d-math>p(x_t \mid a_t) \quad \cdot</d-math>
+      <figcaption style="padding-top:10px">
+        the emission probability
+      </figcaption>
     </div>
-    <div style="position:absolute; left:430px; top:105px; width:150px;">
-      and the transition probability. 
+    <div>
+      <d-math>p(a_t \mid a_{t-1})</d-math>
+      <figcaption style="padding-top:10px">
+        and the transition probability.
+      </figcaption>
     </div>
-  </figcaption>
-  <span style="position:absolute; top:35px;">
-    <d-math>p(X)</d-math>
-  </span>
-  <span style="position:absolute; left:90px; top:35px;">
-    <d-math>=</d-math>
-  </span>
-  <span style="position:absolute; left:130px;">
-    <d-math block>\sum_{A \in \mathcal{A}} \; \prod_{t=1}^T</d-math>
-  </span>
-  <span style="position:absolute; left:300px; top:35px;">
-    <d-math>p(x_t \mid a_t)</d-math>
-  </span>
-  <span style="position:absolute; left:400px; top:35px;">
-      <d-math>\cdot</d-math>
-  </span>
-  <span style="position:absolute; left:430px; top:35px;">
-    <d-math>p(a_t \mid a_{t-1})</d-math>
-  </span>
-
+  </div>
 </figure>
 
 <p>Two assumptions have been made here. The first is the usual Markov property.

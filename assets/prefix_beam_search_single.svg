@@ -26,6 +26,7 @@
       fill: rgba(0,0,0,0.6);
     }
      .math-font {
+        font-size: 14px;
         font-family:"Times New Roman",Times,serif;
         font-style:italic;
      }

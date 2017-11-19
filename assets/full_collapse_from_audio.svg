@@ -689,7 +689,7 @@
             </g>
             <g id="rnn" transform="translate(0.000000, 58.000000)">
                 <g id="Rectangle-2">
-                    <use fill-opacity="0.2" fill="#4682B4" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use fill-opacity="0.1" fill="#4682B4" fill-rule="evenodd" xlink:href="#path-1"></use>
                     <path stroke="#979797" stroke-width="0.5" d="M5,0.25 C2.37664744,0.25 0.25,2.37664744 0.25,5 L0.25,27 C0.25,29.6233526 2.37664744,31.75 5,31.75 L244,31.75 C246.623353,31.75 248.75,29.6233526 248.75,27 L248.75,5 C248.75,2.37664744 246.623353,0.25 244,0.25 L5,0.25 Z"></path>
                 </g>
                 <g id="Rectangle">
@@ -825,48 +825,6 @@ iVBORw0KGgoAAAANSUhEUgAAAVAAAAAwCAYAAABHayI3AAAABHNCSVQICAgIfAhkiAAAIABJREFUeJzs
                 <path d="M174,0.5 L174,38.5" id="Line" stroke="#777777" stroke-width="0.7" stroke-linecap="square"></path>
                 <path d="M199,0.5 L199,38.5" id="Line" stroke="#777777" stroke-width="0.7" stroke-linecap="square"></path>
                 <path d="M225,0.5 L225,38.5" id="Line" stroke="#777777" stroke-width="0.7" stroke-linecap="square"></path>
-                <g id="specgram_arrows" transform="translate(11.000000, 39.000000)" stroke="#979797">
-                    <g id="arrow" transform="translate(1.500000, 9.000000) rotate(90.000000) translate(-1.500000, -9.000000) translate(-7.500000, 7.500000)">
-                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
-                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
-                    </g>
-                    <g id="arrow" transform="translate(26.500000, 9.000000) rotate(90.000000) translate(-26.500000, -9.000000) translate(17.500000, 7.500000)">
-                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
-                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
-                    </g>
-                    <g id="arrow" transform="translate(51.500000, 9.000000) rotate(90.000000) translate(-51.500000, -9.000000) translate(42.500000, 7.500000)">
-                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
-                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
-                    </g>
-                    <g id="arrow" transform="translate(76.500000, 9.000000) rotate(90.000000) translate(-76.500000, -9.000000) translate(67.500000, 7.500000)">
-                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
-                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
-                    </g>
-                    <g id="arrow" transform="translate(101.500000, 9.000000) rotate(90.000000) translate(-101.500000, -9.000000) translate(92.500000, 7.500000)">
-                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
-                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
-                    </g>
-                    <g id="arrow" transform="translate(126.500000, 9.000000) rotate(90.000000) translate(-126.500000, -9.000000) translate(117.500000, 7.500000)">
-                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
-                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
-                    </g>
-                    <g id="arrow" transform="translate(151.500000, 9.000000) rotate(90.000000) translate(-151.500000, -9.000000) translate(142.500000, 7.500000)">
-                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
-                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
-                    </g>
-                    <g id="arrow" transform="translate(176.500000, 9.000000) rotate(90.000000) translate(-176.500000, -9.000000) translate(167.500000, 7.500000)">
-                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
-                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
-                    </g>
-                    <g id="arrow" transform="translate(201.500000, 9.000000) rotate(90.000000) translate(-201.500000, -9.000000) translate(192.500000, 7.500000)">
-                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
-                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
-                    </g>
-                    <g id="arrow" transform="translate(226.500000, 9.000000) rotate(90.000000) translate(-226.500000, -9.000000) translate(217.500000, 7.500000)">
-                        <polygon id="Triangle" fill="#979797" transform="translate(17.000000, 1.500000) rotate(90.000000) translate(-17.000000, -1.500000) " points="17 0.5 18 2.5 16 2.5"></polygon>
-                        <path d="M0.367431641,1.5 L17.5,1.5" id="Line-2" stroke-linecap="square"></path>
-                    </g>
-                </g>
             </g>
         </g>
     </g>

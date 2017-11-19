@@ -2,7 +2,7 @@
 #alignment {
   font-size: 2vw;
   width: 96%;
-  height: 4vw;
+  height: 7vw;
   padding-top: .8vw;
   padding-left: 1vw;
   outline: none;
@@ -10,7 +10,33 @@
   border: solid .15vw #e3e3e3;
   border-radius: .5vw;
   background-color: #f3f3f3;
-  line-height: 4vw;
+  line-height: 6vw;
+}
+
+.caption_text {
+    font-size: 1.4vw;
+}
+
+.return_text {
+    font-size: 1.1vw;
+}
+
+@media(min-width: 1280px) {
+ .caption_text {
+     font-size: 14px;
+  }
+ .return_text {
+     font-size: 12px;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 1280px) {
+ .caption_text {
+     font-size: 1vw;
+  }
+ .return_text {
+     font-size: .8vw;
+  }
 }
 
 #alignment #red_bar_overflow {
@@ -27,9 +53,37 @@
   border-bottom: solid .15vw black;
   float: left;
   width: 5.87%;
-  height: 4vw;
+  height: 7vw;
   text-align: center;
   margin-right: .3%;
+}
+
+.align_epsilon {
+  opacity: .4;
+  font-size: 3vw;
+  font-family: KaTeX_Math;
+  font-style: italic;
+}
+
+.align_text {
+  font-size: 3vw;
+  font-weight: 200;
+}
+
+@media(min-width: 768px) {
+    #alignment {
+      height: 4vw;
+      line-height: 4vw;
+    }
+    #alignment div {
+      height: 4vw;
+   }
+   .align_text {
+      font-size: 2vw;
+   }
+  .align_epsilon {
+      font-size: 2vw;
+   }
 }
 
 #return_botton {
@@ -41,25 +95,8 @@
   opacity:.6;
 }
 
-.align_epsilon {
-  opacity: .4;
-  font-size: 2vw;
-  font-family: KaTeX_Math;
-  font-style: italic;
-}
-
-.align_text {
-  font-size: 2vw;
-  font-weight: 200;
-}
-
 #collapse_output {
   font-size: 28px;
   font-weight: 200;
 }
 
-.caption_text {
-  letter-spacing: .5px;
-  font-size: 13px;
-  font-weight: normal;
-}

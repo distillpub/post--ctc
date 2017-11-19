@@ -67,8 +67,8 @@
 
 <d-title>
 <h1>A Guide to CTC</h1>
-<p>A visual guide to Connectionist Temporal Classification (CTC) &mdash; a
-popular algorithm for training deep neural networks in speech recognition,
+<p>A visual guide to Connectionist Temporal Classification (CTC), an
+algorithm used to train deep neural networks in speech recognition,
 handwriting recognition and other sequence problems.</p>
 <figure style="width:100%;grid-column:page;display:grid;grid-auto-flow:row">
   <link rel="stylesheet" type="text/css" href="assets/collapse_ctc.css">
@@ -76,28 +76,28 @@ handwriting recognition and other sequence problems.</p>
   How CTC collapsing works
   </div>
   <div style="display:grid;grid-template-columns:12% 76% 12%;margin-bottom:1%;">
-    <figcaption style="font-size:1vw;padding-top:10%;">
+    <figcaption class="caption_text" style="padding-top:10%;">
     For an input,<br/> like speech
     </figcaption>
     <img src="assets/speech.svg" style="width:98%"/>
   </div>
   <div style="display:grid;grid-template-columns:12% 76% 12%">
     <div>
-    <figcaption style="font-size:1vw;padding-top:3%;">
+    <figcaption class="caption_text" style="padding-top:3%;">
     Predict a <br/>sequence of <br/>tokens
     </figcaption>
     </div>
     <div spellcheck="false" autocorrect="off" contenteditable="true" id="alignment"></div>
     <div>
-    <figcaption style="line-height:180%;font-size:.8vw;padding-top:12%">
+    <figcaption class="return_text" style="line-height:180%;padding-top:.5vw">
     Use <span id="return_botton">return</span> to<br/> input a blank <d-math>(\epsilon)</d-math>
     </figcaption>
     </div>
   </div>
   <div style="display:grid;grid-template-columns:12% 76% 12%">
     <div>
-      <figcaption style="padding-top:35%;font-size:1vw">Merge repeats,<br />drop <d-math>\epsilon</d-math></figcaption>
-      <figcaption style="padding-top:47%;font-size:1vw">Final output</figcaption>
+      <figcaption class="caption_text" style="padding-top:35%;">Merge repeats,<br />drop <d-math>\epsilon</d-math></figcaption>
+      <figcaption class="caption_text" style="padding-top:47%;">Final output</figcaption>
     </div>
     <div>
    <svg id="collapse_output" style="width:94.5%;padding-left:1.15vw" viewBox="0 0 670 170">
@@ -506,7 +506,7 @@ time-step. As a result there are two positions we can transition from.</p>
 
 <div>
 
-<figure style="width:135px;float:right;margin-top:20px;margin-bottom:0px;margin-left:90px;">
+<figure style="width:135px;float:right;margin-top:20px;margin-bottom:0px;margin-left:15%;">
   <img src="assets/cost_regular.svg" />
 </figure>
 
@@ -537,7 +537,6 @@ three positions we could have come from at the previous step.</p>
     </figcaption>
   </div>
 </figure>
-
 
 <p>Below is an example of the computation performed by the dynamic programming
 algorithm. Every valid alignment has a path in this graph.</p>
@@ -733,8 +732,8 @@ output distribution is
 p(Y \mid X) \enspace = \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X).
 </d-math>
 <div>
-<figure style="width:200px;float:right;margin-top:0px;margin-bottom:10px;margin-left:50px;margin-right:60px;">
-  <img src="assets/conditional_independence.svg" />
+<figure style="max-width:200px;float:right;margin-top:0px;margin-bottom:10px;margin-left:10%;margin-right:10%;">
+  <img src="assets/conditional_independence.svg" style="width:90%" />
   <figcaption>
   Graphical model for CTC.
   </figcaption>

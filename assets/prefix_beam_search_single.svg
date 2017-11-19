@@ -559,9 +559,9 @@
         </circle>
         <text
            id="text4"
-           font-size="18px"
            y="70"
            x="45"
+           style="font-size:18px"
            class="math-font">λ</text>
       </g>
       <g
@@ -601,7 +601,6 @@
          class="math-font"
          x="125"
          y="35"
-         font-size="18px"
          id="text16">ϵ</text>
       <circle
          style="fill:#e77471;stroke:#000000;stroke-width:1"
@@ -659,7 +658,7 @@
          class="math-font"
          x="125"
          y="150"
-         font-size="18px"
+         style="font-size:18px"
          id="text28">ϵ</text>
       <circle
          style="fill:#e77471;stroke:#000000;stroke-width:1"
@@ -816,9 +815,9 @@
       </circle>
       <text
          id="text1113"
-         font-size="18px"
          y="70"
          x="45"
+         style="font-size:18px"
          class="math-font">λ</text>
       <circle
          id="circle1123"
@@ -839,7 +838,7 @@
       </circle>
       <text
          id="text1125"
-         font-size="18px"
+         style="font-size:18px"
          y="35"
          x="125"
          class="math-font">ϵ</text>

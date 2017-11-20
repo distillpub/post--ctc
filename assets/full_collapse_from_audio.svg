@@ -35,7 +35,7 @@
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="full_collapse_from_audio">
-            <text x="-200" y="18" fill="#000000" class="caption">We start with an input sequence<tspan x="-200" dy="14">like a spectrogram of audio.</tspan></text>
+            <text x="-200" y="18" fill="#000000" class="caption">We start with an input sequence,<tspan x="-200" dy="14">like a spectrogram of audio.</tspan></text>
             <text x="-200" y="74" fill="#000000" class="caption">The input is fed into an RNN,<tspan x="-200" dy="14">for example.</tspan></text>
             <text x="-200" y="154" fill="#000000" class="caption">
                 The network gives <tspan class="math-font">p</tspan><tspan class="math-font" y="158">t</tspan><tspan y="154"> (</tspan><tspan class="math-font">a</tspan> | <tspan class="math-font">X</tspan> ),

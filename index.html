@@ -67,8 +67,8 @@
 
 <d-title>
 <h1>A Guide to CTC</h1>
-<p>A visual guide to Connectionist Temporal Classification (CTC), an
-algorithm used to train deep neural networks in speech recognition,
+<p>A visual guide to Connectionist Temporal Classification (CTC), a
+commonly used algorithm to train deep neural networks in speech recognition,
 handwriting recognition and other sequence problems.</p>
 <figure style="width:100%;grid-column:page;display:grid;grid-auto-flow:row">
   <link rel="stylesheet" type="text/css" href="assets/collapse_ctc.css">
@@ -193,7 +193,7 @@ recognition.</p>
 sequences <d-math>Y = [y_1, y_2, \ldots, y_U]</d-math>, such as transcripts.
 We want to find an accurate mapping from <d-math>X</d-math>'s to <d-math>Y</d-math>'s.</p>
 
-<p>As we saw in speech recognition, there are challenges which get in the way of us
+<p>There are challenges which get in the way of us
 using simpler supervised learning algorithms. In particular:</p>
 <ul>
   <li>Both <d-math>X</d-math> and <d-math>Y</d-math>
@@ -204,19 +204,19 @@ using simpler supervised learning algorithms. In particular:</p>
   <d-math>X</d-math> and <d-math>Y</d-math>.</li>
 </ul>
 
-<p>The CTC algorithm overcomes these challenges. For a given
-<d-math>X</d-math> it gives us an output distribution over all possible
-<d-math>Y</d-math>'s. We can use this distribution to infer a likely output
-and asses the probability of a given output.</p>
+<p>The CTC algorithm overcomes these challenges. For a given <d-math>X</d-math>
+it gives us an output distribution over all possible <d-math>Y</d-math>'s. We
+can use this distribution either to <em>infer</em> a likely output or to asses
+the <em>probability</em> of a given output.</p>
 
 <p>Not all ways of computing the loss function and performing inference are
 tractable. We'll require that CTC do both of these efficiently.</p>
 
-<p><strong>Loss Function:</strong> We'd like to train our model to
-maximize the probability it assigns to the right answer for a given input.  
-To do this, we'll need to efficiently compute the conditional probability
-<d-math>p(Y \mid X)</d-math>. The function <d-math>p(Y \mid X)</d-math>
-should also be differentiable so that we can use gradient descent.</p>
+<p><strong>Loss Function:</strong> For a given input, we'd like to train our
+model to maximize the probability it assigns to the right answer.  To do this,
+we'll need to efficiently compute the conditional probability
+<d-math>p(Y \mid X)</d-math>. The function <d-math>p(Y \mid X)</d-math> should
+also be differentiable, so we can use gradient descent.</p>
 
 <p><strong>Inference:</strong> Naturally, after we've trained the model, we
 want to use it to infer a likely <d-math>Y</d-math> given an <d-math>X</d-math>.
@@ -227,7 +227,7 @@ This means solving
 </d-math>
 
 Ideally <d-math>Y^*</d-math> can be found efficiently. With CTC we'll settle
-for a close to optimal solution that's not too expensive to find.</p>
+for an approximate solution that's not too expensive to find.</p>
 
 <hr />
 
@@ -250,9 +250,8 @@ calculated.</p>
 
 <p>To motivate the specific form of the CTC alignments, first consider a naive
 approach. Let’s use an example. Assume the input has length six and <d-math>Y
-=</d-math> [c, a, t]. One way to align <d-math>X</d-math> to <d-math>Y</d-math>
-is to have a character for each input step and collapse repeats. So the
-alignment could be</p>
+=</d-math> [c, a, t]. One way to align <d-math>X</d-math> and <d-math>Y</d-math>
+is to have a character for each input step and collapse repeats.</p>
 
 <figure style="width:100%;margin-top:0px;margin-bottom:20px;">
   <div style="display:grid;grid-template-columns:25% 75%;max-width:350px;margin-left:auto;margin-right:auto">
@@ -270,30 +269,26 @@ alignment could be</p>
 <p>This approach has two problems.</p>
 <ul>
   <li>
-    Often, it doesn't make sense to force every input time-step to align to
-    an output. In speech recognition, for example, the input can have stretches
+    Often, it doesn't make sense to force every input step to align to
+    some output. In speech recognition, for example, the input can have stretches
     of silence with no corresponding output.
   </li>
 
   <li>
     We have no way to produce outputs with multiple characters in a row.
-    Consider the alignment [h, h, e, l, l, l, o]. The naive collapsing will
+    Consider the alignment [h, h, e, l, l, l, o]. Collapsing repeats will
     produce "helo" instead of "hello".
   </li>
 </ul>
 
 <p>To get around these problems, CTC introduces a new token to the set of
-allowed outputs. This new token is sometimes called the “blank” token. We’ll
+allowed outputs. This new token is sometimes called the <em>blank</em> token. We’ll
 refer to it here as <d-math>\epsilon</d-math>. The
 <d-math>\epsilon</d-math> token doesn't correspond to anything and is simply
 removed from the output.</p>
 
-<p>The alignments allowed by CTC are the same length as the input. Let
-<d-math>\mathcal{A}_{X,Y}</d-math> be the set of alignments for a given
-<d-math>(X, Y)</d-math> pair. When it's clear from context,
-we'll drop the subscripts on <d-math>\mathcal{A}</d-math>. The set
-<d-math>\mathcal{A}</d-math> contains all the alignments which map to
-<d-math>Y</d-math> after merging repeats and removing
+<p>The alignments allowed by CTC are the same length as the input. We allow any
+alignment which maps to <d-math>Y</d-math> after merging repeats and removing
 <d-math>\epsilon</d-math> tokens:</p>
 
 <figure style="width:100%;margin-top:0px;">
@@ -313,7 +308,7 @@ we'll drop the subscripts on <d-math>\mathcal{A}</d-math>. The set
   </div>
 </figure>
 
-<p>If <d-math>Y</d-math> has two of the same character in a row, then any
+<p>If <d-math>Y</d-math> has two of the same character in a row, then a valid 
 alignment must have an <d-math>\epsilon</d-math> between them. With this rule
 in place, we can differentiate between alignments of [h, e, l, l, o] and
 [h, e, l, o].</p>
@@ -370,7 +365,7 @@ length of <d-math>X</d-math>.</p>
 <p>The CTC alignments give us a natural way to go from probabilities at each
 time-step to the probability of an output sequence.</p>
 
-<figure style="width:100%;">
+<figure style="margin-top:10px;width:100%;">
   <div style="margin-left:auto;margin-right:auto;max-width:600px">
     <img src="assets/full_collapse_from_audio.svg" />
   </div>
@@ -583,7 +578,7 @@ instead of maximizing the likelihood directly.</p>
 <p>After we've trained the model, we'd like to use it to find a likely output
 for a given input. More precisely, we need to solve
 <d-math block>
-Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} \enspace p(Y \mid X).
+Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y}} \enspace p(Y \mid X).
 </d-math>
 </p>
 
@@ -591,7 +586,7 @@ Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} \enspa
 gives us the alignment with the highest probability:</p>
 
 <d-math block>
-A^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{A\in\mathcal{A}}} \enspace  \prod_{t=1}^{T} \; p_t(a_t \mid X)
+A^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{A}} \enspace  \prod_{t=1}^{T} \; p_t(a_t \mid X)
 </d-math>
 
 <p>We can then collapse repeats and remove <d-math>\epsilon</d-math> tokens to
@@ -677,7 +672,7 @@ model as a factor in the inference problem.</p>
 <figure class="figure-math" style="width:100%;margin-top:0px;margin-bottom:15px;">
   <div style="max-width:570px;display:grid;grid-auto-flow:column;grid-auto-columns:auto;grid-column-gap:5%">
     <div>
-      <d-math>Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y\in\mathcal{Y}}} <d-math>
+      <d-math>Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y}} <d-math>
     </div>
     <div>
       <d-math>p(Y \mid X) \quad \cdot</d-math>
@@ -1005,7 +1000,7 @@ decoder can optionally be equipped with an attention mechanism. The hidden
 state sequence <d-math>H</d-math> has the same number of time-steps as the
 input, <d-math>T</d-math>. Sometimes the encoder subsamples the input. If the
 encoder subsamples the input by a factor <d-math>s</d-math> then
-<d-math>H</d-math> will have <d-math>\frac{T}{s}</d-math> time-steps.</p>
+<d-math>H</d-math> will have <d-math>T/s</d-math> time-steps.</p>
 
 <p>We can interpret CTC in the encoder-decoder framework. This is helpful to
 understand the developments in encoder-decoder models that are applicable to
@@ -1016,7 +1011,7 @@ models.</p>
 encoder we find in commonly used encoder-decoder models. For example the
 encoder could be a multi-layer bidirectional RNN or a convolutional network.
 There is a constraint on the CTC encoder that doesn't apply to the others. The
-input length cannot be sub-sampled so much that <d-math>\frac{T}{s}</d-math>
+input length cannot be sub-sampled so much that <d-math>T/s</d-math>
 is less than <d-math>U</d-math>.</p>
 
 <p><strong>Decoder:</strong> We can view the decoder of a CTC model as a simple
@@ -1039,8 +1034,8 @@ through a few implementation tips for practitioners.</p>
 
 <p><strong>Software:</strong> Even with a solid conceptual understanding of CTC, the
 implementation is difficult. The algorithm has several edge cases and a fast
-implementation needs to be written in a lower-level programming language.
-Open-source software tools can make getting started with CTC much easier:</p>
+implementation should be written in a lower-level programming language.
+Open-source software tools make getting started with CTC much easier:</p>
 
 <ul>
   <li>Baidu Research has open-sourced

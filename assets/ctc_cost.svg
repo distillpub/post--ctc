@@ -3,8 +3,9 @@
     <defs>
     <style>
      .math-font {
-        font-family:"Times New Roman",Times,serif;
-        font-style:italic;
+        font-family: "Times New Roman",Times,serif;
+        font-style: italic;
+        font-weight: 200;
      }
     </style>
     </defs>
@@ -129,13 +130,13 @@
                 <tspan x="477.85453" y="15.5624996">x</tspan>
                 <tspan x="484.07053" y="20.5624996" font-size="10">6</tspan>
             </text>
-            <text id="ϵ" fill="#000000" class="math-font" font-size="13" font-style="italic" font-weight="normal">
+            <text id="ϵ" fill="#000000" class="math-font" font-size="16">
                 <tspan x="0.923805" y="48.7689266">ϵ</tspan>
             </text>
-            <text id="ϵ" fill="#000000" class="math-font" font-size="13" font-style="italic" font-weight="normal">
+            <text id="ϵ" fill="#000000" class="math-font" font-size="16">
                 <tspan x="0" y="160">ϵ</tspan>
             </text>
-            <text id="ϵ" fill="#000000" class="math-font" font-size="13" font-style="italic" font-weight="normal">
+            <text id="ϵ" fill="#000000" class="math-font" font-size="16">
                 <tspan x="0" y="273">ϵ</tspan>
             </text>
             <text id="a" fill="#000000">

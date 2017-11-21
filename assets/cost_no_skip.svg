@@ -19,6 +19,7 @@
      .math-font {
         font-family:"Times New Roman",Times,serif;
         font-style:italic;
+        font-weight:200;
      }
     </style>
 
@@ -306,11 +307,10 @@
          inkscape:connector-curvature="0" />
     </g>
     <text
-       inkscape:transform-center-y="-102.42562"
-       inkscape:transform-center-x="-108.2233"
        class="math-font"
        x="36.286007"
        y="198.95175"
+       font-size="20"
        id="text2836">ϵ</text>
     <text
        x="34.556107"
@@ -321,8 +321,7 @@
        y="58.65514"
        x="35.830498"
        class="math-font"
-       inkscape:transform-center-x="-108.2233"
-       inkscape:transform-center-y="-102.42562">ϵ</text>
+       font-size="20">ϵ</text>
     <text
        id="text947"
        y="58.10186"
@@ -335,9 +334,8 @@
        id="text951"
        y="127.76917"
        x="-23.024469"
-       class="math-font"
-       inkscape:transform-center-x="-108.2233"
-       inkscape:transform-center-y="-102.42562">ϵ</text>
+       font-size="20"
+       class="math-font">ϵ</text>
     <text
        x="-4.6497126"
        y="128.38559"

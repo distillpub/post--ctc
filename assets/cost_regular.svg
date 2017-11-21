@@ -19,6 +19,7 @@
      .math-font {
         font-family:"Times New Roman",Times,serif;
         font-style:italic;
+        font-weight:200;
      }
     </style>
     <marker
@@ -268,6 +269,7 @@
        y="128.29074"
        x="36.286007"
        class="math-font"
+       font-size="22"
        inkscape:transform-center-x="-108.2233"
        inkscape:transform-center-y="-102.42562">ϵ</text>
     <text

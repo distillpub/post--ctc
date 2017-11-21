@@ -815,8 +815,6 @@ work.</p>
 algorithms for sequence transduction.</p>
 
 <h3 id="hmms">HMMs</h3>
-<p><em>This section requires some familiarity with the HMM and is not critical to
-understanding the CTC algorithm. Feel free to skip it on a first read.</em></p>
 
 <p>At a first glance a Hidden Markov Model (HMM) doesn't closely resemble CTC.
 But, the two algorithms are actually quite similar. Understanding the
@@ -836,8 +834,8 @@ p(Y \mid X) \; \propto \; p(X \mid Y) \; p(Y).
 
 The <d-math>p(Y)</d-math> term is straight-forward to model with a language
 model, so let's focus on <d-math>p(X \mid Y)</d-math>. Like before we'll
-let <d-math>\mathcal{A}</d-math> be a set of allowed of alignments of
-<d-math>Y</d-math> to <d-math>X</d-math>. Members of <d-math>\mathcal{A}</d-math>
+let <d-math>\mathcal{A}</d-math> be a set of allowed of alignments between
+<d-math>X</d-math> and <d-math>Y</d-math>. Members of <d-math>\mathcal{A}</d-math>
 have length <d-math>T</d-math>.
 Let’s otherwise leave <d-math>\mathcal{A}</d-math> unspecified for now. We'll
 come back to it later. We can marginalize over <d-math>\mathcal{A}</d-math> to get
@@ -878,7 +876,7 @@ assumptions we can write</p>
 </figure>
 
 <p>Two assumptions have been made here. The first is the usual Markov property.
-The state <d-math>a_t</d-math> is conditionally independent of all historical
+The state <d-math>a_t</d-math> is conditionally independent of all historic
 states given the previous state <d-math>a_{t-1}</d-math>. The second is that
 the observation <d-math>x_t</d-math> is conditionally independent of everything
 else given the current state <d-math>a_t</d-math>.</p>
@@ -1003,7 +1001,7 @@ encoder subsamples the input by a factor <d-math>s</d-math> then
 
 <p>We can interpret CTC in the encoder-decoder framework. This is helpful to
 understand the developments in encoder-decoder models that are applicable to
-CTC. Also, it’s useful to develop a common language for the properties of these
+CTC and to develop a common language for the properties of these
 models.</p>
 
 <p><strong>Encoder:</strong> The encoder of a CTC model can be just about any
@@ -1031,10 +1029,10 @@ conditional independence assumption by including an external language model.</p>
 <p>So far we've mostly developed a conceptual understanding of CTC. Here we’ll go
 through a few implementation tips for practitioners.</p>
 
-<p><strong>Software:</strong> Even with a solid conceptual understanding of CTC, the
+<p><strong>Software:</strong> Even with a solid understanding of CTC, the
 implementation is difficult. The algorithm has several edge cases and a fast
 implementation should be written in a lower-level programming language.
-Open-source software tools make getting started with CTC much easier:</p>
+Open-source software tools make it much easier to get started:</p>
 
 <ul>
   <li>Baidu Research has open-sourced
@@ -1046,7 +1044,7 @@ Open-source software tools make getting started with CTC much easier:</p>
   <li>TensorFlow has built in
     <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_loss">CTC loss</a>
     and <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_beam_search_decoder">CTC beam search</a>
-    functions. The TensorFlow CTC implementation doesn't support the GPU yet.
+    functions for the CPU.
   </li>
   <li>Nvidia also provides a GPU implementation of CTC in
     <a href="https://developer.nvidia.com/cudnn">cuDNN</a> versions 7 and up.
@@ -1086,13 +1084,15 @@ As the beam size increases the inferred output <d-math>\bar{Y}</d-math> may chan
 numbers should grow closer.</li>
 </ol>
 
-<p>A common question when using a beam search decoder is the size of the beam to
-use.  There is a trade-off between accuracy and runtime. We can check if the
+<p>A common question when using a beam search decoder is the size of the beam
+to use.  There is a trade-off between accuracy and runtime. We can check if the
 beam size is in a good range. To do this first compute the CTC score for the
-inferred output <d-math>c_i</d-math>. Then compute the CTC score for the ground truth output
-<d-math>c_g</d-math>. If the two outputs are not the same, we should have <d-math>c_g \lt c_i</d-math>.
-If <d-math>c_i << c_g</d-math> then the beam search is performing poorly and a large
-increase in the beam size may be warranted.</p>
+inferred output <d-math>c_i</d-math>. Then compute the CTC score for the ground
+truth output <d-math>c_g</d-math>. If the two outputs are not the same, we
+should have <d-math>c_g \lt c_i</d-math>.  If <d-math>c_i << c_g</d-math> then
+the ground truth output actually has a higher probability under the model and
+the beam search failed to find it. In this case a large increase to the beam
+size may be warranted.</p>
 
 <hr />
 <h2 class="no_toc" id="bibliographic-notes">Bibliographic Notes</h2>
@@ -1306,7 +1306,7 @@ models.<d-cite key="Olah2016"></d-cite></p>
       issn = {0302-9743},
       journal = {European Conference on Computer Vision},
       month = {jul},
-      pages = {137----153},
+      pages = {137--153},
       pmid = {10463930},
       title = {Connectionist Temporal Modeling for Weakly Supervised Action Labeling},
       url = {http://arxiv.org/abs/1607.08584},

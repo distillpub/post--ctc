@@ -7,23 +7,22 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   height="220.12633"
-   width="234.42639"
+   height="205.12633"
+   width="188.42639"
    id="svg"
    version="1.1"
    sodipodi:docname="cost_no_skip.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06">
   <defs
      id="defs4">
-    <style>
+    <style
+       id="style2">
      .math-font {
-        font-family:"Times New Roman",Times,serif;
+        font-family:&quot;Times New Roman&quot;,Times,serif;
         font-style:italic;
         font-weight:200;
      }
     </style>
-
-
     <marker
        inkscape:stockid="Arrow2Mend"
        orient="auto"
@@ -237,7 +236,7 @@
     </marker>
     <style
        type="text/css"
-       id="style2">
+       id="style32">
   svg {
     font: 18px -apple-system, BlinkMacSystemFont, &quot;Roboto&quot;, Helvetica, sans-serif;
   }
@@ -245,7 +244,7 @@
   </defs>
   <g
      id="g861"
-     transform="translate(33.576691,-6.6868267)">
+     transform="translate(-2.4233093,-11.686827)">
     <text
        class="math-font"
        id="text26"
@@ -308,38 +307,41 @@
     </g>
     <text
        class="math-font"
-       x="36.286007"
+       x="22.286007"
        y="198.95175"
        font-size="20"
-       id="text2836">ϵ</text>
+       id="text2836"
+       style="font-size:20px">ϵ</text>
     <text
-       x="34.556107"
+       x="20.556107"
        y="127.35188"
        id="text2840">a</text>
     <text
        id="text2842"
        y="58.65514"
-       x="35.830498"
+       x="21.830498"
        class="math-font"
-       font-size="20">ϵ</text>
+       font-size="20"
+       style="font-size:20px">ϵ</text>
     <text
        id="text947"
-       y="58.10186"
-       x="-24.297394">a</text>
+       y="58.684822"
+       x="1.7026062">a</text>
     <text
-       x="-24.177624"
+       x="1.8223763"
        y="198.85655"
        id="text949">a</text>
     <text
        id="text951"
-       y="127.76917"
-       x="-23.024469"
+       y="127.53599"
+       x="2.9755306"
        font-size="20"
-       class="math-font">ϵ</text>
-    <text
-       x="-4.6497126"
-       y="128.38559"
-       id="text962"
-       style="font-size:20px;opacity:0.6">OR</text>
+       class="math-font"
+       style="font-size:20px">ϵ</text>
+    <path
+       style="opacity:0.46296297;fill:none;stroke:#000000;stroke-width:0.93300003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 15.661135,35.662327 V 209.73694"
+       id="path951"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

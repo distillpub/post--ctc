@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="610px" height="162px" viewBox="0 0 610 162" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>triple_a</title>
+<svg width="620px" height="90px" viewBox="0 0 620 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
     <defs>
     <style
        type="text/css"
@@ -13,138 +13,174 @@
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="triple_a">
             <g id="a_first">
-                <g id="Group-2" transform="translate(8.000000, 8.000000)" stroke="#000000">
-                    <path d="M0.33984375,127.527344 L0.33984375,35.942801 L0.339844233,35.942801 C0.339844233,25.1815666 6.10367678,15.2446768 15.4448181,9.90171458 C22.1004018,6.09484236 30.4154071,4.19140625 40.3898342,4.19140625" id="Path-2" stroke-width="1.5"></path>
-                    <polygon id="Triangle" fill="#000000" stroke-linejoin="bevel" transform="translate(37.000000, 4.199997) rotate(90.000000) translate(-37.000000, -4.199997) " points="37 0.199996948 40.5 8.19999695 33.5 8.19999695"></polygon>
+                <g id="Group" transform="translate(0.000000, 31.000000)">
+                    <rect id="Rectangle" fill-opacity="0.7" fill="#549AD5" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="A" transform="translate(9.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">A</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group-2" opacity="0.376641757" transform="translate(17.000000, 72.000000)" stroke="#000000">
-                    <path d="M1.1856697e-06,62 L1.1856697e-06,34.2052385 L-1.42628497e-07,34.2052385 C-1.42628499e-07,17.8743351 13.0627228,4.54335915 29.3902527,4.21143437 C30.0470474,4.19808229 30.7135746,4.19140625 31.3898342,4.19140625" id="Path-2" stroke-width="1.5"></path>
-                    <polygon id="Triangle" fill="#000000" stroke-linejoin="bevel" transform="translate(28.000000, 4.199997) rotate(90.000000) translate(-28.000000, -4.199997) " points="28 0.199996948 31.5 8.19999695 24.5 8.19999695"></polygon>
+                <g id="Group" transform="translate(59.000000, 0.000000)">
+                    <rect id="Rectangle" fill="#B8B8B8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="A" transform="translate(9.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">A</tspan>
+                        </text>
+                    </g>
+                </g>t
+                <g id="Group" transform="translate(91.000000, 0.000000)">
+                    <rect id="Rectangle" fill="#B8B8B8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="A" transform="translate(10.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">A</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group" transform="translate(0.000000, 133.000000)">
-                    <rect id="Rectangle" fill="#549AD5" x="0" y="0" width="29" height="29"></rect>
-                    <text id="A"    letter-spacing="1" fill="#000000">
-                        <tspan x="9" y="20">A</tspan>
-                    </text>
+                <g id="Group" opacity="0.299762228" transform="translate(59.000000, 61.000000)">
+                    <rect id="Rectangle" fill="#D8D8D8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="r" transform="translate(11.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">r</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group" transform="translate(49.000000, 0.000000)">
-                    <rect id="Rectangle" fill="#B8B8B8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="A"    letter-spacing="1" fill="#000000">
-                        <tspan x="9" y="20">A</tspan>
-                    </text>
+                <g id="Group" opacity="0.299762228" transform="translate(91.000000, 61.000000)">
+                    <rect id="Rectangle" fill="#D8D8D8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="i" transform="translate(12.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">i</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group" transform="translate(81.000000, 0.000000)">
-                    <rect id="Rectangle" fill="#B8B8B8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="A"    letter-spacing="1" fill="#000000">
-                        <tspan x="10" y="20">A</tspan>
-                    </text>
+                <g id="Group" opacity="0.299762228" transform="translate(123.000000, 61.000000)">
+                    <rect id="Rectangle" fill="#D8D8D8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="p" transform="translate(10.000000, 6.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">p</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group" opacity="0.299762228" transform="translate(49.000000, 61.000000)">
-                    <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="r"    letter-spacing="1" fill="#000000">
-                        <tspan x="11" y="20">r</tspan>
-                    </text>
+                <g id="Group" opacity="0.299762228" transform="translate(155.000000, 61.000000)">
+                    <rect id="Rectangle" fill="#D8D8D8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="l" transform="translate(12.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">l</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group" opacity="0.299762228" transform="translate(81.000000, 61.000000)">
-                    <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="i"    letter-spacing="1" fill="#000000">
-                        <tspan x="12" y="20">i</tspan>
-                    </text>
+                <g id="Group" opacity="0.299762228" transform="translate(187.000000, 61.000000)">
+                    <rect id="Rectangle" fill="#D8D8D8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="e" transform="translate(10.000000, 6.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">e</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group" opacity="0.299762228" transform="translate(113.000000, 61.000000)">
-                    <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="p"    letter-spacing="1" fill="#000000">
-                        <tspan x="10" y="19">p</tspan>
-                    </text>
-                </g>
-                <g id="Group" opacity="0.299762228" transform="translate(145.000000, 61.000000)">
-                    <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="l"    letter-spacing="1" fill="#000000">
-                        <tspan x="12" y="20">l</tspan>
-                    </text>
-                </g>
-                <g id="Group" opacity="0.299762228" transform="translate(177.000000, 61.000000)">
-                    <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="e"    letter-spacing="1" fill="#000000">
-                        <tspan x="10" y="19">e</tspan>
-                    </text>
-                </g>
-                <g id="Group" opacity="0.299762228" transform="translate(209.000000, 61.000000)" fill="#D8D8D8">
+                <g id="Group" opacity="0.299762228" transform="translate(219.000000, 61.000000)" fill-rule="nonzero" fill="#D8D8D8">
                     <rect id="Rectangle" x="0" y="0" width="29" height="29"></rect>
                 </g>
-                <g id="Group" opacity="0.299762228" transform="translate(241.000000, 61.000000)">
-                    <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="A"    letter-spacing="1" fill="#000000">
-                        <tspan x="9" y="20">A</tspan>
-                    </text>
+                <g id="Group" opacity="0.299762228" transform="translate(251.000000, 61.000000)">
+                    <rect id="Rectangle" fill="#D8D8D8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="A" transform="translate(9.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">A</tspan>
+                        </text>
+                    </g>
                 </g>
             </g>
             <g id="t_first" transform="translate(340.000000, 0.000000)">
-                <g id="Group-2" opacity="0.297497736" transform="translate(8.000000, 8.000000)" stroke="#000000">
-                    <path d="M0.33984375,127.527344 L0.33984375,35.942801 L0.339844233,35.942801 C0.339844233,25.1815666 6.10367678,15.2446768 15.4448181,9.90171458 C22.1004018,6.09484236 30.4154071,4.19140625 40.3898342,4.19140625" id="Path-2" stroke-width="1.5"></path>
-                    <polygon id="Triangle" fill="#000000" stroke-linejoin="bevel" transform="translate(37.000000, 4.199997) rotate(90.000000) translate(-37.000000, -4.199997) " points="37 0.199996948 40.5 8.19999695 33.5 8.19999695"></polygon>
+                <g id="Group" transform="translate(0.000000, 31.000000)">
+                    <rect id="Rectangle" fill-opacity="0.7" fill="#549AD5" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="t" transform="translate(11.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">t</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group-2" transform="translate(17.000000, 72.000000)" stroke="#000000">
-                    <path d="M1.1856697e-06,62 L1.1856697e-06,34.2052385 L-1.42628497e-07,34.2052385 C-1.42628499e-07,17.8743351 13.0627228,4.54335915 29.3902527,4.21143437 C30.0470474,4.19808229 30.7135746,4.19140625 31.3898342,4.19140625" id="Path-2" stroke-width="1.5"></path>
-                    <polygon id="Triangle" fill="#000000" stroke-linejoin="bevel" transform="translate(28.000000, 4.199997) rotate(90.000000) translate(-28.000000, -4.199997) " points="28 0.199996948 31.5 8.19999695 24.5 8.19999695"></polygon>
+                <g id="Group" opacity="0.203691123" transform="translate(59.000000, 0.000000)">
+                    <rect id="Rectangle" fill="#D8D8D8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="A" transform="translate(9.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">A</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group" transform="translate(0.000000, 133.000000)">
-                    <rect id="Rectangle" fill="#549AD5" x="0" y="0" width="29" height="29"></rect>
-                    <text id="t"    letter-spacing="1" fill="#000000">
-                        <tspan x="11" y="20">t</tspan>
-                    </text>
+                <g id="Group" opacity="0.203691123" transform="translate(91.000000, 0.000000)">
+                    <rect id="Rectangle" fill="#D8D8D8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="A" transform="translate(10.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">A</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group" opacity="0.203691123" transform="translate(49.000000, 0.000000)">
-                    <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="A"    letter-spacing="1" fill="#000000">
-                        <tspan x="9" y="20">A</tspan>
-                    </text>
+                <g id="Group" transform="translate(59.000000, 61.000000)">
+                    <rect id="Rectangle" fill="#C8C8C8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="r" transform="translate(11.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">r</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group" opacity="0.203691123" transform="translate(81.000000, 0.000000)">
-                    <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="A"    letter-spacing="1" fill="#000000">
-                        <tspan x="10" y="20">A</tspan>
-                    </text>
+                <g id="Group" transform="translate(91.000000, 61.000000)">
+                    <rect id="Rectangle" fill="#C8C8C8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="i" transform="translate(12.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">i</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group" transform="translate(49.000000, 61.000000)">
-                    <rect id="Rectangle" fill="#C8C8C8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="r"    letter-spacing="1" fill="#000000">
-                        <tspan x="11" y="20">r</tspan>
-                    </text>
+                <g id="Group" transform="translate(123.000000, 61.000000)">
+                    <rect id="Rectangle" fill="#C8C8C8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="p" transform="translate(10.000000, 6.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">p</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group" transform="translate(81.000000, 61.000000)">
-                    <rect id="Rectangle" fill="#C8C8C8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="i"    letter-spacing="1" fill="#000000">
-                        <tspan x="12" y="20">i</tspan>
-                    </text>
+                <g id="Group" transform="translate(155.000000, 61.000000)">
+                    <rect id="Rectangle" fill="#C8C8C8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="l" transform="translate(12.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">l</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group" transform="translate(113.000000, 61.000000)">
-                    <rect id="Rectangle" fill="#C8C8C8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="p"    letter-spacing="1" fill="#000000">
-                        <tspan x="10" y="19">p</tspan>
-                    </text>
+                <g id="Group" transform="translate(187.000000, 61.000000)">
+                    <rect id="Rectangle" fill="#C8C8C8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="e" transform="translate(10.000000, 6.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">e</tspan>
+                        </text>
+                    </g>
                 </g>
-                <g id="Group" transform="translate(145.000000, 61.000000)">
-                    <rect id="Rectangle" fill="#C8C8C8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="l"    letter-spacing="1" fill="#000000">
-                        <tspan x="12" y="20">l</tspan>
-                    </text>
-                </g>
-                <g id="Group" transform="translate(177.000000, 61.000000)">
-                    <rect id="Rectangle" fill="#C8C8C8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="e"    letter-spacing="1" fill="#000000">
-                        <tspan x="10" y="19">e</tspan>
-                    </text>
-                </g>
-                <g id="Group" transform="translate(209.000000, 61.000000)" fill="#C8C8C8">
+                <g id="Group" transform="translate(219.000000, 61.000000)" fill-rule="nonzero" fill="#C8C8C8">
                     <rect id="Rectangle" x="0" y="0" width="29" height="29"></rect>
                 </g>
-                <g id="Group" transform="translate(241.000000, 61.000000)">
-                    <rect id="Rectangle" fill="#C8C8C8" x="0" y="0" width="29" height="29"></rect>
-                    <text id="A"    letter-spacing="1" fill="#000000">
-                        <tspan x="9" y="20">A</tspan>
-                    </text>
+                <g id="Group" transform="translate(251.000000, 61.000000)">
+                    <rect id="Rectangle" fill="#C8C8C8" fill-rule="nonzero" x="0" y="0" width="29" height="29"></rect>
+                    <g id="A" transform="translate(9.000000, 7.000000)" fill="#000000">
+                        <text>
+                            <tspan x="0" y="13">A</tspan>
+                        </text>
+                    </g>
                 </g>
+            </g>
+            <g id="Group-2" transform="translate(13.000000, 10.000000)" stroke="#000000">
+                <polygon id="Triangle" fill="#000000" fill-rule="nonzero" stroke-linejoin="bevel" transform="translate(41.820000, 3.500000) rotate(90.000000) translate(-41.820000, -3.500000) " points="41.8199997 -0.500000001 45.3199997 7.5 38.3199997 7.5"></polygon>
+                <path d="M0.862304688,21.0412598 C0.879394531,3.05224609 19.8249512,3.71972656 43.7373047,3.71972656" id="Path"></path>
+            </g>
+            <g id="Group-2" opacity="0.2" transform="translate(36.000000, 70.000000) scale(1, -1) translate(-36.000000, -70.000000) translate(13.000000, 59.000000)" stroke="#000000">
+                <polygon id="Triangle" fill="#000000" fill-rule="nonzero" stroke-linejoin="bevel" transform="translate(41.820000, 3.500000) rotate(90.000000) translate(-41.820000, -3.500000) " points="41.8199997 -0.500000001 45.3199997 7.5 38.3199997 7.5"></polygon>
+                <path d="M0.862304688,21.0412598 C0.879394531,3.05224609 19.8249512,3.71972656 43.7373047,3.71972656" id="Path"></path>
+            </g>
+            <g id="Group-2" opacity="0.2" transform="translate(353.000000, 10.000000)" stroke="#000000">
+                <polygon id="Triangle" fill="#000000" fill-rule="nonzero" stroke-linejoin="bevel" transform="translate(41.820000, 3.500000) rotate(90.000000) translate(-41.820000, -3.500000) " points="41.8199997 -0.500000001 45.3199997 7.5 38.3199997 7.5"></polygon>
+                <path d="M0.862304688,21.0412598 C0.879394531,3.05224609 19.8249512,3.71972656 43.7373047,3.71972656" id="Path"></path>
+            </g>
+            <g id="Group-2" transform="translate(376.000000, 70.000000) scale(1, -1) translate(-376.000000, -70.000000) translate(353.000000, 59.000000)" stroke="#000000">
+                <polygon id="Triangle" fill="#000000" fill-rule="nonzero" stroke-linejoin="bevel" transform="translate(41.820000, 3.500000) rotate(90.000000) translate(-41.820000, -3.500000) " points="41.8199997 -0.500000001 45.3199997 7.5 38.3199997 7.5"></polygon>
+                <path d="M0.862304688,21.0412598 C0.879394531,3.05224609 19.8249512,3.71972656 43.7373047,3.71972656" id="Path"></path>
             </g>
         </g>
     </g>

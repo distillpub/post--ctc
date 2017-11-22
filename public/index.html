@@ -3,14 +3,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" >
   <script src="https://distill.pub/template.v2.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
-    integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0"
-    crossorigin="anonymous">
-  <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
   <style>
    .column-to-row-captioned {
       width: 100%;
@@ -47,7 +39,6 @@
       margin-left: 1em;
     }
   </style>
-</script>
 </head>
 
 </body>
@@ -141,7 +132,7 @@ speech recognition, handwriting recognition and other sequence problems.</p>
     </div>
   </div>
 </figure>
-<script src="assets/collapse_ctc.js"></script>
+<script src="index.bundle.js"></script>
 </d-title>
 
 <d-article>
@@ -167,7 +158,7 @@ is one example. Action labelling in videos is another.</p>
     <img src="assets/handwriting_recognition.svg" />
     <figcaption>
     <strong>Handwriting recognition:</strong> The input can be
-    <d-math>(x,y)</d-math> coordinates of a pen stroke or 
+    <d-math>(x,y)</d-math> coordinates of a pen stroke or
     pixels in an image.
     </figcaption>
   </div>
@@ -219,7 +210,7 @@ also be differentiable, so we can use gradient descent.</p>
 
 <p><strong>Inference:</strong> Naturally, after we've trained the model, we
 want to use it to infer a likely <d-math>Y</d-math> given an <d-math>X.</d-math>
-This means solving 
+This means solving
 
 <d-math block>
   Y^* \enspace =\enspace {\mathop{\text{argmax}}\limits_{Y}} \enspace p(Y \mid X).
@@ -307,7 +298,7 @@ alignment which maps to <d-math>Y</d-math> after merging repeats and removing
   </div>
 </figure>
 
-<p>If <d-math>Y</d-math> has two of the same character in a row, then a valid 
+<p>If <d-math>Y</d-math> has two of the same character in a row, then a valid
 alignment must have an <d-math>\epsilon</d-math> between them. With this rule
 in place, we can differentiate between alignments of [h, e, l, l, o] and
 [h, e, l, o].</p>
@@ -364,7 +355,7 @@ for a single <d-math>(X, Y)</d-math> pair is:</p>
     The CTC conditional <strong>probability</strong>
     </figcaption>
     <figcaption>
-    <strong>marginalizes</strong> over the set of valid alignments 
+    <strong>marginalizes</strong> over the set of valid alignments
     </figcaption>
     <figcaption>
     computing the <strong>probability</strong> for a single alignment step-by-step.
@@ -570,7 +561,7 @@ is, it doesn't take into account the fact that a single output can have many
 alignments.</p>
 
 <p>Here's an example. Assume the alignments [a, a, <d-math>\epsilon</d-math>]
-and [a, a, a] individually have lower probability than [b, b, b]. But 
+and [a, a, a] individually have lower probability than [b, b, b]. But
 the sum of their probabilities is actually greater than that of [b, b, b]. The
 naive heuristic will incorrectly propose <d-math>Y =</d-math> [b] as
 the most likely hypothesis. It should have chosen <d-math>Y =</d-math> [a].
@@ -852,7 +843,7 @@ current state <d-math>a_t.</d-math></p>
 
 <figure style="width:300px;margin-top:0px;margin-bottom:10px;">
   <img src="assets/hmm.svg" />
-  <figcaption> 
+  <figcaption>
   The graphical model for an HMM.
   </figcaption>
 </figure>
@@ -870,19 +861,19 @@ The second is how the set <d-math>\mathcal{A}</d-math> is produced. Let’s deal
 with each in turn.</p>
 
 <p>The HMM can be used with discriminative models which estimate <d-math>p(a \mid x).</d-math>
-To do this, we apply Bayes’ rule and rewrite the model as 
+To do this, we apply Bayes’ rule and rewrite the model as
 <d-math block>
 p(X) \enspace \propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)\; p(x_t)}{p(a_t)}
 </d-math>
 <d-math block> <!-- For some reason second line fraction bar doesn't show up in aligned environment... -->
-\quad\quad\quad\propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)}{p(a_t)}. 
+\quad\quad\quad\propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)}{p(a_t)}.
 </d-math>
 </p>
 
 <p>If we assume a uniform prior over the states <d-math>a</d-math> and condition on all of
-<d-math>X</d-math> instead of a single element at a time, we arrive at 
+<d-math>X</d-math> instead of a single element at a time, we arrive at
 <d-math block>
-p(X) \enspace \propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X). 
+p(X) \enspace \propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(a_t \mid X).
 </d-math></p>
 
 <p>The above equation is essentially the CTC loss function, assuming the set
@@ -913,7 +904,7 @@ transition which proceeds from the left to the right is allowed.</p>
   <div>
     <img src="assets/linear_hmm.svg"/>
     <figcaption>
-    <strong>Linear HMM:</strong> Start on the left, end on the right. 
+    <strong>Linear HMM:</strong> Start on the left, end on the right.
     </figcaption>
   </div>
   <div>

@@ -1,8 +1,12 @@
+import {select as d3Select} from 'd3-selection';
+import $ from 'jquery';
+
 var EPS = 'ϵ';
 var LOADED = false;
 var MAX_LEN = 16;
 var TIMEOUTS = []
 var ANIM = null;
+
 
 function animation() {
     var t = 300
@@ -16,7 +20,7 @@ function animation() {
     for (var j = hello.length - 1; j >= 0; j--) {
         TIMEOUTS.push(setTimeout(update, i * t, hello.substr(0,j)));
         i ++;
-    } 
+    }
     for (var j = 0; j <= world.length; j++) {
         TIMEOUTS.push(setTimeout(update, i * t, world.substr(0,j)));
         i++;
@@ -25,7 +29,7 @@ function animation() {
     for (var j = world.length - 1; j >= 0; j--) {
         TIMEOUTS.push(setTimeout(update, i * t, world.substr(0,j)));
         i++;
-    } 
+    }
 }
 
 $(document).ready(function() {
@@ -75,7 +79,7 @@ $("#alignment").keyup(function(e) {
       update(text);
     }
 
-    if (e.keyCode != 32) 
+    if (e.keyCode != 32)
         return;
 
     // Hack for double space causing period + ' '.
@@ -94,7 +98,7 @@ $("#alignment").keypress(function(e) {
     }
 
     var alignment = $("#alignment").text();
-   
+
     // Return inputs an epsilon
     if (alignment.length >= MAX_LEN) {
         // Flash red bar to denote end.
@@ -109,7 +113,7 @@ $("#alignment").keypress(function(e) {
         alignment += EPS;
     else
         alignment += String.fromCharCode(e.keyCode);
-    
+
     update(alignment);
 });
 
@@ -138,7 +142,7 @@ function add_text(groups) {
 }
 
 function update_alignment(alignment) {
-    var divs = d3.select("#alignment")
+    var divs = d3Select("#alignment")
                    .selectAll("div")
                    .data(alignment.split(""));
     divs.enter()
@@ -152,7 +156,7 @@ function update_alignment(alignment) {
     divs.exit().remove();
 
     if (!LOADED){
-        var last_div = d3.select("#alignment").select("div:last-child").nodes();
+        var last_div = d3Select("#alignment").select("div:last-child").nodes();
         if (last_div.length > 0) {
             var last_letter = alignment[alignment.length - 1];
             var span = "<span style=\"border-right:1px solid\">";
@@ -179,7 +183,7 @@ function compute_paths(d, i) {
 function draw_highlights(merged_eps) {
     var merged = merged_eps.filter(function(d)
                        { return d["char"] != EPS;});
-    var paths = d3.select("#collapse_output")
+    var paths = d3Select("#collapse_output")
                    .select("#paths")
                    .selectAll("path")
                    .data(merged);
@@ -193,7 +197,7 @@ function draw_highlights(merged_eps) {
 }
 
 function update_merged(merged) {
-    var groups = d3.select("#merge_g").selectAll("g");
+    var groups = d3Select("#merge_g").selectAll("g");
     groups = groups.data(merged);
     groups.exit().remove();
 
@@ -215,10 +219,10 @@ function update_merged(merged) {
               if (t == EPS) return "";
               return t;
           });
-} 
+}
 
 function update_final(collapsed) {
-    var groups = d3.select("#final_g").selectAll("g");
+    var groups = d3Select("#final_g").selectAll("g");
     groups = groups.data(collapsed)
     var text = groups.select("text");
     groups.exit().remove()
@@ -236,12 +240,12 @@ function update_final(collapsed) {
 function update_output(alignment) {
     update_alignment(alignment);
 
-    merged = merge(alignment);
+    let merged = merge(alignment);
     update_merged(merged);
     draw_highlights(merged);
 
     // The final output.
-    collapsed = []
+    let collapsed = []
     for (var i = 0; i < merged.length; i++) {
         var c = merged[i]["char"];
         if (c != EPS)

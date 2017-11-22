@@ -199,8 +199,8 @@ using simpler supervised learning algorithms. In particular:</p>
     can vary in length.</li>
   <li>The ratio of the lengths of <d-math>X</d-math> and <d-math>Y</d-math>
     can vary.</li>
-  <li>We don’t have an accurate alignment (correspondence of the elements) of
-  <d-math>X</d-math> and <d-math>Y</d-math>.</li>
+  <li>We don't have an accurate alignment (correspondence of the elements) of
+  <d-math>X</d-math> and <d-math>Y.</d-math></li>
 </ul>
 
 <p>The CTC algorithm overcomes these challenges. For a given <d-math>X</d-math>
@@ -214,11 +214,11 @@ tractable. We'll require that CTC do both of these efficiently.</p>
 <p><strong>Loss Function:</strong> For a given input, we'd like to train our
 model to maximize the probability it assigns to the right answer.  To do this,
 we'll need to efficiently compute the conditional probability
-<d-math>p(Y \mid X)</d-math>. The function <d-math>p(Y \mid X)</d-math> should
+<d-math>p(Y \mid X).</d-math> The function <d-math>p(Y \mid X)</d-math> should
 also be differentiable, so we can use gradient descent.</p>
 
 <p><strong>Inference:</strong> Naturally, after we've trained the model, we
-want to use it to infer a likely <d-math>Y</d-math> given an <d-math>X</d-math>.
+want to use it to infer a likely <d-math>Y</d-math> given an <d-math>X.</d-math>
 This means solving 
 
 <d-math block>
@@ -233,7 +233,7 @@ for an approximate solution that's not too expensive to find.</p>
 <h2 id="the-algorithm">The Algorithm</h2>
 
 <p>The CTC algorithm can assign a probability for any <d-math>Y</d-math>
-given an <d-math>X</d-math>. The key to computing this probability is how CTC
+given an <d-math>X.</d-math> The key to computing this probability is how CTC
 thinks about alignments between inputs and outputs. We'll start by looking at
 these alignments and then show how to use them to compute the loss function and
 perform inference.</p>
@@ -282,7 +282,7 @@ is to have a character for each input step and collapse repeats.</p>
 
 <p>To get around these problems, CTC introduces a new token to the set of
 allowed outputs. This new token is sometimes called the <em>blank</em> token. We’ll
-refer to it here as <d-math>\epsilon</d-math>. The
+refer to it here as <d-math>\epsilon.</d-math> The
 <d-math>\epsilon</d-math> token doesn't correspond to anything and is simply
 removed from the output.</p>
 
@@ -329,7 +329,7 @@ same or advance to the next one. A second property is that the alignment of
 <d-math>X</d-math> to <d-math>Y</d-math> is many-to-one. One or more input
 elements can align to a single output element but not vice-versa. This implies
 a third property: the length of <d-math>Y</d-math> cannot be greater than the
-length of <d-math>X</d-math>.</p>
+length of <d-math>X.</d-math></p>
 
 <h3 id="loss-function">Loss Function</h3>
 
@@ -374,7 +374,7 @@ for a single <d-math>(X, Y)</d-math> pair is:</p>
 </figure>
 
 <p>Models trained with CTC typically use a recurrent neural network (RNN) to
-estimate the per time-step probabilities, <d-math>p_t(a_t \mid X)</d-math>.
+estimate the per time-step probabilities, <d-math>p_t(a_t \mid X).</d-math>
 The RNN works well here since it accounts for context in the input, but we're
 free to use any learning algorithm which produces a distribution over output
 classes given a fixed-size slice of the input.</p>
@@ -386,8 +386,8 @@ alignments.
 <d-footnote>
   For a <d-math>Y</d-math> of length <d-math>U</d-math> without any repeat
   characters and an <d-math>X</d-math> of length <d-math>T</d-math> the size
-  of the set is <d-math>{T + U \choose T - U}</d-math>. For <d-math>T=100</d-math> and
-  <d-math>U=50</d-math> this number is almost <d-math>10^{40}</d-math>.
+  of the set is <d-math>{T + U \choose T - U}.</d-math> For <d-math>T=100</d-math> and
+  <d-math>U=50</d-math> this number is almost <d-math>10^{40}.</d-math>
 </d-footnote>
 For most problems this would be too slow.</p>
 
@@ -425,7 +425,7 @@ the subsequence <d-math>Z_{1:s}</d-math> after <d-math>t</d-math> input steps.
 As we'll see, we'll compute the final CTC score, <d-math>P(Y \mid X)</d-math>,
 from the <d-math>\alpha</d-math>'s at the last time-step. As long as we know
 the values of <d-math>\alpha</d-math> at the previous time-step, we can compute
-<d-math>\alpha_{s, t}</d-math>. There are two cases.</p>
+<d-math>\alpha_{s, t}.</d-math> There are two cases.</p>
 
 <p><strong>Case 1:</strong></p>
 
@@ -435,14 +435,14 @@ the values of <d-math>\alpha</d-math> at the previous time-step, we can compute
 </figure>
 
 <p>In this case, we can't jump over <d-math>z_{s-1}</d-math>, the previous
-token in <d-math>Z</d-math>. The first reason is that the previous token can
+token in <d-math>Z.</d-math> The first reason is that the previous token can
 be an element of <d-math>Y</d-math>, and we can't skip elements of
-<d-math>Y</d-math>.  Since every element of <d-math>Y</d-math> in
+<d-math>Y.</d-math> Since every element of <d-math>Y</d-math> in
 <d-math>Z</d-math> is followed by an <d-math>\epsilon</d-math>, we can
-identify this when <d-math> z_{s} = \epsilon</d-math>. The second reason is
+identify this when <d-math> z_{s} = \epsilon.</d-math> The second reason is
 that we must have an <d-math>\epsilon</d-math> between repeat characters in
-<d-math>Y</d-math>.  We can identify this when
-<d-math>z_s = z_{s-2}</d-math>.</p>
+<d-math>Y.</d-math>  We can identify this when
+<d-math>z_s = z_{s-2}.</d-math></p>
 </div>
 
 <p>To ensure we don't skip <d-math>z_{s-1}</d-math>, we can either be there
@@ -464,7 +464,7 @@ time-step. As a result there are two positions we can transition from.</p>
   <div>
     <d-math>p_t(z_{s} \mid X)</d-math>
     <figcaption style="padding-top:10px">
-    The probability of the current character at input step <d-math>t</d-math>.
+    The probability of the current character at input step <d-math>t.</d-math>
     </figcaption>
   </div>
 </figure>
@@ -479,7 +479,7 @@ time-step. As a result there are two positions we can transition from.</p>
 <p><strong>Case 2:</strong></p>
 
 <p>In the second case, we're allowed to skip the previous token in
-<d-math>Z</d-math>. We have this case whenever <d-math>z_{s-1}</d-math> is
+<d-math>Z.</d-math> We have this case whenever <d-math>z_{s-1}</d-math> is
 an <d-math>\epsilon</d-math> between unique characters. As a result there are
 three positions we could have come from at the previous step.</p>
 </div>
@@ -499,7 +499,7 @@ three positions we could have come from at the previous step.</p>
   <div>
     <d-math>p_t(z_{s} \mid X)</d-math>
     <figcaption style="padding-top:10px">
-    The probability of the current character at input step <d-math>t</d-math>.
+    The probability of the current character at input step <d-math>t.</d-math>
     </figcaption>
   </div>
 </figure>
@@ -561,7 +561,7 @@ A^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{A}} \enspace  \prod_{t=1
 </d-math>
 
 <p>We can then collapse repeats and remove <d-math>\epsilon</d-math> tokens to
-get <d-math>Y</d-math>.</p>
+get <d-math>Y.</d-math></p>
 
 <p>For many applications this heuristic works well, especially when most of the
 probability mass is alloted to a single alignment. However, this approach can
@@ -579,7 +579,7 @@ a, <d-math>\epsilon</d-math>] collapse to the same output.</p>
 
 <p>We can use a modified beam search to solve this. Given limited
 computation, the modified beam search won't necessarily find the
-most likely <d-math>Y</d-math>. It does, at least, have
+most likely <d-math>Y.</d-math> It does, at least, have
 the nice property that we can trade-off more computation
 (a larger beam-size) for an asymptotically better solution.</p>
 
@@ -618,15 +618,15 @@ where ‘a’ is proposed as an extension to the prefix [a]. Both [a] and [a, a]
 valid outputs for this proposed extension.</p>
 
 <p>When we extend [a] to produce [a,a], we only want include the part of the
-previous score for alignments which end in <d-math>\epsilon</d-math>. Remember, the
+previous score for alignments which end in <d-math>\epsilon.</d-math> Remember, the
 <d-math>\epsilon</d-math> is required between repeat characters. Similarly,
 when we don’t extend the prefix and produce [a], we should only include the part
-of the previous score for alignments which don’t end in <d-math>\epsilon</d-math>.</p>
+of the previous score for alignments which don’t end in <d-math>\epsilon.</d-math></p>
 
 <p>Given this, we have to keep track of two probabilities for each prefix
 in the beam. The probability of all alignments which end in
 <d-math>\epsilon</d-math> and the probability of all alignments which don’t
-end in <d-math>\epsilon</d-math>. When we rank the hypotheses at
+end in <d-math>\epsilon.</d-math> When we rank the hypotheses at
 each step before pruning the beam, we'll use their combined scores.</p>
 
 <figure style="grid-column:page; width:100%; max-width:900px; margin-top:0px; margin-bottom:0px;">
@@ -669,9 +669,9 @@ model as a factor in the inference problem.</p>
 <p>The function <d-math>L(Y)</d-math> computes the length of
 <d-math>Y</d-math> in terms of the language model tokens and acts as a word
 insertion bonus. With a word-based language model <d-math>L(Y)</d-math>
-counts the number of words in <d-math>Y</d-math>.  If we use a character-based
+counts the number of words in <d-math>Y.</d-math> If we use a character-based
 language model then <d-math>L(Y)</d-math> counts the number of characters
-in <d-math>Y</d-math>. The language model scores are only included when a
+in <d-math>Y.</d-math> The language model scores are only included when a
 prefix is extended by a character (or word) and not at every step of the
 algorithm. This causes the search to favor shorter prefixes, as measured by
 <d-math>L(Y)</d-math>, since they don't include as many language model
@@ -759,7 +759,7 @@ deal-breaker.</p>
 <em>many-to-one</em>. Multiple inputs can align to at most one output. In some
 cases this may not be desirable. We might want to enforce a strict one-to-one
 correspondence between elements of <d-math>X</d-math> and
-<d-math>Y</d-math>. Alternatively, we may want to allow multiple output
+<d-math>Y.</d-math> Alternatively, we may want to allow multiple output
 elements to align to a single input element. For example, the characters
 “th” might align to a single input step of audio. A character based CTC model
 would not allow that.</p>
@@ -769,7 +769,7 @@ than the input.
 <d-footnote>
   If <d-math>Y</d-math> has <d-math>r</d-math> consecutive
   repeats, then the length of <d-math>Y</d-math> must be less than
-  the length of <d-math>X</d-math> by <d-math>2r - 1</d-math>.
+  the length of <d-math>X</d-math> by <d-math>2r - 1.</d-math>
 </d-footnote>
 This is usually not a problem for speech and handwriting recognition since the
 input is much longer than the output. However, for other problems where
@@ -795,24 +795,24 @@ potentially improved for various use cases.</p>
 <d-math>X</d-math> is the input sequence and <d-math>Y</d-math>
 is the output sequence with lengths <d-math>T</d-math> and
 <d-math>U</d-math> respectively. We're interested in learning
-<d-math>p(Y \mid X)</d-math>. One way to simplify the problem is to apply
+<d-math>p(Y \mid X).</d-math> One way to simplify the problem is to apply
 Bayes' Rule
 <d-math block>
 p(Y \mid X) \; \propto \; p(X \mid Y) \; p(Y).
 </d-math>
 
 The <d-math>p(Y)</d-math> can be any language model, so let's focus on
-<d-math>p(X \mid Y)</d-math>. Like before we'll let
+<d-math>p(X \mid Y).</d-math> Like before we'll let
 <d-math>\mathcal{A}</d-math> be a set of allowed of alignments between
-<d-math>X</d-math> and <d-math>Y</d-math>. Members of
-<d-math>\mathcal{A}</d-math> have length <d-math>T</d-math>.
+<d-math>X</d-math> and <d-math>Y.</d-math> Members of
+<d-math>\mathcal{A}</d-math> have length <d-math>T.</d-math>
 Let’s otherwise leave <d-math>\mathcal{A}</d-math> unspecified for now. We'll
 come back to it later. We can marginalize over <d-math>\mathcal{A}</d-math> to get
 <d-math block>
 p(X \mid Y)\; = \; \sum_{A \in \mathcal{A}} \; p(X, A \mid Y).
 </d-math>
 To simplify notation, let's remove the conditioning on <d-math>Y</d-math>, it
-will be present in every <d-math>p(\cdot)</d-math>. With two assumptions we can
+will be present in every <d-math>p(\cdot).</d-math> With two assumptions we can
 write down the standard HMM.</p>
 
 <figure class="figure-math" style="width:100%;margin-top:10px;margin-bottom:15px;">
@@ -846,9 +846,9 @@ write down the standard HMM.</p>
 
 <p>The first assumption is the usual Markov property. The state
 <d-math>a_t</d-math> is conditionally independent of all historic states given
-the previous state <d-math>a_{t-1}</d-math>. The second is that the observation
+the previous state <d-math>a_{t-1}.</d-math> The second is that the observation
 <d-math>x_t</d-math> is conditionally independent of everything given the
-current state <d-math>a_t</d-math>.</p>
+current state <d-math>a_t.</d-math></p>
 
 <figure style="width:300px;margin-top:0px;margin-bottom:10px;">
   <img src="assets/hmm.svg" />
@@ -865,11 +865,11 @@ p(X) \enspace \propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \
 </d-math>
 There are only two differences from this equation and the CTC loss function.
 The first is that we are learning a model of <d-math>X</d-math> given
-<d-math>Y</d-math> as opposed to <d-math>Y</d-math> given <d-math>X</d-math>.
+<d-math>Y</d-math> as opposed to <d-math>Y</d-math> given <d-math>X.</d-math>
 The second is how the set <d-math>\mathcal{A}</d-math> is produced. Let’s deal
 with each in turn.</p>
 
-<p>The HMM can be used with discriminative models which estimate <d-math>p(a \mid x)</d-math>.
+<p>The HMM can be used with discriminative models which estimate <d-math>p(a \mid x).</d-math>
 To do this, we apply Bayes’ rule and rewrite the model as 
 <d-math block>
 p(X) \enspace \propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)\; p(x_t)}{p(a_t)}
@@ -893,10 +893,10 @@ set <d-math>\mathcal{A}</d-math> consists of all possible length <d-math>T</d-ma
 output alphabet. In this case, the HMM can be drawn as an  <em>ergodic</em> state
 transition diagram in which every state connects to every other state.  The
 figure below shows this model with the alphabet or set of unique hidden states
-as <d-math>\{a, b, c\}</d-math>.</p>
+as <d-math>\{a, b, c\}.</d-math></p>
 
 <p>In our case the transitions allowed by the model are strongly related to
-<d-math>Y</d-math>. We want the HMM to reflect this. One possible model could
+<d-math>Y.</d-math> We want the HMM to reflect this. One possible model could
 be a simple linear state transition diagram. The figure below shows this with
 the same alphabet as before and <d-math>Y =</d-math> [a, b]. Another commonly
 used model is the <em>Bakis</em> or left-right HMM. In this model any
@@ -930,8 +930,8 @@ subset of the left-right transitions. The CTC HMM has two start
 states and two accepting states.</p>
 
 <p>One possible source of confusion is that the HMM model differs for any unique
-<d-math>Y</d-math>. This is in fact standard in applications such as speech recognition. The
-state diagram changes based on the output <d-math>Y</d-math>. However, the functions which
+<d-math>Y.</d-math> This is in fact standard in applications such as speech recognition. The
+state diagram changes based on the output <d-math>Y.</d-math> However, the functions which
 estimate the observation and transition probabilities are shared.</p>
 
 <p>Let’s discuss how CTC improves on the original HMM model. First, we can think
@@ -966,7 +966,7 @@ The <d-math>\textsf{encode}(\cdot)</d-math> and
 <d-math>\textsf{decode}(\cdot)</d-math> functions are typically RNNs.  The
 decoder can optionally be equipped with an attention mechanism. The hidden
 state sequence <d-math>H</d-math> has the same number of time-steps as the
-input, <d-math>T</d-math>. Sometimes the encoder subsamples the input. If the
+input, <d-math>T.</d-math> Sometimes the encoder subsamples the input. If the
 encoder subsamples the input by a factor <d-math>s</d-math> then
 <d-math>H</d-math> will have <d-math>T/s</d-math> time-steps.</p>
 
@@ -980,7 +980,7 @@ encoder we find in commonly used encoder-decoder models. For example the
 encoder could be a multi-layer bidirectional RNN or a convolutional network.
 There is a constraint on the CTC encoder that doesn't apply to the others. The
 input length cannot be sub-sampled so much that <d-math>T/s</d-math>
-is less than <d-math>U</d-math>.</p>
+is less than <d-math>U.</d-math></p>
 
 <p><strong>Decoder:</strong> We can view the decoder of a CTC model as a simple
 linear transformation followed by a softmax normalization. This layer should
@@ -1048,7 +1048,7 @@ implementing  and using the CTC beam search.</p>
 <p>The correctness of the beam search can be tested as follows.</p>
 <ol>
   <li>Run the beam search algorithm on an arbitrary input.</li>
-  <li>Save the inferred output <d-math>\bar{Y}</d-math> and the corresponding score <d-math>\bar{c}</d-math>.</li>
+  <li>Save the inferred output <d-math>\bar{Y}</d-math> and the corresponding score <d-math>\bar{c}.</d-math></li>
   <li>Compute the actual CTC score <d-math>c</d-math> for <d-math>\bar{Y}</d-math> using the same input.</li>
   <li>Check that <d-math>\bar{c} \approx c</d-math> with the former being no greater than the later.
 As the beam size increases the inferred output <d-math>\bar{Y}</d-math> may change, but the two
@@ -1058,9 +1058,9 @@ numbers should grow closer.</li>
 <p>A common question when using a beam search decoder is the size of the beam
 to use.  There is a trade-off between accuracy and runtime. We can check if the
 beam size is in a good range. To do this first compute the CTC score for the
-inferred output <d-math>c_i</d-math>. Then compute the CTC score for the ground
-truth output <d-math>c_g</d-math>. If the two outputs are not the same, we
-should have <d-math>c_g \lt c_i</d-math>.  If <d-math>c_i << c_g</d-math> then
+inferred output <d-math>c_i.</d-math> Then compute the CTC score for the ground
+truth output <d-math>c_g.</d-math> If the two outputs are not the same, we
+should have <d-math>c_g \lt c_i.</d-math> If <d-math>c_i << c_g</d-math> then
 the ground truth output actually has a higher probability under the model and
 the beam search failed to find it. In this case a large increase to the beam
 size may be warranted.</p>

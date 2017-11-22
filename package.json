@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "serve": "webpack-dev-server --hot",
+    "static-serve": "python3 -m http.server --bind localhost 1337",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "d3-selection": "^1.2.0",
+    "jquery": "^3.2.1",
+    "uglifyjs-webpack-plugin": "^1.1.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  }
+}

@@ -813,35 +813,35 @@ algorithms for sequence transduction.</p>
 
 <h3 id="hmms">HMMs</h3>
 
-<p>At a first glance a Hidden Markov Model (HMM) doesn't closely resemble CTC.
-But, the two algorithms are actually quite similar. Understanding the
+<p>At a first glance CTC seems quite different from a Hidden Markov Model
+(HMM). But, the two algorithms are actually quite similar. Understanding the
 relationship between them will help us understand what advantages CTC has over
-HMM sequence models. Putting CTC in this context will also give us insight
-into how it can be changed and potentially improved for various use cases.</p>
+HMM sequence models and give us insight into how CTC could be changed and
+potentially improved for various use cases.</p>
 
-<p style="margin-bottom:0px">We’ll use the same notation as before,
+<p style="margin-bottom:0px">Let's use the same notation as before,
 <d-math>X</d-math> is the input sequence and <d-math>Y</d-math>
 is the output sequence with lengths <d-math>T</d-math> and
-<d-math>U</d-math> respectively. Like before we're interested in learning
-<d-math>p(Y \mid X)</d-math>. One way to simplify the problem is to transform
-this probability with Bayes' Rule and compute
+<d-math>U</d-math> respectively. We're interested in learning
+<d-math>p(Y \mid X)</d-math>. One way to simplify the problem is to apply
+Bayes' Rule
 <d-math block>
 p(Y \mid X) \; \propto \; p(X \mid Y) \; p(Y).
 </d-math>
 
-The <d-math>p(Y)</d-math> term is straight-forward to model with a language
-model, so let's focus on <d-math>p(X \mid Y)</d-math>. Like before we'll
-let <d-math>\mathcal{A}</d-math> be a set of allowed of alignments between
-<d-math>X</d-math> and <d-math>Y</d-math>. Members of <d-math>\mathcal{A}</d-math>
-have length <d-math>T</d-math>.
+The <d-math>p(Y)</d-math> can be any language model, so let's focus on
+<d-math>p(X \mid Y)</d-math>. Like before we'll let
+<d-math>\mathcal{A}</d-math> be a set of allowed of alignments between
+<d-math>X</d-math> and <d-math>Y</d-math>. Members of
+<d-math>\mathcal{A}</d-math> have length <d-math>T</d-math>.
 Let’s otherwise leave <d-math>\mathcal{A}</d-math> unspecified for now. We'll
 come back to it later. We can marginalize over <d-math>\mathcal{A}</d-math> to get
 <d-math block>
 p(X \mid Y)\; = \; \sum_{A \in \mathcal{A}} \; p(X, A \mid Y).
 </d-math>
-To simplify notation, let's remove the conditioning on <d-math>Y</d-math>,
-it will be present in every <d-math>p(\cdot)</d-math>. Using the HMM
-assumptions we can write</p>
+To simplify notation, let's remove the conditioning on <d-math>Y</d-math>, it
+will be present in every <d-math>p(\cdot)</d-math>. With two assumptions we can
+write down the standard HMM.</p>
 
 <figure class="figure-math" style="width:100%;margin-top:10px;margin-bottom:15px;">
   <div style="max-width:530px;display:grid;grid-auto-flow:column;grid-auto-columns:auto;grid-column-gap:5%">
@@ -872,11 +872,11 @@ assumptions we can write</p>
   </div>
 </figure>
 
-<p>Two assumptions have been made here. The first is the usual Markov property.
-The state <d-math>a_t</d-math> is conditionally independent of all historic
-states given the previous state <d-math>a_{t-1}</d-math>. The second is that
-the observation <d-math>x_t</d-math> is conditionally independent of everything
-else given the current state <d-math>a_t</d-math>.</p>
+<p>The first assumption is the usual Markov property. The state
+<d-math>a_t</d-math> is conditionally independent of all historic states given
+the previous state <d-math>a_{t-1}</d-math>. The second is that the observation
+<d-math>x_t</d-math> is conditionally independent of everything given the
+current state <d-math>a_t</d-math>.</p>
 
 <figure style="width:300px;margin-top:0px;margin-bottom:10px;">
   <img src="assets/hmm.svg" />
@@ -885,15 +885,17 @@ else given the current state <d-math>a_t</d-math>.</p>
   </figcaption>
 </figure>
 
-<p>Let's assume that the transition probabilities <d-math>p(a_t \mid a_{t-1})</d-math> are
-uniform. This gives
+<p>Now we can take just a few steps to transform the HMM into CTC and see how
+the two models relate. First, let's assume that the transition probabilities
+<d-math>p(a_t \mid a_{t-1})</d-math> are uniform. This gives
 <d-math block>
 p(X) \enspace \propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; p(x_t \mid a_t).
 </d-math>
-This equation is starting to resemble the CTC loss function. In fact
-there are only two differences. The first is that we are learning a model of
-<d-math>X</d-math> given <d-math>Y</d-math> as opposed to <d-math>Y</d-math> given <d-math>X</d-math>. The second is how the set
-<d-math>\mathcal{A}</d-math> is produced. Let’s deal with each in turn.</p>
+There are only two differences from this equation and the CTC loss function.
+The first is that we are learning a model of <d-math>X</d-math> given
+<d-math>Y</d-math> as opposed to <d-math>Y</d-math> given <d-math>X</d-math>.
+The second is how the set <d-math>\mathcal{A}</d-math> is produced. Let’s deal
+with each in turn.</p>
 
 <p>The HMM can be used with discriminative models which estimate <d-math>p(a \mid x)</d-math>.
 To do this, we apply Bayes’ rule and rewrite the model as 
@@ -921,12 +923,12 @@ transition diagram in which every state connects to every other state.  The
 figure below shows this model with the alphabet or set of unique hidden states
 as <d-math>\{a, b, c\}</d-math>.</p>
 
-<p>In our case the hidden states of the model (the elements of <d-math>\mathcal{A}</d-math>) are strongly
-related to <d-math>Y</d-math>. We want the HMM to reflect this. One possible model could be
-a simple linear state transition diagram. The figure below shows this with the
-same alphabet as before and <d-math>Y =</d-math> [a, b]. Another commonly used model is the
-<em>Bakis</em> or left-right HMM. In this model any transition which proceeds from the
-left to the right is allowed.</p>
+<p>In our case the transitions allowed by the model are strongly related to
+<d-math>Y</d-math>. We want the HMM to reflect this. One possible model could
+be a simple linear state transition diagram. The figure below shows this with
+the same alphabet as before and <d-math>Y =</d-math> [a, b]. Another commonly
+used model is the <em>Bakis</em> or left-right HMM. In this model any
+transition which proceeds from the left to the right is allowed.</p>
 
 <figure class="hmm-grid" style="width:100%;margin-top:0px;">
   <div>

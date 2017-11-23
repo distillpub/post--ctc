@@ -218,8 +218,6 @@ This means solving
 Ideally <d-math>Y^*</d-math> can be found efficiently. With CTC we'll settle
 for an approximate solution that's not too expensive to find.</p>
 
-<hr />
-
 <h2 id="the-algorithm">The Algorithm</h2>
 
 <p>The CTC algorithm can assign a probability for any <d-math>Y</d-math>
@@ -674,7 +672,6 @@ beam search. Whenever we propose to extend a prefix by a character, we can
 include the language model score for the new character given the prefix so
 far.</p>
 
-<hr />
 <h2 id="properties-of-ctc">Properties of CTC</h2>
 
 <p>We mentioned a few important properties of CTC so far. Here we’ll go
@@ -765,8 +762,6 @@ This is usually not a problem for speech and handwriting recognition since the
 input is much longer than the output. However, for other problems where
 <d-math>Y</d-math> is often longer than <d-math>X</d-math>, CTC just won't
 work.</p>
-
-<hr />
 
 <h2 id="ctc-in-context">CTC in Context</h2>
 
@@ -984,7 +979,6 @@ dependence over the outputs. However in practice, CTC is still more commonly
 used in tasks like Speech Recognition as we can partially overcome the
 conditional independence assumption by including an external language model.</p>
 
-<hr />
 <h2 id="practitioners-guide">Practitioner’s Guide</h2>
 
 <p>So far we've mostly developed a conceptual understanding of CTC. Here we’ll go
@@ -1055,7 +1049,6 @@ the ground truth output actually has a higher probability under the model and
 the beam search failed to find it. In this case a large increase to the beam
 size may be warranted.</p>
 
-<hr />
 <h2 class="no_toc" id="bibliographic-notes">Bibliographic Notes</h2>
 
 <p>The CTC algorithm was first published by Graves et al. in 2006.

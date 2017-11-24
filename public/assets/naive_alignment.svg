@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="143px" height="105px" viewBox="0 0 143 105" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:16px;line-height:normal;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;">
+<svg width="270px" height="105px" viewBox="0 0 270 105" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:16px;line-height:normal;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;">
     <title>naive_alignment</title>
     <defs>
     <style>
@@ -7,10 +7,18 @@
            font-family:"Times New Roman",Times,serif;
            font-style:italic;
         }
+        .caption {
+            opacity:0.6;
+            font-weight:normal;
+            font-size:14px;
+        }
    </style>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="naive_alignment" transform="translate(-1.000000, -9.000000)">
+            <text class="caption" x="200" y="24" fill="#000000">input (<tspan dx="2" class="math-font">X</tspan><tspan dx="2">)</tspan></text>
+            <text class="caption" x="200" y="66" fill="#000000">alignment</text>
+            <text class="caption" x="200" y="107" fill="#000000">output (<tspan class="math-font">Y</tspan><tspan dx="2">)</tspan></text>
             <g id="g1117" transform="translate(1.000000, 0.000000)">
                 <g id="g1115" transform="translate(120.000000, 0.000000)">
                     <rect id="rect1109" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="9" width="22.516821" height="22.516821"></rect>

@@ -21,17 +21,14 @@
    }
 
    .hmm-grid {
+      margin-left: auto;
+      margin-right: auto;
       display: grid;
       grid-template-columns: 18% 18% 55%;
       grid-column: page;
       grid-column-gap: 5%;
       max-width: 750px;
    }
-   figure {
-      margin-left: auto;
-      margin-right: auto;
-      width: 704px;
-    }
     .figure-math {
       margin-left: 1em;
     }
@@ -241,16 +238,7 @@ approach. Let’s use an example. Assume the input has length six and <d-math>Y
 is to have a character for each input step and collapse repeats.</p>
 
 <figure style="width:100%;">
-  <div style="display:grid;grid-template-columns:25% 75%;max-width:350px;margin-left:auto;margin-right:auto">
-  <figcaption>
-    <div style="padding-top:10%;">input (<d-math>X</d-math>)</div>
-    <div style="padding-top:45%;">alignment</div>
-    <div style="padding-top:45%;">output (<d-math>Y</d-math>)</div>
-  </figcaption>
-  <div style="padding-left:20%;">
-    <img src="assets/naive_alignment.svg" style="width:100%" />
-  </div>
-  </div>
+  <img src="assets/naive_alignment.svg" style="max-width:350px" />
 </figure>
 
 <p>This approach has two problems.</p>
@@ -279,20 +267,7 @@ alignment which maps to <d-math>Y</d-math> after merging repeats and removing
 <d-math>\epsilon</d-math> tokens:</p>
 
 <figure style="width:100%;">
-  <div style="margin-left:auto;margin-right:auto;max-width:500px;display:grid;grid-template-columns:30% 70%">
-    <figcaption>
-    <div style="padding-top:20%;">
-      First, merge repeat characters.
-    </div>
-    <div style="padding-top:15%;">
-      Then, remove any <d-math>\epsilon</d-math> tokens.
-    </div>
-    <div style="padding-top:15%;">
-      The remaining characters are the output.
-    </div>
-    </figcaption>
-    <img src="assets/ctc_alignment_steps.svg" />
-  </div>
+    <img src="assets/ctc_alignment_steps.svg" style="max-width:550px"/>
 </figure>
 
 <p>If <d-math>Y</d-math> has two of the same character in a row, then a valid
@@ -304,9 +279,7 @@ in place, we can differentiate between alignments of [h, e, l, l, o] and
 a few more examples of valid and invalid alignments.</p>
 
 <figure style="width:100%;">
-  <div style="margin-left:auto;margin-right:auto;max-width:550px">
-    <img src="assets/valid_invalid_alignments.svg" />
-  </div>
+  <img src="assets/valid_invalid_alignments.svg" style="max-width:550px" />
 </figure>
 
 
@@ -325,9 +298,7 @@ length of <d-math>X.</d-math></p>
 time-step to the probability of an output sequence.</p>
 
 <figure style="width:100%;">
-  <div style="margin-left:auto;margin-right:auto;max-width:600px">
-    <img src="assets/full_collapse_from_audio.svg" />
-  </div>
+  <img src="assets/full_collapse_from_audio.svg" style="max-width:600px"/>
 </figure>
 
 
@@ -576,9 +547,9 @@ The new set of hypotheses is generated from the previous set by extending each
 hypothesis with all possible output characters and keeping only the top
 candidates.</p>
 
-<figure style="grid-column:page; width:100%; max-width:704px;">
-  <img src="assets/beam_search.svg" style="width:100%" />
-  <figcaption style="width:300px;">
+<figure style="width:100%;">
+  <img src="assets/beam_search.svg"/>
+  <figcaption style="max-width:300px;">
   A standard beam search algorithm with an alphabet of
   <d-math>\{\epsilon, a, b\}</d-math> and a beam size
   of three.
@@ -591,9 +562,9 @@ beam, we store the output prefixes after collapsing repeats and removing
 <d-math>\epsilon</d-math> characters. At each step of the search we accumulate
 scores for a given prefix based on all the alignments which map to it.</p>
 
-<figure style="grid-column:page; width:100%; max-width:900px;">
+<figure style="margin-left:auto; margin-right: auto; grid-column:page; width:100%; max-width:900px;">
   <object data="assets/prefix_beam_search.svg" type="image/svg+xml" style="width:100%"></object>
-  <figcaption style="width:300px;">
+  <figcaption style="max-width:300px;">
   The CTC beam search algorithm with an output alphabet
   <d-math>\{\epsilon, a, b\}</d-math>
   and a beam size of three.
@@ -617,12 +588,14 @@ in the beam. The probability of all alignments which end in
 end in <d-math>\epsilon.</d-math> When we rank the hypotheses at
 each step before pruning the beam, we'll use their combined scores.</p>
 
-<figure style="grid-column:page; width:100%; max-width:900px;">
+<figure style="margin-left:auto; margin-right: auto; grid-column:page; width:100%; max-width:900px;">
   <object data="assets/prefix_beam_search_single.svg" type="image/svg+xml" style="width:100%"></object>
 </figure>
 
 <p>The implementation of this algorithm doesn't require much code, but it is
-dense and tricky to get right. Checkout this <a href="https://gist.github.com/awni/56369a90d03953e370f3964c826ed4b0">gist</a> for an example implementation in Python.</p>
+dense and tricky to get right. Checkout this
+<a href="https://gist.github.com/awni/56369a90d03953e370f3964c826ed4b0">gist</a>
+for an example implementation in Python.</p>
 
 <p>In some problems, such as speech recognition, incorporating a language model
 over the outputs significantly improves accuracy. We can include the language
@@ -700,13 +673,13 @@ the next letter should be ‘A’ with high probability and 'r' with low
 probability. The conditional independence assumption does not allow for this.</p>
 
 <figure style="width:100%;">
-  <div style="max-width:600px;margin-left:auto;margin-right:auto;">
-  <img src="assets/triple_a.svg" style="width:100%;"/>
-  <figcaption style="max-width:500px;padding-top:1em;">
-  If we predict an 'A' as the first letter then the suffix 'AA' should get much
-  more probability than 'riple A'. If we predict 't' first, the opposite
-  should be true.
-  </figcaption>
+  <div style="max-width:600px;">
+    <img src="assets/triple_a.svg" style="width:100%;"/>
+    <figcaption style="max-width:500px;padding-top:1em;">
+    If we predict an 'A' as the first letter then the suffix 'AA' should get much
+    more probability than 'riple A'. If we predict 't' first, the opposite
+    should be true.
+    </figcaption>
   </div>
 </figure>
 

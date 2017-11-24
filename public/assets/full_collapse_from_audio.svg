@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="450px" height="450px" viewBox="-100 0 249 450" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="450px" height="450px" viewBox="0 0 450 450" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
     <title>full_collapse_from_audio</title>
     <desc>Created with Sketch.</desc>
@@ -35,25 +35,26 @@
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="full_collapse_from_audio">
-            <text x="-200" y="18" fill="#000000" class="caption">We start with an input sequence,<tspan x="-200" dy="14">like a spectrogram of audio.</tspan></text>
-            <text x="-200" y="74" fill="#000000" class="caption">The input is fed into an RNN,<tspan x="-200" dy="14">for example.</tspan></text>
-            <text x="-200" y="154" fill="#000000" class="caption">
+            <text x="300" y="18" fill="#000000" class="caption">We start with an input sequence,
+                <tspan x="300" dy="14">like a spectrogram of audio.</tspan>
+            </text>
+            <text x="300" y="74" fill="#000000" class="caption">The input is fed into an RNN,
+                <tspan x="300" dy="14">for example.</tspan>
+            </text>
+            <text x="300" y="154" fill="#000000" class="caption">
                 The network gives <tspan class="math-font">p</tspan><tspan class="math-font" y="158">t</tspan><tspan y="154"> (</tspan><tspan class="math-font">a</tspan> | <tspan class="math-font">X</tspan> ),
-                <tspan x="-200" dy="14">a distribution over the outputs</tspan>
-                <tspan x="-200" dy="14">{h, e, l, o, <tspan class="math-font" style="font-size:12px">ϵ</tspan>} for each input step.</tspan>
+                <tspan x="300" dy="14">a distribution over the outputs</tspan>
+                <tspan x="300" dy="14">{h, e, l, o, <tspan class="math-font" style="font-size:12px">ϵ</tspan>} for each input step.</tspan>
             </text>
-            <text x="-200" y="284" fill="#000000" class="caption">
+            <text x="300" y="284" fill="#000000" class="caption">
                With the per time-step output 
-               <tspan x="-200" dy="14">distribution, we compute the</tspan>
-               <tspan x="-200" dy="14">probability of different sequences</tspan>
+               <tspan x="300" dy="14">distribution, we compute the</tspan>
+               <tspan x="300" dy="14">probability of different sequences</tspan>
             </text>
-            <text x="-200" y="384" fill="#000000" class="caption">
+            <text x="300" y="384" fill="#000000" class="caption">
                By marginalizing over alignments,
-               <tspan x="-200" dy="14">we get a distribution over outputs.</tspan>
+               <tspan x="300" dy="14">we get a distribution over outputs.</tspan>
             </text>
-
-
-
             <g id="ctc_distribution" transform="translate(0.000000, 120.000000)">
 
                 <g id="g03" transform="translate(0.000000, 137.000000)">

@@ -5,14 +5,11 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   height="239.26259"
-   width="363.82019"
+   height="240"
+   width="525"
+   viewBox="35 0 525 240"
    id="svg"
    version="1.1"
-   sodipodi:docname="ctc_alignment_steps.svg"
-   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
    style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:20px;line-height:normal;font-family:'-apple-system', BlinkMacSystemFont, Roboto, Helvetica, sans-serif;enable-background:new">
   <defs
      id="defs4">
@@ -21,8 +18,23 @@
            font-family:"Times New Roman",Times,serif;
            font-style:italic;
         }
+        .caption {
+            opacity:0.6;
+            font-weight:normal;
+            font-size:14px;
+        }
     </style>
   </defs>
+  <text class="caption" x="400" y="50" fill="#000000">First, merge repeat
+    <tspan dy="20" x="400">characters.</tspan>
+  </text>
+  <text class="caption" x="400" y="115" fill="#000000">Then, remove any
+    <tspan class="math-font" style="font-size:16px">ϵ</tspan>
+    <tspan dy="20" x="400">tokens.</tspan>
+  </text>
+  <text class="caption" x="400" y="185" fill="#000000">The remaining characters
+    <tspan dy="20" x="400">are the output.</tspan>
+  </text>
   <g
      id="g1077"
      transform="translate(34.651682)">
@@ -40,8 +52,6 @@
            id="rect907" />
         <text
            style="font-size:20px"
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="15.44498"
            y="27.766972"
@@ -62,8 +72,6 @@
            y="26.58053"
            x="15.74159"
            font-size="20px"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
            style="font-size:20px">e</text>
       </g>
       <g
@@ -78,8 +86,6 @@
            id="rect919" />
         <text
            style="font-size:20px"
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="15.74159"
            y="28.063581"
@@ -100,14 +106,11 @@
            id="text942"
            y="27.74159"
            x="17.41947"
-           font-size="20px"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           font-size="20px">
           <tspan
              y="27.74159"
              x="17.41947"
-             id="tspan940"
-             sodipodi:role="line">l</tspan>
+             id="tspan940">l</tspan>
         </text>
       </g>
       <g
@@ -122,14 +125,11 @@
            id="rect946" />
         <text
            style="font-size:20px"
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="15.41947"
            y="27.148371"
            id="text950">
           <tspan
-             sodipodi:role="line"
              id="tspan948"
              x="15.41947"
              y="27.148371">o</tspan>
@@ -150,8 +150,6 @@
            id="rect862" />
         <text
            style="font-size:20px"
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="26.483179"
            y="28.063581"
@@ -169,8 +167,6 @@
            id="rect875" />
         <text
            style="font-size:20px"
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="15.74159"
            y="26.58053"
@@ -195,14 +191,10 @@
            id="rect901" />
         <text
            style="font-size:20px"
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
-           font-size="20px"
            x="17.41947"
            y="27.74159"
            id="text905">
           <tspan
-             sodipodi:role="line"
              id="tspan903"
              x="17.41947"
              y="27.74159">l</tspan>
@@ -230,14 +222,11 @@
            id="text929"
            y="27.74159"
            x="29.41947"
-           font-size="20px"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           font-size="20px">
           <tspan
              y="27.74159"
              x="29.41947"
-             id="tspan927"
-             sodipodi:role="line">l</tspan>
+             id="tspan927">l</tspan>
         </text>
       </g>
       <g
@@ -255,14 +244,11 @@
            id="text945"
            y="26.851761"
            x="16.233028"
-           font-size="20px"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012">
+           font-size="20px">
           <tspan
              y="26.851761"
              x="16.233028"
-             id="tspan943"
-             sodipodi:role="line">o</tspan>
+             id="tspan943">o</tspan>
         </text>
       </g>
     </g>
@@ -283,8 +269,6 @@
            y="27.47036"
            x="26.483179"
            font-size="20px"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
            style="font-size:20px">h</text>
       </g>
       <g
@@ -302,8 +286,6 @@
            y="26.58053"
            x="15.74159"
            font-size="20px"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
            style="font-size:20px">e</text>
       </g>
       <g
@@ -338,14 +320,11 @@
            y="27.74159"
            x="17.41947"
            font-size="20px"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
            style="font-size:20px">
           <tspan
              y="27.74159"
              x="17.41947"
-             id="tspan971"
-             sodipodi:role="line">l</tspan>
+             id="tspan971">l</tspan>
         </text>
       </g>
       <g
@@ -367,8 +346,7 @@
           <tspan
              y="27.74159"
              x="17.41947"
-             id="tspan979"
-             sodipodi:role="line">ϵ</tspan>
+             id="tspan979">ϵ</tspan>
         </text>
       </g>
       <g
@@ -382,15 +360,12 @@
            width="46.655575"
            id="rect985" />
         <text
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="29.41947"
            y="27.74159"
            id="text989"
            style="font-size:20px">
           <tspan
-             sodipodi:role="line"
              id="tspan987"
              x="29.41947"
              y="27.74159">l</tspan>
@@ -407,15 +382,12 @@
            width="22.516821"
            id="rect993" />
         <text
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="16.233028"
            y="26.851761"
            id="text997"
            style="font-size:20px">
           <tspan
-             sodipodi:role="line"
              id="tspan995"
              x="16.233028"
              y="26.851761">o</tspan>
@@ -439,8 +411,6 @@
            y="27.47036"
            x="15.74159"
            font-size="20px"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
            style="font-size:20px">h</text>
       </g>
       <g
@@ -455,8 +425,6 @@
            id="rect815" />
         <text
            style="font-size:20px"
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="15.74159"
            y="27.47036"
@@ -477,8 +445,6 @@
            y="26.58053"
            x="15.74159"
            font-size="20px"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
            style="font-size:20px">e</text>
       </g>
       <g
@@ -526,15 +492,12 @@
            width="22.516821"
            id="rect839" />
         <text
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="17.41947"
            y="27.74159"
            id="text841"
            style="font-size:20px">
           <tspan
-             sodipodi:role="line"
              id="tspan845"
              x="17.41947"
              y="27.74159">l</tspan>
@@ -555,14 +518,11 @@
            y="27.74159"
            x="17.41947"
            font-size="20px"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
            style="font-size:20px">
           <tspan
              y="27.74159"
              x="17.41947"
-             id="tspan872"
-             sodipodi:role="line">l</tspan>
+             id="tspan872">l</tspan>
         </text>
       </g>
       <g
@@ -576,15 +536,12 @@
            width="22.516821"
            id="rect878" />
         <text
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="17.41947"
            y="27.74159"
            id="text882"
            style="font-size:20px">
           <tspan
-             sodipodi:role="line"
              id="tspan880"
              x="17.41947"
              y="27.74159">l</tspan>
@@ -609,8 +566,7 @@
           <tspan
              y="27.74159"
              x="17.41947"
-             id="tspan888"
-             sodipodi:role="line">ϵ</tspan>
+             id="tspan888">ϵ</tspan>
         </text>
       </g>
       <g
@@ -624,15 +580,12 @@
            width="22.516821"
            id="rect894" />
         <text
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="17.41947"
            y="27.74159"
            id="text898"
            style="font-size:20px">
           <tspan
-             sodipodi:role="line"
              id="tspan896"
              x="17.41947"
              y="27.74159">l</tspan>
@@ -653,14 +606,11 @@
            y="27.74159"
            x="17.41947"
            font-size="20px"
-           inkscape:transform-center-x="-3.7752311"
-           inkscape:transform-center-y="0.41947012"
            style="font-size:20px">
           <tspan
              y="27.74159"
              x="17.41947"
-             id="tspan904"
-             sodipodi:role="line">l</tspan>
+             id="tspan904">l</tspan>
         </text>
       </g>
       <g
@@ -674,15 +624,12 @@
            width="22.516821"
            id="rect910" />
         <text
-           inkscape:transform-center-y="0.41947012"
-           inkscape:transform-center-x="-3.7752311"
            font-size="20px"
            x="15.936419"
            y="26.555149"
            id="text914"
            style="font-size:20px">
           <tspan
-             sodipodi:role="line"
              id="tspan912"
              x="15.936419"
              y="26.555149">o</tspan>

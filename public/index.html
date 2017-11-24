@@ -1022,48 +1022,48 @@ the ground truth output actually has a higher probability under the model and
 the beam search failed to find it. In this case a large increase to the beam
 size may be warranted.</p>
 
-<h2 class="no_toc" id="bibliographic-notes">Bibliographic Notes</h2>
-
-<p>The CTC algorithm was first published by Graves et al. in 2006.
-<d-cite key="Graves2006"></d-cite> The first experiments were on TIMIT,
-a popular phoneme recognition benchmark.<d-cite key="Lopes2011"></d-cite>
-Chapter 7 of Graves’ thesis<d-cite key="Graves2012"></d-cite> also gives a
-detailed treatment of CTC.</p>
-
-<p>One of the first applications of CTC to large vocabulary speech recognition was
-by Graves et al. in 2014.<d-cite key="Graves2014"></d-cite>
-They combined a hybrid DNN-HMM and a CTC trained model to achieve state-of-the-art results.
-Hannun et al. subsequently demonstrated state-of-the-art CTC based speech
-recognition on larger benchmarks.<d-cite key="Hannun2014deepspeech"></d-cite>
-A CTC model outperformed other methods on an online handwriting
-recognition benchmark in 2007.<d-cite key="Liwicki2007"></d-cite></p>
-
-<p>CTC has been used successfully in many other problems. Some examples are
-lip-reading from video<d-cite key="Assael2016"></d-cite>, action recognition from
-video<d-cite key="Huang2016"></d-cite> and keyword detection in audio.
-<d-cite key="Fernandez2007,Lengerich2016"></d-cite></p>
-
-<p>Many extensions and improvements to CTC have been proposed. Here are a few.
-The <em>Sequence Transducer</em> discards the conditional independence assumption
-made by CTC.<d-cite key="Graves2012transducer"></d-cite> As a consequence, the
-model allows the output to be longer than the input. The <em>Gram-CTC</em> model
-generalizes CTC to marginalize over n-gram output classes.
-<d-cite key="Liu2017"></d-cite> Other works have generalized CTC or proposed
-similar algorithms to account for segmental structure in the output.
-<d-cite key="Wang2017,Kong2016"></d-cite></p>
-
-<p>The Hidden Markov Model was developed in the 1960’s with the first application
-to speech recognition in the 1970’s. For an introduction to the HMM and
-applications to speech recognition see Rabiner's canonical tutorial.
-<d-cite key="Rabiner1989"></d-cite></p>
-
-<p>Encoder-decoder models were developed in 2014.
-<d-cite key="Cho2014,Sutskever2014"></d-cite> <em>Distill</em> has an
-in-depth guide to attention in encoder-decoder
-models.<d-cite key="Olah2016"></d-cite></p>
-
 </d-article>
 <d-appendix>
+  <h3 id="bibliographi_notes">Bibliographic Notes</h3>
+    <p>The CTC algorithm was first published by Graves et al. in 2006.
+    <d-cite key="Graves2006"></d-cite> The first experiments were on TIMIT,
+    a popular phoneme recognition benchmark.<d-cite key="Lopes2011"></d-cite>
+    Chapter 7 of Graves’ thesis<d-cite key="Graves2012"></d-cite> also gives a
+    detailed treatment of CTC.</p>
+
+    <p>One of the first applications of CTC to large vocabulary speech recognition was
+    by Graves et al. in 2014.<d-cite key="Graves2014"></d-cite>
+    They combined a hybrid DNN-HMM and a CTC trained model to achieve state-of-the-art results.
+    Hannun et al. subsequently demonstrated state-of-the-art CTC based speech
+    recognition on larger benchmarks.<d-cite key="Hannun2014deepspeech"></d-cite>
+    A CTC model outperformed other methods on an online handwriting
+    recognition benchmark in 2007.<d-cite key="Liwicki2007"></d-cite></p>
+
+    <p>CTC has been used successfully in many other problems. Some examples are
+    lip-reading from video<d-cite key="Assael2016"></d-cite>, action recognition from
+    video<d-cite key="Huang2016"></d-cite> and keyword detection in audio.
+    <d-cite key="Fernandez2007,Lengerich2016"></d-cite></p>
+
+    <p>Many extensions and improvements to CTC have been proposed. Here are a few.
+    The <em>Sequence Transducer</em> discards the conditional independence assumption
+    made by CTC.<d-cite key="Graves2012transducer"></d-cite> As a consequence, the
+    model allows the output to be longer than the input. The <em>Gram-CTC</em> model
+    generalizes CTC to marginalize over n-gram output classes.
+    <d-cite key="Liu2017"></d-cite> Other works have generalized CTC or proposed
+    similar algorithms to account for segmental structure in the output.
+    <d-cite key="Wang2017,Kong2016"></d-cite></p>
+
+    <p>The Hidden Markov Model was developed in the 1960’s with the first application
+    to speech recognition in the 1970’s. For an introduction to the HMM and
+    applications to speech recognition see Rabiner's canonical tutorial.
+    <d-cite key="Rabiner1989"></d-cite></p>
+
+    <p>Encoder-decoder models were developed in 2014.
+    <d-cite key="Cho2014,Sutskever2014"></d-cite> <em>Distill</em> has an
+    in-depth guide to attention in encoder-decoder
+    models.<d-cite key="Olah2016"></d-cite></p>
+
+
   <h3 id="acknowledgements">Acknowledgments</h3>
   <p>I'm especially grateful to the Distill team for <em>dramatically</em>
   improving the quality of this article. Thanks to Chris Olah's suggestions and

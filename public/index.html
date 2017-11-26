@@ -235,7 +235,7 @@ calculated.</p>
 <p>To motivate the specific form of the CTC alignments, first consider a naive
 approach. Let’s use an example. Assume the input has length six and <d-math>Y
 =</d-math> [c, a, t]. One way to align <d-math>X</d-math> and <d-math>Y</d-math>
-is to have a character for each input step and collapse repeats.</p>
+is to assign an output character to each input step and collapse repeats.</p>
 
 <figure style="width:100%;">
   <img src="assets/naive_alignment.svg" style="max-width:350px" />
@@ -272,8 +272,8 @@ alignment which maps to <d-math>Y</d-math> after merging repeats and removing
 
 <p>If <d-math>Y</d-math> has two of the same character in a row, then a valid
 alignment must have an <d-math>\epsilon</d-math> between them. With this rule
-in place, we can differentiate between alignments of [h, e, l, l, o] and
-[h, e, l, o].</p>
+in place, we can differentiate between alignments which collapse to "hello" and
+those which collapse to "helo".</p>
 
 <p>Let's go back to the output [c, a, t] with an input of length six. Here are
 a few more examples of valid and invalid alignments.</p>
@@ -283,7 +283,7 @@ a few more examples of valid and invalid alignments.</p>
 </figure>
 
 
-<p>The CTC alignment has a few notable properties. First, the allowed
+<p>The CTC alignments have a few notable properties. First, the allowed
 alignments between <d-math>X</d-math> and <d-math>Y</d-math> are monotonic.
 If we advance to the next input, we can keep the corresponding output the
 same or advance to the next one. A second property is that the alignment of
@@ -334,7 +334,7 @@ for a single <d-math>(X, Y)</d-math> pair is:</p>
 
 <p>Models trained with CTC typically use a recurrent neural network (RNN) to
 estimate the per time-step probabilities, <d-math>p_t(a_t \mid X).</d-math>
-The RNN works well here since it accounts for context in the input, but we're
+An RNN usually works well since it accounts for context in the input, but we're
 free to use any learning algorithm which produces a distribution over output
 classes given a fixed-size slice of the input.</p>
 

@@ -703,11 +703,14 @@ marginalizes over all alignments. While CTC does make strong assumptions about
 the form of alignments between <d-math>X</d-math> and <d-math>Y</d-math>, the
 model is agnostic as to how probability is distributed amongst them. In some
 problems CTC ends up allocating most of the probability to a single alignment.
-However, this isn't guaranteed. We can force the model to choose a single
+However, this isn't guaranteed.
+<d-footnote>
+We could force the model to choose a single
 alignment by replacing the sum with a max in the objective function,
 <d-math block>
 p(Y \mid X) \enspace = \enspace \max_{A \in \mathcal{A}_{X,Y}} \enspace \prod_{t=1}^T \; p(a_t \mid X).
 </d-math></p>
+</d-footnote>
 
 <p>As mentioned before, CTC only allows <em>monotonic</em> alignments. In
 problems such as speech recognition this may be a valid assumption. For other
@@ -721,7 +724,7 @@ cases this may not be desirable. We might want to enforce a strict one-to-one
 correspondence between elements of <d-math>X</d-math> and
 <d-math>Y.</d-math> Alternatively, we may want to allow multiple output
 elements to align to a single input element. For example, the characters
-“th” might align to a single input step of audio. A character based CTC model
+"th" might align to a single input step of audio. A character based CTC model
 would not allow that.</p>
 
 <p>The many-to-one property implies that the output can't have more time-steps
@@ -778,25 +781,25 @@ write down the standard HMM.</p>
     <div>
       <d-math>p(X) \quad =</d-math>
       <figcaption style="padding-top:10px">
-        The probability of the <em>input</em>
+        The probability of the input
       </figcaption>
     </div>
     <div>
       <d-math>\sum_{A \in \mathcal{A}} \; \prod_{t=1}^T</d-math>
       <figcaption style="padding-top:10px">
-        marginalizes over alignments
+        Marginalizes over alignments
       </figcaption>
     </div>
     <div>
       <d-math>p(x_t \mid a_t) \quad \cdot</d-math>
       <figcaption style="padding-top:10px">
-        the emission probability
+        The emission probability
       </figcaption>
     </div>
     <div>
       <d-math>p(a_t \mid a_{t-1})</d-math>
       <figcaption style="padding-top:10px">
-        and the transition probability.
+        The transition probability
       </figcaption>
     </div>
   </div>
@@ -908,7 +911,7 @@ RNN directly towards solving the problem we care about.</p>
 <h3 id="encoder-decoder-models">Encoder-Decoder Models</h3>
 
 <p>The encoder-decoder is perhaps the most commonly used framework for sequence
-transduction with neural networks. This class of models consists of an encoder
+modeling with neural networks. These models have an encoder
 and a decoder. The encoder maps the input sequence <d-math>X</d-math> into a
 hidden representation. The decoder consumes the hidden representation and
 produces a distribution over the outputs. We can write this as
@@ -938,7 +941,7 @@ encoder we find in commonly used encoder-decoder models. For example the
 encoder could be a multi-layer bidirectional RNN or a convolutional network.
 There is a constraint on the CTC encoder that doesn't apply to the others. The
 input length cannot be sub-sampled so much that <d-math>T/s</d-math>
-is less than <d-math>U.</d-math></p>
+is less than the length of the output.</p>
 
 <p><strong>Decoder:</strong> We can view the decoder of a CTC model as a simple
 linear transformation followed by a softmax normalization. This layer should
@@ -949,7 +952,7 @@ project all <d-math>T</d-math> steps of the encoder output
 the characters in the output sequence. This is one of the big advantages that
 other encoder-decoder models have over CTC &mdash; they can model the
 dependence over the outputs. However in practice, CTC is still more commonly
-used in tasks like Speech Recognition as we can partially overcome the
+used in tasks like speech recognition as we can partially overcome the
 conditional independence assumption by including an external language model.</p>
 
 <h2 id="practitioners-guide">Practitioner’s Guide</h2>
@@ -986,7 +989,7 @@ has more detail on this including the adjustments to the gradient.
 <d-cite key="Graves2006"></d-cite> In practice this works well enough
 for medium length sequences but can still underflow for long sequences.
 A better solution is to compute the loss function in log-space with the
-log-sum-exp trick
+log-sum-exp trick.
 <d-footnote>
 When computing the sum of two probabilities in log space use the identity
 <d-math block>
@@ -995,21 +998,32 @@ When computing the sum of two probabilities in log space use the identity
 Most programming languages have a stable function to compute
 <d-math>\log(1 + x)</d-math> when
 <d-math>x</d-math> is close to zero.
-</d-footnote>.
+</d-footnote>
 
 Inference should also be done in log-space using the log-sum-exp trick.</p>
 
-<p><strong>Beam Search:</strong> There are a couple of good tips to know about when
-implementing  and using the CTC beam search.</p>
+<p><strong>Beam Search:</strong> There are a couple of good tips to know about
+when implementing  and using the CTC beam search.</p>
 
 <p>The correctness of the beam search can be tested as follows.</p>
 <ol>
-  <li>Run the beam search algorithm on an arbitrary input.</li>
-  <li>Save the inferred output <d-math>\bar{Y}</d-math> and the corresponding score <d-math>\bar{c}.</d-math></li>
-  <li>Compute the actual CTC score <d-math>c</d-math> for <d-math>\bar{Y}</d-math> using the same input.</li>
-  <li>Check that <d-math>\bar{c} \approx c</d-math> with the former being no greater than the later.
-As the beam size increases the inferred output <d-math>\bar{Y}</d-math> may change, but the two
-numbers should grow closer.</li>
+  <li>
+    Run the beam search algorithm on an arbitrary input.
+  </li>
+  <li>
+    Save the inferred output <d-math>\bar{Y}</d-math> and the corresponding
+    score <d-math>\bar{c}.</d-math>
+  </li>
+  <li>
+    Compute the actual CTC score <d-math>c</d-math> for
+    <d-math>\bar{Y}.</d-math>
+  </li>
+  <li>
+    Check that <d-math>\bar{c} \approx c</d-math> with the former being no
+    greater than the later.  As the beam size increases the inferred output
+    <d-math>\bar{Y}</d-math> may change, but the two numbers should grow
+    closer.
+  </li>
 </ol>
 
 <p>A common question when using a beam search decoder is the size of the beam
@@ -1075,6 +1089,7 @@ size may be warranted.</p>
   <p>Thanks to Sanjeev Satheesh, Chris Lengerich, Dan Jurafsky and the
   anonymous reviewers for their feedback. I'm also very grateful to Andrew Ng
   for feedback on the article and his support.</p>
+
   <h3 id="discussion-review">Discussion and Review</h3>
   <p>
     <a href="https://github.com/distillpub/post--ctc/issues/13">Review-1 Anonymous</a><br />

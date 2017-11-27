@@ -64,7 +64,7 @@ $("#alignment").keydown(function(e) {
             clear_and_load();
             return;
         }
-        alignment = $("#alignment").text();
+        var alignment = $("#alignment").text();
         alignment = alignment.substr(0, alignment.length - 1);
         update(alignment);
     }
@@ -83,7 +83,7 @@ $("#alignment").keyup(function(e) {
         return;
 
     // Hack for double space causing period + ' '.
-    last_div = $("#alignment > div").last()
+    var last_div = $("#alignment > div").last()
     var t = last_div.text()
     if (t == " . ")
         last_div.text(".");

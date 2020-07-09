@@ -199,7 +199,7 @@ the <em>probability</em> of a given output.</p>
 tractable. We'll require that CTC do both of these efficiently.</p>
 
 <p><strong>Loss Function:</strong> For a given input, we'd like to train our
-model to maximize the probability it assigns to the right answer.  To do this,
+model to maximize the probability it assigns the right answer.  To do this,
 we'll need to efficiently compute the conditional probability
 <d-math>p(Y \mid X).</d-math> The function <d-math>p(Y \mid X)</d-math> should
 also be differentiable, so we can use gradient descent.</p>
